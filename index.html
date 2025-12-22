@@ -229,15 +229,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
-                    <h2 class="text-amber-500 font-bold tracking-widest uppercase mb-4 text-sm">Our Philosophy</h2>
-                    <h3 class="text-5xl font-heading font-bold mb-8 leading-tight">Where Spice Meets <span class="text-gradient-gold">Sophistication</span></h3>
-                    <p class="text-lg text-slate-400 leading-relaxed mb-8">
-                        At The Cajun Kitchen, we don't just serve food; we curate experiences. We believe that the bold, rustic flavors of the bayou deserve a stage that honors their complexity. 
+                    <h2 class="text-amber-500 font-bold tracking-widest uppercase mb-4 text-sm">About The Cajun Kitchen</h2>
+                    <h3 class="text-5xl font-heading font-bold mb-8 leading-tight">From The Cajun Menu to <span class="text-gradient-gold">The Cajun Kitchen</span></h3>
+                    <p class="text-lg text-slate-400 leading-relaxed mb-6">
+                        The Cajun Kitchen is the evolution of a legacy. Originally known as <strong>The Cajun Menu</strong>, our roots began with one mission: bring real Louisiana flavor to Georgia — no shortcuts, no watered-down recipes.
                     </p>
-                    <p class="text-lg text-slate-400 leading-relaxed mb-10">
-                        From our 48-hour slow-cooked dark roux gumbo to our locally sourced crawfish, every dish is a tribute to New Orleans heritage, crafted with modern culinary precision right here in Canton.
+                    <p class="text-lg text-slate-400 leading-relaxed mb-6">
+                        As we grew, so did our vision. The Cajun Kitchen represents the next chapter — elevated atmosphere, refined presentation, and the same bold Cajun soul that built our reputation. Every dish is inspired by traditional New Orleans kitchens and crafted with modern precision right here in Canton, Georgia.
                     </p>
                     
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl mb-8 backdrop-blur-sm hover-glow">
+                        <h4 class="text-amber-400 font-bold mb-2 flex items-center"><span class="text-2xl mr-2">🥖</span> Straight From Louisiana</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            One thing we refuse to compromise on? Bread. Our signature bread is <strong>shipped directly from Louisiana</strong>, ensuring the texture, flavor, and authenticity you simply can’t replicate locally. It’s the foundation of our po’boys — and a detail true Cajun food lovers notice immediately.
+                        </p>
+                    </div>
+
                     <div class="grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
                         <div>
                             <span class="block text-3xl font-bold text-white mb-1">15+</span>
@@ -255,12 +262,18 @@
                 </div>
                 <div class="reveal relative group animate-float-delayed">
                     <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-red-600 rounded-3xl rotate-6 opacity-20 group-hover:rotate-12 transition-transform duration-700 blur-lg"></div>
-                    <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?q=80&w=1000&auto=format&fit=crop" alt="Chef Plating" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-8 left-8">
-                            <p class="text-white font-heading font-bold text-2xl">Chef's Special</p>
-                            <p class="text-amber-400">Crawfish Étouffée</p>
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl h-[600px]">
+                        <img src="images/old-house.jpg" alt="Historic Cajun House" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8">
+                            <div class="bg-black/60 backdrop-blur-md p-6 rounded-xl border border-white/10">
+                                <p class="text-amber-400 font-bold text-sm uppercase tracking-widest mb-2">🔥 Fun Cajun Facts</p>
+                                <ul class="text-white text-sm space-y-2 italic">
+                                    <li>• Cajun cuisine dates back to Acadian settlers exiled from Canada.</li>
+                                    <li>• Traditional gumbo starts with a dark roux that can take over 45 minutes to perfect.</li>
+                                    <li>• Authentic Cajun food balances heat, smoke, and depth — not just spice.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -293,7 +306,7 @@
 
     <!-- Visit / Reservation Section -->
     <section id="visit" class="py-24 relative">
-        <div class="absolute inset-0 bg-[url('/reservation-bg.jpg')] bg-cover bg-center opacity-20 fixed-bg"></div>
+        <div class="absolute inset-0 bg-[url('/images/rustic-house.jpg')] bg-cover bg-center opacity-20 fixed-bg"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div>
 
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10 reveal">
@@ -331,7 +344,9 @@
             <!-- Reservation Form -->
             <div class="glass-panel p-8 md:p-10 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] hover-glow">
                 <h3 class="text-3xl font-heading font-bold mb-2">Reserve a Table</h3>
-                <p class="text-slate-400 mb-8">Secure your spot for an unforgettable evening.</p>
+                <p class="text-slate-400 mb-8">
+                    Whether it’s date night, family dinner, or a special celebration, reserving your table ensures the best experience.
+                </p>
                 
                 <!-- Formspree Form -->
                 <form id="reservation-form" class="space-y-6">
@@ -403,8 +418,8 @@
         const menuData = {
             "Appetizers": [
                 { name: "Crab Dip", price: "16.99", desc: "House made creamy crab dip made with real crab meat. Served with toasted bread" },
-                { name: "Low Boil App", price: "11.99", desc: "Comes with shrimp, potatoes, sausage, corn mushrooms. Served with drawn cajun butter." },
-                { name: "Alligator Bites", price: "14.99", desc: "Tender and juicy alligator tail fried to golden perfection. Served with house made cajun sauce." },
+                { name: "Low Boil App", price: "11.99", desc: "Comes with shrimp, potatoes, sausage, corn mushrooms. Served with drawn cajun butter.", image: "/images/seafood-boil.jpg" },
+                { name: "Alligator Bites", price: "14.99", desc: "Tender and juicy alligator tail fried to golden perfection. Served with house made cajun sauce.", image: "/images/gator-bites.jpg" },
                 { name: "Crawfish Queso", price: "18.99", desc: "House made queso dip with domestic crawfish tails. Served with crisp chips." },
                 { name: "Mozzarella Sticks", price: "8.99", desc: "Made crispy and golden. Served with marinara, ranch, or cajun sauce." },
                 { name: "Sampler Platter", price: "18.99", desc: "Red beans and rice, crawfish etouffee, and your choice of gumbo." },
@@ -418,18 +433,18 @@
             ],
             "Main Courses": [
                 { name: "Full Alligator Sauce Piquant", price: "24.99", desc: "Tender alligator tail slow cooked in a spicy red tomato sauce over rice." },
-                { name: "Cajun Crab Boil", price: "48.99", desc: "Shrimp, potatoes, sausage, corn, mushrooms AND an EXTRA LARGE cluster of crab legs." },
+                { name: "Cajun Crab Boil", price: "48.99", desc: "Shrimp, potatoes, sausage, corn, mushrooms AND an EXTRA LARGE cluster of crab legs.", image: "/images/seafood-boil.jpg" },
                 { name: "Chicken Alfredo", price: "22.99", desc: "Creamy scratch-made alfredo over fresh noodles with zesty cajun chicken breast." },
-                { name: "Crawfish Etouffee", price: "18.99", desc: "Creamy brown buttery gravy with tender crawfish tails served over rice." },
+                { name: "Crawfish Etouffee", price: "18.99", desc: "Creamy brown buttery gravy with tender crawfish tails served over rice.", image: "/images/etouffee.jpg" },
                 { name: "Low Boil Entree", price: "24.99", desc: "Generous amount of shrimp, potatoes, sausage, corn and mushrooms." },
-                { name: "Seafood Gumbo Bowl", price: "14.99", desc: "Traditional dark roux with chicken, sausage, shrimp and crab meat." },
-                { name: "Shrimp & Grits", price: "22.99", desc: "Cheese grits served with brown sauce and shrimp. A fan favorite!" },
+                { name: "Seafood Gumbo Bowl", price: "14.99", desc: "Traditional dark roux with chicken, sausage, shrimp and crab meat.", image: "/images/gumbo.jpg" },
+                { name: "Shrimp & Grits", price: "22.99", desc: "Cheese grits served with brown sauce and shrimp. A fan favorite!", image: "/images/shrimp-grits.jpg" },
                 { name: "Red Beans & Rice", price: "22.99", desc: "Slow cooked red beans with perfect spice and juicy sausage over rice." },
                 { name: "Traditional Gumbo Bowl", price: "11.99", desc: "Traditional dark house roux with chicken and sausage. Served with rice." }
             ],
             "Po-Boys": [
                 { name: "Roast Beef Po-Boy", price: "19.99", desc: "Full size. Dressed with lettuce, tomatoes, and cajun sauce." },
-                { name: "Shrimp Po-Boy", price: "18.99", desc: "Full size. Fried shrimp dressed to perfection." },
+                { name: "Shrimp Po-Boy", price: "18.99", desc: "Full size. Fried shrimp dressed to perfection.", image: "/images/po-boy.jpg" },
                 { name: "Catfish Poboy", price: "18.99", desc: "Full size. Golden fried catfish." },
                 { name: "Crawfish Poboy", price: "19.99", desc: "Full size. Tender crawfish tails." },
                 { name: "Smoked Sausage Po-Boy", price: "8.99", desc: "Half size. Cajun smoked sausage." }
@@ -441,7 +456,7 @@
                 { name: "Half Shrimp", price: "11.99", desc: "Served with fries." }
             ],
             "Desserts & Sides": [
-                { name: "Beignets", price: "8.99", desc: "Classic New Orleans donuts." },
+                { name: "Beignets", price: "8.99", desc: "Classic New Orleans donuts.", image: "/images/beignets.jpg" },
                 { name: "Cajun Mud Cake", price: "7.99", desc: "Rich and chocolatey." },
                 { name: "Fried Okra", price: "5.99", desc: "Crispy southern staple." },
                 { name: "Hushpuppies", price: "6.99", desc: "Golden cornmeal bites." },
