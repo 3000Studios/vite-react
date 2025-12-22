@@ -251,6 +251,7 @@
             opacity: 0;
             transform: translateX(-50px);
             transition: all 1s ease-out;
+            display: inline-block; /* Required for transform */
         }
         .reveal-left.active {
             opacity: 1;
@@ -269,6 +270,17 @@
              margin-top: 8px;
              border-radius: 2px;
              animation: underlineGrow 1s ease-out forwards;
+        }
+
+        /* Tiny Fireworks (Subtle, 5s) */
+        @keyframes fireworkTiny {
+            0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,0.1); }
+            25% { text-shadow: 1px 1px 5px #ff0000, -1px -1px 5px #00ff00; }
+            50% { text-shadow: 1px -1px 5px #0000ff, -1px 1px 5px #ffff00; }
+            75% { text-shadow: -1px 1px 5px #ff00ff, 1px -1px 5px #00ffff; }
+        }
+        .animate-firework-tiny {
+            animation: fireworkTiny 5s ease-in-out 1 forwards; /* Run once for 5s then stop (or hold last frame, though last frame is same as start) */
         }
 
         /* Mardi Gras Sparkle & Underline */
@@ -398,9 +410,9 @@
             <div class="inline-block mb-6 mt-24 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-md animate-float">
                 <span class="text-amber-400 text-sm tracking-widest font-semibold uppercase">Est. Canton, GA</span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-8 leading-tight animate-wiggle-subtle">
+            <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-8 leading-tight">
                 Taste the <br>
-                <span class="text-gradient-gold animate-firework">Soul of Louisiana</span>
+                <span class="reveal-left inline-block animate-firework-tiny">Soul of Louisiana</span>
             </h1>
             <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Bold spices, fresh seafood, and the warmth of Southern hospitality. Experience authentic Cajun cuisine redefined.
@@ -497,11 +509,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-amber-500 font-bold tracking-widest uppercase mb-3 text-sm">Culinary Delights</h2>
-                <h3 class="text-5xl font-heading font-bold text-white reveal-sparkle">Signature Menu</h3>
+                <h3 class="text-5xl font-heading font-bold text-white reveal-left inline-block">Signature Menu</h3>
             </div>
             
             <!-- Category Nav -->
-            <div class="flex overflow-x-auto justify-start md:justify-center space-x-4 pb-8 mb-8 no-scrollbar reveal" id="menu-categories">
+            <div class="flex overflow-x-auto justify-start md:justify-center space-x-4 pb-8 pt-8 mb-8 no-scrollbar reveal" id="menu-categories">
                 <!-- Categories injected by JS -->
             </div>
 
