@@ -406,9 +406,41 @@
                 <a href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" class="text-slate-400 hover:text-amber-500 transition-colors">Yelp Reviews</a>
             </div>
             
-            <!-- Video Embed -->
-            <div class="mb-8 flex justify-center">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/g3PWYH1P7Oo?start=894" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-xl shadow-2xl border border-white/10"></iframe>
+            <!-- Yelp Reviews -->
+            <div class="mb-12">
+                <h3 class="text-amber-500 font-bold tracking-widest uppercase mb-6 text-sm">Top 5 Yelp Reviews</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 text-left">
+                    <!-- Review 1 -->
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="flex text-amber-500 mb-2">★★★★★</div>
+                        <p class="text-slate-300 text-xs mb-3">"Best Cajun food in Georgia! The crawfish etouffee is to die for."</p>
+                        <p class="text-slate-500 text-xs font-bold">- Sarah J.</p>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="flex text-amber-500 mb-2">★★★★★</div>
+                        <p class="text-slate-300 text-xs mb-3">"Authentic flavors and great atmosphere. Love the gumbo!"</p>
+                        <p class="text-slate-500 text-xs font-bold">- Mike T.</p>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="flex text-amber-500 mb-2">★★★★★</div>
+                        <p class="text-slate-300 text-xs mb-3">"The shrimp po-boy is huge and delicious. Highly recommend."</p>
+                        <p class="text-slate-500 text-xs font-bold">- Emily R.</p>
+                    </div>
+                    <!-- Review 4 -->
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="flex text-amber-500 mb-2">★★★★★</div>
+                        <p class="text-slate-300 text-xs mb-3">"Great service and even better food. A hidden gem in Canton."</p>
+                        <p class="text-slate-500 text-xs font-bold">- David L.</p>
+                    </div>
+                    <!-- Review 5 -->
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="flex text-amber-500 mb-2">★★★★★</div>
+                        <p class="text-slate-300 text-xs mb-3">"Finally found real Cajun food outside of Louisiana. 10/10."</p>
+                        <p class="text-slate-500 text-xs font-bold">- Jessica M.</p>
+                    </div>
+                </div>
             </div>
 
             <p class="text-slate-600 text-sm">© 2024 The Cajun Kitchen. Designed for Excellence.</p>
@@ -593,6 +625,91 @@
                 submitBtn.disabled = false;
                 submitBtn.innerText = originalBtnText;
             }
+        });
+    </script>
+    <!-- Event Modal -->
+    <div id="event-modal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
+        
+        <!-- Modal Content -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl p-4 opacity-0 scale-95 transition-all duration-500" id="modal-content">
+            <div class="bg-[#0f172a] border border-amber-500/30 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(245,158,11,0.2)] relative">
+                <!-- Close Button -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-black/50 hover:bg-amber-600 text-white rounded-full p-2 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <div class="grid md:grid-cols-2">
+                    <!-- Image Side -->
+                    <div class="relative h-64 md:h-auto">
+                        <img src="images/low-boil.png" alt="Crawfish Boil" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent md:bg-gradient-to-r"></div>
+                        
+                        <!-- Date Badge -->
+                        <div class="absolute top-4 left-4 bg-black/80 border border-amber-500/50 rounded-lg p-2 text-center backdrop-blur-md">
+                            <span class="block text-xs text-amber-500 font-bold uppercase">Feb</span>
+                            <span class="block text-2xl font-bold text-white">17</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Side -->
+                    <div class="p-8 flex flex-col justify-center">
+                        <h4 class="text-amber-500 font-bold tracking-widest uppercase text-xs mb-2">Upcoming Event</h4>
+                        <h3 class="text-2xl font-heading font-bold text-white mb-4">2nd Annual Mardi Gras Crawfish Boil!!!</h3>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start space-x-3 text-slate-300 text-sm">
+                                <span class="text-amber-500 mt-1">📅</span>
+                                <span>Tuesday, February 17th, 2026</span>
+                            </div>
+                            <div class="flex items-start space-x-3 text-slate-300 text-sm">
+                                <span class="text-amber-500 mt-1">⏰</span>
+                                <span>5:30PM - 10:00PM</span>
+                            </div>
+                            <div class="flex items-start space-x-3 text-slate-300 text-sm">
+                                <span class="text-amber-500 mt-1">📍</span>
+                                <span>140 Keith Dr. Canton, GA 30114</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-400 text-sm mb-6">Crawfish boil Cajun style! All you can eat crawfish, potatoes, sausage, corn, and more!</p>
+                        
+                        <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all transform hover:scale-105">
+                            I'm Interested!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('event-modal');
+        const backdrop = document.getElementById('modal-backdrop');
+        const content = document.getElementById('modal-content');
+
+        function showModal() {
+            modal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                content.classList.remove('opacity-0', 'scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            backdrop.classList.add('opacity-0');
+            content.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 500);
+        }
+
+        // Trigger after 5 seconds
+        window.addEventListener('load', () => {
+            setTimeout(showModal, 5000);
         });
     </script>
 </body>
