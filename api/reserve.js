@@ -23,15 +23,15 @@ export default async function handler(req, res) {
 
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//The Cajun Kitchen//Reservations//EN
+PRODID:-//The Cajun Menu//Reservations//EN
 BEGIN:VEVENT
-UID:${Date.now()}@cajunkitchen.xyz
+UID:${Date.now()}@thecajunmenu.online
 DTSTAMP:${startDateTime}
 DTSTART:${startDateTime}
 DTEND:${endDateTime}
 SUMMARY:Reservation: ${name} (${guests} Guests)
 DESCRIPTION:Reservation for ${name}.\nPhone: ${phone}\nEmail: ${email}\nGuests: ${guests}
-LOCATION:The Cajun Kitchen, 140 Keith Dr, Canton, GA 30114
+LOCATION:The Cajun Menu, 140 Keith Dr, Canton, GA 30114
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
@@ -48,7 +48,7 @@ END:VCALENDAR`;
       });
 
       await transporter.sendMail({
-        from: `"Cajun Kitchen Bot" <${EMAIL_USER}>`,
+        from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
         to: 'mr.jwswain@gmail.com',
         subject: `🍽️ New Reservation: ${name} - ${date} @ ${time}`,
         text: `New reservation received!\n\nName: ${name}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nPhone: ${phone}\nEmail: ${email}\n\nAn event file (.ics) is attached. Click it to add to your calendar.`,
