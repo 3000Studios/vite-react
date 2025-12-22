@@ -577,12 +577,17 @@
             items.forEach((item, index) => {
                 const card = document.createElement('div');
                 // High-End Card Styling
-                card.className = 'glass-card p-8 rounded-2xl opacity-0 transform translate-y-8 group hover:-translate-y-2 transition-all duration-500';
+                card.className = 'glass-card p-8 rounded-2xl opacity-0 transform translate-y-8 group hover:-translate-y-2 transition-all duration-500 cursor-pointer relative overflow-hidden';
                 card.style.animation = `fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards ${index * 0.1}s`;
-                const imageHtml = item.image ? `<div class="mb-4 rounded-xl overflow-hidden h-48 w-full"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"></div>` : '';
+                
+                // Click to view image logic
+                card.onclick = () => openFoodModal(item);
+
                 card.innerHTML = `
-                    ${imageHtml}
-                    <div class="flex justify-between items-start mb-4 relative">
+                    <div class="absolute top-4 right-4 text-amber-500/50 text-xs uppercase tracking-widest border border-amber-500/20 px-2 py-1 rounded-full group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        Click to View
+                    </div>
+                    <div class="flex justify-between items-start mb-4 relative mt-6">
                         <div class="absolute -left-8 top-2 w-1 h-8 bg-amber-500 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <h3 class="font-heading font-bold text-xl text-white group-hover:text-amber-500 transition-colors duration-300">${item.name}</h3>
                         <span class="font-bold text-amber-500 text-lg bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">$${item.price}</span>
@@ -591,6 +596,45 @@
                 `;
                 menuGrid.appendChild(card);
             });
+        }
+
+        // Food Modal Logic
+        function openFoodModal(item) {
+            const modal = document.getElementById('food-modal');
+            const img = document.getElementById('food-modal-img');
+            const title = document.getElementById('food-modal-title');
+            const desc = document.getElementById('food-modal-desc');
+            const price = document.getElementById('food-modal-price');
+            
+            // Set Content
+            title.innerText = item.name;
+            desc.innerText = item.desc;
+            price.innerText = '$' + item.price;
+            
+            if (item.image) {
+                img.src = item.image;
+                img.classList.remove('hidden');
+                document.getElementById('food-modal-placeholder').classList.add('hidden');
+            } else {
+                img.classList.add('hidden');
+                document.getElementById('food-modal-placeholder').classList.remove('hidden');
+            }
+
+            // Show Modal
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.querySelector('.backdrop').classList.remove('opacity-0');
+                modal.querySelector('.content').classList.remove('opacity-0', 'scale-95');
+            }, 10);
+        }
+
+        function closeFoodModal() {
+            const modal = document.getElementById('food-modal');
+            modal.querySelector('.backdrop').classList.add('opacity-0');
+            modal.querySelector('.content').classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
         }
 
         // Keyframes for JS
@@ -789,6 +833,34 @@
         <button id="chat-toggle" class="w-14 h-14 bg-gradient-to-r from-amber-600 to-red-600 rounded-full shadow-lg flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300 animate-bounce-slow">
             🐊
         </button>
+    </div>
+
+    <!-- Food Item Modal -->
+    <div id="food-modal" class="fixed inset-0 z-[110] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity opacity-0 backdrop" onclick="closeFoodModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl p-4 opacity-0 scale-95 transition-all duration-300 content">
+            <div class="bg-[#0f172a] border border-amber-500/30 rounded-3xl overflow-hidden shadow-2xl relative">
+                <button onclick="closeFoodModal()" class="absolute top-4 right-4 z-20 bg-black/50 hover:bg-amber-600 text-white rounded-full p-2 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                
+                <div class="grid md:grid-cols-2 h-full">
+                    <div class="h-64 md:h-auto bg-black relative flex items-center justify-center overflow-hidden">
+                        <img id="food-modal-img" src="" alt="Food Item" class="w-full h-full object-cover">
+                        <div id="food-modal-placeholder" class="hidden flex flex-col items-center justify-center text-slate-500">
+                            <span class="text-4xl mb-2">📷</span>
+                            <span class="text-sm uppercase tracking-widest">Add Image Here</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <h3 id="food-modal-title" class="text-3xl font-heading font-bold text-white mb-2"></h3>
+                        <span id="food-modal-price" class="text-2xl font-bold text-amber-500 mb-6 block"></span>
+                        <p id="food-modal-desc" class="text-slate-300 leading-relaxed mb-8"></p>
+                        <button onclick="closeFoodModal()" class="w-full py-3 border border-white/20 rounded-xl text-white hover:bg-white/10 transition-colors">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
