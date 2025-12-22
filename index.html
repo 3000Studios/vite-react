@@ -660,10 +660,26 @@
                 const result = await response.json();
 
                 if (response.ok) {
-                    statusMsg.innerText = 'Reservation confirmed! Check your email and SMS.';
+                    let msg = 'Reservation confirmed! Check your email and SMS.';
+                    let isWarning = false;
+
+                    // Check for partial failures
+                    if (result.details) {
+                        if (result.details.email.error || result.details.sms.error) {
+                            msg = 'Reservation saved, but confirmation alerts failed. Please contact us directly.';
+                            console.warn('Reservation Warnings:', result.details);
+                            isWarning = true;
+                        }
+                    }
+
+                    statusMsg.innerText = msg;
                     statusMsg.classList.remove('hidden');
-                    statusMsg.classList.add('text-green-400');
-                    this.reset();
+                    statusMsg.classList.remove('text-red-400');
+                    statusMsg.classList.add(isWarning ? 'text-amber-400' : 'text-green-400');
+                    
+                    if (!isWarning) {
+                        this.reset();
+                    }
                 } else {
                     throw new Error(result.error || 'Something went wrong');
                 }
