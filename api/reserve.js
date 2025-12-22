@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   // Twilio Config - Supports both Phone Number and Messaging Service
   const TWILIO_SID = process.env.TWILIO_SID || 'AC12f76686b3c1126347be3f422c15d463'; // Default from user
   const TWILIO_TOKEN = process.env.TWILIO_TOKEN || '9d7efcb8b66fd224d8eaddac0bd8ffe0'; // Default from user
-  const TWILIO_PHONE = process.env.TWILIO_PHONE;
+  const TWILIO_PHONE = process.env.TWILIO_PHONE || '+18444593956'; // Default from user
   const TWILIO_MESSAGING_SERVICE_SID = process.env.TWILIO_MESSAGING_SERVICE_SID || 'MG60d407a08d34d8ecc32bb874daf3f57a'; // Default from user
   
   // Owner Contact Info
