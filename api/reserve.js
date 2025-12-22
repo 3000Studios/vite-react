@@ -9,8 +9,8 @@ export default async function handler(req, res) {
   const { name, email, phone, date, time, guests } = req.body;
 
   // 1. Configuration (These come from Environment Variables)
-  const EMAIL_USER = process.env.EMAIL_USER; // Your Gmail address
-  const EMAIL_PASS = process.env.EMAIL_PASS; // Your Gmail App Password
+  const EMAIL_USER = process.env.EMAIL_USER || 'mr.jwsswain@gmail.com'; // Your Gmail address
+  const EMAIL_PASS = process.env.EMAIL_PASS || 'wwrx hzop udow tkxh'; // Your Gmail App Password
   
   // Twilio Config - Supports both Phone Number and Messaging Service
   const TWILIO_SID = process.env.TWILIO_SID || 'AC12f76686b3c1126347be3f422c15d463'; // Default from user
