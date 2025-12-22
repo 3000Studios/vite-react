@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering | The Cajun Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Rye&display=swap" rel="stylesheet">
+    <style>
+        /* --- Core Typography & Reset --- */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Rye', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- 3D Button Styles --- */
+        .btn-3d {
+            border-radius: 1rem;
+            box-shadow: 0 6px 0 rgb(180, 83, 9);
+            transition: all 0.1s;
+        }
+        .btn-3d:active {
+            box-shadow: 0 0 0 rgb(180, 83, 9);
+            transform: translateY(6px);
+        }
+
+        /* --- Modern Glassmorphism --- */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border-color: rgba(245, 158, 11, 0.3);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #d946ef 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-move 5s ease infinite;
+        }
+
+        @keyframes gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
+                <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                    <a href="index.html" class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                            <span class="text-xl">⚜️</span>
+                        </div>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-amber-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Home</a>
+                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Story</a>
+                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-amber-400 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Delivery</a>
+                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none p-2">
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
+                <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
+                <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
+                <a href="catering.html" class="block px-3 py-3 text-amber-400 font-semibold">Catering</a>
+                <a href="delivery.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Delivery</a>
+                <a href="index.html#visit" class="block px-3 py-3 text-amber-400 font-semibold">Book a Table</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Catering Hero -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-[#020617]/40 z-10"></div>
+            <img src="public/images/low-boil.png" alt="Catering Background" class="w-full h-full object-cover opacity-40">
+        </div>
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6">Catering Services</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Bring the authentic taste of Louisiana to your next event.</p>
+        </div>
+    </section>
+
+    <!-- Catering Content -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-heading font-bold text-white mb-6">Events & Parties</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        From corporate lunches to weddings and backyard boils, The Cajun Menu provides full-service catering that will leave your guests talking. We specialize in large-scale seafood boils, gumbo stations, and custom Cajun buffets.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-slate-300"><span class="text-amber-500 mr-3">✓</span> On-site Crawfish & Shrimp Boils</li>
+                        <li class="flex items-center text-slate-300"><span class="text-amber-500 mr-3">✓</span> Corporate Event Packages</li>
+                        <li class="flex items-center text-slate-300"><span class="text-amber-500 mr-3">✓</span> Wedding & Rehearsal Dinners</li>
+                        <li class="flex items-center text-slate-300"><span class="text-amber-500 mr-3">✓</span> Custom Menu Planning</li>
+                    </ul>
+                    
+                    <!-- PayPal Button Placeholder -->
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <h3 class="text-xl font-bold text-white mb-4">Secure Your Date</h3>
+                        <p class="text-slate-400 text-sm mb-6">Ready to book? Use the button below to pay your deposit via PayPal.</p>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE">
+                            <button type="submit" class="w-full py-4 bg-[#0070ba] hover:bg-[#003087] text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 btn-3d">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.946 5.05-3.691 6.67-6.65 6.67H10.09c-.52 0-.968.384-1.05.904l-1.27 8.09a.64.64 0 0 1-.632.74h-.06zm11.22-15.27c-1.66-1.89-4.66-1.89-7.86-1.89H6.81l-3.9 20.5h4.16l1.5-9.5h2.8c4.4 0 7.6-2.4 8.4-7.5.1-.6.1-1.1.1-1.6z"/></svg>
+                                Pay Deposit with PayPal
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-red-600 rounded-3xl rotate-6 opacity-20 blur-lg"></div>
+                    <img src="public/images/crab-boil.png" alt="Catering Spread" class="relative rounded-3xl border border-white/10 shadow-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020617] border-t border-white/5 py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-heading font-bold text-white mb-6 tracking-tight">THE CAJUN MENU</h2>
+            <p class="text-slate-600 text-sm">© 2024 The Cajun Menu. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

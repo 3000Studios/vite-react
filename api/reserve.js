@@ -14,7 +14,18 @@ export default async function handler(req, res) {
   const TWILIO_SID = process.env.TWILIO_SID;
   const TWILIO_TOKEN = process.env.TWILIO_TOKEN;
   const TWILIO_PHONE = process.env.TWILIO_PHONE;
-  const MY_PHONE_NUMBER = '+14046407734'; // Your personal phone
+  
+  // Owner Contact Info
+  const OWNER_EMAIL = 'mr.jwsswain@gmail.com';
+  const OWNER_PHONE = '+14046407734';
+
+  // Helper to format phone number to E.164 (assuming US)
+  const formatPhone = (p) => {
+    const cleaned = ('' + p).replace(/\D/g, '');
+    return cleaned.length === 10 ? `+1${cleaned}` : p.startsWith('+') ? p : `+1${cleaned}`;
+  };
+
+  const customerPhone = formatPhone(phone);
 
   // 2. Generate ICS File Content (Calendar Event)
   // Format date/time for ICS (YYYYMMDDTHHMMSS)
@@ -37,7 +48,7 @@ END:VEVENT
 END:VCALENDAR`;
 
   try {
-    // 3. Send Email with ICS Attachment
+    // 3. Send Emails (Owner & Customer)
     if (EMAIL_USER && EMAIL_PASS) {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -47,9 +58,10 @@ END:VCALENDAR`;
         },
       });
 
+      // Email to Owner
       await transporter.sendMail({
         from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
-        to: 'mr.jwswain@gmail.com',
+        to: OWNER_EMAIL,
         subject: `🍽️ New Reservation: ${name} - ${date} @ ${time}`,
         text: `New reservation received!\n\nName: ${name}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nPhone: ${phone}\nEmail: ${email}\n\nAn event file (.ics) is attached. Click it to add to your calendar.`,
         attachments: [
@@ -60,19 +72,45 @@ END:VCALENDAR`;
           },
         ],
       });
-      console.log('Email sent successfully');
+
+      // Email to Customer
+      await transporter.sendMail({
+        from: `"The Cajun Menu" <${EMAIL_USER}>`,
+        to: email,
+        subject: `✅ Reservation Confirmed: The Cajun Menu`,
+        text: `Hi ${name},\n\nYour reservation for ${guests} people on ${date} at ${time} is confirmed!\n\nWe look forward to seeing you.\n\n📍 Location: 140 Keith Dr, Canton, GA 30114\n📞 Contact: (678) 899-7404\n\nWe've attached a calendar invite for your convenience.`,
+        attachments: [
+          {
+            filename: 'reservation.ics',
+            content: icsContent,
+            contentType: 'text/calendar',
+          },
+        ],
+      });
+      
+      console.log('Emails sent successfully');
     } else {
       console.log('Skipping Email: Missing EMAIL_USER or EMAIL_PASS');
     }
 
-    // 4. Send SMS via Twilio
+    // 4. Send SMS (Owner & Customer)
     if (TWILIO_SID && TWILIO_TOKEN && TWILIO_PHONE) {
       const client = twilio(TWILIO_SID, TWILIO_TOKEN);
+      
+      // SMS to Owner
       await client.messages.create({
-        body: `🔥 New Reservation: ${name} for ${guests} ppl on ${date} at ${time}. Phone: ${phone}`,
+        body: `🔥 New Reservation: ${name} (${guests} ppl) @ ${date} ${time}. Phone: ${phone}`,
         from: TWILIO_PHONE,
-        to: MY_PHONE_NUMBER,
+        to: OWNER_PHONE,
       });
+
+      // SMS to Customer
+      await client.messages.create({
+        body: `✅ The Cajun Menu: Your reservation for ${guests} on ${date} at ${time} is confirmed! See you soon! 🐊`,
+        from: TWILIO_PHONE,
+        to: customerPhone,
+      });
+
       console.log('SMS sent successfully');
     } else {
       console.log('Skipping SMS: Missing Twilio credentials');

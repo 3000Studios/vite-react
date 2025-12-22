@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery | The Cajun Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Rye&display=swap" rel="stylesheet">
+    <style>
+        /* --- Core Typography & Reset --- */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Rye', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- 3D Button Styles --- */
+        .btn-3d {
+            border-radius: 1rem;
+            box-shadow: 0 6px 0 rgb(180, 83, 9);
+            transition: all 0.1s;
+        }
+        .btn-3d:active {
+            box-shadow: 0 0 0 rgb(180, 83, 9);
+            transform: translateY(6px);
+        }
+
+        /* --- Modern Glassmorphism --- */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border-color: rgba(245, 158, 11, 0.3);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
+                <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                    <a href="index.html" class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                            <span class="text-xl">⚜️</span>
+                        </div>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-amber-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Home</a>
+                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Story</a>
+                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-amber-400 transition-colors duration-300">Delivery</a>
+                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none p-2">
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
+                <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
+                <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
+                <a href="catering.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Catering</a>
+                <a href="delivery.html" class="block px-3 py-3 text-amber-400 font-semibold">Delivery</a>
+                <a href="index.html#visit" class="block px-3 py-3 text-amber-400 font-semibold">Book a Table</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Delivery Hero -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-[#020617]/40 z-10"></div>
+            <img src="public/images/shrimp-poboy.png" alt="Delivery Background" class="w-full h-full object-cover opacity-40">
+        </div>
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6">Order Delivery</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Enjoy The Cajun Menu from the comfort of your home.</p>
+        </div>
+    </section>
+
+    <!-- Delivery Options -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- UberEats -->
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#06C167]/10 transition-colors">
+                    <div class="w-20 h-20 bg-[#06C167] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
+                        UE
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">UberEats</h3>
+                    <p class="text-slate-400 mb-6">Fast delivery straight to your door.</p>
+                    <span class="text-[#06C167] font-bold group-hover:underline">Order Now →</span>
+                </a>
+
+                <!-- DoorDash -->
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
+                    <div class="w-20 h-20 bg-[#FF3008] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
+                        DD
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">DoorDash</h3>
+                    <p class="text-slate-400 mb-6">Your favorite Cajun dishes, delivered.</p>
+                    <span class="text-[#FF3008] font-bold group-hover:underline">Order Now →</span>
+                </a>
+
+                <!-- GrubHub -->
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#F63440]/10 transition-colors">
+                    <div class="w-20 h-20 bg-[#F63440] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
+                        GH
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">GrubHub</h3>
+                    <p class="text-slate-400 mb-6">Local delivery you can trust.</p>
+                    <span class="text-[#F63440] font-bold group-hover:underline">Order Now →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020617] border-t border-white/5 py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-heading font-bold text-white mb-6 tracking-tight">THE CAJUN MENU</h2>
+            <p class="text-slate-600 text-sm">© 2024 The Cajun Menu. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
