@@ -171,6 +171,96 @@
             box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
         }
 
+        /* --- New Animations for User Request --- */
+        
+        /* Slide In Left with Fade & Underline */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s ease-out;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        @keyframes underlineGrow {
+            0% { width: 0; opacity: 0; }
+            100% { width: 100%; opacity: 1; }
+        }
+        .reveal-left.active::after {
+             content: '';
+             display: block;
+             width: 100%;
+             height: 4px;
+             background: #f59e0b;
+             margin-top: 8px;
+             border-radius: 2px;
+             animation: underlineGrow 1s ease-out forwards;
+        }
+
+        /* Mardi Gras Sparkle & Underline */
+        @keyframes sparkleMardiGras {
+            0%, 100% { text-shadow: 0 0 10px #8e44ad, 0 0 20px #8e44ad; color: #ffffff; } /* Purple */
+            33% { text-shadow: 0 0 10px #27ae60, 0 0 20px #27ae60; color: #ffffff; } /* Green */
+            66% { text-shadow: 0 0 10px #f1c40f, 0 0 20px #f1c40f; color: #ffffff; } /* Gold */
+        }
+        .reveal-sparkle {
+            opacity: 0;
+        }
+        .reveal-sparkle.active {
+            opacity: 1;
+            animation: sparkleMardiGras 3s infinite;
+        }
+        .reveal-sparkle.active::after {
+             content: '';
+             display: block;
+             width: 100%;
+             height: 4px;
+             background: rgba(255,255,255,0.5);
+             margin-top: 8px;
+             animation: underlineGrow 1s ease-out forwards;
+        }
+
+        /* Drop In & Color Cycle */
+        .reveal-drop {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-drop.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes colorCycleSlow {
+            0% { color: #f59e0b; }
+            50% { color: #ef4444; }
+            100% { color: #f59e0b; }
+        }
+        .animate-color-cycle {
+            animation: colorCycleSlow 8s infinite ease-in-out;
+        }
+
+        /* Subtle Wiggle */
+        @keyframes wiggleSubtle {
+            0%, 100% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+        }
+        .animate-wiggle-subtle {
+            display: inline-block;
+            animation: wiggleSubtle 3s ease-in-out infinite;
+        }
+
+        /* Firework Text Effect */
+        @keyframes fireworkText {
+            0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,0.1); }
+            25% { text-shadow: 2px 2px 10px #ff0000, -2px -2px 10px #00ff00; }
+            50% { text-shadow: 2px -2px 10px #0000ff, -2px 2px 10px #ffff00; }
+            75% { text-shadow: -2px 2px 10px #ff00ff, 2px -2px 10px #00ffff; }
+        }
+        .animate-firework {
+            animation: fireworkText 1.5s infinite;
+        }
+
         /* --- Utility --- */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -232,12 +322,12 @@
         </div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <div class="inline-block mb-6 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-md animate-float">
+            <div class="inline-block mb-6 mt-24 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-md animate-float">
                 <span class="text-amber-400 text-sm tracking-widest font-semibold uppercase">Est. Canton, GA</span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-8 leading-tight">
+            <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-8 leading-tight animate-wiggle-subtle">
                 Taste the <br>
-                <span class="text-gradient-gold">Soul of Louisiana</span>
+                <span class="text-gradient-gold animate-firework">Soul of Louisiana</span>
             </h1>
             <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Bold spices, fresh seafood, and the warmth of Southern hospitality. Experience authentic Cajun cuisine redefined.
@@ -269,7 +359,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
                     <h2 class="text-amber-500 font-bold tracking-widest uppercase mb-4 text-sm">About The Cajun Menu</h2>
-                    <h3 class="text-5xl font-heading font-bold mb-8 leading-tight">Welcome to <span class="text-gradient-gold">The Cajun Menu</span></h3>
+                    <h3 class="text-5xl font-heading font-bold mb-8 leading-tight reveal-drop">Welcome to <span class="animate-color-cycle">The Cajun Menu</span></h3>
                     <p class="text-lg text-slate-400 leading-relaxed mb-6">
                         The Cajun Menu is built on a legacy. Our roots began with one mission: bring real Louisiana flavor to Georgia — no shortcuts, no watered-down recipes.
                     </p>
@@ -334,7 +424,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-amber-500 font-bold tracking-widest uppercase mb-3 text-sm">Culinary Delights</h2>
-                <h3 class="text-5xl font-heading font-bold text-white">Signature Menu</h3>
+                <h3 class="text-5xl font-heading font-bold text-white reveal-sparkle">Signature Menu</h3>
             </div>
             
             <!-- Category Nav -->
@@ -357,7 +447,7 @@
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10 reveal">
             <div class="space-y-12">
                 <div>
-                    <h2 class="text-5xl font-heading font-bold mb-6">Visit Our <br><span class="text-amber-500">Kitchen</span></h2>
+                    <h2 class="text-5xl font-heading font-bold mb-6 reveal-left">Visit Our <br><span class="text-amber-500">Kitchen</span></h2>
                     <p class="text-slate-400 text-lg">Experience the ambiance firsthand. Reservations are highly recommended for weekends.</p>
                 </div>
                 
@@ -663,7 +753,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-sparkle, .reveal-drop').forEach(el => observer.observe(el));
 
         // Mobile Menu Toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
