@@ -11,9 +11,12 @@ export default async function handler(req, res) {
   // 1. Configuration (These come from Environment Variables)
   const EMAIL_USER = process.env.EMAIL_USER; // Your Gmail address
   const EMAIL_PASS = process.env.EMAIL_PASS; // Your Gmail App Password
-  const TWILIO_SID = process.env.TWILIO_SID;
+  
+  // Twilio Config - Supports both Phone Number and Messaging Service
+  const TWILIO_SID = process.env.TWILIO_SID || 'AC12f76686b3c1126347be3f422c15d463'; // Default from user
   const TWILIO_TOKEN = process.env.TWILIO_TOKEN;
   const TWILIO_PHONE = process.env.TWILIO_PHONE;
+  const TWILIO_MESSAGING_SERVICE_SID = process.env.TWILIO_MESSAGING_SERVICE_SID || 'MG60d407a08d34d8ecc32bb874daf3f57a'; // Default from user
   
   // Owner Contact Info
   const OWNER_EMAIL = 'mr.jwsswain@gmail.com';
@@ -109,21 +112,29 @@ END:VCALENDAR`;
     }
 
     // 4. Send SMS (Owner & Customer)
-    if (TWILIO_SID && TWILIO_TOKEN && TWILIO_PHONE) {
+    if (TWILIO_SID && TWILIO_TOKEN && (TWILIO_PHONE || TWILIO_MESSAGING_SERVICE_SID)) {
       try {
         const client = twilio(TWILIO_SID, TWILIO_TOKEN);
         
+        // Determine sender (Messaging Service takes priority if available)
+        const messageOptions = {};
+        if (TWILIO_MESSAGING_SERVICE_SID) {
+            messageOptions.messagingServiceSid = TWILIO_MESSAGING_SERVICE_SID;
+        } else {
+            messageOptions.from = TWILIO_PHONE;
+        }
+
         // SMS to Owner
         await client.messages.create({
+          ...messageOptions,
           body: `🔥 New Reservation: ${name} (${guests} ppl) @ ${date} ${time}. Phone: ${phone}`,
-          from: TWILIO_PHONE,
           to: OWNER_PHONE,
         });
 
         // SMS to Customer
         await client.messages.create({
+          ...messageOptions,
           body: `✅ The Cajun Menu: Your reservation for ${guests} on ${date} at ${time} is confirmed! See you soon! 🐊`,
-          from: TWILIO_PHONE,
           to: customerPhone,
         });
 
@@ -135,7 +146,7 @@ END:VCALENDAR`;
       }
     } else {
       console.log('Skipping SMS: Missing Twilio credentials');
-      results.sms.error = 'Missing Environment Variables: TWILIO_SID, TWILIO_TOKEN, or TWILIO_PHONE';
+      results.sms.error = 'Missing Environment Variables: TWILIO_SID, TWILIO_TOKEN, or TWILIO_PHONE/MESSAGING_SERVICE_SID';
     }
 
     return res.status(200).json({ 
