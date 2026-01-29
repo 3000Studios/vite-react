@@ -1,0 +1,6 @@
+name = "cajun-kitchen"
+compatibility_date = "2024-01-01"
+
+[pages]
+build = "vite build"
+directory = "dist"
