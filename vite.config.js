@@ -1,20 +1,10 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const rootDir = fileURLToPath(new URL(".", import.meta.url));
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react()],
   build: {
-    rollupOptions: {
-      input: {
-        main: resolve(rootDir, "index.html"),
-        delivery: resolve(rootDir, "delivery.html"),
-        catering: resolve(rootDir, "catering.html"),
-        "project-planner": resolve(rootDir, "project-planner.html"),
-      },
-    },
-  },
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'es2020',
+    outDir: 'dist'
+  }
 });
