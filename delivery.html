@@ -36,11 +36,11 @@
         /* --- 3D Button Styles --- */
         .btn-3d {
             border-radius: 1rem;
-            box-shadow: 0 6px 0 rgb(180, 83, 9);
+            box-shadow: 0 6px 0 rgb(88, 28, 135);
             transition: all 0.1s;
         }
         .btn-3d:active {
-            box-shadow: 0 0 0 rgb(180, 83, 9);
+            box-shadow: 0 0 0 rgb(88, 28, 135);
             transform: translateY(6px);
         }
 
@@ -63,13 +63,13 @@
 
         .glass-card:hover {
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
-            border-color: rgba(245, 158, 11, 0.3);
+            border-color: rgba(168, 85, 247, 0.35);
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 22px rgba(124, 58, 237, 0.22), 0 0 16px rgba(34, 197, 94, 0.2);
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
+<body class="antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
@@ -77,19 +77,19 @@
             <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
                 <div class="flex-shrink-0 flex items-center group cursor-pointer">
                     <a href="index.html" class="flex items-center">
-                        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
                             <span class="text-xl">⚜️</span>
                         </div>
-                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-amber-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-purple-400 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-10 items-center">
-                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Home</a>
-                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Story</a>
-                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Menu</a>
-                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Catering</a>
-                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-amber-400 transition-colors duration-300">Delivery</a>
-                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
+                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Home</a>
+                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Story</a>
+                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-emerald-300 transition-colors duration-300">Delivery</a>
+                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-semibold btn-3d">Book a Table</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -108,8 +108,8 @@
                 <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
                 <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
                 <a href="catering.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Catering</a>
-                <a href="delivery.html" class="block px-3 py-3 text-amber-400 font-semibold">Delivery</a>
-                <a href="index.html#visit" class="block px-3 py-3 text-amber-400 font-semibold">Book a Table</a>
+                <a href="delivery.html" class="block px-3 py-3 text-emerald-300 font-semibold">Delivery</a>
+                <a href="index.html#visit" class="block px-3 py-3 text-emerald-300 font-semibold">Book a Table</a>
             </div>
         </div>
     </nav>
@@ -141,23 +141,23 @@
                 </a>
 
                 <!-- DoorDash -->
-                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
-                    <div class="w-20 h-20 bg-[#FF3008] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#7c3aed]/10 transition-colors">
+                    <div class="w-20 h-20 bg-[#7c3aed] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         DD
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">DoorDash</h3>
                     <p class="text-slate-400 mb-6">Your favorite Cajun dishes, delivered.</p>
-                    <span class="text-[#FF3008] font-bold group-hover:underline">Order Now →</span>
+                    <span class="text-[#7c3aed] font-bold group-hover:underline">Order Now →</span>
                 </a>
 
                 <!-- GrubHub -->
-                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#F63440]/10 transition-colors">
-                    <div class="w-20 h-20 bg-[#F63440] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#22c55e]/10 transition-colors">
+                    <div class="w-20 h-20 bg-[#22c55e] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         GH
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">GrubHub</h3>
                     <p class="text-slate-400 mb-6">Local delivery you can trust.</p>
-                    <span class="text-[#F63440] font-bold group-hover:underline">Order Now →</span>
+                    <span class="text-[#22c55e] font-bold group-hover:underline">Order Now →</span>
                 </a>
             </div>
         </div>
@@ -168,9 +168,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
             <div class="relative group cursor-pointer">
                 <!-- Speech Bubble -->
-                <div class="absolute -top-24 -right-24 md:-right-32 bg-white text-slate-900 p-6 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 z-20 max-w-[200px] md:max-w-xs border-4 border-amber-500">
+                <div class="absolute -top-24 -right-24 md:-right-32 bg-white text-slate-900 p-6 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 z-20 max-w-[200px] md:max-w-xs border-4 border-purple-500">
                     <p class="font-heading font-bold text-lg md:text-xl leading-tight">"Laissez les bons temps rouler!"</p>
-                    <p class="text-xs font-bold text-amber-600 mt-1 uppercase tracking-wider">(Let the good times roll!)</p>
+                    <p class="text-xs font-bold text-emerald-500 mt-1 uppercase tracking-wider">(Let the good times roll!)</p>
                 </div>
                 
                 <!-- Gator Image Container -->
@@ -208,3 +208,6 @@
     </script>
 </body>
 </html>
+
+
+
