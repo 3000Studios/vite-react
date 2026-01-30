@@ -70,35 +70,35 @@ END:VCALENDAR`;
         // Verify connection configuration
         await transporter.verify();
 
-        // Email to Owner
-        await transporter.sendMail({
-          from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
-          to: OWNER_EMAIL,
-          subject: `🍽️ New Reservation: ${name} - ${date} @ ${time}`,
-          text: `New reservation received!\n\nName: ${name}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nPhone: ${phone}\nEmail: ${email}\n\nAn event file (.ics) is attached. Click it to add to your calendar.`,
-          attachments: [
-            {
-              filename: 'reservation.ics',
-              content: icsContent,
-              contentType: 'text/calendar',
-            },
-          ],
-        });
-
-        // Email to Customer
-        await transporter.sendMail({
-          from: `"The Cajun Menu" <${EMAIL_USER}>`,
-          to: email,
-          subject: `✅ Reservation Confirmed: The Cajun Menu`,
-          text: `Hi ${name},\n\nYour reservation for ${guests} people on ${date} at ${time} is confirmed!\n\nWe look forward to seeing you.\n\n📍 Location: 140 Keith Dr, Canton, GA 30114\n📞 Contact: (678) 899-7404\n\nWe've attached a calendar invite for your convenience.`,
-          attachments: [
-            {
-              filename: 'reservation.ics',
-              content: icsContent,
-              contentType: 'text/calendar',
-            },
-          ],
-        });
+        // Email to Owner and Customer (Parallel)
+        await Promise.all([
+          transporter.sendMail({
+            from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
+            to: OWNER_EMAIL,
+            subject: `🍽️ New Reservation: ${name} - ${date} @ ${time}`,
+            text: `New reservation received!\n\nName: ${name}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nPhone: ${phone}\nEmail: ${email}\n\nAn event file (.ics) is attached. Click it to add to your calendar.`,
+            attachments: [
+              {
+                filename: 'reservation.ics',
+                content: icsContent,
+                contentType: 'text/calendar',
+              },
+            ],
+          }),
+          transporter.sendMail({
+            from: `"The Cajun Menu" <${EMAIL_USER}>`,
+            to: email,
+            subject: `✅ Reservation Confirmed: The Cajun Menu`,
+            text: `Hi ${name},\n\nYour reservation for ${guests} people on ${date} at ${time} is confirmed!\n\nWe look forward to seeing you.\n\n📍 Location: 140 Keith Dr, Canton, GA 30114\n📞 Contact: (678) 899-7404\n\nWe've attached a calendar invite for your convenience.`,
+            attachments: [
+              {
+                filename: 'reservation.ics',
+                content: icsContent,
+                contentType: 'text/calendar',
+              },
+            ],
+          })
+        ]);
         
         console.log('Emails sent successfully');
         results.email.success = true;
