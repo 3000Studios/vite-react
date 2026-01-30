@@ -1299,8 +1299,8 @@
         const trigger = document.getElementById('mardi-gras-trigger');
         const audio = document.getElementById('mardi-gras-audio');
         const overlay = document.getElementById('mardi-gras-overlay');
-        const modal = document.getElementById('dev-modal');
-        const closeModal = document.getElementById('close-dev-modal');
+        const devModal = document.getElementById('dev-modal');
+        const closeDevModal = document.getElementById('close-dev-modal');
 
         trigger.addEventListener('click', () => {
             // Play Audio
@@ -1315,6 +1315,7 @@
             const items = ['📿', '🎭', '⚜️', '🎷', '🎺', '🐊', '🟣', '🟢', '🟡'];
             
             // Create 100 falling items
+            const fragment = document.createDocumentFragment();
             for (let i = 0; i < 100; i++) {
                 const item = document.createElement('div');
                 item.classList.add('falling-item');
@@ -1323,28 +1324,29 @@
                 item.style.fontSize = (Math.random() * 30 + 20) + 'px';
                 item.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2-5s
                 item.style.animationDelay = Math.random() * 2 + 's';
-                overlay.appendChild(item);
+                fragment.appendChild(item);
             }
+            overlay.appendChild(fragment);
 
             // Show Modal after a delay
             setTimeout(() => {
-                modal.classList.remove('hidden');
+                devModal.classList.remove('hidden');
                 // Force reflow
-                void modal.offsetWidth;
-                modal.classList.remove('opacity-0');
-                modal.querySelector('div').classList.remove('scale-90');
-                modal.querySelector('div').classList.add('scale-100');
+                void devModal.offsetWidth;
+                devModal.classList.remove('opacity-0');
+                devModal.querySelector('div').classList.remove('scale-90');
+                devModal.querySelector('div').classList.add('scale-100');
             }, 1000);
         });
 
-        closeModal.addEventListener('click', () => {
+        closeDevModal.addEventListener('click', () => {
             // Hide Modal
-            modal.classList.add('opacity-0');
-            modal.querySelector('div').classList.remove('scale-100');
-            modal.querySelector('div').classList.add('scale-90');
+            devModal.classList.add('opacity-0');
+            devModal.querySelector('div').classList.remove('scale-100');
+            devModal.querySelector('div').classList.add('scale-90');
             
             setTimeout(() => {
-                modal.classList.add('hidden');
+                devModal.classList.add('hidden');
             }, 500);
 
             // Stop Audio Fade out
