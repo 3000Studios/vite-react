@@ -1,0 +1,27 @@
+
+C:\thecajunmenu.site\vite-react\src\project-planner\App.tsx
+   3:41  warning  'ProjectStatus' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+  77:11  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\thecajunmenu.site\vite-react\src\project-planner\App.tsx:77:11
+  75 |   const handleCreateTask = (newTask: Partial<ProjectTask>) => {
+  76 |     const task: ProjectTask = {
+> 77 |       id: Date.now().toString(),
+     |           ^^^^^^^^^^ Cannot call impure function
+  78 |       title: newTask.title || 'Untitled Request',
+  79 |       description: newTask.description || '',
+  80 |       estimatedCost: newTask.estimatedCost || 0,  react-hooks/purity
+
+C:\thecajunmenu.site\vite-react\src\project-planner\components\NoticeBoard.tsx
+  55:41  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\thecajunmenu.site\vite-react\src\project-planner\components\ProjectTracker.tsx
+  3:84  warning  'Cell' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\thecajunmenu.site\vite-react\src\project-planner\components\TaskManager.tsx
+  61:9  warning  'categories' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 5 problems (1 error, 4 warnings)
+
