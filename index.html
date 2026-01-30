@@ -97,11 +97,11 @@
         /* --- 3D Button Styles --- */
         .btn-3d {
             border-radius: 1rem; /* Squircle-ish */
-            box-shadow: 0 6px 0 rgb(180, 83, 9); /* Darker amber/red shadow */
+            box-shadow: 0 6px 0 rgb(88, 28, 135); /* Deeper purple shadow */
             transition: all 0.1s;
         }
         .btn-3d:active {
-            box-shadow: 0 0 0 rgb(180, 83, 9);
+            box-shadow: 0 0 0 rgb(88, 28, 135);
             transform: translateY(6px);
         }
         
@@ -126,8 +126,8 @@
             animation: glimmer 3s infinite linear;
         }
         .btn-neon {
-            box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FFD700;
-            border-color: #FFD700;
+            box-shadow: 0 0 10px #7c3aed, 0 0 20px #7c3aed, 0 0 40px #7c3aed;
+            border-color: #7c3aed;
         }
 
         /* --- Custom Scrollbar --- */
@@ -165,14 +165,13 @@
 
         .glass-card:hover {
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
-            rgba(255, 215, 0, 0.3)
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(124, 58, 237, 0.25), 0 0 18px rgba(34, 197, 94, 0.2);
         }
 
         /* --- Advanced Text Effects --- */
         .text-gradient-gold {
-            background: linear-gradient(135deg, #FFD700 0%, #ef4444 50%, #d946ef 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #22c55e 50%, #8b5cf6 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -180,7 +179,7 @@
         }
 
         .text-glow {
-            text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
         }
 
         /* --- Keyframe Animations --- */
@@ -241,7 +240,7 @@
             transition: box-shadow 0.3s ease;
         }
         .hover-glow:hover {
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.35);
         }
 
         /* --- New Animations for User Request --- */
@@ -266,7 +265,7 @@
              display: block;
              width: 100%;
              height: 4px;
-             background: #FFD700;
+             background: #7c3aed;
              margin-top: 8px;
              border-radius: 2px;
              animation: underlineGrow 1s ease-out forwards;
@@ -276,7 +275,7 @@
         @keyframes fireworkTiny {
             0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,0.1); }
             25% { text-shadow: 1px 1px 5px #ff0000, -1px -1px 5px #00ff00; }
-            50% { text-shadow: 1px -1px 5px #0000ff, -1px 1px 5px #ffff00; }
+            50% { text-shadow: 1px -1px 5px #0000ff, -1px 1px 5px #22c55e; }
             75% { text-shadow: -1px 1px 5px #ff00ff, 1px -1px 5px #00ffff; }
         }
         .animate-firework-tiny {
@@ -287,7 +286,7 @@
         @keyframes sparkleMardiGras {
             0%, 100% { text-shadow: 0 0 10px #8e44ad, 0 0 20px #8e44ad; color: #ffffff; } /* Purple */
             33% { text-shadow: 0 0 10px #27ae60, 0 0 20px #27ae60; color: #ffffff; } /* Green */
-            66% { text-shadow: 0 0 10px #f1c40f, 0 0 20px #f1c40f; color: #ffffff; } /* Gold */
+            66% { text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e; color: #ffffff; } /* Gold */
         }
         .reveal-sparkle {
             opacity: 0;
@@ -317,9 +316,9 @@
             transform: translateY(0);
         }
         @keyframes colorCycleSlow {
-            0% { color: #FFD700; }
-            50% { color: #ef4444; }
-            100% { color: #FFD700; }
+            0% { color: #7c3aed; }
+            50% { color: #22c55e; }
+            100% { color: #7c3aed; }
         }
         .animate-color-cycle {
             animation: colorCycleSlow 8s infinite ease-in-out;
@@ -339,7 +338,7 @@
         @keyframes fireworkText {
             0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,0.1); }
             25% { text-shadow: 2px 2px 10px #ff0000, -2px -2px 10px #00ff00; }
-            50% { text-shadow: 2px -2px 10px #0000ff, -2px 2px 10px #ffff00; }
+            50% { text-shadow: 2px -2px 10px #0000ff, -2px 2px 10px #22c55e; }
             75% { text-shadow: -2px 2px 10px #ff00ff, 2px -2px 10px #00ffff; }
         }
         .animate-firework {
@@ -379,7 +378,7 @@
             inset: 0;
             padding: 2px; /* Border width */
             border-radius: 0.75rem;
-            background: linear-gradient(45deg, #FFD700, #ffd700, #FFD700, #b45309);
+            background: linear-gradient(45deg, #7c3aed, #7c3aed, #7c3aed, #15803d);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -387,7 +386,7 @@
         }
         @keyframes electricGlow {
             0% { filter: brightness(1); }
-            50% { filter: brightness(1.5) drop-shadow(0 0 5px #ffd700); }
+            50% { filter: brightness(1.5) drop-shadow(0 0 5px #7c3aed); }
             100% { filter: brightness(1); }
         }
 
@@ -412,7 +411,7 @@
         }
         .bead.purple { background-color: #8e44ad; animation-delay: 0s; left: 10%; }
         .bead.green { background-color: #27ae60; animation-delay: 0.5s; left: 50%; }
-        .bead.gold { background-color: #f1c40f; animation-delay: 1s; left: 90%; }
+        .bead.gold { background-color: #22c55e; animation-delay: 1s; left: 90%; }
         .bead.purple-2 { background-color: #8e44ad; animation-delay: 1.5s; left: 30%; }
         .bead.green-2 { background-color: #27ae60; animation-delay: 0.2s; left: 70%; }
 
@@ -426,26 +425,25 @@
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
+<body class="antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]"> <!-- Reduced height on mobile -->
                 <div id="mardi-gras-trigger" class="flex-shrink-0 flex items-center group cursor-pointer">
-                    <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
                         <span class="text-xl">⚜️</span>
                     </div>
-                    <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-yellow-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
+                    <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
                 </div>
                 <div class="hidden md:flex space-x-10 items-center">
-                    <a href="#home" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Home</a>
-                    <a href="#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Story</a>
-                    <a href="#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Menu</a>
-                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Catering</a>
-                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Delivery</a>
-                    <a href="project-planner.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Project Planner</a>
-                    <a href="#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
+                    <a href="#home" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Story</a>
+                    <a href="#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Delivery</a>
+                    <a href="#visit" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-semibold btn-3d">Book a Table</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -463,8 +461,7 @@
                 <a href="#home" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
                 <a href="#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
                 <a href="#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
-                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Project Planner</a>
-                <a href="#visit" class="block px-3 py-3 text-yellow-400 font-semibold">Book a Table</a>
+                <a href="#visit" class="block px-3 py-3 text-emerald-300 font-semibold">Book a Table</a>
             </div>
         </div>
     </nav>
@@ -479,8 +476,8 @@
         </div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <div class="inline-block mb-6 mt-24 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-md animate-float">
-                <span class="text-yellow-400 text-sm tracking-widest font-semibold uppercase">Est. Canton, GA</span>
+            <div class="inline-block mb-6 mt-24 px-4 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-md animate-float">
+                <span class="text-emerald-300 text-sm tracking-widest font-semibold uppercase">Est. Canton, GA</span>
             </div>
             <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-8 leading-tight">
                 Taste the <br>
@@ -490,7 +487,7 @@
                 Bold spices, fresh seafood, and the warmth of Southern hospitality. Experience authentic Cajun cuisine redefined.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#menu" class="group relative px-8 py-4 bg-yellow-600 text-white rounded-2xl font-bold overflow-hidden transition-all btn-3d flex items-center justify-center">
+                <a href="#menu" class="group relative px-8 py-4 bg-purple-600 text-white rounded-2xl font-bold overflow-hidden transition-all btn-3d flex items-center justify-center">
                     <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
                     <span class="relative flex items-center justify-center gap-2 w-full">View Full Menu <span class="group-hover:translate-x-1 transition-transform">→</span></span>
                 </a>
@@ -509,13 +506,13 @@
     <!-- About Section -->
     <section id="about" class="py-32 relative">
         <!-- Abstract decorative blob -->
-        <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-red-600/10 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-yellow-600/10 rounded-full blur-[100px]"></div>
+        <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-emerald-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-emerald-500/10 rounded-full blur-[100px]"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
-                    <h2 class="text-yellow-500 font-bold tracking-widest uppercase mb-4 text-sm">About The Cajun Menu</h2>
+                    <h2 class="text-emerald-400 font-bold tracking-widest uppercase mb-4 text-sm">About The Cajun Menu</h2>
                     <h3 class="text-5xl font-heading font-bold mb-8 leading-tight reveal-drop">Welcome to <span class="animate-color-cycle">The Cajun Menu</span></h3>
                     <p class="text-lg text-slate-400 leading-relaxed mb-6">
                         The Cajun Menu is built on a legacy. Our roots began with one mission: bring real Louisiana flavor to Georgia — no shortcuts, no watered-down recipes.
@@ -525,7 +522,7 @@
                     </p>
                     
                     <div class="bg-white/5 border border-white/10 p-6 rounded-2xl mb-8 backdrop-blur-sm hover-glow">
-                        <h4 class="text-yellow-400 font-bold mb-2 flex items-center"><span class="text-2xl mr-2">🥖</span> Straight From Louisiana</h4>
+                        <h4 class="text-emerald-300 font-bold mb-2 flex items-center"><span class="text-2xl mr-2">🥖</span> Straight From Louisiana</h4>
                         <p class="text-slate-300 text-sm leading-relaxed">
                             One thing we refuse to compromise on? Bread. Our signature bread is <strong>shipped directly from Louisiana</strong>, ensuring the texture, flavor, and authenticity you simply can’t replicate locally. It’s the foundation of our po’boys — and a detail true Cajun food lovers notice immediately.
                         </p>
@@ -547,13 +544,13 @@
                     </div>
                 </div>
                 <div class="reveal relative group animate-float-delayed">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-red-600 rounded-3xl rotate-6 opacity-20 group-hover:rotate-12 transition-transform duration-700 blur-lg"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-3xl rotate-6 opacity-20 group-hover:rotate-12 transition-transform duration-700 blur-lg"></div>
                     <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl h-[600px]">
                         <img src="images/old-house.jpg" alt="Historic Cajun House" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <div class="absolute bottom-8 left-8 right-8">
                             <div class="bg-black/60 backdrop-blur-md p-6 rounded-xl border border-white/10">
-                                <p class="text-yellow-400 font-bold text-sm uppercase tracking-widest mb-2">🔥 Fun Cajun Facts</p>
+                                <p class="text-emerald-300 font-bold text-sm uppercase tracking-widest mb-2">🔥 Fun Cajun Facts</p>
                                 <ul class="text-white text-sm space-y-2 italic">
                                     <li>• Cajun cuisine dates back to Acadian settlers exiled from Canada.</li>
                                     <li>• Traditional gumbo starts with a dark roux that can take over 45 minutes to perfect.</li>
@@ -580,7 +577,7 @@
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-yellow-500 font-bold tracking-widest uppercase mb-3 text-sm">Culinary Delights</h2>
+                <h2 class="text-emerald-400 font-bold tracking-widest uppercase mb-3 text-sm">Culinary Delights</h2>
                 <h3 class="text-5xl font-heading font-bold text-white reveal-left inline-block">Signature Menu</h3>
             </div>
             
@@ -604,25 +601,25 @@
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10 reveal">
             <div class="space-y-12">
                 <div>
-                    <h2 class="text-5xl font-heading font-bold mb-6 reveal-left">Visit Our <br><span class="text-yellow-500">Kitchen</span></h2>
+                    <h2 class="text-5xl font-heading font-bold mb-6 reveal-left">Visit Our <br><span class="text-emerald-400">Kitchen</span></h2>
                     <p class="text-slate-400 text-lg">Experience the ambiance firsthand. Reservations are highly recommended for weekends.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div class="glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-colors hover-glow">
-                        <div class="text-yellow-500 text-3xl mb-4">📍</div>
+                    <div class="glass-card p-6 rounded-2xl hover:border-purple-500/50 transition-colors hover-glow">
+                        <div class="text-emerald-400 text-3xl mb-4">📍</div>
                         <h4 class="text-xl font-bold text-white mb-2">Location</h4>
                         <p class="text-slate-400">140 Keith Dr<br>Canton, GA 30114, US</p>
                     </div>
-                    <div class="glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-colors hover-glow">
-                        <div class="text-yellow-500 text-3xl mb-4">📞</div>
+                    <div class="glass-card p-6 rounded-2xl hover:border-purple-500/50 transition-colors hover-glow">
+                        <div class="text-emerald-400 text-3xl mb-4">📞</div>
                         <h4 class="text-xl font-bold text-white mb-2">Contact</h4>
                         <p class="text-slate-400">678-899-7404<br>thecajunmenu@gmail.com</p>
                     </div>
                 </div>
 
                 <div class="glass-card p-8 rounded-2xl hover-glow">
-                    <h4 class="text-xl font-bold text-white mb-4 flex items-center"><span class="text-yellow-500 mr-3">🕒</span> Opening Hours</h4>
+                    <h4 class="text-xl font-bold text-white mb-4 flex items-center"><span class="text-emerald-400 mr-3">🕒</span> Opening Hours</h4>
                     <ul class="space-y-3 text-slate-300">
                         <li class="flex justify-between border-b border-white/5 pb-2"><span>Mon</span> <span>11:00 AM - 8:00 PM</span></li>
                         <li class="flex justify-between border-b border-white/5 pb-2 text-slate-600"><span>Tue</span> <span>Closed</span></li>
@@ -644,34 +641,34 @@
                 <form id="reservation-form" class="space-y-6">
                     <div class="space-y-2">
                         <label class="text-sm text-slate-400 uppercase tracking-wide">Name</label>
-                        <input type="text" name="name" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="John Doe">
+                        <input type="text" name="name" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-purple-500 transition-colors placeholder-slate-600" placeholder="John Doe">
                     </div>
                     
                     <div class="grid grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-sm text-slate-400 uppercase tracking-wide">Email</label>
-                            <input type="email" name="email" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="john@example.com">
+                            <input type="email" name="email" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-purple-500 transition-colors placeholder-slate-600" placeholder="john@example.com">
                         </div>
                         <div class="space-y-2">
                             <label class="text-sm text-slate-400 uppercase tracking-wide">Phone</label>
-                            <input type="tel" name="phone" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="(555) 123-4567">
+                            <input type="tel" name="phone" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-purple-500 transition-colors placeholder-slate-600" placeholder="(555) 123-4567">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-sm text-slate-400 uppercase tracking-wide">Date</label>
-                            <input type="date" name="date" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
+                            <input type="date" name="date" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-purple-500 transition-colors [color-scheme:dark]">
                         </div>
                         <div class="space-y-2">
                             <label class="text-sm text-slate-400 uppercase tracking-wide">Time</label>
-                            <input type="time" name="time" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
+                            <input type="time" name="time" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-purple-500 transition-colors [color-scheme:dark]">
                         </div>
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-sm text-slate-400 uppercase tracking-wide">Guests</label>
-                        <select name="guests" class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                        <select name="guests" class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-purple-500 transition-colors">
                             <option value="2">2 Guests</option>
                             <option value="3">3 Guests</option>
                             <option value="4">4 Guests</option>
@@ -679,7 +676,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-[0_10px_30px_-10px_rgba(245,158,11,0.5)] transform hover:-translate-y-1 transition-all duration-300">
+                    <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-bold rounded-xl shadow-lg hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.45)] transform hover:-translate-y-1 transition-all duration-300">
                         Confirm Booking
                     </button>
                     <p id="form-status" class="text-center text-sm mt-4 hidden"></p>
@@ -693,7 +690,7 @@
 
     <!-- Footer -->
     <footer class="bg-[#020617] border-t border-white/5 py-12 relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-1 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-heading font-bold text-white mb-6 tracking-tight bead-shower">
                 THE CAJUN MENU
@@ -704,15 +701,15 @@
                 <span class="bead green-2"></span>
             </h2>
             <div class="flex justify-center space-x-8 mb-8">
-                <a href="https://www.instagram.com/thecajunmenu/?fbclid=IwY2xjawO2ThRleHRuA2FlbQIxMABicmlkETFWSTFMM1BBSFM2Zllsc0xtc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvGVRy6rRc1K05jpZ6MSdiZUwnKv4U3iVY6eFYoOHPaNVx4_kBGkIAccMiXq_aem_Sx2qK4sKLIJf23s_11sz_w#" target="_blank" class="text-slate-400 hover:text-yellow-500 transition-colors transform hover:scale-110">
+                <a href="https://www.instagram.com/thecajunmenu/?fbclid=IwY2xjawO2ThRleHRuA2FlbQIxMABicmlkETFWSTFMM1BBSFM2Zllsc0xtc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvGVRy6rRc1K05jpZ6MSdiZUwnKv4U3iVY6eFYoOHPaNVx4_kBGkIAccMiXq_aem_Sx2qK4sKLIJf23s_11sz_w#" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors transform hover:scale-110">
                     <!-- Instagram Icon -->
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <a href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" class="text-slate-400 hover:text-yellow-500 transition-colors transform hover:scale-110">
+                <a href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors transform hover:scale-110">
                     <!-- Facebook Icon -->
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                 </a>
-                <a href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" class="text-slate-400 hover:text-yellow-500 transition-colors transform hover:scale-110">
+                <a href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors transform hover:scale-110">
                     <!-- Yelp Icon -->
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.002 1.5c.33 0 .6.27.6.6v5.4c0 .33-.27.6-.6.6s-.6-.27-.6-.6v-5.4c0-.33.27-.6.6-.6zm-2.85 2.85c.23-.23.61-.23.85 0 .23.23.23.61 0 .85l-3.82 3.82c-.23.23-.61.23-.85 0-.23-.23-.23-.61 0-.85l3.82-3.82zm5.7 0l3.82 3.82c.23.23.23.61 0 .85-.23.23-.61.23-.85 0l-3.82-3.82c-.23-.23-.23-.61 0-.85.23-.23.61-.23.85 0zm-9.35 9.35c-.33 0-.6.27-.6.6v5.4c0 .33.27.6.6.6s.6-.27.6-.6v-5.4c0-.33-.27-.6-.6-.6zm12.9 0c-.33 0-.6.27-.6.6v5.4c0 .33.27.6.6.6s.6-.27.6-.6v-5.4c0-.33-.27-.6-.6-.6zm-9.08 2.22l-3.82 3.82c-.23.23-.23.61 0 .85.23.23.61.23.85 0l3.82-3.82c.23-.23.23-.61 0-.85-.23-.23-.61-.23-.85 0zm5.26 0c-.23.23-.23.61 0 .85l3.82 3.82c.23.23.61.23.85 0 .23-.23.23-.61 0-.85l-3.82-3.82c-.23-.23-.61-.23-.85 0z"/></svg>
                 </a>
@@ -720,59 +717,59 @@
             
             <!-- Yelp Reviews Carousel -->
             <div class="mb-12 overflow-hidden">
-                <h3 class="text-yellow-500 font-bold tracking-widest uppercase mb-6 text-sm">Top 5 Yelp Reviews</h3>
+                <h3 class="text-emerald-400 font-bold tracking-widest uppercase mb-6 text-sm">Top 5 Yelp Reviews</h3>
                 <div class="carousel-container">
                     <div class="carousel-track space-x-4">
                         <!-- Original Reviews -->
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Best Cajun food in Georgia! The crawfish etouffee is to die for."</p>
                             <p class="text-slate-500 text-xs font-bold">- Sarah J.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Authentic flavors and great atmosphere. Love the gumbo!"</p>
                             <p class="text-slate-500 text-xs font-bold">- Mike T.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"The shrimp po-boy is huge and delicious. Highly recommend."</p>
                             <p class="text-slate-500 text-xs font-bold">- Emily R.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Great service and even better food. A hidden gem in Canton."</p>
                             <p class="text-slate-500 text-xs font-bold">- David L.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Finally found real Cajun food outside of Louisiana. 10/10."</p>
                             <p class="text-slate-500 text-xs font-bold">- Jessica M.</p>
                         </div>
                         
                         <!-- Duplicated for Infinite Scroll -->
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Best Cajun food in Georgia! The crawfish etouffee is to die for."</p>
                             <p class="text-slate-500 text-xs font-bold">- Sarah J.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Authentic flavors and great atmosphere. Love the gumbo!"</p>
                             <p class="text-slate-500 text-xs font-bold">- Mike T.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"The shrimp po-boy is huge and delicious. Highly recommend."</p>
                             <p class="text-slate-500 text-xs font-bold">- Emily R.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Great service and even better food. A hidden gem in Canton."</p>
                             <p class="text-slate-500 text-xs font-bold">- David L.</p>
                         </div>
                         <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
-                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <div class="flex text-emerald-400 mb-2">★★★★★</div>
                             <p class="text-slate-300 text-xs mb-3">"Finally found real Cajun food outside of Louisiana. 10/10."</p>
                             <p class="text-slate-500 text-xs font-bold">- Jessica M.</p>
                         </div>
@@ -847,8 +844,8 @@
                 const isActive = cat === currentCategory;
                 btn.className = `whitespace-nowrap px-8 py-3 rounded-2xl text-sm font-bold tracking-wider transition-all duration-300 btn-3d ${ 
                     isActive 
-                    ? 'bg-gradient-to-r from-amber-600 to-red-600 text-white btn-neon transform scale-105' 
-                    : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-amber-500/50 hover:bg-white/10'
+                    ? 'bg-gradient-to-r from-purple-600 to-emerald-500 text-white btn-neon transform scale-105' 
+                    : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-purple-500/50 hover:bg-white/10'
                 }`;
                 btn.onclick = () => {
                     currentCategory = cat;
@@ -872,13 +869,13 @@
                 card.onclick = () => openFoodModal(item);
 
                 card.innerHTML = `
-                    <div class="absolute top-4 right-4 text-yellow-500/50 text-xs uppercase tracking-widest border border-amber-500/20 px-2 py-1 rounded-full group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                    <div class="absolute top-4 right-4 text-emerald-400/50 text-xs uppercase tracking-widest border border-purple-500/20 px-2 py-1 rounded-full group-hover:bg-purple-500 group-hover:text-white transition-colors">
                         Click to View
                     </div>
                     <div class="flex justify-between items-start mb-4 relative mt-6">
-                        <div class="absolute -left-8 top-2 w-1 h-8 bg-amber-500 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <h3 class="font-heading font-bold text-xl text-white group-hover:text-yellow-500 transition-colors duration-300">${item.name}</h3>
-                        <span class="font-bold text-yellow-500 text-lg bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">$${item.price}</span>
+                        <div class="absolute -left-8 top-2 w-1 h-8 bg-purple-500 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <h3 class="font-heading font-bold text-xl text-white group-hover:text-emerald-400 transition-colors duration-300">${item.name}</h3>
+                        <span class="font-bold text-emerald-400 text-lg bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">$${item.price}</span>
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">${item.desc}</p>
                 `;
@@ -1007,7 +1004,7 @@
                     statusMsg.innerText = msg;
                     statusMsg.classList.remove('hidden');
                     statusMsg.classList.remove('text-red-400');
-                    statusMsg.classList.add(isWarning ? 'text-yellow-400' : 'text-green-400');
+                    statusMsg.classList.add(isWarning ? 'text-emerald-300' : 'text-green-400');
                     
                     if (!isWarning) {
                         this.reset();
@@ -1033,9 +1030,9 @@
         
         <!-- Modal Content -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl p-4 opacity-0 scale-95 transition-all duration-500" id="modal-content">
-            <div class="bg-[#0f172a] border border-amber-500/30 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(245,158,11,0.2)] relative">
+            <div class="bg-[#0f172a] border border-purple-500/30 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(124, 58, 237, 0.2)] relative">
                 <!-- Close Button -->
-                <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-black/50 hover:bg-yellow-600 text-white rounded-full p-2 transition-colors">
+                <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-black/50 hover:bg-purple-600 text-white rounded-full p-2 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
 
@@ -1046,35 +1043,35 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent md:bg-gradient-to-r"></div>
                         
                         <!-- Date Badge -->
-                        <div class="absolute top-4 left-4 bg-black/80 border border-amber-500/50 rounded-lg p-2 text-center backdrop-blur-md">
-                            <span class="block text-xs text-yellow-500 font-bold uppercase">Feb</span>
+                        <div class="absolute top-4 left-4 bg-black/80 border border-purple-500/50 rounded-lg p-2 text-center backdrop-blur-md">
+                            <span class="block text-xs text-emerald-400 font-bold uppercase">Feb</span>
                             <span class="block text-2xl font-bold text-white">17</span>
                         </div>
                     </div>
 
                     <!-- Content Side -->
                     <div class="p-8 flex flex-col justify-center">
-                        <h4 class="text-yellow-500 font-bold tracking-widest uppercase text-xs mb-2">Upcoming Event</h4>
+                        <h4 class="text-emerald-400 font-bold tracking-widest uppercase text-xs mb-2">Upcoming Event</h4>
                         <h3 class="text-2xl font-heading font-bold text-white mb-4">2nd Annual Mardi Gras Crawfish Boil!!!</h3>
                         
                         <div class="space-y-3 mb-6">
                             <div class="flex items-start space-x-3 text-slate-300 text-sm">
-                                <span class="text-yellow-500 mt-1">📅</span>
+                                <span class="text-emerald-400 mt-1">📅</span>
                                 <span>Tuesday, February 17th, 2026</span>
                             </div>
                             <div class="flex items-start space-x-3 text-slate-300 text-sm">
-                                <span class="text-yellow-500 mt-1">⏰</span>
+                                <span class="text-emerald-400 mt-1">⏰</span>
                                 <span>5:30PM - 10:00PM</span>
                             </div>
                             <div class="flex items-start space-x-3 text-slate-300 text-sm">
-                                <span class="text-yellow-500 mt-1">📍</span>
+                                <span class="text-emerald-400 mt-1">📍</span>
                                 <span>140 Keith Dr. Canton, GA 30114</span>
                             </div>
                         </div>
 
                         <p class="text-slate-400 text-sm mb-6">Crawfish boil Cajun style! All you can eat crawfish, potatoes, sausage, corn, and more!</p>
                         
-                        <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all transform hover:scale-105">
+                        <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(34, 197, 94, 0.35)] transition-all transform hover:scale-105">
                             I'm Interested!
                         </button>
                     </div>
@@ -1086,9 +1083,9 @@
     <!-- Alligator Chatbot -->
     <div id="chatbot-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         <!-- Chat Window -->
-        <div id="chat-window" class="hidden bg-[#0f172a] border border-amber-500/30 rounded-2xl shadow-2xl w-80 mb-4 overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-right scale-95 opacity-0">
+        <div id="chat-window" class="hidden bg-[#0f172a] border border-purple-500/30 rounded-2xl shadow-2xl w-80 mb-4 overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-right scale-95 opacity-0">
             <!-- Header -->
-            <div class="bg-gradient-to-r from-amber-600 to-red-600 p-4 flex justify-between items-center">
+            <div class="bg-gradient-to-r from-purple-600 to-emerald-500 p-4 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-xl">🐊</div>
                     <span class="font-bold text-white">Gator Bot</span>
@@ -1100,7 +1097,7 @@
             <!-- Messages -->
             <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-4 bg-[#020617]/50">
                 <div class="flex items-start space-x-2">
-                    <div class="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center text-lg border border-amber-500/30">🐊</div>
+                    <div class="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center text-lg border border-purple-500/30">🐊</div>
                     <div class="bg-white/10 p-3 rounded-lg rounded-tl-none text-sm text-slate-300">
                         Hey there! I'm Gator Bot. Hungry for some Cajun flavor? Ask me about our menu or hours!
                     </div>
@@ -1109,8 +1106,8 @@
             <!-- Input -->
             <div class="p-4 border-t border-white/10 bg-[#0f172a]">
                 <form id="chat-form" class="flex space-x-2">
-                    <input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 bg-[#020617] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500 transition-colors">
-                    <button type="submit" class="bg-yellow-600 text-white p-2 rounded-lg hover:bg-amber-700 transition-colors">
+                    <input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 bg-[#020617] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors">
+                    <button type="submit" class="bg-purple-600 text-white p-2 rounded-lg hover:bg-emerald-600 transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                     </button>
                 </form>
@@ -1118,7 +1115,7 @@
         </div>
 
         <!-- Toggle Button -->
-        <button id="chat-toggle" class="w-14 h-14 bg-gradient-to-r from-amber-600 to-red-600 rounded-full shadow-lg flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300 animate-bounce-slow">
+        <button id="chat-toggle" class="w-14 h-14 bg-gradient-to-r from-purple-600 to-emerald-500 rounded-full shadow-lg flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300 animate-bounce-slow">
             🐊
         </button>
     </div>
@@ -1127,8 +1124,8 @@
     <div id="food-modal" class="fixed inset-0 z-[110] hidden">
         <div class="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity opacity-0 backdrop" onclick="closeFoodModal()"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl p-4 opacity-0 scale-95 transition-all duration-300 content">
-            <div class="bg-[#0f172a] border border-amber-500/30 rounded-3xl overflow-hidden shadow-2xl relative">
-                <button onclick="closeFoodModal()" class="absolute top-4 right-4 z-20 bg-black/50 hover:bg-yellow-600 text-white rounded-full p-2 transition-colors">
+            <div class="bg-[#0f172a] border border-purple-500/30 rounded-3xl overflow-hidden shadow-2xl relative">
+                <button onclick="closeFoodModal()" class="absolute top-4 right-4 z-20 bg-black/50 hover:bg-purple-600 text-white rounded-full p-2 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 
@@ -1142,7 +1139,7 @@
                     </div>
                     <div class="p-8 flex flex-col justify-center">
                         <h3 id="food-modal-title" class="text-3xl font-heading font-bold text-white mb-2"></h3>
-                        <span id="food-modal-price" class="text-2xl font-bold text-yellow-500 mb-6 block"></span>
+                        <span id="food-modal-price" class="text-2xl font-bold text-emerald-400 mb-6 block"></span>
                         <p id="food-modal-desc" class="text-slate-300 leading-relaxed mb-8"></p>
                         <button onclick="closeFoodModal()" class="w-full py-3 border border-white/20 rounded-xl text-white hover:bg-white/10 transition-colors">Close</button>
                     </div>
@@ -1244,14 +1241,14 @@
             
             if (sender === 'bot') {
                 div.innerHTML = `
-                    <div class="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center text-lg border border-amber-500/30 flex-shrink-0">🐊</div>
+                    <div class="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center text-lg border border-purple-500/30 flex-shrink-0">🐊</div>
                     <div class="bg-white/10 p-3 rounded-lg rounded-tl-none text-sm text-slate-300 max-w-[80%]">
                         ${text}
                     </div>
                 `;
             } else {
                 div.innerHTML = `
-                    <div class="bg-yellow-600 p-3 rounded-lg rounded-tr-none text-sm text-white max-w-[80%]">
+                    <div class="bg-purple-600 p-3 rounded-lg rounded-tr-none text-sm text-white max-w-[80%]">
                         ${text}
                     </div>
                 `;
@@ -1270,12 +1267,12 @@
     </div>
 
     <div id="dev-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-500">
-        <div class="bg-[#0f172a] border-2 border-amber-500 p-8 rounded-2xl max-w-md text-center shadow-[0_0_50px_rgba(245,158,11,0.5)] transform scale-90 transition-transform duration-500">
+        <div class="bg-[#0f172a] border-2 border-purple-500 p-8 rounded-2xl max-w-md text-center shadow-[0_0_50px_rgba(16,185,129,0.45)] transform scale-90 transition-transform duration-500">
             <div class="text-6xl mb-4 animate-bounce">⚜️</div>
             <h2 class="text-3xl font-heading font-bold text-white mb-2">Laissez les bons temps rouler!</h2>
-            <p class="text-yellow-400 font-bold text-xl mb-6">You found the secret!</p>
+            <p class="text-emerald-300 font-bold text-xl mb-6">You found the secret!</p>
             <p class="text-slate-300 mb-8">"You must know the developer"</p>
-            <div class="inline-block px-6 py-3 bg-gradient-to-r from-amber-500 to-red-600 rounded-xl text-white font-bold shadow-lg animate-pulse">
+            <div class="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-xl text-white font-bold shadow-lg animate-pulse">
                 3000 Studios
             </div>
             <button id="close-dev-modal" class="block mx-auto mt-8 text-slate-500 hover:text-white text-sm underline">Close</button>
@@ -1367,3 +1364,9 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
