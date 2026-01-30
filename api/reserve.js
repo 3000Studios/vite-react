@@ -69,13 +69,9 @@ END:VCALENDAR`;
               pass: EMAIL_PASS,
             },
           });
-
-          // Verify connection configuration
-          await transporter.verify();
           cachedTransporter = transporter;
         }
 
-<<<<<<< HEAD
         // Email to Owner and Customer (Parallel)
         await Promise.all([
           cachedTransporter.sendMail({
