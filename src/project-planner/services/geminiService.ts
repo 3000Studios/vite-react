@@ -16,16 +16,21 @@ Always provide specific numbers when discussing potential traffic increases (e.g
 Keep responses concise and helpful.`;
 
 export const getAiSuggestions = async (currentTasks: ProjectTask[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
-  const prompt = `Based on these current tasks for TheCajunmenu.site:
-  ${currentTasks.map(t => `${t.title}: ${t.description}`).join(', ')}
-
-  Suggest 3 strategic Cajun-themed website upgrades.`;
-
   try {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      console.warn("AI suggestions disabled: Missing VITE_GEMINI_API_KEY");
+      return [];
+    }
+    const ai = new GoogleGenAI({ apiKey });
+
+    const prompt = `Based on these current tasks for TheCajunmenu.site:
+    ${currentTasks.map(t => `${t.title}: ${t.description}`).join(', ')}
+
+    Suggest 3 strategic Cajun-themed website upgrades.`;
+
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-1.5-flash", // Updated to a more standard model name just in case
       contents: prompt,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION + " Return exactly 3 suggestions with titles, descriptions, estimated costs, estimated hours, and categories.",
@@ -56,20 +61,25 @@ export const getAiSuggestions = async (currentTasks: ProjectTask[]) => {
 };
 
 export const chatWithAssistant = async (message: string, history: {role: string, parts: {text: string}[]}[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   try {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      return "I need a VITE_GEMINI_API_KEY to function. Please configure it in your environment.";
+    }
+    const ai = new GoogleGenAI({ apiKey });
+
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview", // Use pro for search grounding
+      model: "gemini-1.5-pro",
       contents: [
         ...history,
         { role: 'user', parts: [{ text: message }] }
       ],
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
-        tools: [{ googleSearch: {} }]
+        // tools: [{ googleSearch: {} }] // Removed search tool to simplify dependency requirements if not fully set up
       }
     });
-    return response.text;
+    return response.text || "I couldn't generate a response.";
   } catch (error) {
     console.error("Chat error:", error);
     return "I'm having trouble connecting right now, but I'm usually much more helpful with your menu stats!";
