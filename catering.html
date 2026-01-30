@@ -53,11 +53,11 @@
         /* --- 3D Button Styles --- */
         .btn-3d {
             border-radius: 1rem;
-            box-shadow: 0 6px 0 rgb(180, 83, 9);
+            box-shadow: 0 6px 0 rgb(88, 28, 135);
             transition: all 0.1s;
         }
         .btn-3d:active {
-            box-shadow: 0 0 0 rgb(180, 83, 9);
+            box-shadow: 0 0 0 rgb(88, 28, 135);
             transform: translateY(6px);
         }
 
@@ -80,13 +80,13 @@
 
         .glass-card:hover {
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
-            border-color: rgba(255, 215, 0, 0.3);
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.1);
+            border-color: rgba(124, 58, 237, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 22px rgba(124, 58, 237, 0.22), 0 0 16px rgba(34, 197, 94, 0.2);
         }
 
         .text-gradient-gold {
-            background: linear-gradient(135deg, #FFD700 0%, #ef4444 50%, #d946ef 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #22c55e 50%, #8b5cf6 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -100,7 +100,7 @@
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-yellow-500 selection:text-white">
+<body class="antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
@@ -108,20 +108,19 @@
             <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
                 <div class="flex-shrink-0 flex items-center group cursor-pointer">
                     <a href="index.html" class="flex items-center">
-                        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
                             <span class="text-xl">⚜️</span>
                         </div>
-                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-yellow-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-10 items-center">
-                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Home</a>
-                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Story</a>
-                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Menu</a>
-                    <a href="catering.html" class="text-sm uppercase tracking-widest text-yellow-400 transition-colors duration-300">Catering</a>
-                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Delivery</a>
-                    <a href="project-planner.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Project Planner</a>
-                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
+                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Home</a>
+                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Story</a>
+                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-emerald-300 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-emerald-300 transition-colors duration-300">Delivery</a>
+                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-semibold btn-3d">Book a Table</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -139,10 +138,9 @@
                 <a href="index.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
                 <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
                 <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
-                <a href="catering.html" class="block px-3 py-3 text-yellow-400 font-semibold">Catering</a>
+                <a href="catering.html" class="block px-3 py-3 text-emerald-300 font-semibold">Catering</a>
                 <a href="delivery.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Delivery</a>
-                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Project Planner</a>
-                <a href="index.html#visit" class="block px-3 py-3 text-yellow-400 font-semibold">Book a Table</a>
+                <a href="index.html#visit" class="block px-3 py-3 text-emerald-300 font-semibold">Book a Table</a>
             </div>
         </div>
     </nav>
@@ -169,10 +167,10 @@
                         From corporate lunches to weddings and backyard boils, The Cajun Menu provides full-service catering that will leave your guests talking. We specialize in large-scale seafood boils, gumbo stations, and custom Cajun buffets.
                     </p>
                     <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-slate-300"><span class="text-yellow-500 mr-3">✓</span> On-site Crawfish & Shrimp Boils</li>
-                        <li class="flex items-center text-slate-300"><span class="text-yellow-500 mr-3">✓</span> Corporate Event Packages</li>
-                        <li class="flex items-center text-slate-300"><span class="text-yellow-500 mr-3">✓</span> Wedding & Rehearsal Dinners</li>
-                        <li class="flex items-center text-slate-300"><span class="text-yellow-500 mr-3">✓</span> Custom Menu Planning</li>
+                        <li class="flex items-center text-slate-300"><span class="text-emerald-400 mr-3">✓</span> On-site Crawfish & Shrimp Boils</li>
+                        <li class="flex items-center text-slate-300"><span class="text-emerald-400 mr-3">✓</span> Corporate Event Packages</li>
+                        <li class="flex items-center text-slate-300"><span class="text-emerald-400 mr-3">✓</span> Wedding & Rehearsal Dinners</li>
+                        <li class="flex items-center text-slate-300"><span class="text-emerald-400 mr-3">✓</span> Custom Menu Planning</li>
                     </ul>
                     
                     <!-- PayPal Button Placeholder -->
@@ -190,7 +188,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-red-600 rounded-3xl rotate-6 opacity-20 blur-lg"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-3xl rotate-6 opacity-20 blur-lg"></div>
                     <img src="images/crab-boil.png" alt="Catering Spread" class="relative rounded-3xl border border-white/10 shadow-2xl w-full">
                 </div>
             </div>
@@ -202,9 +200,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
             <div class="relative group cursor-pointer">
                 <!-- Speech Bubble -->
-                <div class="absolute -top-24 -right-24 md:-right-32 bg-white text-slate-900 p-6 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 z-20 max-w-[200px] md:max-w-xs border-4 border-yellow-500">
+                <div class="absolute -top-24 -right-24 md:-right-32 bg-white text-slate-900 p-6 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 z-20 max-w-[200px] md:max-w-xs border-4 border-purple-500">
                     <p class="font-heading font-bold text-lg md:text-xl leading-tight">"Laissez les bons temps rouler!"</p>
-                    <p class="text-xs font-bold text-amber-600 mt-1 uppercase tracking-wider">(Let the good times roll!)</p>
+                    <p class="text-xs font-bold text-emerald-500 mt-1 uppercase tracking-wider">(Let the good times roll!)</p>
                 </div>
                 
                 <!-- Gator Image Container -->
@@ -242,3 +240,6 @@
     </script>
 </body>
 </html>
+
+
+
