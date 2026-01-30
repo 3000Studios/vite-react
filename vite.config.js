@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
@@ -19,20 +18,3 @@ export default defineConfig({
     }
   }
 });
-=======
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-
-export default defineConfig({
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        catering: resolve(__dirname, 'catering.html'),
-        delivery: resolve(__dirname, 'delivery.html'),
-        projectPlan: resolve(__dirname, 'project-plan.html'),
-      },
-    },
-  },
-})
->>>>>>> origin/fix-ui-build-issues-451856475899798978
