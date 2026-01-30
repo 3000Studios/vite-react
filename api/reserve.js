@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer';
 import twilio from 'twilio';
 
+let cachedTransporter = null;
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -59,19 +61,22 @@ END:VCALENDAR`;
     // 3. Send Emails (Owner & Customer)
     if (EMAIL_USER && EMAIL_PASS) {
       try {
-        const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: EMAIL_USER,
-            pass: EMAIL_PASS,
-          },
-        });
+        if (!cachedTransporter) {
+          const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: EMAIL_USER,
+              pass: EMAIL_PASS,
+            },
+          });
 
-        // Verify connection configuration
-        await transporter.verify();
+          // Verify connection configuration
+          await transporter.verify();
+          cachedTransporter = transporter;
+        }
 
         // Email to Owner
-        await transporter.sendMail({
+        await cachedTransporter.sendMail({
           from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
           to: OWNER_EMAIL,
           subject: `🍽️ New Reservation: ${name} - ${date} @ ${time}`,
@@ -86,7 +91,7 @@ END:VCALENDAR`;
         });
 
         // Email to Customer
-        await transporter.sendMail({
+        await cachedTransporter.sendMail({
           from: `"The Cajun Menu" <${EMAIL_USER}>`,
           to: email,
           subject: `✅ Reservation Confirmed: The Cajun Menu`,
