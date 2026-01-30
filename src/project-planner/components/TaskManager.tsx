@@ -58,8 +58,6 @@ const TaskManager: React.FC<TaskManagerProps> = ({ tasks, role, onUpdateTask, on
     }
   };
 
-  const categories = Array.from(new Set(tasks.map(t => t.category)));
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
