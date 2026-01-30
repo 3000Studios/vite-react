@@ -7,7 +7,6 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<ProjectPlan />} />
-        <Route path='/plan' element={<ProjectPlan />} />
         <Route path='/planner' element={<Planner />} />
       </Routes>
     </BrowserRouter>
