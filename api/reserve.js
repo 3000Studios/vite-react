@@ -124,19 +124,19 @@ END:VCALENDAR`;
             messageOptions.from = TWILIO_PHONE;
         }
 
-        // SMS to Owner
-        await client.messages.create({
-          ...messageOptions,
-          body: `🔥 New Reservation: ${name} (${guests} ppl) @ ${date} ${time}. Phone: ${phone}`,
-          to: OWNER_PHONE,
-        });
-
-        // SMS to Customer
-        await client.messages.create({
-          ...messageOptions,
-          body: `✅ The Cajun Menu: Your reservation for ${guests} on ${date} at ${time} is confirmed! See you soon! 🐊`,
-          to: customerPhone,
-        });
+        // SMS to Owner & Customer (Parallel)
+        await Promise.all([
+          client.messages.create({
+            ...messageOptions,
+            body: `🔥 New Reservation: ${name} (${guests} ppl) @ ${date} ${time}. Phone: ${phone}`,
+            to: OWNER_PHONE,
+          }),
+          client.messages.create({
+            ...messageOptions,
+            body: `✅ The Cajun Menu: Your reservation for ${guests} on ${date} at ${time} is confirmed! See you soon! 🐊`,
+            to: customerPhone,
+          })
+        ]);
 
         console.log('SMS sent successfully');
         results.sms.success = true;
