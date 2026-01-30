@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { ProjectTask } from '../types';
 
 interface ProjectTrackerProps {
@@ -8,23 +8,30 @@ interface ProjectTrackerProps {
 }
 
 const ProjectTracker: React.FC<ProjectTrackerProps> = ({ tasks }) => {
+  let totalEstCost = 0;
+  let totalActCost = 0;
+  let totalEstHours = 0;
+  let totalActHours = 0;
+
+  for (const t of tasks) {
+    totalEstCost += t.estimatedCost;
+    totalActCost += t.actualCost;
+    totalEstHours += t.estimatedHours;
+    totalActHours += t.actualHours;
+  }
+
   const financialData = [
     {
       name: 'Cost ($)',
-      Estimated: tasks.reduce((acc, t) => acc + t.estimatedCost, 0),
-      Actual: tasks.reduce((acc, t) => acc + t.actualCost, 0)
+      Estimated: totalEstCost,
+      Actual: totalActCost
     },
     {
       name: 'Time (Hrs)',
-      Estimated: tasks.reduce((acc, t) => acc + t.estimatedHours, 0),
-      Actual: tasks.reduce((acc, t) => acc + t.actualHours, 0)
+      Estimated: totalEstHours,
+      Actual: totalActHours
     }
   ];
-
-  const totalEstCost = tasks.reduce((acc, t) => acc + t.estimatedCost, 0);
-  const totalActCost = tasks.reduce((acc, t) => acc + t.actualCost, 0);
-  const totalEstHours = tasks.reduce((acc, t) => acc + t.estimatedHours, 0);
-  const totalActHours = tasks.reduce((acc, t) => acc + t.actualHours, 0);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white dark:bg-slate-900/40 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10">
