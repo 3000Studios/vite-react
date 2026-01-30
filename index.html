@@ -841,6 +841,7 @@
 
         function renderCategories() {
             categoriesContainer.innerHTML = '';
+            const fragment = document.createDocumentFragment();
             Object.keys(menuData).forEach(cat => {
                 const btn = document.createElement('button');
                 btn.innerText = cat;
@@ -855,8 +856,9 @@
                     renderCategories();
                     renderMenu();
                 };
-                categoriesContainer.appendChild(btn);
+                fragment.appendChild(btn);
             });
+            categoriesContainer.appendChild(fragment);
         }
 
         function renderMenu() {
