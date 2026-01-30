@@ -67,9 +67,6 @@ END:VCALENDAR`;
           },
         });
 
-        // Verify connection configuration
-        await transporter.verify();
-
         // Email to Owner
         await transporter.sendMail({
           from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
