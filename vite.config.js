@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(rootDir, "index.html"),
         delivery: resolve(rootDir, "delivery.html"),
         catering: resolve(rootDir, "catering.html"),
+        "project-planner": resolve(rootDir, "project-planner.html"),
       },
     },
   },
