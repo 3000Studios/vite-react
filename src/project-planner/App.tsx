@@ -67,12 +67,12 @@ const App: React.FC = () => {
     setNotices(prev => [...prev, newNotice]);
   }, [role]);
 
-  const handleUpdateTask = (updatedTask: ProjectTask) => {
+  const handleUpdateTask = useCallback((updatedTask: ProjectTask) => {
     setTasks(prev => prev.map(t => t.id === updatedTask.id ? updatedTask : t));
     addNotice(`Updated task: ${updatedTask.title} to ${updatedTask.status}`);
-  };
+  }, [addNotice]);
 
-  const handleCreateTask = (newTask: Partial<ProjectTask>) => {
+  const handleCreateTask = useCallback((newTask: Partial<ProjectTask>) => {
     const task: ProjectTask = {
       id: Date.now().toString(),
       title: newTask.title || 'Untitled Request',
@@ -88,9 +88,9 @@ const App: React.FC = () => {
     };
     setTasks(prev => [task, ...prev]);
     addNotice(`${role} created new task: ${task.title}`);
-  };
+  }, [role, addNotice]);
 
-  const handleFileUpload = (fileList: FileList | null) => {
+  const handleFileUpload = useCallback((fileList: FileList | null) => {
     if (!fileList) return;
     const newFiles = Array.from(fileList).map(f => ({
       name: f.name,
@@ -100,14 +100,14 @@ const App: React.FC = () => {
     }));
     setFiles(prev => [...newFiles, ...prev]);
     addNotice(`New file(s) uploaded for review: ${newFiles.map(f => f.name).join(', ')}`);
-  };
+  }, [role, addNotice]);
 
-  const toggleShoppingItem = (id: string) => {
+  const toggleShoppingItem = useCallback((id: string) => {
     if (role !== 'Owner') return;
     setShoppingItems(prev => prev.map(i => i.id === id ? { ...i, isChecked: !i.isChecked } : i));
-  };
+  }, [role]);
 
-  const approveShoppingUpgrades = () => {
+  const approveShoppingUpgrades = useCallback(() => {
     const selected = shoppingItems.filter(i => i.isChecked);
     selected.forEach(item => {
       handleCreateTask({
@@ -120,19 +120,19 @@ const App: React.FC = () => {
     });
     setShoppingItems(prev => prev.map(i => ({ ...i, isChecked: false })));
     addNotice(`Owner approved ${selected.length} items. NOTE: Prices used were National Averages and are NOT finalized quotes.`);
-  };
+  }, [shoppingItems, handleCreateTask, addNotice]);
 
-  const fetchAiSuggestions = async () => {
+  const fetchAiSuggestions = useCallback(async () => {
     setAiLoading(true);
     const suggestions = await getAiSuggestions(tasks);
     setAiSuggestions(suggestions);
     setAiLoading(false);
-  };
+  }, [tasks]);
 
-  const acceptAiSuggestion = (suggestion: any) => {
+  const acceptAiSuggestion = useCallback((suggestion: any) => {
     handleCreateTask(suggestion);
     setAiSuggestions(prev => prev.filter(s => s.title !== suggestion.title));
-  };
+  }, [handleCreateTask]);
 
   if (!isAuthenticated) {
     return <LockScreen onUnlock={() => setIsAuthenticated(true)} />;
