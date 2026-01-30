@@ -9,8 +9,18 @@ interface ShoppingListProps {
 }
 
 const ShoppingList: React.FC<ShoppingListProps> = ({ items, onToggleItem, onApproveSelected }) => {
-  const selectedCount = items.filter(i => i.isChecked).length;
-  const totalCost = items.filter(i => i.isChecked).reduce((acc, i) => acc + i.cost, 0);
+  const { selectedCount, totalCost } = React.useMemo(() => {
+    return items.reduce(
+      (acc, item) => {
+        if (item.isChecked) {
+          acc.selectedCount += 1;
+          acc.totalCost += item.cost;
+        }
+        return acc;
+      },
+      { selectedCount: 0, totalCost: 0 }
+    );
+  }, [items]);
 
   return (
     <div className="bg-white dark:bg-slate-900/40 backdrop-blur-md rounded-3xl border border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col h-full max-h-[600px]">
