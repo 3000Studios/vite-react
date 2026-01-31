@@ -211,7 +211,24 @@
         .bead-purple { background: #6A0DAD; }
         .bead-gold { background: #FFD700; }
         .bead-green { background: #00A86B; }
-        .brand-char { margin-top: -4px; font-size: 1.5rem; line-height: 1; color: white; text-shadow: 0 8px 15px rgba(0,0,0,0.5); user-select: none; transition: color 0.3s ease; }
+        .brand-char {
+            margin-top: -4px;
+            font-size: 1.5rem;
+            line-height: 1;
+            background: linear-gradient(120deg, #6A0DAD, #00A86B, #D4AF37, #4A90E2, #6A0DAD);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 8px 15px rgba(0,0,0,0.5);
+            user-select: none;
+            transition: filter 0.3s ease;
+            animation: brandHue 10s ease-in-out infinite;
+        }
+        @keyframes brandHue {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         /* --- Core Typography & Reset --- */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -227,11 +244,11 @@
         /* --- 3D Button Styles --- */
         .btn-3d {
             border-radius: 1rem;
-            box-shadow: 0 6px 0 rgb(180, 83, 9);
+            box-shadow: 0 6px 0 #8b6e00;
             transition: all 0.1s;
         }
         .btn-3d:active {
-            box-shadow: 0 0 0 rgb(180, 83, 9);
+            box-shadow: 0 0 0 #8b6e00;
             transform: translateY(6px);
         }
 
@@ -257,6 +274,109 @@
             border-color: rgba(245, 158, 11, 0.3);
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
+        }
+
+        /* --- Liquid Footer --- */
+        .flash-footer {
+            position: relative;
+            width: 100%;
+            min-height: 460px;
+            background: #0a0a0a;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .liquid-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            z-index: 1;
+            pointer-events: none;
+            filter: url('#goo');
+        }
+        #liquidCanvas {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 -10px 20px rgba(212, 175, 55, 0.35));
+        }
+        .footer-content {
+            position: relative;
+            z-index: 10;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .social-cluster { display: flex; gap: 24px; }
+        .social-btn {
+            width: 70px;
+            height: 70px;
+            background: #151515;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+        }
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
+            border-radius: 20px;
+            opacity: 0.5;
+        }
+        .social-btn svg { width: 30px; height: 30px; fill: #fff; transform: translateZ(20px); transition: transform 0.3s ease; }
+        .social-btn:hover {
+            transform: translateY(-12px) rotateX(12deg) rotateY(-12deg);
+            background: #D4AF37;
+            box-shadow: 0 25px 40px rgba(212,175,55,0.35), inset 0 1px 2px rgba(255,255,255,0.5);
+        }
+        .social-btn:hover svg { transform: translateZ(40px) scale(1.1); }
+        .order-system { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+        .order-label {
+            font-family: 'Space Mono', monospace;
+            color: rgba(255,255,255,0.4);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .map-embed {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .map-embed iframe { width: 100%; height: 180px; border: 0; }
+        .footer-bottom {
+            position: relative;
+            z-index: 10;
+            padding: 20px 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        svg#goo-filters { height: 0; width: 0; position: absolute; }
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 40px 20px; }
+            .order-system { align-items: center; }
         }
     </style>
 </head>
@@ -332,7 +452,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- UberEats -->
-                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#06C167]/10 transition-colors">
+                <a href="https://www.ubereats.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#06C167]/10 transition-colors">
                     <div class="w-20 h-20 bg-[#06C167] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         UE
                     </div>
@@ -342,7 +462,7 @@
                 </a>
 
                 <!-- DoorDash -->
-                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
+                <a href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
                     <div class="w-20 h-20 bg-[#FF3008] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         DD
                     </div>
@@ -393,10 +513,60 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#020617] border-t border-white/5 py-12 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-heading font-bold text-white mb-6 tracking-tight">THE CAJUN MENU</h2>
-            <p class="text-slate-600 text-sm">© 2024 The Cajun Menu. Designed for Excellence.</p>
+    <footer class="flash-footer">
+        <svg id="goo-filters">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                </filter>
+            </defs>
+        </svg>
+
+        <div class="footer-content">
+            <div class="social-cluster">
+                <a class="social-btn" href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a class="social-btn" href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <svg viewBox="0 0 24 24"><path d="M12.188 15.344l-1.012 3.863c-.113.431.113.881.544.994l.206.038c.412.056.806-.206.881-.619l1.013-3.863a3.564 3.564 0 0 0-1.632-.413zm-1.875-1.144c-.262-.356-.637-.6-1.069-.694L5.344 12.5a.774.774 0 0 0-.919.506l-.038.113c-.113.431.131.881.563.994l3.881 1.013c.244.056.506.038.75-.056.3-.113.563-.338.732-.87zm3.113-.769c.45-.075.881.113 1.144.45l2.55 3.038c.281.338.244.844-.094 1.125l-.094.075c-.338.281-.844.244-1.125-.094l-2.55-3.038a.747.747 0 0 0-.469-.262 1.05 1.05 0 0 1 .638-1.294zm-1.894-3.131L9.175 6.438a.754.754 0 0 0-.825-.563l-.113.019c-.431.056-.731.469-.675.9l.356 3.844a1.045 1.045 0 0 0 .544.863c.431.225.956.169 1.256-.206l1.813-2.988zm4.444 1.294l3.788-.938a.755.755 0 0 0 .563-.825l-.019-.113c-.056-.431-.469-.731-.9-.675l-3.844.356a1.051 1.051 0 0 0-.863.544c-.225.431-.169.956.206 1.256l3.069 1.013-.001-.618z"/></svg>
+                </a>
+                <a class="social-btn" href="https://www.instagram.com/thecajunmenu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+
+            <div class="order-system">
+                <span class="order-label">Order Online</span>
+                <div class="btn-group">
+                    <a href="https://www.ubereats.com/" target="_blank" rel="noopener noreferrer" class="mardi-gras-button">
+                        <div class="label-container">
+                            <span class="label">Pick-up</span>
+                            <span class="mono-data">UBER</span>
+                        </div>
+                    </a>
+                    <a href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer" class="mardi-gras-button">
+                        <div class="label-container">
+                            <span class="label">Delivery</span>
+                            <span class="mono-data">DASH</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-embed">
+                    <iframe title="The Cajun Menu Map" src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="liquid-layer">
+            <canvas id="liquidCanvas"></canvas>
+        </div>
+
+        <div class="footer-bottom">
+            <span>140 Keith Dr, Canton, GA 30114</span>
+            <span>678-899-7404</span>
+            <span>thecajunmenu@gmail.com</span>
         </div>
     </footer>
 
@@ -462,6 +632,86 @@
                     }
                 });
             });
+        }
+
+        // Liquid footer canvas
+        const liquidCanvas = document.getElementById('liquidCanvas');
+        if (liquidCanvas) {
+            const ctx = liquidCanvas.getContext('2d');
+            let width = 0;
+            let height = 0;
+            let particles = [];
+            let gravityX = 0;
+            let targetGravityX = 0;
+
+            const resize = () => {
+                width = liquidCanvas.width = liquidCanvas.offsetWidth;
+                height = liquidCanvas.height = liquidCanvas.offsetHeight;
+            };
+
+            class LiquidParticle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.baseY = y;
+                    this.radius = Math.random() * 60 + 40;
+                    this.speed = Math.random() * 0.05 + 0.02;
+                    this.offset = Math.random() * Math.PI * 2;
+                }
+                update() {
+                    gravityX += (targetGravityX - gravityX) * 0.05;
+                    this.offset += this.speed;
+                    const wave = Math.sin(this.offset) * 20;
+                    const tilt = (this.x - width / 2) * (gravityX / 200);
+                    this.currentY = this.baseY + wave + tilt;
+                }
+                draw() {
+                    const grad = ctx.createRadialGradient(this.x, this.currentY, 0, this.x, this.currentY, this.radius);
+                    grad.addColorStop(0, '#D4AF37');
+                    grad.addColorStop(1, '#2a0055');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.currentY, this.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            const createParticles = () => {
+                particles = [];
+                const count = 25;
+                for (let i = 0; i <= count; i++) {
+                    const x = (width / count) * i;
+                    particles.push(new LiquidParticle(x, height * 0.5));
+                }
+            };
+
+            const animate = () => {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = '#2a0055';
+                ctx.fillRect(0, height * 0.5, width, height * 0.5);
+                particles.forEach((p) => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            };
+
+            window.addEventListener('resize', () => {
+                resize();
+                createParticles();
+            });
+            window.addEventListener('mousemove', (e) => {
+                targetGravityX = (e.clientX / window.innerWidth - 0.5) * 40;
+            });
+            window.addEventListener('deviceorientation', (e) => {
+                if (e.gamma) {
+                    targetGravityX = e.gamma * 1.5;
+                }
+            });
+
+            resize();
+            createParticles();
+            animate();
         }
     </script>
 </body>
