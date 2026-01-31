@@ -31,7 +31,12 @@ Tone & Execution:
 - When asked for "market analysis," utilize Google Search to find specific data about the Louisiana/Cajun food sector.`;
 
 export const getAiSuggestions = async (currentTasks: ProjectTask[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    console.warn("Gemini API Key not found. AI features will be disabled.");
+    return [];
+  }
+  const ai = new GoogleGenAI({ apiKey });
   
   const prompt = `Review the current project backlog for thecajunmenu.site: 
   ${currentTasks.map(t => `${t.title}: ${t.description}`).join(', ')}
@@ -71,7 +76,14 @@ export const getAiSuggestions = async (currentTasks: ProjectTask[]) => {
 };
 
 export const chatWithAssistant = async (message: string, history: {role: string, parts: {text: string}[]}[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return {
+      text: "AI service is not configured (missing API key).",
+      sources: []
+    };
+  }
+  const ai = new GoogleGenAI({ apiKey });
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview", 

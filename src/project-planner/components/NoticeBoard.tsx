@@ -15,7 +15,6 @@ const NoticeBoard: React.FC<NoticeBoardProps> = ({ notices, currentUserRole, onA
   const mkSound = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    mkSound.current = new Audio('https://www.myinstants.com/media/sounds/mk6-get-over-here.mp3');
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (SpeechRecognition) {
       recognitionRef.current = new SpeechRecognition();
@@ -35,7 +34,11 @@ const NoticeBoard: React.FC<NoticeBoardProps> = ({ notices, currentUserRole, onA
     if (newNotice.trim()) {
       onAddNotice(newNotice);
       setNewNotice('');
-      mkSound.current?.play().catch(() => {}); // Play sound
+
+      if (!mkSound.current) {
+        mkSound.current = new Audio('https://www.myinstants.com/media/sounds/mk6-get-over-here.mp3');
+      }
+      mkSound.current.play().catch(() => {}); // Play sound
     }
   };
 
