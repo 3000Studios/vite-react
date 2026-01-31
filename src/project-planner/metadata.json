@@ -1,7 +1,6 @@
-
 {
-  "name": "Project Planning Hub",
-  "description": "A high-end, collaborative dashboard for website owners and developers to track upgrades, costs, time, and project approvals with AI-driven strategy suggestions.",
+  "name": "The Cajun Menu Planner",
+  "description": "Customized development dashboard for The Cajun Menu project planning and tracking.",
   "requestFramePermissions": [
     "microphone"
   ]

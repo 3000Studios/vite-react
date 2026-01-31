@@ -9,73 +9,63 @@ interface ShoppingListProps {
 }
 
 const ShoppingList: React.FC<ShoppingListProps> = ({ items, onToggleItem, onApproveSelected }) => {
-  const { selectedCount, totalCost } = React.useMemo(() => {
-    return items.reduce(
-      (acc, item) => {
-        if (item.isChecked) {
-          acc.selectedCount += 1;
-          acc.totalCost += item.cost;
-        }
-        return acc;
-      },
-      { selectedCount: 0, totalCost: 0 }
-    );
-  }, [items]);
+  const selectedCount = items.filter(i => i.isChecked).length;
 
   return (
-    <div className="bg-white dark:bg-slate-900/40 backdrop-blur-md rounded-3xl border border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col h-full max-h-[600px]">
-      <div className="p-6 bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg">
-        <h3 className="text-xl font-black flex items-center gap-2">
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-          Upgrade Catalog
+    <div className="bg-slate-900 rounded-lg border border-slate-800 shadow-2xl overflow-hidden flex flex-col h-full max-h-[660px]">
+      <div className="p-6 bg-indigo-900 text-white">
+        <h3 className="text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+          <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+          Strategic Upgrade Catalog
         </h3>
-        <p className="text-green-50 text-[10px] font-black mt-1 uppercase tracking-widest opacity-90 leading-tight">National Average Benchmarks for Professional Implementation</p>
+        <p className="text-indigo-400 text-[9px] font-black mt-1 uppercase tracking-widest opacity-80">Roadmap Modules for thecajunmenu.site</p>
       </div>
 
-      <div className="bg-gold-100 dark:bg-gold-500/10 px-6 py-2.5 border-b border-gold-500/20">
-        <p className="text-[9px] font-black text-gold-700 dark:text-gold-500 uppercase tracking-widest text-center leading-tight">
-          Disclaimer: Pricing reflects Market National Averages. This is NOT a quoted price for development.
+      <div className="bg-slate-950 px-4 py-2 border-b border-slate-800 flex justify-between items-center">
+        <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest italic">
+          Select modules to preview UI overlays
         </p>
+        <span className="text-[8px] font-black bg-slate-900 px-2 py-0.5 rounded text-indigo-500 uppercase tracking-widest border border-slate-800">{items.length} Modules</span>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50/50 dark:bg-slate-900/30">
+      <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-950/20">
         {items.map(item => (
-          <div
-            key={item.id}
-            className={`flex items-start gap-4 p-4 rounded-2xl border transition-all cursor-pointer ${item.isChecked ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 shadow-sm' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 hover:border-green-200 dark:hover:border-green-700'}`}
+          <div 
+            key={item.id} 
+            className={`flex items-start gap-4 p-5 rounded-lg border transition-all cursor-pointer group ${item.isChecked ? 'bg-indigo-950/20 border-indigo-900/60' : 'bg-slate-900 border-slate-800 hover:border-slate-700'}`}
             onClick={() => onToggleItem(item.id)}
           >
-            <div className={`mt-1 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-colors ${item.isChecked ? 'bg-green-500 border-green-500 text-white' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600'}`}>
-              {item.isChecked && <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
+            <div className={`mt-0.5 w-4 h-4 rounded-[2px] border flex items-center justify-center transition-colors ${item.isChecked ? 'bg-indigo-600 border-indigo-600' : 'bg-slate-950 border-slate-800 group-hover:border-slate-600'}`}>
+              {item.isChecked && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
             </div>
-            <div className="flex-1">
-              <div className="flex justify-between items-start mb-1">
-                <span className="font-black text-slate-800 dark:text-slate-100 text-sm leading-tight">{item.title}</span>
-                <div className="text-right">
-                  <span className="block text-xs font-black text-green-600 dark:text-green-400">${item.cost.toLocaleString()}</span>
-                  <span className="text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Avg Est</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex justify-between items-start mb-2">
+                <span className="font-bold text-slate-200 text-[11px] uppercase tracking-wider">{item.title}</span>
+              </div>
+              <p className="text-[10px] text-slate-500 leading-relaxed mb-4">{item.description}</p>
+              
+              <div className="space-y-2 pt-3 border-t border-slate-800/50">
+                <div className="flex items-start gap-2">
+                  <span className="text-[7px] font-black uppercase text-slate-700 tracking-widest mt-0.5">Impact</span>
+                  <p className="text-[9px] text-slate-400 leading-tight font-medium">{item.benefit}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[7px] font-black uppercase text-slate-700 tracking-widest">Build</span>
+                  <p className="text-[9px] text-indigo-400 font-bold uppercase tracking-widest">{item.effort}</p>
                 </div>
               </div>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{item.description}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="p-4 bg-white dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-700">
-        <div className="flex justify-between items-center mb-4 px-2">
-          <div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Est. National Market Value</p>
-            <p className="text-xl font-black text-slate-900 dark:text-slate-100">${totalCost.toLocaleString()}</p>
-          </div>
-          <p className="text-xs font-bold text-slate-500">{selectedCount} Items</p>
-        </div>
-        <button
+      <div className="p-6 bg-slate-900 border-t border-slate-800">
+        <button 
           onClick={onApproveSelected}
           disabled={selectedCount === 0}
-          className="w-full py-4 bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 hover:from-purple-500 hover:via-purple-600 hover:to-purple-800 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white font-black rounded-2xl shadow-xl shadow-purple-900/30 border-t border-purple-500 transition-all active:scale-95 shine-btn"
+          className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold rounded text-[10px] uppercase tracking-[0.2em] shadow-xl transition-all active:scale-95"
         >
-          Send Request for Custom Quote
+          Authorize Selected Roadmaps ({selectedCount})
         </button>
       </div>
     </div>

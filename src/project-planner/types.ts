@@ -9,15 +9,18 @@ export interface ProjectTask {
   id: string;
   title: string;
   description: string;
-  estimatedCost: number;
+  scopeOfWork: string;
+  estimatedCost?: number;
   actualCost: number;
   estimatedHours: number;
   actualHours: number;
+  workPerformed: string;
   status: ProjectStatus;
   priority: Priority;
   category: 'Feature' | 'Design' | 'Technical' | 'Marketing';
-  assignedTo?: string;
+  assignedTo: UserRole;
   createdBy: UserRole;
+  createdAt: string;
 }
 
 export interface Notice {
@@ -32,7 +35,9 @@ export interface ShoppingItem {
   id: string;
   title: string;
   description: string;
-  cost: number;
+  benefit: string;
+  effort: string;
   category: string;
   isChecked: boolean;
+  previewType: 'gbp' | 'seo' | 'menu' | 'ai' | 'speed' | 'loyalty' | 'access' | 'catering' | 'sms' | 'wholesale';
 }
