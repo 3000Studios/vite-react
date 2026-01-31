@@ -1,26 +1,20 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const rootDir = fileURLToPath(new URL(".", import.meta.url));
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [react()],
   build: {
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'es2020',
+    outDir: 'dist',
     rollupOptions: {
       input: {
-        main: resolve(rootDir, "index.html"),
-        delivery: resolve(rootDir, "delivery.html"),
-        catering: resolve(rootDir, "catering.html"),
-        "project-planner": resolve(rootDir, "project-planner.html"),
-      },
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          recharts: ['recharts'],
-        },
-      },
-    },
-  },
+        main: resolve(__dirname, 'index.html'),
+        catering: resolve(__dirname, 'catering.html'),
+        delivery: resolve(__dirname, 'delivery.html'),
+        projectPlan: resolve(__dirname, 'project-plan.html'),
+        projectPlanner: resolve(__dirname, 'project-planner.html')
+      }
+    }
+  }
 });

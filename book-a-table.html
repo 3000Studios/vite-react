@@ -287,7 +287,23 @@
             flex-direction: column;
             justify-content: space-between;
             border-top: 1px solid rgba(255,255,255,0.05);
-        }.footer-content {
+        }
+        .flash-footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='220' viewBox='0 0 1400 220'%3E%3Crect width='1400' height='220' fill='%2308080b'/%3E%3Cg opacity='0.95'%3E%3Cline x1='80' y1='0' x2='80' y2='120' stroke='%23f2d050' stroke-width='2'/%3E%3Ccircle cx='80' cy='30' r='6' fill='%239d50bb'/%3E%3Ccircle cx='80' cy='52' r='6' fill='%23f2d050'/%3E%3Ccircle cx='80' cy='74' r='6' fill='%2300ab66'/%3E%3Ccircle cx='80' cy='96' r='6' fill='%239d50bb'/%3E%3Cline x1='140' y1='0' x2='140' y2='120' stroke='%2300ab66' stroke-width='2'/%3E%3Ccircle cx='140' cy='30' r='6' fill='%23f2d050'/%3E%3Ccircle cx='140' cy='52' r='6' fill='%2300ab66'/%3E%3Ccircle cx='140' cy='74' r='6' fill='%239d50bb'/%3E%3Ccircle cx='140' cy='96' r='6' fill='%23f2d050'/%3E%3Cline x1='200' y1='0' x2='200' y2='120' stroke='%239d50bb' stroke-width='2'/%3E%3Ccircle cx='200' cy='30' r='6' fill='%2300ab66'/%3E%3Ccircle cx='200' cy='52' r='6' fill='%239d50bb'/%3E%3Ccircle cx='200' cy='74' r='6' fill='%23f2d050'/%3E%3Ccircle cx='200' cy='96' r='6' fill='%2300ab66'/%3E%3C/g%3E%3Ctext x='700' y='190' text-anchor='middle' font-family='Cinzel, serif' font-size='44' fill='%23d4af37' letter-spacing='10'%3ETHE%20CAJUN%20MENU%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+            opacity: 0.35;
+            filter: saturate(1.1);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flash-footer .footer-content,
+        .flash-footer .footer-bottom { position: relative; z-index: 2; }
+        .footer-content {
             position: relative;
             z-index: 10;
             padding: 60px 40px;
@@ -501,7 +517,6 @@
         .btn-3d:active {
             transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
         }
-    
             /* Mobile layout overrides */
         @media (max-width: 768px) {
             nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
@@ -595,230 +610,57 @@
             </div>
         </div>
     </nav>
-
-    <!-- Delivery Hero -->
-    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-[#020617]/40 z-10"></div>
-            <img src="images/shrimp-poboy.png" alt="Delivery Background" class="w-full h-full object-cover opacity-40">
-        </div>
-        <div class="relative z-20 text-center px-4">
-            <h1 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6">Order Delivery</h1>
-            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Enjoy The Cajun Menu from the comfort of your home.</p>
-        </div>
-    </section>
-
-    <!-- Delivery Options -->
-    <section class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- UberEats -->
-                <a href="https://www.ubereats.com/feed?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMlRoZSUyMENhanVuJTIwTWVudSUyMiUyQyUyMnJlZmVyZW5jZSUyMiUzQSUyMmhlcmUlM0FwZHMlM0FwbGFjZSUzQTg0MGRuNWZ2LThjMmNlMTJjZTdmMmJjNTlmMDJhNmIwOThlY2Y0ZmYwJTIyJTJDJTIycmVmZXJlbmNlVHlwZSUyMiUzQSUyMmhlcmVfcGxhY2VzJTIyJTJDJTIybGF0aXR1ZGUlMjIlM0EzNC4yNTUxOCUyQyUyMmxvbmdpdHVkZSUyMiUzQS04NC40NjM0MyU3RA%3D%3D" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#06C167]/10 transition-colors">
-                    <div class="w-20 h-20 bg-[#06C167] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
-                        UE
+    <main class="py-24 relative">
+        <div class="absolute inset-0 bg-[url('/images/rustic-house.jpg')] bg-cover bg-center opacity-20 fixed-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="glass-panel p-8 md:p-10 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] hover-glow">
+                <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">Reserve a Table</h1>
+                <p class="text-slate-400 mb-8">Whether it’s date night, family dinner, or a special celebration, reserving your table ensures the best experience.</p>
+                <form id="reservation-form" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="space-y-2 md:col-span-1">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Name</label>
+                        <input type="text" name="name" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="John Doe">
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">UberEats</h3>
-                    <p class="text-slate-400 mb-6">Fast delivery straight to your door.</p>
-                    <span class="text-[#06C167] font-bold group-hover:underline">Order Now →</span>
-                </a>
-
-                <!-- DoorDash -->
-                <a href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
-                    <div class="w-20 h-20 bg-[#FF3008] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
-                        DD
+                    <div class="space-y-2 md:col-span-1">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Email</label>
+                        <input type="email" name="email" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="john@example.com">
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">DoorDash</h3>
-                    <p class="text-slate-400 mb-6">Your favorite Cajun dishes, delivered.</p>
-                    <span class="text-[#FF3008] font-bold group-hover:underline">Order Now →</span>
-                </a>
-
-                <!-- GrubHub -->
-                <a href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#F63440]/10 transition-colors">
-                    <div class="w-20 h-20 bg-[#F63440] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
-                        GH
+                    <div class="space-y-2 md:col-span-1">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Phone</label>
+                        <input type="tel" name="phone" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="(555) 123-4567">
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">GrubHub</h3>
-                    <p class="text-slate-400 mb-6">Local delivery you can trust.</p>
-                    <span class="text-[#F63440] font-bold group-hover:underline">Order Now →</span>
-                </a>
+                    <div class="space-y-2 md:col-span-1">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Guests</label>
+                        <select name="guests" class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5+">5+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2 md:col-span-1">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Date</label>
+                        <input type="date" name="date" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
+                    </div>
+                    <div class="space-y-2 md:col-span-1">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Time</label>
+                        <input type="time" name="time" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
+                    </div>
+                    <div class="md:col-span-3">
+                        <button type="submit" id="submit-btn" class="mardi-gras-button w-full">
+                            <div class="label-container">
+                                <span class="label">Confirm Booking</span>
+                                <span class="mono-data">RESERVE</span>
+                            </div>
+                        </button>
+                        <p id="form-status" class="text-center text-sm mt-4 hidden"></p>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- Funny Gator Section -->
-    <section class="py-12 overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
-            <div class="relative group cursor-pointer">
-                <!-- Speech Bubble -->
-                <div class="absolute -top-24 -right-24 md:-right-32 bg-white text-slate-900 p-6 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 z-20 max-w-[200px] md:max-w-xs border-4 border-amber-500">
-                    <p class="font-heading font-bold text-lg md:text-xl leading-tight">"Laissez les bons temps rouler!"</p>
-                    <p class="text-xs font-bold text-amber-600 mt-1 uppercase tracking-wider">(Let the good times roll!)</p>
-                </div>
-                
-                <!-- Gator Image Container -->
-                <div class="relative w-64 h-64 md:w-80 md:h-80 transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-green-500/20 rounded-full blur-3xl animate-pulse"></div>
-                    <img src="images/gator-mascot.png" alt="Funny Cajun Gator" loading="lazy" class="relative z-10 w-full h-full object-contain drop-shadow-2xl animate-bounce-slow" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1998/1998610.png'">
-                </div>
-            </div>
-        </div>
-        <style>
-            @keyframes bounce-slow {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-10px); }
-            }
-            .animate-bounce-slow {
-                animation: bounce-slow 3s infinite ease-in-out;
-            }
-                /* Global button palette override */
-        :root {
-            --btn-purple: #5b1bb8;
-            --btn-purple-dark: #3a0f7a;
-            --btn-text-gold: #d4af37;
-            --btn-shadow-green: rgba(0, 171, 102, 0.6);
-        }
-        .mardi-gras-button,
-        .btn-3d,
-        button {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            animation: none !important;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 22px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.45) !important;
-        }
-        .mardi-gras-button::before { opacity: 0.25; }
-        .mardi-gras-button:hover {
-            box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 28px var(--btn-shadow-green) !important;
-            filter: brightness(1.12);
-            animation: shimmer-move 6s linear infinite;
-        }
-        .mardi-gras-button:active {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.45), 0 0 16px var(--btn-shadow-green) !important;
-        }
-        .btn-3d {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 20px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.35) !important;
-        }
-        .btn-3d:active {
-            box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 12px var(--btn-shadow-green) !important;
-        }
-        button[class*="bg-amber"],
-        button[class*="bg-yellow"],
-        button[class*="bg-orange"],
-        a[class*="bg-amber"],
-        a[class*="bg-yellow"],
-        a[class*="bg-orange"] {
-            background-color: var(--btn-purple) !important;
-            color: var(--btn-text-gold) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 18px var(--btn-shadow-green) !important;
-        }
-        button[class*="from-amber"],
-        button[class*="from-yellow"],
-        button[class*="from-orange"],
-        button[class*="to-amber"],
-        button[class*="to-yellow"],
-        button[class*="to-orange"],
-        button[class*="to-red"],
-        a[class*="from-amber"],
-        a[class*="from-yellow"],
-        a[class*="from-orange"],
-        a[class*="to-amber"],
-        a[class*="to-yellow"],
-        a[class*="to-orange"],
-        a[class*="to-red"] {
-            --tw-gradient-from: var(--btn-purple) !important;
-            --tw-gradient-to: var(--btn-purple-dark) !important;
-            --tw-gradient-stops: var(--btn-purple), var(--btn-purple-dark) !important;
-        }
-            /* mono-data-hidden */
-        .mardi-gras-button .label {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button .mono-data {
-            display: none !important;
-            animation: none !important;
-        }
-            /* button-hover-tilt */
-        .mardi-gras-button,
-        .btn-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
-        }
-        .mardi-gras-button:hover,
-        .btn-3d:hover {
-            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
-            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
-            filter: brightness(1.15);
-        }
-        .mardi-gras-button:active,
-        .btn-3d:active {
-            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
-        }
-    
-        .flash-footer::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='220' viewBox='0 0 1400 220'%3E%3Crect width='1400' height='220' fill='%2308080b'/%3E%3Cg opacity='0.95'%3E%3Cline x1='80' y1='0' x2='80' y2='120' stroke='%23f2d050' stroke-width='2'/%3E%3Ccircle cx='80' cy='30' r='6' fill='%239d50bb'/%3E%3Ccircle cx='80' cy='52' r='6' fill='%23f2d050'/%3E%3Ccircle cx='80' cy='74' r='6' fill='%2300ab66'/%3E%3Ccircle cx='80' cy='96' r='6' fill='%239d50bb'/%3E%3Cline x1='140' y1='0' x2='140' y2='120' stroke='%2300ab66' stroke-width='2'/%3E%3Ccircle cx='140' cy='30' r='6' fill='%23f2d050'/%3E%3Ccircle cx='140' cy='52' r='6' fill='%2300ab66'/%3E%3Ccircle cx='140' cy='74' r='6' fill='%239d50bb'/%3E%3Ccircle cx='140' cy='96' r='6' fill='%23f2d050'/%3E%3Cline x1='200' y1='0' x2='200' y2='120' stroke='%239d50bb' stroke-width='2'/%3E%3Ccircle cx='200' cy='30' r='6' fill='%2300ab66'/%3E%3Ccircle cx='200' cy='52' r='6' fill='%239d50bb'/%3E%3Ccircle cx='200' cy='74' r='6' fill='%23f2d050'/%3E%3Ccircle cx='200' cy='96' r='6' fill='%2300ab66'/%3E%3C/g%3E%3Ctext x='700' y='190' text-anchor='middle' font-family='Cinzel, serif' font-size='44' fill='%23d4af37' letter-spacing='10'%3ETHE%20CAJUN%20MENU%3C/text%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
-            opacity: 0.35;
-            filter: saturate(1.1);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .flash-footer .footer-content,
-        .flash-footer .footer-bottom { position: relative; z-index: 2; }
-        
-    
-            /* Mobile layout overrides */
-        @media (max-width: 768px) {
-            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
-            nav .h-24 { height: 4.5rem !important; }
-            nav .h-\[5rem\] { height: 4.5rem !important; }
-            #mobile-menu {
-                max-height: calc(100vh - 4.5rem);
-                overflow-y: auto;
-            }
-            #mobile-menu a { font-size: 0.95rem; }
-            .hero-main-title {
-                font-size: clamp(2.2rem, 12vw, 4rem);
-                line-height: 0.95;
-            }
-            .hero-subtitle,
-            .hero-lead,
-            .hero-copy {
-                font-size: 0.95rem;
-            }
-            #menu-grid { grid-template-columns: 1fr !important; }
-            .gilded-card {
-                width: 100%;
-                max-width: 360px;
-                height: auto;
-            }
-            .gilded-card .image-box { height: 200px; }
-            .gilded-card .content { padding: 20px; }
-            .gilded-card .title { font-size: 1.6rem; }
-            .gilded-card .description { font-size: 0.85rem; }
-            #menu-categories { gap: 10px; padding-bottom: 1rem; }
-            #menu-categories button { white-space: nowrap; }
-            .flash-footer { min-height: 420px; }
-            .footer-top { flex-direction: column; gap: 16px; }
-            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
-            .footer-underlay { width: 100%; }
-            .brand-rig { transform: scale(0.7); transform-origin: center top; }
-            .map-embed iframe { height: 220px; }
-            .footer-card { padding: 16px; }
-            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
-        }
-    </style>
-    </section>
-
-    <!-- Footer -->
+    </main>
+<!-- Footer -->
     <footer class="flash-footer"><div class="footer-content">
             <div class="footer-top">
                 <div class="footer-underlay">
@@ -952,12 +794,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 
