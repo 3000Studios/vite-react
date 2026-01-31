@@ -1139,7 +1139,7 @@
         }
         .footer-visit {
             display: grid;
-            grid-template-columns: 1.1fr 1.4fr;
+            grid-template-columns: 1fr;
             gap: 28px;
             align-items: start;
             margin-top: 24px;
@@ -1166,6 +1166,26 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 16px;
+        }
+        .footer-visit .footer-location-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-visit .footer-location-card .map-underlay {
+            position: absolute;
+            inset: 0;
+            opacity: 0.35;
+            pointer-events: none;
+            filter: saturate(1.1) contrast(1.05);
+        }
+        .footer-visit .footer-location-card .map-underlay iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .footer-visit .footer-location-card .content-layer {
+            position: relative;
+            z-index: 2;
         }
         .footer-visit .combo-card .footer-card-text {
             line-height: 1.6;
@@ -1440,7 +1460,7 @@
                     <a href="catering.html" class="vapor-item" style="--c: var(--blue)"><div class="bloom"></div><span>Catering</span></a>
                     <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
                     <a href="project-planner.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Planner</span></a>
-                    <a href="index.html#visit" class="mardi-gras-button">
+                    <a href="book-a-table.html" class="mardi-gras-button">
                         <div class="nola-symbol">⚜</div>
                         <div class="label-container">
                             <span class="label">Book a Table</span>
@@ -1467,7 +1487,7 @@
                 <a href="catering.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Catering</a>
                 <a href="delivery.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Delivery</a>
                 <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Planner</a>
-                <a href="index.html#visit" class="mardi-gras-button w-full justify-center">
+                <a href="book-a-table.html" class="mardi-gras-button w-full justify-center">
                     <div class="label-container">
                         <span class="label">Book a Table</span>
                         <span class="mono-data">504.NOLA.2024</span>
@@ -1526,7 +1546,7 @@
                         <span class="mono-data">MENU.SEQ.01</span>
                     </div>
                 </a>
-                <a href="#visit" class="mardi-gras-button">
+                <a href="book-a-table.html" class="mardi-gras-button">
                     <div class="nola-symbol">⚜</div>
                     <div class="label-container">
                         <span class="label">Reserve Table</span>
@@ -1733,22 +1753,21 @@
 
             <div id="visit" class="footer-visit">
                 <div class="visit-panel">
-                    <h2 class="text-4xl font-heading font-bold mb-4">Visit Our <br><span>Kitchen</span></h2>
-                    <p class="text-slate-400 text-base">Experience the ambiance firsthand. Reservations are highly recommended for weekends.</p>
-
                     <div class="combo-card">
-                        <div class="footer-card">
-                            <div class="footer-card-icon">📍</div>
-                            <h4 class="footer-card-title">Location & Contact</h4>
-                            <p class="footer-card-text">140 Keith Dr, Canton, GA 30114<br>678-899-7404 • thecajunmenu@gmail.com</p>
-                        </div>
-                        <div class="map-embed">
-                            <iframe
-                                title="The Cajun Menu Map"
-                                src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed"
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                        <div class="footer-card footer-location-card">
+                            <div class="map-underlay">
+                                <iframe
+                                    title="The Cajun Menu Map"
+                                    src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                            <div class="content-layer">
+                                <div class="footer-card-icon">📍</div>
+                                <h4 class="footer-card-title">Location & Contact</h4>
+                                <p class="footer-card-text">140 Keith Dr, Canton, GA 30114<br>678-899-7404 • thecajunmenu@gmail.com</p>
+                            </div>
                         </div>
                         <div class="hours-card">
                             <h4 class="text-lg font-bold text-white mb-3 flex items-center"><span class="text-yellow-500 mr-3">🕒</span> Opening Hours</h4>
@@ -1761,55 +1780,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-
-                <div class="visit-panel">
-                    <h3 class="text-3xl font-heading font-bold mb-2">Reserve a Table</h3>
-                    <p class="text-slate-400 mb-6">Whether it’s date night, family dinner, or a special celebration, reserving your table ensures the best experience.</p>
-                    <form id="reservation-form" class="reserve-landscape">
-                        <div class="space-y-4">
-                            <div class="space-y-2">
-                                <label class="text-sm text-slate-400 uppercase tracking-wide">Name</label>
-                                <input type="text" name="name" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="John Doe">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-sm text-slate-400 uppercase tracking-wide">Guests</label>
-                                <select name="guests" class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                    <option value="2">2 Guests</option>
-                                    <option value="3">3 Guests</option>
-                                    <option value="4">4 Guests</option>
-                                    <option value="5+">5+ Guests</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-grid">
-                            <div class="space-y-2">
-                                <label class="text-sm text-slate-400 uppercase tracking-wide">Email</label>
-                                <input type="email" name="email" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="john@example.com">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-sm text-slate-400 uppercase tracking-wide">Phone</label>
-                                <input type="tel" name="phone" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="(555) 123-4567">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-sm text-slate-400 uppercase tracking-wide">Date</label>
-                                <input type="date" name="date" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-sm text-slate-400 uppercase tracking-wide">Time</label>
-                                <input type="time" name="time" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
-                            </div>
-                            <div class="form-grid-full">
-                                <button type="submit" id="submit-btn" class="mardi-gras-button w-full">
-                                    <div class="label-container">
-                                        <span class="label">Confirm Booking</span>
-                                        <span class="mono-data">RESERVE</span>
-                                    </div>
-                                </button>
-                                <p id="form-status" class="text-center text-sm mt-4 hidden"></p>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
 
@@ -2744,6 +2714,7 @@
     </script>
 </body>
 </html>
+
 
 
 
