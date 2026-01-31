@@ -1,3 +1,3 @@
-export async function runAI(prompt: string) {
+export async function runAI() {
   throw new Error('AI provider not yet configured');
 }
