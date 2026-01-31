@@ -15,8 +15,17 @@ Knowledge Base:
 Always provide specific numbers when discussing potential traffic increases (e.g., "Implementing Schema markup can increase organic click-through by 15-20%").
 Keep responses concise and helpful.`;
 
+let genAiInstance: GoogleGenAI | null = null;
+
+const getGenAiClient = () => {
+  if (!genAiInstance) {
+    genAiInstance = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  }
+  return genAiInstance;
+};
+
 export const getAiSuggestions = async (currentTasks: ProjectTask[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = getGenAiClient();
 
   const prompt = `Based on these current tasks for TheCajunmenu.site:
   ${currentTasks.map(t => `${t.title}: ${t.description}`).join(', ')}
@@ -56,7 +65,7 @@ export const getAiSuggestions = async (currentTasks: ProjectTask[]) => {
 };
 
 export const chatWithAssistant = async (message: string, history: {role: string, parts: {text: string}[]}[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = getGenAiClient();
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview", // Use pro for search grounding
