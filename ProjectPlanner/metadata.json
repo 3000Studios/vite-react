@@ -1,0 +1,7 @@
+{
+  "name": "The Cajun Menu Planner",
+  "description": "Customized development dashboard for The Cajun Menu project planning and tracking.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
