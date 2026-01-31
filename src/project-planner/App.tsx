@@ -30,7 +30,7 @@ const App: React.FC = () => {
 
   const addNotice = useCallback((content: string) => {
     const newNotice: Notice = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       author: role === 'Owner' ? 'Project Principal' : 'Engineering Lead',
       role,
       content,
@@ -51,7 +51,7 @@ const App: React.FC = () => {
 
   const handleCreateTask = (newTask: Partial<ProjectTask>) => {
     const task: ProjectTask = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       title: newTask.title || 'New Work Order',
       description: newTask.description || '',
       scopeOfWork: newTask.scopeOfWork || '',
