@@ -341,6 +341,67 @@
             0% { background-position: 200% 0; }
             100% { background-position: 0% 0; }
         }
+            /* Global button palette override */
+        :root {
+            --btn-purple: #5b1bb8;
+            --btn-purple-dark: #3a0f7a;
+            --btn-text-gold: #d4af37;
+            --btn-shadow-green: rgba(0, 171, 102, 0.6);
+        }
+        .mardi-gras-button,
+        .btn-3d,
+        button {
+            color: var(--btn-text-gold) !important;
+        }
+        .mardi-gras-button {
+            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 22px var(--btn-shadow-green) !important;
+            border-color: rgba(0, 171, 102, 0.45) !important;
+        }
+        .mardi-gras-button::before { opacity: 0.25; }
+        .mardi-gras-button:hover {
+            box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 28px var(--btn-shadow-green) !important;
+            filter: brightness(1.12);
+        }
+        .mardi-gras-button:active {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.45), 0 0 16px var(--btn-shadow-green) !important;
+        }
+        .btn-3d {
+            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 20px var(--btn-shadow-green) !important;
+            border-color: rgba(0, 171, 102, 0.35) !important;
+        }
+        .btn-3d:active {
+            box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 12px var(--btn-shadow-green) !important;
+        }
+        button[class*="bg-amber"],
+        button[class*="bg-yellow"],
+        button[class*="bg-orange"],
+        a[class*="bg-amber"],
+        a[class*="bg-yellow"],
+        a[class*="bg-orange"] {
+            background-color: var(--btn-purple) !important;
+            color: var(--btn-text-gold) !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 18px var(--btn-shadow-green) !important;
+        }
+        button[class*="from-amber"],
+        button[class*="from-yellow"],
+        button[class*="from-orange"],
+        button[class*="to-amber"],
+        button[class*="to-yellow"],
+        button[class*="to-orange"],
+        button[class*="to-red"],
+        a[class*="from-amber"],
+        a[class*="from-yellow"],
+        a[class*="from-orange"],
+        a[class*="to-amber"],
+        a[class*="to-yellow"],
+        a[class*="to-orange"],
+        a[class*="to-red"] {
+            --tw-gradient-from: var(--btn-purple) !important;
+            --tw-gradient-to: var(--btn-purple-dark) !important;
+            --tw-gradient-stops: var(--btn-purple), var(--btn-purple-dark) !important;
+        }
     </style>
 </head>
 <body class="antialiased h-screen flex flex-col bg-[#020617]">
@@ -707,5 +768,6 @@
     </script>
 </body>
 </html>
+
 
 
