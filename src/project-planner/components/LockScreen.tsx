@@ -27,7 +27,7 @@ const LockScreen: React.FC<LockScreenProps> = ({ onUnlock }) => {
       <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-green-600/20 blur-[100px] animate-pulse"></div>
 
       {/* Lock Card */}
-      <div className="relative z-10 p-8 rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl w-full max-w-md card-scale-50">
+      <div className="relative z-10 p-8 rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl w-full max-w-md">
         <div className="text-center mb-8">
           <div className="w-20 h-20 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg shadow-gold-500/30">
             <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

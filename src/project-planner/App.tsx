@@ -175,7 +175,7 @@ const App: React.FC = () => {
                   {aiSuggestions.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
                       {aiSuggestions.map((s, idx) => (
-                        <div key={idx} className="bg-slate-950 p-6 rounded-lg border border-slate-800 hover:border-indigo-600 transition-all group/card card-scale-50">
+                        <div key={idx} className="bg-slate-950 p-6 rounded-lg border border-slate-800 hover:border-indigo-600 transition-all group/card">
                           <h4 className="font-bold text-slate-200 mb-3 text-xs uppercase tracking-wider">{s.title}</h4>
                           <p className="text-[10px] text-slate-500 mb-6 leading-relaxed font-medium line-clamp-3">{s.description}</p>
                           <button 
