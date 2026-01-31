@@ -584,89 +584,56 @@
             font-size: 0.7rem;
             color: var(--gold-metallic);
             text-decoration: none;
+        }
+        /* nav-brand-rig */
+        .nav-brand-rig {
+            transform: scale(0.6);
+            transform-origin: left center;
+        }
+        .vapor-item .bloom {
+            filter: blur(26px);
+            opacity: 0.18;
+        }
+        .vapor-item:hover .bloom {
+            width: 170px;
+            height: 170px;
+            opacity: 0.85;
+            filter: blur(50px);
         }</style>
 </head>
 <body class="bg-slate-50 text-slate-900">
-<nav class="fixed w-full z-50 glass-panel border-b border-white/5 filigree-nav">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
-                <a href="index.html#home" class="nav-brand">The Cajun Menu</a>
-                <div class="hidden md:flex items-center">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="index.html#home" class="nav-link">
-                                <div class="bg-pattern"></div>
-                                <div class="filigree-box"></div>
-                                <div class="molten-bead"></div>
-                                <span class="nav-label">Home</span>
-                                <span class="nav-sub">01 // HOME</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index.html#about" class="nav-link">
-                                <div class="bg-pattern"></div>
-                                <div class="filigree-box"></div>
-                                <div class="molten-bead" style="background: var(--purple); right: auto; left: -20px;"></div>
-                                <span class="nav-label">Story</span>
-                                <span class="nav-sub">02 // STORY</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index.html#menu" class="nav-link">
-                                <div class="bg-pattern"></div>
-                                <div class="filigree-box"></div>
-                                <div class="molten-bead" style="background: var(--green);"></div>
-                                <span class="nav-label">Menu</span>
-                                <span class="nav-sub">03 // MENU</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="catering.html" class="nav-link">
-                                <div class="bg-pattern"></div>
-                                <div class="filigree-box"></div>
-                                <div class="molten-bead" style="background: #fff; opacity: 0.1;"></div>
-                                <span class="nav-label">Catering</span>
-                                <span class="nav-sub">04 // CATERING</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="delivery.html" class="nav-link">
-                                <div class="bg-pattern"></div>
-                                <div class="filigree-box"></div>
-                                <div class="molten-bead"></div>
-                                <span class="nav-label">Delivery</span>
-                                <span class="nav-sub">05 // DELIVERY</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="project-planner.html" class="nav-link">
-                                <div class="bg-pattern"></div>
-                                <div class="filigree-box"></div>
-                                <div class="molten-bead" style="background: var(--purple); right: auto; left: -20px;"></div>
-                                <span class="nav-label">Planner</span>
-                                <span class="nav-sub">06 // PLANNER</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" aria-label="Open menu" class="text-white">
-                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                    </button>
-                </div>
+<nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
+            <div class="flex items-center gap-4">
+                <div class="brand-rig nav-brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
+            </div>
+            <div class="hidden md:flex items-center vapor-nav">
+                <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
+                <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
+                <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
+                <a href="catering.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Catering</span></a>
+                <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
+                <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" aria-label="Open menu" class="text-white">
+                    <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/5">
-            <div class="px-6 py-4 flex flex-col gap-3">
-                <a href="index.html#home" class="mobile-link">Home</a>
-                <a href="index.html#about" class="mobile-link">Story</a>
-                <a href="index.html#menu" class="mobile-link">Menu</a>
-                <a href="catering.html" class="mobile-link">Catering</a>
-                <a href="delivery.html" class="mobile-link">Delivery</a>
-                <a href="project-planner.html" class="mobile-link">Planner</a>
-            </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/5">
+        <div class="px-6 py-4 flex flex-col gap-3">
+            <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
+            <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
+            <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
+            <a href="catering.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Catering</span></a>
+            <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
+            <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
         </div>
-    </nav>
+    </div>
+</nav>
     <div id="root"></div>
     <script type="module" src="/src/project-planner/index.tsx"></script>
 
@@ -801,6 +768,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 

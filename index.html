@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Cajun Menu | Authentic Cajun Restaurant in Canton, GA</title>
-    <meta name="description" content="Experience authentic Cajun cuisine in Canton, GA. The Cajun Menu offers fresh seafood, gumbo, etouffee, and po-boys. Taste the Soul of Louisiana today!">
+    <meta name="description" content="Experience authentic Cajun cuisine in Canton, GA. The Cajun Menu offers fresh seafood, gumbo, etouffee, and po-boys. Taste the Cajun.">
     <meta name="keywords" content="Cajun food Canton GA, Seafood Canton, Gumbo, Etouffee, Po-boys, Louisiana food Georgia, Best Restaurant Canton, The Cajun Menu">
     <meta name="author" content="The Cajun Menu">
     <meta name="robots" content="index, follow">
@@ -16,7 +16,7 @@
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="The Cajun Menu | Authentic Cajun Cuisine in Canton, GA">
-    <meta property="og:description" content="Taste the Soul of Louisiana. Fresh seafood, bold spices, and southern hospitality. Reserve your table now!">
+    <meta property="og:description" content="Taste the Cajun. Fresh seafood, bold spices, and southern hospitality. Reserve your table now!">
     <meta property="og:image" content="https://thecajunmenu.online/images/low-boil.png">
     <meta property="og:url" content="https://thecajunmenu.online">
     <meta property="og:type" content="website">
@@ -26,7 +26,7 @@
     <!-- Twitter Card Data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Cajun Menu | Authentic Cajun Cuisine">
-    <meta name="twitter:description" content="Taste the Soul of Louisiana. Fresh seafood, bold spices, and southern hospitality. Reserve your table now!">
+    <meta name="twitter:description" content="Taste the Cajun. Fresh seafood, bold spices, and southern hospitality. Reserve your table now!">
     <meta name="twitter:image" content="https://thecajunmenu.online/images/old-house.jpg">
 
     <!-- Schema.org JSON-LD -->
@@ -335,7 +335,7 @@
             cursor: pointer;
         }
         .hero-main-title::after {
-            content: "THE CAJUN MENU";
+            content: "TASTE THE CAJUN";
             position: absolute;
             left: 0;
             top: 0;
@@ -386,7 +386,7 @@
         .hero-parallax-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at center, transparent 0%, #0a0a0c 90%);
+            background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 12, 0.55) 85%);
             z-index: 2;
             pointer-events: none;
         }
@@ -1488,7 +1488,56 @@
             font-size: 0.7rem;
             color: var(--gold-metallic);
             text-decoration: none;
+        }
+        /* nav-brand-rig */
+        .nav-brand-rig {
+            transform: scale(0.6);
+            transform-origin: left center;
+        }
+        .vapor-item .bloom {
+            filter: blur(26px);
+            opacity: 0.18;
+        }
+        .vapor-item:hover .bloom {
+            width: 170px;
+            height: 170px;
+            opacity: 0.85;
+            filter: blur(50px);
         }</style>
+</head>
+<body>
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
+                <div class="flex items-center gap-4">
+                    <div class="brand-rig nav-brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
+                </div>
+                <div class="hidden md:flex items-center vapor-nav">
+                    <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
+                    <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
+                    <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
+                    <a href="catering.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Catering</span></a>
+                    <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
+                    <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-label="Open menu" class="text-white">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/5">
+            <div class="px-6 py-4 flex flex-col gap-3">
+                <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
+                <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
+                <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
+                <a href="catering.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Catering</span></a>
+                <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
+                <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
+            </div>
+        </div>
+    </nav>
 
     <script>
         const trigger = document.getElementById('mardi-gras-trigger');
@@ -1768,6 +1817,7 @@
     </script>
 </body>
 </html>
+
 
 
 
