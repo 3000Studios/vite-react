@@ -10,7 +10,7 @@ import ChatBot from './components/ChatBot';
 import FileVault from './components/FileVault';
 import LockScreen from './components/LockScreen';
 import { getAiSuggestions } from './services/geminiService';
-import { useDebounce } from './hooks/useDebounce';
+import { useDebouncedEffect } from './hooks/useDebouncedEffect';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,17 +42,11 @@ const App: React.FC = () => {
   const [showDashboard, setShowDashboard] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(true); // Starts on Dark Mode as requested
 
-  // Debounce state for persistence to prevent main-thread blocking on rapid updates
-  const debouncedTasks = useDebounce(tasks, 1000);
-  const debouncedNotices = useDebounce(notices, 1000);
-  const debouncedShoppingItems = useDebounce(shoppingItems, 1000);
-  const debouncedFiles = useDebounce(files, 1000);
-
-  // Persistence Effects
-  useEffect(() => { localStorage.setItem('tasks', JSON.stringify(debouncedTasks)); }, [debouncedTasks]);
-  useEffect(() => { localStorage.setItem('notices', JSON.stringify(debouncedNotices)); }, [debouncedNotices]);
-  useEffect(() => { localStorage.setItem('shoppingItems', JSON.stringify(debouncedShoppingItems)); }, [debouncedShoppingItems]);
-  useEffect(() => { localStorage.setItem('files', JSON.stringify(debouncedFiles)); }, [debouncedFiles]);
+  // Persistence Effects with Debounce
+  useDebouncedEffect(() => { localStorage.setItem('tasks', JSON.stringify(tasks)); }, [tasks], 1000);
+  useDebouncedEffect(() => { localStorage.setItem('notices', JSON.stringify(notices)); }, [notices], 1000);
+  useDebouncedEffect(() => { localStorage.setItem('shoppingItems', JSON.stringify(shoppingItems)); }, [shoppingItems], 1000);
+  useDebouncedEffect(() => { localStorage.setItem('files', JSON.stringify(files)); }, [files], 1000);
 
   // Sync dark mode class with state
   useEffect(() => {
