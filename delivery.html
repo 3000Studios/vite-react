@@ -503,6 +503,22 @@
             display: none !important;
             animation: none !important;
         }
+            /* button-hover-tilt */
+        .mardi-gras-button,
+        .btn-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
+        }
+        .mardi-gras-button:hover,
+        .btn-3d:hover {
+            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
+            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
+            filter: brightness(1.15);
+        }
+        .mardi-gras-button:active,
+        .btn-3d:active {
+            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
@@ -704,6 +720,22 @@
         .mardi-gras-button .mono-data {
             display: none !important;
             animation: none !important;
+        }
+            /* button-hover-tilt */
+        .mardi-gras-button,
+        .btn-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
+        }
+        .mardi-gras-button:hover,
+        .btn-3d:hover {
+            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
+            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
+            filter: brightness(1.15);
+        }
+        .mardi-gras-button:active,
+        .btn-3d:active {
+            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
         }
     </style>
     </section>
@@ -933,8 +965,28 @@
             animate();
         }
     </script>
+    <script>
+        // button-tilt-hover
+        (() => {
+            const buttons = Array.from(document.querySelectorAll('.mardi-gras-button, .btn-3d, #menu-categories button'));
+            buttons.forEach((btn) => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    btn.style.setProperty('--tilt-x', `${(-y * 10).toFixed(2)}deg`);
+                    btn.style.setProperty('--tilt-y', `${(x * 10).toFixed(2)}deg`);
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.setProperty('--tilt-x', '0deg');
+                    btn.style.setProperty('--tilt-y', '0deg');
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
+
 
 
 
