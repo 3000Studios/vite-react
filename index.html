@@ -841,6 +841,7 @@
 
         function renderCategories() {
             categoriesContainer.innerHTML = '';
+            const fragment = document.createDocumentFragment();
             Object.keys(menuData).forEach(cat => {
                 const btn = document.createElement('button');
                 btn.innerText = cat;
@@ -855,12 +856,14 @@
                     renderCategories();
                     renderMenu();
                 };
-                categoriesContainer.appendChild(btn);
+                fragment.appendChild(btn);
             });
+            categoriesContainer.appendChild(fragment);
         }
 
         function renderMenu() {
             menuGrid.innerHTML = '';
+            const fragment = document.createDocumentFragment();
             const items = menuData[currentCategory];
             items.forEach((item, index) => {
                 const card = document.createElement('div');
@@ -882,8 +885,9 @@
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">${item.desc}</p>
                 `;
-                menuGrid.appendChild(card);
+                fragment.appendChild(card);
             });
+            menuGrid.appendChild(fragment);
         }
 
         // Food Modal Logic
@@ -901,6 +905,7 @@
             
             if (item.image) {
                 img.src = item.image;
+                img.alt = item.name;
                 img.classList.remove('hidden');
                 document.getElementById('food-modal-placeholder').classList.add('hidden');
             } else {
