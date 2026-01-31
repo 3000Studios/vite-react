@@ -501,6 +501,7 @@
         .btn-3d:active {
             transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
         }
+    
     </style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
@@ -716,6 +717,24 @@
         .btn-3d:active {
             transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
         }
+    
+        .flash-footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='220' viewBox='0 0 1400 220'%3E%3Crect width='1400' height='220' fill='%2308080b'/%3E%3Cg opacity='0.95'%3E%3Cline x1='80' y1='0' x2='80' y2='120' stroke='%23f2d050' stroke-width='2'/%3E%3Ccircle cx='80' cy='30' r='6' fill='%239d50bb'/%3E%3Ccircle cx='80' cy='52' r='6' fill='%23f2d050'/%3E%3Ccircle cx='80' cy='74' r='6' fill='%2300ab66'/%3E%3Ccircle cx='80' cy='96' r='6' fill='%239d50bb'/%3E%3Cline x1='140' y1='0' x2='140' y2='120' stroke='%2300ab66' stroke-width='2'/%3E%3Ccircle cx='140' cy='30' r='6' fill='%23f2d050'/%3E%3Ccircle cx='140' cy='52' r='6' fill='%2300ab66'/%3E%3Ccircle cx='140' cy='74' r='6' fill='%239d50bb'/%3E%3Ccircle cx='140' cy='96' r='6' fill='%23f2d050'/%3E%3Cline x1='200' y1='0' x2='200' y2='120' stroke='%239d50bb' stroke-width='2'/%3E%3Ccircle cx='200' cy='30' r='6' fill='%2300ab66'/%3E%3Ccircle cx='200' cy='52' r='6' fill='%239d50bb'/%3E%3Ccircle cx='200' cy='74' r='6' fill='%23f2d050'/%3E%3Ccircle cx='200' cy='96' r='6' fill='%2300ab66'/%3E%3C/g%3E%3Ctext x='700' y='190' text-anchor='middle' font-family='Cinzel, serif' font-size='44' fill='%23d4af37' letter-spacing='10'%3ETHE%20CAJUN%20MENU%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+            opacity: 0.35;
+            filter: saturate(1.1);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flash-footer .footer-content,
+        .flash-footer .footer-bottom { position: relative; z-index: 2; }
+        
+    
     </style>
     </section>
 
@@ -871,6 +890,13 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
