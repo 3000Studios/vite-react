@@ -196,23 +196,7 @@
             flex-direction: column;
             justify-content: space-between;
             border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .liquid-layer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 55%;
-            z-index: 1;
-            pointer-events: none;
-            filter: url('#goo');
-        }
-        #liquidCanvas {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 -10px 20px rgba(212, 175, 55, 0.35));
-        }
-        .footer-content {
+        }.footer-content {
             position: relative;
             z-index: 10;
             padding: 60px 40px;
@@ -338,9 +322,7 @@
             letter-spacing: 1px;
             gap: 20px;
             flex-wrap: wrap;
-        }
-        svg#goo-filters { height: 0; width: 0; position: absolute; }
-        @media (max-width: 768px) {
+        }@media (max-width: 768px) {
             .footer-content { padding: 40px 20px; }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-right { justify-content: center; }
@@ -568,18 +550,7 @@
     <div id="root"></div>
     <script type="module" src="/src/project-planner/index.tsx"></script>
 
-    <footer class="flash-footer">
-        <svg id="goo-filters">
-            <defs>
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                    <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-                </filter>
-            </defs>
-        </svg>
-
-        <div class="footer-content">
+    <footer class="flash-footer"><div class="footer-content">
             <div class="footer-top">
                 <div class="social-cluster social-center">
                 <a class="social-btn" href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -635,13 +606,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="liquid-layer">
-            <canvas id="liquidCanvas"></canvas>
-        </div>
-
-        <div class="footer-bottom">
+        </div><div class="footer-bottom">
             <span>The Cajun Menu</span>
             <span>Canton, GA</span>
             <span>&copy; 2026</span>
@@ -714,86 +679,6 @@
     </script>
 
     <script>
-        const liquidCanvas = document.getElementById('liquidCanvas');
-        if (liquidCanvas) {
-            const ctx = liquidCanvas.getContext('2d');
-            let width = 0;
-            let height = 0;
-            let particles = [];
-            let gravityX = 0;
-            let targetGravityX = 0;
-
-            const resize = () => {
-                width = liquidCanvas.width = liquidCanvas.offsetWidth;
-                height = liquidCanvas.height = liquidCanvas.offsetHeight;
-            };
-
-            class LiquidParticle {
-                constructor(x, y) {
-                    this.x = x;
-                    this.y = y;
-                    this.baseY = y;
-                    this.radius = Math.random() * 60 + 40;
-                    this.speed = Math.random() * 0.05 + 0.02;
-                    this.offset = Math.random() * Math.PI * 2;
-                }
-                update() {
-                    gravityX += (targetGravityX - gravityX) * 0.05;
-                    this.offset += this.speed;
-                    const wave = Math.sin(this.offset) * 20;
-                    const tilt = (this.x - width / 2) * (gravityX / 200);
-                    this.currentY = this.baseY + wave + tilt;
-                }
-                draw() {
-                    const grad = ctx.createRadialGradient(this.x, this.currentY, 0, this.x, this.currentY, this.radius);
-                    grad.addColorStop(0, '#D4AF37');
-                    grad.addColorStop(1, '#2a0055');
-                    ctx.fillStyle = grad;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.currentY, this.radius, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            const createParticles = () => {
-                particles = [];
-                const count = 25;
-                for (let i = 0; i <= count; i++) {
-                    const x = (width / count) * i;
-                    particles.push(new LiquidParticle(x, height * 0.5));
-                }
-            };
-
-            const animate = () => {
-                ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#2a0055';
-                ctx.fillRect(0, height * 0.5, width, height * 0.5);
-                particles.forEach((p) => {
-                    p.update();
-                    p.draw();
-                });
-                requestAnimationFrame(animate);
-            };
-
-            window.addEventListener('resize', () => {
-                resize();
-                createParticles();
-            });
-            window.addEventListener('mousemove', (e) => {
-                targetGravityX = (e.clientX / window.innerWidth - 0.5) * 40;
-            });
-            window.addEventListener('deviceorientation', (e) => {
-                if (e.gamma) {
-                    targetGravityX = e.gamma * 1.5;
-                }
-            });
-
-            resize();
-            createParticles();
-            animate();
-        }
-    </script>
-    <script>
         // button-tilt-hover
         (() => {
             const buttons = Array.from(document.querySelectorAll('.mardi-gras-button, .btn-3d, #menu-categories button'));
@@ -814,6 +699,9 @@
     </script>
 </body>
 </html>
+
+
+
 
 
 
