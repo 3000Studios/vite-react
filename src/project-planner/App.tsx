@@ -51,6 +51,7 @@ const App: React.FC = () => {
 
   const handleCreateTask = (newTask: Partial<ProjectTask>) => {
     const task: ProjectTask = {
+      // eslint-disable-next-line react-hooks/purity
       id: Date.now().toString(),
       title: newTask.title || 'New Work Order',
       description: newTask.description || '',
