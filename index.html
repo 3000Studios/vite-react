@@ -1461,6 +1461,46 @@
         .flash-footer .footer-bottom { position: relative; z-index: 2; }
         
     
+            /* Mobile layout overrides */
+        @media (max-width: 768px) {
+            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
+            nav .h-24 { height: 4.5rem !important; }
+            nav .h-\[5rem\] { height: 4.5rem !important; }
+            #mobile-menu {
+                max-height: calc(100vh - 4.5rem);
+                overflow-y: auto;
+            }
+            #mobile-menu a { font-size: 0.95rem; }
+            .hero-main-title {
+                font-size: clamp(2.2rem, 12vw, 4rem);
+                line-height: 0.95;
+            }
+            .hero-subtitle,
+            .hero-lead,
+            .hero-copy {
+                font-size: 0.95rem;
+            }
+            #menu-grid { grid-template-columns: 1fr !important; }
+            .gilded-card {
+                width: 100%;
+                max-width: 360px;
+                height: auto;
+            }
+            .gilded-card .image-box { height: 200px; }
+            .gilded-card .content { padding: 20px; }
+            .gilded-card .title { font-size: 1.6rem; }
+            .gilded-card .description { font-size: 0.85rem; }
+            #menu-categories { gap: 10px; padding-bottom: 1rem; }
+            #menu-categories button { white-space: nowrap; }
+            .flash-footer { min-height: 420px; }
+            .footer-top { flex-direction: column; gap: 16px; }
+            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+            .footer-underlay { width: 100%; }
+            .brand-rig { transform: scale(0.7); transform-origin: center top; }
+            .map-embed iframe { height: 220px; }
+            .footer-card { padding: 16px; }
+            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
@@ -2428,6 +2468,46 @@
             transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
         }
     
+            /* Mobile layout overrides */
+        @media (max-width: 768px) {
+            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
+            nav .h-24 { height: 4.5rem !important; }
+            nav .h-\[5rem\] { height: 4.5rem !important; }
+            #mobile-menu {
+                max-height: calc(100vh - 4.5rem);
+                overflow-y: auto;
+            }
+            #mobile-menu a { font-size: 0.95rem; }
+            .hero-main-title {
+                font-size: clamp(2.2rem, 12vw, 4rem);
+                line-height: 0.95;
+            }
+            .hero-subtitle,
+            .hero-lead,
+            .hero-copy {
+                font-size: 0.95rem;
+            }
+            #menu-grid { grid-template-columns: 1fr !important; }
+            .gilded-card {
+                width: 100%;
+                max-width: 360px;
+                height: auto;
+            }
+            .gilded-card .image-box { height: 200px; }
+            .gilded-card .content { padding: 20px; }
+            .gilded-card .title { font-size: 1.6rem; }
+            .gilded-card .description { font-size: 0.85rem; }
+            #menu-categories { gap: 10px; padding-bottom: 1rem; }
+            #menu-categories button { white-space: nowrap; }
+            .flash-footer { min-height: 420px; }
+            .footer-top { flex-direction: column; gap: 16px; }
+            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+            .footer-underlay { width: 100%; }
+            .brand-rig { transform: scale(0.7); transform-origin: center top; }
+            .map-embed iframe { height: 220px; }
+            .footer-card { padding: 16px; }
+            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
+        }
     </style>
 
     <script>
@@ -2708,6 +2788,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
