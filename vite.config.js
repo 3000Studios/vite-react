@@ -15,6 +15,12 @@ export default defineConfig({
         catering: resolve(rootDir, "catering.html"),
         "project-planner": resolve(rootDir, "project-planner.html"),
       },
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          recharts: ['recharts'],
+        },
+      },
     },
   },
 });
