@@ -1,8 +1,6 @@
 import nodemailer from 'nodemailer';
 import twilio from 'twilio';
 
-let cachedTransporter = null;
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -61,20 +59,20 @@ END:VCALENDAR`;
     // 3. Send Emails (Owner & Customer)
     if (EMAIL_USER && EMAIL_PASS) {
       try {
-        if (!cachedTransporter) {
-          const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: EMAIL_USER,
-              pass: EMAIL_PASS,
-            },
-          });
-          cachedTransporter = transporter;
-        }
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: EMAIL_USER,
+            pass: EMAIL_PASS,
+          },
+        });
+
+        // Verify connection configuration
+        await transporter.verify();
 
         // Email to Owner and Customer (Parallel)
         await Promise.all([
-          cachedTransporter.sendMail({
+          transporter.sendMail({
             from: `"Cajun Menu Bot" <${EMAIL_USER}>`,
             to: OWNER_EMAIL,
             subject: `🍽️ New Reservation: ${name} - ${date} @ ${time}`,
@@ -87,7 +85,7 @@ END:VCALENDAR`;
               },
             ],
           }),
-          cachedTransporter.sendMail({
+          transporter.sendMail({
             from: `"The Cajun Menu" <${EMAIL_USER}>`,
             to: email,
             subject: `✅ Reservation Confirmed: The Cajun Menu`,
@@ -126,19 +124,19 @@ END:VCALENDAR`;
             messageOptions.from = TWILIO_PHONE;
         }
 
-        // SMS to Owner & Customer (Parallel)
-        await Promise.all([
-          client.messages.create({
-            ...messageOptions,
-            body: `🔥 New Reservation: ${name} (${guests} ppl) @ ${date} ${time}. Phone: ${phone}`,
-            to: OWNER_PHONE,
-          }),
-          client.messages.create({
-            ...messageOptions,
-            body: `✅ The Cajun Menu: Your reservation for ${guests} on ${date} at ${time} is confirmed! See you soon! 🐊`,
-            to: customerPhone,
-          })
-        ]);
+        // SMS to Owner
+        await client.messages.create({
+          ...messageOptions,
+          body: `🔥 New Reservation: ${name} (${guests} ppl) @ ${date} ${time}. Phone: ${phone}`,
+          to: OWNER_PHONE,
+        });
+
+        // SMS to Customer
+        await client.messages.create({
+          ...messageOptions,
+          body: `✅ The Cajun Menu: Your reservation for ${guests} on ${date} at ${time} is confirmed! See you soon! 🐊`,
+          to: customerPhone,
+        });
 
         console.log('SMS sent successfully');
         results.sms.success = true;

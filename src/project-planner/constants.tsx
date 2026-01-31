@@ -1,96 +1,76 @@
 
-import { ShoppingItem } from './types';
+import { ProjectTask, ShoppingItem } from './types';
 
 export const COLORS = {
-  brand: {
-    primary: '#6366f1',
-    accent: '#f59e0b',
-    danger: '#ef4444',
-    success: '#10b981'
+  purple: {
+    light: '#a855f7',
+    DEFAULT: '#9333ea',
+    dark: '#7e22ce',
+  },
+  green: {
+    light: '#4ade80',
+    DEFAULT: '#22c55e',
+    dark: '#16a34a',
+  },
+  gold: {
+    light: '#fbbf24',
+    DEFAULT: '#f59e0b',
+    dark: '#d97706',
   }
 };
 
-export const INITIAL_TASKS: any[] = [];
+// No initial dummy tasks to avoid confusion
+export const INITIAL_TASKS: ProjectTask[] = [];
 
+// Research-based National Average Benchmarks for high-quality implementations.
+// Labels added to description for absolute clarity.
 export const SHOPPING_LIST_ITEMS: ShoppingItem[] = [
-  { 
-    id: 's1', 
-    title: 'Google Business Profile (GBP) Sync', 
-    description: 'Connects the GMB API to your site. Syncs 5-star reviews, live store photos, and updated hours automatically.', 
-    benefit: 'Boosts local SEO trust and reduces customer friction regarding store availability.',
-    effort: 'Mid-Tier Integration (12h)',
-    category: 'Marketing', 
-    isChecked: false,
-    previewType: 'gbp'
+  {
+    id: 's1',
+    title: 'Online Ordering Integration',
+    description: '[NATIONAL AVERAGE BENCHMARK] Professional setup usually ranges $2,000 - $5,000. This is NOT a final quote.',
+    cost: 3500,
+    category: 'Feature',
+    isChecked: false
   },
-  { 
-    id: 's2', 
-    title: 'Local SEO Authority Pack', 
-    description: 'Deep Schema.org markup for restaurants, geo-tagged image metadata, and local backlink infrastructure.', 
-    benefit: 'Dominates "Cajun Food" searches in a 15-mile radius, bypassing third-party platform ads.',
-    effort: 'Continuous Optimization (20h)',
-    category: 'Marketing', 
-    isChecked: false,
-    previewType: 'seo'
+  {
+    id: 's2',
+    title: 'Reservation Booking System',
+    description: '[NATIONAL AVERAGE BENCHMARK] Professional setup usually ranges $800 - $2,500. This is NOT a final quote.',
+    cost: 1200,
+    category: 'Feature',
+    isChecked: false
   },
-  { 
-    id: 's3', 
-    title: 'Interactive Visual Menu UX', 
-    description: 'Replaces static PDFs with a high-impact, filterable menu with ingredient tooltips and allergen filters.', 
-    benefit: 'Improves mobile conversion by 40% compared to traditional PDF menu downloads.',
-    effort: 'Front-End Engineering (30h)',
-    category: 'Design', 
-    isChecked: false,
-    previewType: 'menu'
+  {
+    id: 's3',
+    title: 'Advanced SEO & Analytics',
+    description: '[NATIONAL AVERAGE BENCHMARK] Initial audit and setup usually ranges $1,500 - $4,000. This is NOT a final quote.',
+    cost: 2500,
+    category: 'Marketing',
+    isChecked: false
   },
-  { 
-    id: 's4', 
-    title: 'AI Chef Recommendations', 
-    description: 'An intelligent recommendation layer that suggests sides and pairings based on user browsing habits.', 
-    benefit: 'Increases Average Order Value (AOV) by intelligently upselling high-margin items.',
-    effort: 'Advanced Technical (45h)',
-    category: 'Technical', 
-    isChecked: false,
-    previewType: 'ai'
+  {
+    id: 's4',
+    title: 'Mobile App Store Deployment',
+    description: '[NATIONAL AVERAGE BENCHMARK] Custom PWA/Store presence usually ranges $3,000 - $7,000. This is NOT a final quote.',
+    cost: 4500,
+    category: 'Technical',
+    isChecked: false
   },
-  { 
-    id: 's5', 
-    title: 'Online Catering Portal', 
-    description: 'A dedicated B2B flow for bulk orders, deposit payments, and event calendar management.', 
-    benefit: 'Opens new revenue streams for corporate events and large-scale gatherings.',
-    effort: 'Full-Stack Development (60h)',
-    category: 'Feature', 
-    isChecked: false,
-    previewType: 'catering'
+  {
+    id: 's5',
+    title: 'Visual Identity Refresh',
+    description: '[NATIONAL AVERAGE BENCHMARK] Full brand alignment usually ranges $2,000 - $6,000. This is NOT a final quote.',
+    cost: 3000,
+    category: 'Design',
+    isChecked: false
   },
-  { 
-    id: 's6', 
-    title: 'Automated SMS Alerts', 
-    description: 'Twilio integration for order status updates, delivery tracking, and loyalty reminders.', 
-    benefit: 'Reduces "where is my food" support calls and increases customer retention.',
-    effort: 'API Integration (15h)',
-    category: 'Feature', 
-    isChecked: false,
-    previewType: 'sms'
-  },
-  { 
-    id: 's7', 
-    title: 'Wholesale Partner Portal', 
-    description: 'Gated access for wholesale distributors to order bulk Cajun ingredients at tiered pricing.', 
-    benefit: 'Streamlines supply chain and allows the brand to scale beyond restaurant walls.',
-    effort: 'Architectural Project (80h)',
-    category: 'Feature', 
-    isChecked: false,
-    previewType: 'wholesale'
-  },
-  { 
-    id: 's8', 
-    title: 'Mobile App Shell (PWA)', 
-    description: 'Converts the site into a Progressive Web App that users can "install" on their phone home screens.', 
-    benefit: 'Zero App Store fees while maintaining a permanent presence on the user\'s mobile device.',
-    effort: 'Infrastructure (25h)',
-    category: 'Technical', 
-    isChecked: false,
-    previewType: 'loyalty'
+  {
+    id: 's6',
+    title: 'Accessibility Compliance (WCAG)',
+    description: '[NATIONAL AVERAGE BENCHMARK] Enterprise-level audit and fix usually ranges $1,000 - $3,500. This is NOT a final quote.',
+    cost: 1800,
+    category: 'Design',
+    isChecked: false
   }
 ];

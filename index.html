@@ -77,693 +77,11 @@
     }
     </script>
 
-    <script type="module" src="/src/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Rye&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=JetBrains+Mono:wght@300;500&family=Montserrat:wght@300;600&display=swap');
-        :root {
-            --gold-metallic: #D4AF37;
-            --gold-light: #fdf5b4;
-            --gold-dark: #8b6e00;
-            --purple: #9D50BB;
-            --green: #6EBB87;
-            --blue: #4A90E2;
-            --mg-purple: #6A0DAD;
-            --mg-gold: #FFD700;
-            --mg-green: #00A86B;
-        }
-
-        /* --- Metallic Gold Overrides (replace orange/amber/yellow) --- */
-        .text-amber-400,
-        .text-amber-500,
-        .text-amber-600,
-        .text-yellow-400,
-        .text-yellow-500,
-        .text-yellow-600,
-        .text-orange-400,
-        .text-orange-500,
-        .text-orange-600 {
-            color: var(--gold-metallic) !important;
-        }
-        .bg-amber-400,
-        .bg-amber-500,
-        .bg-amber-600,
-        .bg-yellow-400,
-        .bg-yellow-500,
-        .bg-yellow-600,
-        .bg-orange-400,
-        .bg-orange-500,
-        .bg-orange-600 {
-            background-color: var(--gold-metallic) !important;
-        }
-        .border-amber-400,
-        .border-amber-500,
-        .border-amber-600,
-        .border-yellow-400,
-        .border-yellow-500,
-        .border-yellow-600,
-        .border-orange-400,
-        .border-orange-500,
-        .border-orange-600 {
-            border-color: var(--gold-metallic) !important;
-        }
-        .from-amber-400,
-        .from-amber-500,
-        .from-amber-600,
-        .from-yellow-400,
-        .from-yellow-500,
-        .from-orange-400,
-        .from-orange-500 {
-            --tw-gradient-from: var(--gold-metallic) !important;
-            --tw-gradient-to: rgba(212, 175, 55, 0) !important;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-        }
-        .to-amber-400,
-        .to-amber-500,
-        .to-amber-600,
-        .to-yellow-400,
-        .to-yellow-500,
-        .to-orange-400,
-        .to-orange-500,
-        .to-orange-600 {
-            --tw-gradient-to: var(--gold-metallic) !important;
-        }
-        .via-amber-500,
-        .via-yellow-500,
-        .via-orange-500 {
-            --tw-gradient-stops: var(--tw-gradient-from), var(--gold-metallic), var(--tw-gradient-to) !important;
-        }
-
-        /* --- Vapor Nav Bloom Effect --- */
-        .vapor-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .vapor-item {
-            position: relative;
-            padding: 12px 18px;
-            color: rgba(255, 255, 255, 0.55);
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            text-decoration: none;
-            overflow: visible;
-            transition: color 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.7rem;
-        }
-        .vapor-item .bloom {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: var(--c);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(20px);
-            opacity: 0;
-            transition: all 0.6s ease-out;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .vapor-item:hover {
-            color: #fff;
-        }
-        .vapor-item:hover .bloom {
-            width: 150px;
-            height: 150px;
-            opacity: 0.7;
-            filter: blur(40px);
-        }
-        .vapor-item span {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- Mardi Gras Button Style --- */
-        .mardi-gras-button {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            background: linear-gradient(90deg,
-                #4b0082 0%,
-                #00ab66 25%,
-                #9d50bb 50%,
-                #00ab66 75%,
-                #4b0082 100%);
-            background-size: 200% auto;
-            animation: shimmer-move 6s linear infinite;
-            border-radius: 10px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            box-shadow:
-                0 0 0 0 transparent,
-                0 15px 30px rgba(0, 0, 0, 0.6),
-                inset 0 0 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-            user-select: none;
-        }
-        .mardi-gras-button::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18l2.5-1.5L20 15l-2.5 1.5L20 18v2.5z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            pointer-events: none;
-            border-radius: 10px;
-        }
-        .mardi-gras-button .nola-symbol {
-            position: absolute;
-            top: -32px;
-            left: 50%;
-            transform: translateX(-50%) scale(0) translateY(20px);
-            opacity: 0;
-            font-size: 2rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-            color: var(--gold-light);
-            filter: drop-shadow(0 0 10px var(--gold-metallic));
-        }
-        .mardi-gras-button .label-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .mardi-gras-button .mono-data {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            color: var(--gold-light);
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-        .mardi-gras-button:hover {
-            transform: translateY(-5px);
-            box-shadow:
-                0 0 20px 2px var(--gold-light),
-                0 12px 0 0 var(--gold-dark),
-                0 20px 40px rgba(0, 0, 0, 0.8);
-            filter: brightness(1.2);
-        }
-        .mardi-gras-button:hover .nola-symbol {
-            opacity: 1;
-            transform: translateX(-50%) scale(1.2) translateY(0);
-        }
-        .mardi-gras-button:active {
-            transform: translateY(4px);
-            box-shadow:
-                0 0 10px 1px var(--gold-light),
-                0 4px 0 0 var(--gold-dark),
-                0 10px 20px rgba(0, 0, 0, 0.4);
-        }
-        @keyframes shimmer-move {
-            0% { background-position: 200% 0; }
-            100% { background-position: 0% 0; }
-        }
-
-        /* --- Prismatic Hero --- */
-        .hero-prismatic {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-        }
-        .hero-data-header {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0.4rem;
-            text-transform: uppercase;
-            color: var(--gold-metallic);
-            margin-bottom: 1.5rem;
-            opacity: 0.85;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            transform: translateY(20px);
-            animation: slideIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .hero-main-title {
-            font-size: clamp(3rem, 10vw, 9rem);
-            line-height: 0.9;
-            font-weight: 900;
-            text-transform: uppercase;
-            background: linear-gradient(180deg, #6A0DAD 0%, #00A86B 35%, #FFD700 65%, #4A90E2 100%);
-            background-size: 200% 300%;
-            background-position: 0% 0%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textScroll 16s linear infinite, scaleIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            position: relative;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
-            cursor: pointer;
-        }
-        .hero-main-title::after {
-            content: "THE CAJUN MENU";
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-            -webkit-text-fill-color: transparent;
-            transform: translate(8px, 8px);
-        }
-        @keyframes textScroll {
-            0% { background-position: 50% 0%; }
-            50% { background-position: 50% 100%; }
-            100% { background-position: 50% 0%; }
-        }
-        .hero-metrics {
-            margin-top: 2.5rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-family: 'Space Mono', monospace;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-        }
-        .hero-metric-label {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-        }
-        .hero-metric-value {
-            font-size: 0.9rem;
-            color: #00AB66;
-        }
-        .hero-canvas {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .hero-canvas canvas {
-            width: 100%;
-            height: 100%;
-        }
-        .hero-parallax-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, transparent 0%, #0a0a0c 90%);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* --- Beaded Logo Rig --- */
-        .brand-rig {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0 1rem;
-        }
-        .brand-spacer {
-            width: 1rem;
-        }
-        .bead-suspension {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform-origin: top center;
-            cursor: pointer;
-        }
-        .bead-string {
-            width: 2px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.15);
-            position: relative;
-        }
-        .brand-bead {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow:
-                inset -2px -2px 4px rgba(0, 0, 0, 0.4),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.4);
-        }
-        .bead-purple { background: #6A0DAD; }
-        .bead-gold { background: #FFD700; }
-        .bead-green { background: #00A86B; }
-        .brand-char {
-            margin-top: -4px;
-            font-size: 1.5rem;
-            line-height: 1;
-            background: linear-gradient(120deg, #6A0DAD, #00A86B, #D4AF37, #4A90E2, #6A0DAD);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-            user-select: none;
-            transition: filter 0.3s ease;
-            animation: brandHue 10s ease-in-out infinite;
-        }
-        @keyframes brandHue {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- Featured Menu Cards --- */
-        .featured-menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            justify-items: center;
-        }
-        .gilded-card {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-            height: 540px;
-            background: rgba(18, 12, 24, 0.55);
-            border-radius: 24px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .gilded-card.featured-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .gilded-card::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: conic-gradient(from 0deg, transparent 0%, #D4AF37 25%, transparent 50%, #004B23 75%, transparent 100%);
-            z-index: -1;
-            border-radius: 26px;
-            animation: rotateGlow 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .gilded-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 45%);
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 2;
-        }
-        .gilded-card:hover {
-            transform: translateY(-16px) scale(1.015);
-            box-shadow:
-                0 30px 70px rgba(0, 0, 0, 0.65),
-                0 0 24px rgba(212, 175, 55, 0.25),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-        }
-        .gilded-card:hover .velvet-overlay { opacity: 0.55; }
-        .gilded-card:hover::before { opacity: 1; }
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .velvet-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, rgba(0, 0, 0, 0.5) 100%);
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.7;
-            transition: opacity 0.4s ease;
-        }
-        .image-box {
-            position: relative;
-            width: 100%;
-            height: 0;
-            overflow: hidden;
-            background: #000;
-            transition: height 0.5s ease;
-        }
-        .food-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(1.2) contrast(1.1);
-            opacity: 0;
-            transform: scale(1.1) translateY(20px);
-            transition: opacity 0.5s ease, transform 0.6s ease;
-        }
-        .gilded-card.reveal .image-box { height: 60%; }
-        .gilded-card.reveal .food-img { opacity: 1; transform: scale(1) translateY(0); }
-        .content {
-            padding: 30px;
-            position: relative;
-            z-index: 2;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-        .category {
-            font-family: 'JetBrains Mono', monospace;
-            color: #004B23;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 8px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: popUp 0.8s ease forwards 0.5s;
-        }
-        .category:empty { display: none; }
-        .title {
-            font-family: 'Playfair Display', serif;
-            color: #D4AF37;
-            font-size: 2.2rem;
-            margin: 0;
-            line-height: 1;
-            font-style: italic;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: popUp 0.8s ease forwards 0.7s;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        .description {
-            font-family: 'Montserrat', sans-serif;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-top: 15px;
-            font-weight: 300;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: popUp 0.8s ease forwards 0.9s;
-        }
-        .description:empty { display: none; }
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            opacity: 0;
-            animation: popUp 0.8s ease forwards 1.1s;
-        }
-        .price {
-            font-family: 'JetBrains Mono', monospace;
-            color: #fff;
-            font-weight: 500;
-            font-size: 1.2rem;
-        }
-        .order-btn {
-            background: transparent;
-            border: 1px solid #D4AF37;
-            color: #D4AF37;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        .order-btn:hover {
-            background: #D4AF37;
-            color: #1a0224;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-        }
-        @keyframes popUp {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        .mask-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            fill: #4B0082;
-            filter: drop-shadow(0 0 5px #4B0082);
-            opacity: 0.4;
-            z-index: 10;
-        }
-        .noise {
-            position: absolute;
-            inset: 0;
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: 5;
-        }
-        .filigree-layer {
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 56c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2zm-28-28c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm56 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z' fill='%23ffd700' fill-opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        .image-container {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-            background: #1a1a1a;
-        }
-
-        .mardi-gras-card {
-            position: relative;
-            width: 100%;
-            height: 520px;
-            background: #121212;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        .mardi-gras-card::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(45deg, #4B0082, #FFD700, #00AB66, #4B0082);
-            background-size: 400% 400%;
-            opacity: 0.15;
-            filter: blur(10px);
-        }
-        .mardi-gras-card.reveal .card-img,
-        .mardi-gras-card.reveal .card-meta,
-        .mardi-gras-card.reveal .card-title,
-        .mardi-gras-card.reveal .card-desc,
-        .mardi-gras-card.reveal .card-price { opacity: 1; transform: translate(0); }
-        .card-img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transform: scale(1.2) translateY(30px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .card-meta { opacity: 0; transform: translateY(20px); transition: all 0.8s; color: #00AB66; }
-        .card-title { opacity: 0; transform: translateY(20px); transition: all 0.8s; color: #fff; font-family: 'Cinzel', serif; }
-        .card-desc { opacity: 0; transform: translateY(20px); transition: all 0.8s; color: #a0a0a0; }
-        .card-price { opacity: 0; transform: translateX(10px); transition: all 0.8s; color: #FFD700; }
-
-        .aurora-card {
-            width: 100%;
-            height: 520px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-            cursor: pointer;
-        }
-        .aurora-card:hover { transform: translateY(-20px) rotateX(8deg); }
-        .aurora-glow {
-            position: absolute;
-            inset: 0;
-            border-radius: 40px;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-            transition: 0.5s;
-        }
-        .aurora-card:hover .aurora-glow {
-            box-shadow: 0 0 40px #7b2cbf, inset 0 0 20px #2e8b57;
-        }
-        .aurora-plate {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
-            transition: 0.8s;
-        }
-        .aurora-food {
-            width: 180px;
-            height: 180px;
-            background: linear-gradient(45deg, #7b2cbf, #2e8b57);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            transform: scale(0.6) translateZ(-50px);
-            opacity: 0;
-            transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        }
-        .aurora-img {
-            width: 220px;
-            height: 180px;
-            border-radius: 18px;
-            object-fit: cover;
-            opacity: 0;
-            transform: scale(0.6) translateZ(-50px);
-            transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            margin-bottom: 20px;
-        }
-        .aurora-card:hover .aurora-food {
-            opacity: 1;
-            transform: scale(1) translateZ(60px);
-        }
-        .aurora-card:hover .aurora-img {
-            opacity: 1;
-            transform: scale(1) translateZ(60px);
-        }
-        .aurora-text {
-            color: #fff4e0;
-            text-align: center;
-            opacity: 0;
-            transform: translateZ(-30px);
-            transition: 0.6s ease;
-        }
-        .aurora-card:hover .aurora-text {
-            opacity: 1;
-            transform: translateZ(40px);
-        }
         /* --- Core Typography & Reset --- */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -779,11 +97,11 @@
         /* --- 3D Button Styles --- */
         .btn-3d {
             border-radius: 1rem; /* Squircle-ish */
-            box-shadow: 0 6px 0 #8b6e00; /* Metallic gold shadow */
+            box-shadow: 0 6px 0 rgb(180, 83, 9); /* Darker amber/red shadow */
             transition: all 0.1s;
         }
         .btn-3d:active {
-            box-shadow: 0 0 0 #8b6e00;
+            box-shadow: 0 0 0 rgb(180, 83, 9);
             transform: translateY(6px);
         }
         
@@ -847,7 +165,7 @@
 
         .glass-card:hover {
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
-            border-color: rgba(255, 215, 0, 0.3);
+            rgba(255, 215, 0, 0.3)
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.1);
         }
@@ -1106,401 +424,6 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
-        /* --- Liquid Footer --- */
-        .flash-footer {
-            position: relative;
-            width: 100%;
-            min-height: 460px;
-            background: #0a0a0a;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }.footer-content {
-            position: relative;
-            z-index: 10;
-            padding: 60px 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .footer-top {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-            gap: 40px;
-            align-items: start;
-        }
-        .footer-visit {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 28px;
-            align-items: start;
-            margin-top: 24px;
-        }
-        .footer-visit .visit-panel {
-            background: rgba(8, 10, 20, 0.8);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 28px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.45);
-        }
-        .footer-visit .visit-panel h2 {
-            font-size: 2.6rem;
-            line-height: 1;
-        }
-        .footer-visit .visit-panel h2 span {
-            color: var(--gold-metallic);
-            text-decoration: underline;
-            text-decoration-thickness: 4px;
-            text-underline-offset: 8px;
-        }
-        .footer-visit .combo-card {
-            margin-top: 24px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        .footer-visit .footer-location-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .footer-visit .footer-location-card .map-underlay {
-            position: absolute;
-            inset: 0;
-            opacity: 0.35;
-            pointer-events: none;
-            filter: saturate(1.1) contrast(1.05);
-        }
-        .footer-visit .footer-location-card .map-underlay iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        .footer-visit .footer-location-card .content-layer {
-            position: relative;
-            z-index: 2;
-        }
-        .footer-visit .combo-card .footer-card-text {
-            line-height: 1.6;
-        }
-        .footer-visit .map-embed {
-            width: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .footer-visit .map-embed iframe { height: 220px; }
-        .footer-visit .hours-card {
-            background: rgba(10, 12, 24, 0.85);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 22px;
-            padding: 24px;
-        }
-        .reserve-landscape {
-            display: grid;
-            grid-template-columns: 1.2fr 1.8fr;
-            gap: 20px;
-            align-items: start;
-        }
-        .reserve-landscape .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-        .reserve-landscape .form-grid-full {
-            grid-column: 1 / -1;
-        }
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .footer-right {
-            display: flex;
-            justify-content: flex-end;
-        }
-        .social-cluster {
-            display: flex;
-            gap: 24px;
-        }
-        .social-center {
-            justify-content: center;
-            width: 100%;
-            margin-top: 0;
-        }
-        .social-btn {
-            width: 70px;
-            height: 70px;
-            background: #151515;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
-        }
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
-            border-radius: 20px;
-            opacity: 0.5;
-        }
-        .social-btn svg {
-            width: 30px;
-            height: 30px;
-            fill: #fff;
-            transform: translateZ(20px);
-            transition: transform 0.3s ease;
-        }
-        .social-btn:hover {
-            transform: translateY(-12px) rotateX(12deg) rotateY(-12deg);
-            background: #D4AF37;
-            box-shadow: 0 25px 40px rgba(212,175,55,0.35), inset 0 1px 2px rgba(255,255,255,0.5);
-        }
-        .social-btn:hover svg {
-            transform: translateZ(40px) scale(1.1);
-        }
-        .order-system {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 16px;
-        }
-        .footer-card {
-            background: rgba(12, 12, 16, 0.7);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px;
-            padding: 20px 22px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-        }
-        .footer-card-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(212, 175, 55, 0.2);
-            color: #D4AF37;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .footer-card-title {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: #fff;
-            margin: 0 0 6px;
-            letter-spacing: 0.02em;
-        }
-        .footer-card-text {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-        .order-label {
-            font-family: 'Space Mono', monospace;
-            color: rgba(255,255,255,0.4);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .map-embed {
-            width: 100%;
-            max-width: 520px;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .map-embed iframe {
-            width: 100%;
-            height: 180px;
-            border: 0;
-        }
-        .footer-bottom {
-            position: relative;
-            z-index: 10;
-            padding: 20px 40px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Space Mono', monospace;
-            font-size: 10px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 1px;
-            gap: 20px;
-            flex-wrap: wrap;
-        }@media (max-width: 768px) {
-            .footer-content { padding: 40px 20px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-right { justify-content: center; }
-            .order-system { align-items: center; }
-            .footer-visit { grid-template-columns: 1fr; }
-            .reserve-landscape { grid-template-columns: 1fr; }
-            .reserve-landscape .form-grid { grid-template-columns: 1fr; }
-        }
-            /* Global button palette override */
-        :root {
-            --btn-purple: #5b1bb8;
-            --btn-purple-dark: #3a0f7a;
-            --btn-text-gold: #d4af37;
-            --btn-shadow-green: rgba(0, 171, 102, 0.6);
-        }
-        .mardi-gras-button,
-        .btn-3d,
-        button {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            animation: none !important;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 22px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.45) !important;
-        }
-        .mardi-gras-button::before { opacity: 0.25; }
-        .mardi-gras-button:hover {
-            box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 28px var(--btn-shadow-green) !important;
-            filter: brightness(1.12);
-            animation: shimmer-move 6s linear infinite;
-        }
-        .mardi-gras-button:active {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.45), 0 0 16px var(--btn-shadow-green) !important;
-        }
-        .btn-3d {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 20px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.35) !important;
-        }
-        .btn-3d:active {
-            box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 12px var(--btn-shadow-green) !important;
-        }
-        button[class*="bg-amber"],
-        button[class*="bg-yellow"],
-        button[class*="bg-orange"],
-        a[class*="bg-amber"],
-        a[class*="bg-yellow"],
-        a[class*="bg-orange"] {
-            background-color: var(--btn-purple) !important;
-            color: var(--btn-text-gold) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 18px var(--btn-shadow-green) !important;
-        }
-        button[class*="from-amber"],
-        button[class*="from-yellow"],
-        button[class*="from-orange"],
-        button[class*="to-amber"],
-        button[class*="to-yellow"],
-        button[class*="to-orange"],
-        button[class*="to-red"],
-        a[class*="from-amber"],
-        a[class*="from-yellow"],
-        a[class*="from-orange"],
-        a[class*="to-amber"],
-        a[class*="to-yellow"],
-        a[class*="to-orange"],
-        a[class*="to-red"] {
-            --tw-gradient-from: var(--btn-purple) !important;
-            --tw-gradient-to: var(--btn-purple-dark) !important;
-            --tw-gradient-stops: var(--btn-purple), var(--btn-purple-dark) !important;
-        }
-            /* mono-data-hidden */
-        .mardi-gras-button .label {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button .mono-data {
-            display: none !important;
-            animation: none !important;
-        }
-            /* button-hover-tilt */
-        .mardi-gras-button,
-        .btn-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
-        }
-        .mardi-gras-button:hover,
-        .btn-3d:hover {
-            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
-            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
-            filter: brightness(1.15);
-        }
-        .mardi-gras-button:active,
-        .btn-3d:active {
-            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
-        }
-    
-        .flash-footer::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='220' viewBox='0 0 1400 220'%3E%3Crect width='1400' height='220' fill='%2308080b'/%3E%3Cg opacity='0.95'%3E%3Cline x1='80' y1='0' x2='80' y2='120' stroke='%23f2d050' stroke-width='2'/%3E%3Ccircle cx='80' cy='30' r='6' fill='%239d50bb'/%3E%3Ccircle cx='80' cy='52' r='6' fill='%23f2d050'/%3E%3Ccircle cx='80' cy='74' r='6' fill='%2300ab66'/%3E%3Ccircle cx='80' cy='96' r='6' fill='%239d50bb'/%3E%3Cline x1='140' y1='0' x2='140' y2='120' stroke='%2300ab66' stroke-width='2'/%3E%3Ccircle cx='140' cy='30' r='6' fill='%23f2d050'/%3E%3Ccircle cx='140' cy='52' r='6' fill='%2300ab66'/%3E%3Ccircle cx='140' cy='74' r='6' fill='%239d50bb'/%3E%3Ccircle cx='140' cy='96' r='6' fill='%23f2d050'/%3E%3Cline x1='200' y1='0' x2='200' y2='120' stroke='%239d50bb' stroke-width='2'/%3E%3Ccircle cx='200' cy='30' r='6' fill='%2300ab66'/%3E%3Ccircle cx='200' cy='52' r='6' fill='%239d50bb'/%3E%3Ccircle cx='200' cy='74' r='6' fill='%23f2d050'/%3E%3Ccircle cx='200' cy='96' r='6' fill='%2300ab66'/%3E%3C/g%3E%3Ctext x='700' y='190' text-anchor='middle' font-family='Cinzel, serif' font-size='44' fill='%23d4af37' letter-spacing='10'%3ETHE%20CAJUN%20MENU%3C/text%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
-            opacity: 0.35;
-            filter: saturate(1.1);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .flash-footer .footer-content,
-        .flash-footer .footer-bottom { position: relative; z-index: 2; }
-        
-    
-            /* Mobile layout overrides */
-        @media (max-width: 768px) {
-            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
-            nav .h-24 { height: 4.5rem !important; }
-            nav .h-\[5rem\] { height: 4.5rem !important; }
-            #mobile-menu {
-                max-height: calc(100vh - 4.5rem);
-                overflow-y: auto;
-            }
-            #mobile-menu a { font-size: 0.95rem; }
-            .hero-main-title {
-                font-size: clamp(2.2rem, 12vw, 4rem);
-                line-height: 0.95;
-            }
-            .hero-subtitle,
-            .hero-lead,
-            .hero-copy {
-                font-size: 0.95rem;
-            }
-            #menu-grid { grid-template-columns: 1fr !important; }
-            .gilded-card {
-                width: 100%;
-                max-width: 360px;
-                height: auto;
-            }
-            .gilded-card .image-box { height: 200px; }
-            .gilded-card .content { padding: 20px; }
-            .gilded-card .title { font-size: 1.6rem; }
-            .gilded-card .description { font-size: 0.85rem; }
-            #menu-categories { gap: 10px; padding-bottom: 1rem; }
-            #menu-categories button { white-space: nowrap; }
-            .flash-footer { min-height: 420px; }
-            .footer-top { flex-direction: column; gap: 16px; }
-            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
-            .footer-underlay { width: 100%; }
-            .brand-rig { transform: scale(0.7); transform-origin: center top; }
-            .map-embed iframe { height: 220px; }
-            .footer-card { padding: 16px; }
-            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
-        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
@@ -1508,23 +431,21 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
-                </a>
+            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]"> <!-- Reduced height on mobile -->
+                <div id="mardi-gras-trigger" class="flex-shrink-0 flex items-center group cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <span class="text-xl">⚜️</span>
+                    </div>
+                    <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-yellow-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
                 </div>
-                <div class="hidden md:flex items-center vapor-nav">
-                    <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
-                    <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
-                    <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
-                    <a href="catering.html" class="vapor-item" style="--c: var(--blue)"><div class="bloom"></div><span>Catering</span></a>
-                    <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
-                    <a href="project-planner.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Planner</span></a>
-                    <a href="book-a-table.html" class="mardi-gras-button">
-                        <div class="nola-symbol">⚜</div>
-                        <div class="label-container">
-                            <span class="label">Book a Table</span>
-                            <span class="mono-data">504.NOLA.2024</span>
-                        </div>
-                    </a>
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="#home" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Story</a>
+                    <a href="#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Delivery</a>
+                    <a href="project-planner.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-yellow-400 transition-colors duration-300">Project Planner</a>
+                    <a href="#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -1539,18 +460,11 @@
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 absolute w-full">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="index.html#home" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
-                <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
-                <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
-                <a href="catering.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Catering</a>
-                <a href="delivery.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Delivery</a>
-                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Planner</a>
-                <a href="book-a-table.html" class="mardi-gras-button w-full justify-center">
-                    <div class="label-container">
-                        <span class="label">Book a Table</span>
-                        <span class="mono-data">504.NOLA.2024</span>
-                    </div>
-                </a>
+                <a href="#home" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
+                <a href="#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
+                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Project Planner</a>
+                <a href="#visit" class="block px-3 py-3 text-yellow-400 font-semibold">Book a Table</a>
             </div>
         </div>
     </nav>
@@ -1564,52 +478,24 @@
             <iframe src="https://player.vimeo.com/video/1148692481?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" class="w-full h-full absolute inset-0 object-cover opacity-60 scale-150 pointer-events-none"></iframe>
         </div>
 
-        <div class="hero-canvas">
-            <canvas id="sequinCanvas"></canvas>
-        </div>
-        <div class="hero-parallax-overlay"></div>
-
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <div class="hero-prismatic">
-                <div class="hero-data-header">
-                    <span>140 Keith Dr</span>
-                    <span>•</span>
-                    <span>Canton, GA 30114</span>
-                </div>
-                <h1 class="hero-main-title" id="interactiveTitle">THE CAJUN MENU</h1>
-                <div class="hero-metrics">
-                    <div>
-                        <div class="hero-metric-label">Spice Index</div>
-                        <div class="hero-metric-value">Scoville 45k+</div>
-                    </div>
-                    <div>
-                        <div class="hero-metric-label">Vibe Status</div>
-                        <div class="hero-metric-value">Carnival High</div>
-                    </div>
-                    <div>
-                        <div class="hero-metric-label">Service</div>
-                        <div class="hero-metric-value">Till Sunrise</div>
-                    </div>
-                </div>
+            <div class="inline-block mb-6 mt-24 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-md animate-float">
+                <span class="text-yellow-400 text-sm tracking-widest font-semibold uppercase">Est. Canton, GA</span>
             </div>
-
+            <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-8 leading-tight">
+                Taste the <br>
+                <span class="reveal-left inline-block animate-firework-tiny">Soul of Louisiana</span>
+            </h1>
             <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Bold spices, fresh seafood, and the warmth of Southern hospitality. Experience authentic Cajun cuisine redefined.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#menu" class="mardi-gras-button">
-                    <div class="nola-symbol">⚜</div>
-                    <div class="label-container">
-                        <span class="label">View Full Menu</span>
-                        <span class="mono-data">MENU.SEQ.01</span>
-                    </div>
+                <a href="#menu" class="group relative px-8 py-4 bg-yellow-600 text-white rounded-2xl font-bold overflow-hidden transition-all btn-3d flex items-center justify-center">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                    <span class="relative flex items-center justify-center gap-2 w-full">View Full Menu <span class="group-hover:translate-x-1 transition-transform">→</span></span>
                 </a>
-                <a href="book-a-table.html" class="mardi-gras-button">
-                    <div class="nola-symbol">⚜</div>
-                    <div class="label-container">
-                        <span class="label">Reserve Table</span>
-                        <span class="mono-data">BOOK.SEQ.02</span>
-                    </div>
+                <a href="#visit" class="px-8 py-4 glass-panel border border-white/20 rounded-2xl text-white font-bold hover:bg-white/10 transition-all hover:border-white/40 btn-3d">
+                    Reserve Table
                 </a>
             </div>
         </div>
@@ -1698,82 +584,6 @@
                 <h3 class="text-5xl font-heading font-bold text-white reveal-left inline-block">Signature Menu</h3>
             </div>
 
-            <div class="featured-menu-grid mb-16 reveal">
-                <div class="gilded-card">
-                    <svg class="noise">
-                        <filter id="grain">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
-                        </filter>
-                        <rect width="100%" height="100%" filter="url(#grain)"></rect>
-                    </svg>
-                    <div class="velvet-overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1534352956274-46327668636e?auto=format&fit=crop&q=80&w=800" alt="King Cake Soul Soufflé" class="gilded-image">
-                    <div class="gilded-content">
-                        <div class="text-xs uppercase tracking-[4px] text-[#004B23] mb-2">Seasonal Delicacy</div>
-                        <h4 class="gilded-title">King Cake<br>Soul-Soufflé</h4>
-                        <p class="text-sm text-white/70 mt-4">Cinnamon-swirl essence, 24k gold leaf glaze, and crystalized violet sugar.</p>
-                        <div class="flex items-center justify-between mt-6">
-                            <span class="text-white font-mono text-lg">$32.00</span>
-                            <button class="mardi-gras-button">
-                                <div class="label-container">
-                                    <span class="label">Reserve Plate</span>
-                                    <span class="mono-data">SEASONAL</span>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gilded-card featured-card">
-                    <svg class="noise">
-                        <filter id="grain-featured-1">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-                        </filter>
-                        <rect width="100%" height="100%" filter="url(#grain-featured-1)"/>
-                    </svg>
-
-                    <svg class="mask-icon" viewBox="0 0 24 24">
-                        <path d="M12,2C15.31,2 18,4.66 18,7.95C18,12.41 12,19 12,19C12,19 6,12.41 6,7.95C6,4.66 8.69,2 12,2M12,6.06C10.97,6.06 10.13,6.9 10.13,7.93C10.13,8.96 10.97,9.8 12,9.8C13.03,9.8 13.87,8.96 13.87,7.93C13.87,6.9 13.03,6.06 12,6.06Z" />
-                    </svg>
-
-                    <div class="velvet-overlay"></div>
-                    <div class="image-box">
-                        <img src="https://images.unsplash.com/photo-1599321955419-7853127bb620?q=80&w=1000&auto=format&fit=crop" alt="Bourbon Street Gumbo" class="food-img">
-                    </div>
-                    <div class="content">
-                        <div class="category">Entrée • Signature</div>
-                        <h3 class="title">Bourbon Street Gumbo</h3>
-                        <p class="description">Dark roux, holy trinity aromatics, gulf shrimp, and andouille over jasmine rice.</p>
-                        <div class="footer">
-                            <span class="price">$32.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gilded-card featured-card">
-                    <svg class="noise">
-                        <filter id="grain-featured-2">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-                        </filter>
-                        <rect width="100%" height="100%" filter="url(#grain-featured-2)"/>
-                    </svg>
-
-                    <svg class="mask-icon" viewBox="0 0 24 24">
-                        <path d="M12,2C15.31,2 18,4.66 18,7.95C18,12.41 12,19 12,19C12,19 6,12.41 6,7.95C6,4.66 8.69,2 12,2M12,6.06C10.97,6.06 10.13,6.9 10.13,7.93C10.13,8.96 10.97,9.8 12,9.8C13.03,9.8 13.87,8.96 13.87,7.93C13.87,6.9 13.03,6.06 12,6.06Z" />
-                    </svg>
-
-                    <div class="velvet-overlay"></div>
-                    <div class="image-box">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800" alt="Jambalaya Nocturne" class="food-img">
-                    </div>
-                    <div class="content">
-                        <div class="category"></div>
-                        <h3 class="title">Jambalaya Nocturne</h3>
-                        <p class="description">Slow-simmered rhythm</p>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Category Nav -->
             <div class="flex overflow-x-auto justify-start md:justify-center space-x-4 pb-8 pt-8 mb-8 no-scrollbar reveal" id="menu-categories">
                 <!-- Categories injected by JS -->
@@ -1786,68 +596,191 @@
         </div>
     </section>
 
+    <!-- Visit / Reservation Section -->
+    <section id="visit" class="py-24 relative">
+        <div class="absolute inset-0 bg-[url('/images/rustic-house.jpg')] bg-cover bg-center opacity-20 fixed-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10 reveal">
+            <div class="space-y-12">
+                <div>
+                    <h2 class="text-5xl font-heading font-bold mb-6 reveal-left">Visit Our <br><span class="text-yellow-500">Kitchen</span></h2>
+                    <p class="text-slate-400 text-lg">Experience the ambiance firsthand. Reservations are highly recommended for weekends.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-colors hover-glow">
+                        <div class="text-yellow-500 text-3xl mb-4">📍</div>
+                        <h4 class="text-xl font-bold text-white mb-2">Location</h4>
+                        <p class="text-slate-400">140 Keith Dr<br>Canton, GA 30114, US</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-colors hover-glow">
+                        <div class="text-yellow-500 text-3xl mb-4">📞</div>
+                        <h4 class="text-xl font-bold text-white mb-2">Contact</h4>
+                        <p class="text-slate-400">678-899-7404<br>thecajunmenu@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl hover-glow">
+                    <h4 class="text-xl font-bold text-white mb-4 flex items-center"><span class="text-yellow-500 mr-3">🕒</span> Opening Hours</h4>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span>Mon</span> <span>11:00 AM - 8:00 PM</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2 text-slate-600"><span>Tue</span> <span>Closed</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span>Wed-Thu</span> <span>11:00 AM - 8:00 PM</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span>Fri-Sat</span> <span>11:00 AM - 8:00 PM</span></li>
+                        <li class="flex justify-between"><span>Sun</span> <span>12:00 PM - 5:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Reservation Form -->
+            <div class="glass-panel p-8 md:p-10 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] hover-glow">
+                <h3 class="text-3xl font-heading font-bold mb-2">Reserve a Table</h3>
+                <p class="text-slate-400 mb-8">
+                    Whether it’s date night, family dinner, or a special celebration, reserving your table ensures the best experience.
+                </p>
+
+                <!-- Formspree Form -->
+                <form id="reservation-form" class="space-y-6">
+                    <div class="space-y-2">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Name</label>
+                        <input type="text" name="name" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="John Doe">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm text-slate-400 uppercase tracking-wide">Email</label>
+                            <input type="email" name="email" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="john@example.com">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm text-slate-400 uppercase tracking-wide">Phone</label>
+                            <input type="tel" name="phone" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600" placeholder="(555) 123-4567">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm text-slate-400 uppercase tracking-wide">Date</label>
+                            <input type="date" name="date" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm text-slate-400 uppercase tracking-wide">Time</label>
+                            <input type="time" name="time" required class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors [color-scheme:dark]">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm text-slate-400 uppercase tracking-wide">Guests</label>
+                        <select name="guests" class="w-full bg-[#020617]/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5+">5+ Guests</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-[0_10px_30px_-10px_rgba(245,158,11,0.5)] transform hover:-translate-y-1 transition-all duration-300">
+                        Confirm Booking
+                    </button>
+                    <p id="form-status" class="text-center text-sm mt-4 hidden"></p>
+                </form>
+            </div>
+        </div>
+    </section>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="flash-footer"><div class="footer-content">
-            <div class="footer-top">
-                <div class="footer-underlay">
-                    <div class="brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
-                </div>
-                <div class="social-cluster social-center">
-                <a class="social-btn" href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <footer class="bg-[#020617] border-t border-white/5 py-12 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-heading font-bold text-white mb-6 tracking-tight bead-shower">
+                THE CAJUN MENU
+                <span class="bead purple"></span>
+                <span class="bead green"></span>
+                <span class="bead gold"></span>
+                <span class="bead purple-2"></span>
+                <span class="bead green-2"></span>
+            </h2>
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="https://www.instagram.com/thecajunmenu/?fbclid=IwY2xjawO2ThRleHRuA2FlbQIxMABicmlkETFWSTFMM1BBSFM2Zllsc0xtc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvGVRy6rRc1K05jpZ6MSdiZUwnKv4U3iVY6eFYoOHPaNVx4_kBGkIAccMiXq_aem_Sx2qK4sKLIJf23s_11sz_w#" target="_blank" class="text-slate-400 hover:text-yellow-500 transition-colors transform hover:scale-110">
+                    <!-- Instagram Icon -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <a class="social-btn" href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
-                    <svg viewBox="0 0 24 24"><path d="M12.188 15.344l-1.012 3.863c-.113.431.113.881.544.994l.206.038c.412.056.806-.206.881-.619l1.013-3.863a3.564 3.564 0 0 0-1.632-.413zm-1.875-1.144c-.262-.356-.637-.6-1.069-.694L5.344 12.5a.774.774 0 0 0-.919.506l-.038.113c-.113.431.131.881.563.994l3.881 1.013c.244.056.506.038.75-.056.3-.113.563-.338.732-.87zm3.113-.769c.45-.075.881.113 1.144.45l2.55 3.038c.281.338.244.844-.094 1.125l-.094.075c-.338.281-.844.244-1.125-.094l-2.55-3.038a.747.747 0 0 0-.469-.262 1.05 1.05 0 0 1 .638-1.294zm-1.894-3.131L9.175 6.438a.754.754 0 0 0-.825-.563l-.113.019c-.431.056-.731.469-.675.9l.356 3.844a1.045 1.045 0 0 0 .544.863c.431.225.956.169 1.256-.206l1.813-2.988zm4.444 1.294l3.788-.938a.755.755 0 0 0 .563-.825l-.019-.113c-.056-.431-.469-.731-.9-.675l-3.844.356a1.051 1.051 0 0 0-.863.544c-.225.431-.169.956.206 1.256l3.069 1.013-.001-.618z"/></svg>
+                <a href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" class="text-slate-400 hover:text-yellow-500 transition-colors transform hover:scale-110">
+                    <!-- Facebook Icon -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                 </a>
-                <a class="social-btn" href="https://www.instagram.com/thecajunmenu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <a href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" class="text-slate-400 hover:text-yellow-500 transition-colors transform hover:scale-110">
+                    <!-- Yelp Icon -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.002 1.5c.33 0 .6.27.6.6v5.4c0 .33-.27.6-.6.6s-.6-.27-.6-.6v-5.4c0-.33.27-.6.6-.6zm-2.85 2.85c.23-.23.61-.23.85 0 .23.23.23.61 0 .85l-3.82 3.82c-.23.23-.61.23-.85 0-.23-.23-.23-.61 0-.85l3.82-3.82zm5.7 0l3.82 3.82c.23.23.23.61 0 .85-.23.23-.61.23-.85 0l-3.82-3.82c-.23-.23-.23-.61 0-.85.23-.23.61-.23.85 0zm-9.35 9.35c-.33 0-.6.27-.6.6v5.4c0 .33.27.6.6.6s.6-.27.6-.6v-5.4c0-.33-.27-.6-.6-.6zm12.9 0c-.33 0-.6.27-.6.6v5.4c0 .33.27.6.6.6s.6-.27.6-.6v-5.4c0-.33-.27-.6-.6-.6zm-9.08 2.22l-3.82 3.82c-.23.23-.23.61 0 .85.23.23.61.23.85 0l3.82-3.82c.23-.23.23-.61 0-.85-.23-.23-.61-.23-.85 0zm5.26 0c-.23.23-.23.61 0 .85l3.82 3.82c.23.23.61.23.85 0 .23-.23.23-.61 0-.85l-3.82-3.82c-.23-.23-.61-.23-.85 0z"/></svg>
                 </a>
-                </div>
             </div>
 
-            <div id="visit" class="footer-visit">
-                <div class="visit-panel">
-                    <div class="combo-card">
-                        <div class="footer-card footer-location-card">
-                            <div class="map-underlay">
-                                <iframe
-                                    title="The Cajun Menu Map"
-                                    src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed"
-                                    loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                            <div class="content-layer">
-                                <div class="footer-card-icon">📍</div>
-                                <h4 class="footer-card-title">Location & Contact</h4>
-                                <p class="footer-card-text">140 Keith Dr, Canton, GA 30114<br>678-899-7404 • thecajunmenu@gmail.com</p>
-                            </div>
+            <!-- Yelp Reviews Carousel -->
+            <div class="mb-12 overflow-hidden">
+                <h3 class="text-yellow-500 font-bold tracking-widest uppercase mb-6 text-sm">Top 5 Yelp Reviews</h3>
+                <div class="carousel-container">
+                    <div class="carousel-track space-x-4">
+                        <!-- Original Reviews -->
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Best Cajun food in Georgia! The crawfish etouffee is to die for."</p>
+                            <p class="text-slate-500 text-xs font-bold">- Sarah J.</p>
                         </div>
-                        <div class="hours-card">
-                            <h4 class="text-lg font-bold text-white mb-3 flex items-center"><span class="text-yellow-500 mr-3">🕒</span> Opening Hours</h4>
-                            <ul class="space-y-2 text-slate-300 text-sm">
-                                <li class="flex justify-between border-b border-white/5 pb-2"><span>Mon</span> <span>11:00 AM - 8:00 PM</span></li>
-                                <li class="flex justify-between border-b border-white/5 pb-2 text-slate-600"><span>Tue</span> <span>Closed</span></li>
-                                <li class="flex justify-between border-b border-white/5 pb-2"><span>Wed-Thu</span> <span>11:00 AM - 8:00 PM</span></li>
-                                <li class="flex justify-between border-b border-white/5 pb-2"><span>Fri-Sat</span> <span>11:00 AM - 8:00 PM</span></li>
-                                <li class="flex justify-between"><span>Sun</span> <span>12:00 PM - 5:00 PM</span></li>
-                            </ul>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Authentic flavors and great atmosphere. Love the gumbo!"</p>
+                            <p class="text-slate-500 text-xs font-bold">- Mike T.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"The shrimp po-boy is huge and delicious. Highly recommend."</p>
+                            <p class="text-slate-500 text-xs font-bold">- Emily R.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Great service and even better food. A hidden gem in Canton."</p>
+                            <p class="text-slate-500 text-xs font-bold">- David L.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Finally found real Cajun food outside of Louisiana. 10/10."</p>
+                            <p class="text-slate-500 text-xs font-bold">- Jessica M.</p>
+                        </div>
+
+                        <!-- Duplicated for Infinite Scroll -->
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Best Cajun food in Georgia! The crawfish etouffee is to die for."</p>
+                            <p class="text-slate-500 text-xs font-bold">- Sarah J.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Authentic flavors and great atmosphere. Love the gumbo!"</p>
+                            <p class="text-slate-500 text-xs font-bold">- Mike T.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"The shrimp po-boy is huge and delicious. Highly recommend."</p>
+                            <p class="text-slate-500 text-xs font-bold">- Emily R.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Great service and even better food. A hidden gem in Canton."</p>
+                            <p class="text-slate-500 text-xs font-bold">- David L.</p>
+                        </div>
+                        <div class="w-72 flex-shrink-0 bg-white/5 p-4 electric-border hover:bg-white/10 transition-colors">
+                            <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                            <p class="text-slate-300 text-xs mb-3">"Finally found real Cajun food outside of Louisiana. 10/10."</p>
+                            <p class="text-slate-500 text-xs font-bold">- Jessica M.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-grid">
-                </div>
-            </div>
-        </div><div class="footer-bottom">
-            <span>The Cajun Menu</span>
-            <span>Canton, GA</span>
-            <span>&copy; 2026</span>
+            <p class="text-slate-600 text-sm">© 2024 The Cajun Menu. Designed for Excellence.</p>
         </div>
     </footer>
 
@@ -1908,7 +841,6 @@
 
         function renderCategories() {
             categoriesContainer.innerHTML = '';
-            const fragment = document.createDocumentFragment();
             Object.keys(menuData).forEach(cat => {
                 const btn = document.createElement('button');
                 btn.innerText = cat;
@@ -1923,53 +855,35 @@
                     renderCategories();
                     renderMenu();
                 };
-                fragment.appendChild(btn);
+                categoriesContainer.appendChild(btn);
             });
-            categoriesContainer.appendChild(fragment);
         }
 
         function renderMenu() {
             menuGrid.innerHTML = '';
-            const fragment = document.createDocumentFragment();
             const items = menuData[currentCategory];
             items.forEach((item, index) => {
                 const card = document.createElement('div');
-                const fallbackImage = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800';
-                const imageSrc = item.image || fallbackImage;
-
-                card.className = 'gilded-card';
-                card.style.animation = `fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards ${index * 0.08}s`;
+                // High-End Card Styling
+                card.className = 'glass-card p-8 rounded-2xl opacity-0 transform translate-y-8 group hover:-translate-y-2 transition-all duration-500 cursor-pointer relative overflow-hidden';
+                card.style.animation = `fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards ${index * 0.1}s`;
                 
-                card.onclick = () => {
-                    card.classList.toggle('reveal');
-                };
+                // Click to view image logic
+                card.onclick = () => openFoodModal(item);
 
                 card.innerHTML = `
-                    <svg class="noise">
-                        <filter id="grain-menu-${index}">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-                        </filter>
-                        <rect width="100%" height="100%" filter="url(#grain-menu-${index})"/>
-                    </svg>
-                    <svg class="mask-icon" viewBox="0 0 24 24">
-                        <path d="M12,2C15.31,2 18,4.66 18,7.95C18,12.41 12,19 12,19C12,19 6,12.41 6,7.95C6,4.66 8.69,2 12,2M12,6.06C10.97,6.06 10.13,6.9 10.13,7.93C10.13,8.96 10.97,9.8 12,9.8C13.03,9.8 13.87,8.96 13.87,7.93C13.87,6.9 13.03,6.06 12,6.06Z" />
-                    </svg>
-                    <div class="velvet-overlay"></div>
-                    <div class="image-box">
-                        <img src="${imageSrc}" alt="${item.name}" class="food-img" loading="lazy">
+                    <div class="absolute top-4 right-4 text-yellow-500/50 text-xs uppercase tracking-widest border border-amber-500/20 px-2 py-1 rounded-full group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        Click to View
                     </div>
-                    <div class="content">
-                        <div class="category">${currentCategory}</div>
-                        <h3 class="title">${item.name}</h3>
-                        <p class="description">${item.desc}</p>
-                        <div class="footer">
-                            <span class="price">$${item.price}</span>
-                        </div>
+                    <div class="flex justify-between items-start mb-4 relative mt-6">
+                        <div class="absolute -left-8 top-2 w-1 h-8 bg-amber-500 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <h3 class="font-heading font-bold text-xl text-white group-hover:text-yellow-500 transition-colors duration-300">${item.name}</h3>
+                        <span class="font-bold text-yellow-500 text-lg bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">$${item.price}</span>
                     </div>
+                    <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">${item.desc}</p>
                 `;
-                fragment.appendChild(card);
+                menuGrid.appendChild(card);
             });
-            menuGrid.appendChild(fragment);
         }
 
         // Food Modal Logic
@@ -1987,7 +901,6 @@
             
             if (item.image) {
                 img.src = item.image;
-                img.alt = item.name;
                 img.classList.remove('hidden');
                 document.getElementById('food-modal-placeholder').classList.add('hidden');
             } else {
@@ -2161,11 +1074,8 @@
 
                         <p class="text-slate-400 text-sm mb-6">Crawfish boil Cajun style! All you can eat crawfish, potatoes, sausage, corn, and more!</p>
                         
-                        <button onclick="closeModal()" class="mardi-gras-button w-full">
-                            <div class="label-container">
-                                <span class="label">I'm Interested</span>
-                                <span class="mono-data">RSVP</span>
-                            </div>
+                        <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all transform hover:scale-105">
+                            I'm Interested!
                         </button>
                     </div>
                 </div>
@@ -2383,209 +1293,15 @@
         @keyframes fall {
             to { transform: translateY(110vh) rotate(720deg); }
         }
-            /* Global button palette override */
-        :root {
-            --btn-purple: #5b1bb8;
-            --btn-purple-dark: #3a0f7a;
-            --btn-text-gold: #d4af37;
-            --btn-shadow-green: rgba(0, 171, 102, 0.6);
-        }
-        .mardi-gras-button,
-        .btn-3d,
-        button {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            animation: none !important;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 22px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.45) !important;
-        }
-        .mardi-gras-button::before { opacity: 0.25; }
-        .mardi-gras-button:hover {
-            box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 28px var(--btn-shadow-green) !important;
-            filter: brightness(1.12);
-            animation: shimmer-move 6s linear infinite;
-        }
-        .mardi-gras-button:active {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.45), 0 0 16px var(--btn-shadow-green) !important;
-        }
-        .btn-3d {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 20px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.35) !important;
-        }
-        .btn-3d:active {
-            box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 12px var(--btn-shadow-green) !important;
-        }
-        button[class*="bg-amber"],
-        button[class*="bg-yellow"],
-        button[class*="bg-orange"],
-        a[class*="bg-amber"],
-        a[class*="bg-yellow"],
-        a[class*="bg-orange"] {
-            background-color: var(--btn-purple) !important;
-            color: var(--btn-text-gold) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 18px var(--btn-shadow-green) !important;
-        }
-        button[class*="from-amber"],
-        button[class*="from-yellow"],
-        button[class*="from-orange"],
-        button[class*="to-amber"],
-        button[class*="to-yellow"],
-        button[class*="to-orange"],
-        button[class*="to-red"],
-        a[class*="from-amber"],
-        a[class*="from-yellow"],
-        a[class*="from-orange"],
-        a[class*="to-amber"],
-        a[class*="to-yellow"],
-        a[class*="to-orange"],
-        a[class*="to-red"] {
-            --tw-gradient-from: var(--btn-purple) !important;
-            --tw-gradient-to: var(--btn-purple-dark) !important;
-            --tw-gradient-stops: var(--btn-purple), var(--btn-purple-dark) !important;
-        }
-            /* mono-data-hidden */
-        .mardi-gras-button .label {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button .mono-data {
-            display: none !important;
-            animation: none !important;
-        }
-            /* button-hover-tilt */
-        .mardi-gras-button,
-        .btn-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
-        }
-        .mardi-gras-button:hover,
-        .btn-3d:hover {
-            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
-            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
-            filter: brightness(1.15);
-        }
-        .mardi-gras-button:active,
-        .btn-3d:active {
-            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
-        }
-    
-            /* Mobile layout overrides */
-        @media (max-width: 768px) {
-            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
-            nav .h-24 { height: 4.5rem !important; }
-            nav .h-\[5rem\] { height: 4.5rem !important; }
-            #mobile-menu {
-                max-height: calc(100vh - 4.5rem);
-                overflow-y: auto;
-            }
-            #mobile-menu a { font-size: 0.95rem; }
-            .hero-main-title {
-                font-size: clamp(2.2rem, 12vw, 4rem);
-                line-height: 0.95;
-            }
-            .hero-subtitle,
-            .hero-lead,
-            .hero-copy {
-                font-size: 0.95rem;
-            }
-            #menu-grid { grid-template-columns: 1fr !important; }
-            .gilded-card {
-                width: 100%;
-                max-width: 360px;
-                height: auto;
-            }
-            .gilded-card .image-box { height: 200px; }
-            .gilded-card .content { padding: 20px; }
-            .gilded-card .title { font-size: 1.6rem; }
-            .gilded-card .description { font-size: 0.85rem; }
-            #menu-categories { gap: 10px; padding-bottom: 1rem; }
-            #menu-categories button { white-space: nowrap; }
-            .flash-footer { min-height: 420px; }
-            .footer-top { flex-direction: column; gap: 16px; }
-            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
-            .footer-underlay { width: 100%; }
-            .brand-rig { transform: scale(0.7); transform-origin: center top; }
-            .map-embed iframe { height: 220px; }
-            .footer-card { padding: 16px; }
-            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
-        }
     </style>
 
     <script>
         const trigger = document.getElementById('mardi-gras-trigger');
         const audio = document.getElementById('mardi-gras-audio');
         const overlay = document.getElementById('mardi-gras-overlay');
-        const devModal = document.getElementById('dev-modal');
-        const closeDevModal = document.getElementById('close-dev-modal');
+        const modal = document.getElementById('dev-modal');
+        const closeModal = document.getElementById('close-dev-modal');
 
-        // Build the beaded logo rig
-        const rigContainer = document.getElementById('menu-rig');
-        if (rigContainer) {
-            const text = 'THE CAJUN MENU';
-            const colors = ['purple', 'gold', 'green'];
-            text.split('').forEach((char, index) => {
-                if (char === ' ') {
-                    const spacer = document.createElement('div');
-                    spacer.className = 'brand-spacer';
-                    rigContainer.appendChild(spacer);
-                    return;
-                }
-                const suspension = document.createElement('div');
-                suspension.className = 'bead-suspension';
-
-                const string = document.createElement('div');
-                string.className = 'bead-string';
-                for (let i = 0; i < 5; i++) {
-                    const bead = document.createElement('div');
-                    const color = colors[(index + i) % 3];
-                    bead.className = `brand-bead bead-${color}`;
-                    bead.style.top = `${10 + i * 15}px`;
-                    string.appendChild(bead);
-                }
-
-                const pendant = document.createElement('div');
-                pendant.className = 'brand-char';
-                pendant.innerText = char;
-                const charColor = colors[index % 3];
-                pendant.style.color = `var(--mg-${charColor}, ${charColor === 'gold' ? '#FFD700' : charColor === 'green' ? '#00A86B' : '#6A0DAD'})`;
-
-                suspension.appendChild(string);
-                suspension.appendChild(pendant);
-                rigContainer.appendChild(suspension);
-
-                let rotation = 0;
-                let targetRotation = 0;
-                const updateMovement = () => {
-                    rotation += (targetRotation - rotation) * 0.1;
-                    suspension.style.transform = `rotateX(${rotation * 0.5}deg) rotateY(${rotation}deg) translateZ(${Math.abs(rotation)}px)`;
-                    requestAnimationFrame(updateMovement);
-                };
-                updateMovement();
-
-                window.addEventListener('mousemove', (e) => {
-                    const rect = suspension.getBoundingClientRect();
-                    const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
-                    if (dist < 150) {
-                        const diff = e.clientX - (rect.left + rect.width / 2);
-                        targetRotation = Math.max(Math.min(diff * 0.4, 45), -45);
-                        pendant.style.filter = `brightness(1.5) drop-shadow(0 0 10px ${pendant.style.color})`;
-                    } else {
-                        targetRotation = 0;
-                        pendant.style.filter = 'none';
-                    }
-                });
-            });
-        }
-
-        document.querySelectorAll('.gilded-card.featured-card').forEach((card) => {
-            card.addEventListener('click', () => {
-                card.classList.toggle('reveal');
-            });
-        });
-
-        if (trigger) {
         trigger.addEventListener('click', () => {
             // Play Audio
             audio.currentTime = 0;
@@ -2599,7 +1315,6 @@
             const items = ['📿', '🎭', '⚜️', '🎷', '🎺', '🐊', '🟣', '🟢', '🟡'];
             
             // Create 100 falling items
-            const fragment = document.createDocumentFragment();
             for (let i = 0; i < 100; i++) {
                 const item = document.createElement('div');
                 item.classList.add('falling-item');
@@ -2608,29 +1323,28 @@
                 item.style.fontSize = (Math.random() * 30 + 20) + 'px';
                 item.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2-5s
                 item.style.animationDelay = Math.random() * 2 + 's';
-                fragment.appendChild(item);
+                overlay.appendChild(item);
             }
-            overlay.appendChild(fragment);
 
             // Show Modal after a delay
             setTimeout(() => {
-                devModal.classList.remove('hidden');
+                modal.classList.remove('hidden');
                 // Force reflow
-                void devModal.offsetWidth;
-                devModal.classList.remove('opacity-0');
-                devModal.querySelector('div').classList.remove('scale-90');
-                devModal.querySelector('div').classList.add('scale-100');
+                void modal.offsetWidth;
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div').classList.remove('scale-90');
+                modal.querySelector('div').classList.add('scale-100');
             }, 1000);
         });
 
-        closeDevModal.addEventListener('click', () => {
+        closeModal.addEventListener('click', () => {
             // Hide Modal
-            devModal.classList.add('opacity-0');
-            devModal.querySelector('div').classList.remove('scale-100');
-            devModal.querySelector('div').classList.add('scale-90');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-90');
             
             setTimeout(() => {
-                devModal.classList.add('hidden');
+                modal.classList.add('hidden');
             }, 500);
 
             // Stop Audio Fade out
@@ -2650,163 +1364,6 @@
                 overlay.classList.add('hidden');
             }, 2000);
         });
-        }
-
-        // Prismatic hero canvas + title interaction
-        const sequinCanvas = document.getElementById('sequinCanvas');
-        const heroTitle = document.getElementById('interactiveTitle');
-        if (sequinCanvas && heroTitle) {
-            const ctx = sequinCanvas.getContext('2d');
-            let width = 0;
-            let height = 0;
-            let sequins = [];
-            const sequinCount = 220;
-            const colors = ['#4B0082', '#FFD700', '#00AB66', '#FFFFFF', '#9b59b6'];
-            const mouse = { x: -1000, y: -1000, active: false };
-
-            class Sequin {
-                constructor() { this.init(); }
-                init() {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.size = Math.random() * 6 + 2;
-                    this.color = colors[Math.floor(Math.random() * colors.length)];
-                    this.velocity = Math.random() * 0.5 + 0.2;
-                    this.angle = Math.random() * 360;
-                    this.rotationSpeed = (Math.random() - 0.5) * 0.1;
-                    this.opacity = Math.random() * 0.5 + 0.3;
-                }
-                update() {
-                    this.y -= this.velocity;
-                    this.angle += this.rotationSpeed;
-                    if (this.y < -20) {
-                        this.y = height + 20;
-                        this.x = Math.random() * width;
-                    }
-                    const dx = mouse.x - this.x;
-                    const dy = mouse.y - this.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const maxDistance = 200;
-                    if (distance < maxDistance) {
-                        const force = (maxDistance - distance) / maxDistance;
-                        this.x -= (dx / distance) * force * 5;
-                        this.y -= (dy / distance) * force * 5;
-                        this.opacity = 1;
-                    } else if (this.opacity > 0.4) {
-                        this.opacity -= 0.01;
-                    }
-                }
-                draw() {
-                    ctx.save();
-                    ctx.translate(this.x, this.y);
-                    ctx.rotate(this.angle);
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, this.size, this.size * 0.6, 0, 0, Math.PI * 2);
-                    const gradient = ctx.createLinearGradient(-this.size, -this.size, this.size, this.size);
-                    gradient.addColorStop(0, this.color);
-                    gradient.addColorStop(0.5, '#fff');
-                    gradient.addColorStop(1, this.color);
-                    ctx.fillStyle = gradient;
-                    ctx.globalAlpha = this.opacity;
-                    ctx.fill();
-                    ctx.restore();
-                }
-            }
-
-            const resizeCanvas = () => {
-                width = sequinCanvas.width = window.innerWidth;
-                height = sequinCanvas.height = window.innerHeight;
-                sequins = [];
-                for (let i = 0; i < sequinCount; i++) {
-                    sequins.push(new Sequin());
-                }
-            };
-
-            const animateSequins = () => {
-                ctx.clearRect(0, 0, width, height);
-                sequins.forEach((s) => { s.update(); s.draw(); });
-                requestAnimationFrame(animateSequins);
-            };
-
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-                mouse.active = true;
-            });
-            window.addEventListener('touchstart', (e) => {
-                mouse.active = true;
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
-            });
-            window.addEventListener('touchmove', (e) => {
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
-            });
-            window.addEventListener('resize', resizeCanvas);
-
-            heroTitle.addEventListener('mousemove', (e) => {
-                const rect = heroTitle.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 20;
-                heroTitle.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
-            heroTitle.addEventListener('mouseleave', () => {
-                heroTitle.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-            });
-
-            resizeCanvas();
-            animateSequins();
-        }
-
-        // Featured card entrance
-        window.addEventListener('load', () => {
-            const featuredCard = document.getElementById('featured-card');
-            if (featuredCard) {
-                setTimeout(() => featuredCard.classList.add('reveal'), 300);
-            }
-        });
-    </script>
-    <script>
-        // button-tilt-hover
-        (() => {
-            const buttons = Array.from(document.querySelectorAll('.mardi-gras-button, .btn-3d, #menu-categories button'));
-            buttons.forEach((btn) => {
-                btn.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    btn.style.setProperty('--tilt-x', `${(-y * 10).toFixed(2)}deg`);
-                    btn.style.setProperty('--tilt-y', `${(x * 10).toFixed(2)}deg`);
-                });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.setProperty('--tilt-x', '0deg');
-                    btn.style.setProperty('--tilt-y', '0deg');
-                });
-            });
-        })();
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -16,219 +16,11 @@
     <meta property="og:url" content="https://thecajunmenu.online/delivery.html">
     <meta property="og:type" content="website">
 
-    <script type="module" src="/src/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Rye&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold-metallic: #D4AF37;
-            --gold-light: #fdf5b4;
-            --gold-dark: #8b6e00;
-            --purple: #9D50BB;
-            --green: #6EBB87;
-            --blue: #4A90E2;
-            --mg-purple: #6A0DAD;
-            --mg-gold: #FFD700;
-            --mg-green: #00A86B;
-        }
-        .text-amber-400,
-        .text-amber-500,
-        .text-amber-600,
-        .text-yellow-400,
-        .text-yellow-500,
-        .text-yellow-600,
-        .text-orange-400,
-        .text-orange-500,
-        .text-orange-600 { color: var(--gold-metallic) !important; }
-        .bg-amber-400,
-        .bg-amber-500,
-        .bg-amber-600,
-        .bg-yellow-400,
-        .bg-yellow-500,
-        .bg-yellow-600,
-        .bg-orange-400,
-        .bg-orange-500,
-        .bg-orange-600 { background-color: var(--gold-metallic) !important; }
-        .border-amber-400,
-        .border-amber-500,
-        .border-amber-600,
-        .border-yellow-400,
-        .border-yellow-500,
-        .border-yellow-600,
-        .border-orange-400,
-        .border-orange-500,
-        .border-orange-600 { border-color: var(--gold-metallic) !important; }
-        .from-amber-400,
-        .from-amber-500,
-        .from-amber-600,
-        .from-yellow-400,
-        .from-yellow-500,
-        .from-orange-400,
-        .from-orange-500 {
-            --tw-gradient-from: var(--gold-metallic) !important;
-            --tw-gradient-to: rgba(212, 175, 55, 0) !important;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-        }
-        .to-amber-400,
-        .to-amber-500,
-        .to-amber-600,
-        .to-yellow-400,
-        .to-yellow-500,
-        .to-orange-400,
-        .to-orange-500,
-        .to-orange-600 { --tw-gradient-to: var(--gold-metallic) !important; }
-        .via-amber-500,
-        .via-yellow-500,
-        .via-orange-500 { --tw-gradient-stops: var(--tw-gradient-from), var(--gold-metallic), var(--tw-gradient-to) !important; }
-
-        .vapor-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .vapor-item {
-            position: relative;
-            padding: 12px 18px;
-            color: rgba(255, 255, 255, 0.55);
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            text-decoration: none;
-            overflow: visible;
-            transition: color 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.7rem;
-        }
-        .vapor-item .bloom {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: var(--c);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(20px);
-            opacity: 0;
-            transition: all 0.6s ease-out;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .vapor-item:hover { color: #fff; }
-        .vapor-item:hover .bloom {
-            width: 150px;
-            height: 150px;
-            opacity: 0.7;
-            filter: blur(40px);
-        }
-        .vapor-item span { position: relative; z-index: 2; }
-
-        .mardi-gras-button {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 0.9rem 2rem;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            background: linear-gradient(90deg, #4b0082 0%, #00ab66 25%, #9d50bb 50%, #00ab66 75%, #4b0082 100%);
-            background-size: 200% auto;
-            animation: shimmer-move 6s linear infinite;
-            border-radius: 10px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-            user-select: none;
-        }
-        .mardi-gras-button::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18l2.5-1.5L20 15l-2.5 1.5L20 18v2.5z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            pointer-events: none;
-            border-radius: 10px;
-        }
-        .mardi-gras-button .nola-symbol {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%) scale(0) translateY(20px);
-            opacity: 0;
-            font-size: 1.8rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-            color: var(--gold-light);
-            filter: drop-shadow(0 0 10px var(--gold-metallic));
-        }
-        .mardi-gras-button .label-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .mardi-gras-button .mono-data {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            color: var(--gold-light);
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-        .mardi-gras-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 0 20px 2px var(--gold-light), 0 12px 0 0 var(--gold-dark), 0 20px 40px rgba(0, 0, 0, 0.8);
-            filter: brightness(1.2);
-        }
-        .mardi-gras-button:hover .nola-symbol {
-            opacity: 1;
-            transform: translateX(-50%) scale(1.2) translateY(0);
-        }
-        .mardi-gras-button:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 10px 1px var(--gold-light), 0 4px 0 0 var(--gold-dark), 0 10px 20px rgba(0,  0, 0, 0.4);
-        }
-        @keyframes shimmer-move {
-            0% { background-position: 200% 0; }
-            100% { background-position: 0% 0; }
-        }
-
-        .brand-rig { display: flex; align-items: center; gap: 0.5rem; padding: 0 1rem; }
-        .brand-spacer { width: 1rem; }
-        .bead-suspension { position: relative; display: flex; flex-direction: column; align-items: center; transform-origin: top center; cursor: pointer; }
-        .bead-string { width: 2px; height: 70px; background: rgba(255, 255, 255, 0.15); position: relative; }
-        .brand-bead { width: 8px; height: 8px; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); box-shadow: inset -2px -2px 4px rgba(0,0,0,0.4), inset 2px 2px 4px rgba(255,255,255,0.4); }
-        .bead-purple { background: #6A0DAD; }
-        .bead-gold { background: #FFD700; }
-        .bead-green { background: #00A86B; }
-        .brand-char {
-            margin-top: -4px;
-            font-size: 1.5rem;
-            line-height: 1;
-            background: linear-gradient(120deg, #6A0DAD, #00A86B, #D4AF37, #4A90E2, #6A0DAD);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 8px 15px rgba(0,0,0,0.5);
-            user-select: none;
-            transition: filter 0.3s ease;
-            animation: brandHue 10s ease-in-out infinite;
-        }
-        @keyframes brandHue {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
         /* --- Core Typography & Reset --- */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -244,11 +36,11 @@
         /* --- 3D Button Styles --- */
         .btn-3d {
             border-radius: 1rem;
-            box-shadow: 0 6px 0 #8b6e00;
+            box-shadow: 0 6px 0 rgb(180, 83, 9);
             transition: all 0.1s;
         }
         .btn-3d:active {
-            box-shadow: 0 0 0 #8b6e00;
+            box-shadow: 0 0 0 rgb(180, 83, 9);
             transform: translateY(6px);
         }
 
@@ -275,273 +67,6 @@
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
         }
-
-        /* --- Liquid Footer --- */
-        .flash-footer {
-            position: relative;
-            width: 100%;
-            min-height: 460px;
-            background: #0a0a0a;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }.footer-content {
-            position: relative;
-            z-index: 10;
-            padding: 60px 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .footer-top {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-            gap: 40px;
-            align-items: start;
-        }
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .footer-right {
-            display: flex;
-            justify-content: flex-end;
-        }
-        .social-cluster { display: flex; gap: 24px; }
-        .social-center { justify-content: center; width: 100%; margin-top: 0; }
-        .social-btn {
-            width: 70px;
-            height: 70px;
-            background: #151515;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
-        }
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
-            border-radius: 20px;
-            opacity: 0.5;
-        }
-        .social-btn svg { width: 30px; height: 30px; fill: #fff; transform: translateZ(20px); transition: transform 0.3s ease; }
-        .social-btn:hover {
-            transform: translateY(-12px) rotateX(12deg) rotateY(-12deg);
-            background: #D4AF37;
-            box-shadow: 0 25px 40px rgba(212,175,55,0.35), inset 0 1px 2px rgba(255,255,255,0.5);
-        }
-        .social-btn:hover svg { transform: translateZ(40px) scale(1.1); }
-        .order-system { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
-        .footer-card {
-            background: rgba(12, 12, 16, 0.7);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px;
-            padding: 20px 22px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-        }
-        .footer-card-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(212, 175, 55, 0.2);
-            color: #D4AF37;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .footer-card-title {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: #fff;
-            margin: 0 0 6px;
-            letter-spacing: 0.02em;
-        }
-        .footer-card-text {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-        .order-label {
-            font-family: 'Space Mono', monospace;
-            color: rgba(255,255,255,0.4);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-        .map-embed {
-            width: 100%;
-            max-width: 520px;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .map-embed iframe { width: 100%; height: 180px; border: 0; }
-        .footer-bottom {
-            position: relative;
-            z-index: 10;
-            padding: 20px 40px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Space Mono', monospace;
-            font-size: 10px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 1px;
-            gap: 20px;
-            flex-wrap: wrap;
-        }@media (max-width: 768px) {
-            .footer-content { padding: 40px 20px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-right { justify-content: center; }
-            .order-system { align-items: center; }
-        }
-            /* Global button palette override */
-        :root {
-            --btn-purple: #5b1bb8;
-            --btn-purple-dark: #3a0f7a;
-            --btn-text-gold: #d4af37;
-            --btn-shadow-green: rgba(0, 171, 102, 0.6);
-        }
-        .mardi-gras-button,
-        .btn-3d,
-        button {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            animation: none !important;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 22px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.45) !important;
-        }
-        .mardi-gras-button::before { opacity: 0.25; }
-        .mardi-gras-button:hover {
-            box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 28px var(--btn-shadow-green) !important;
-            filter: brightness(1.12);
-            animation: shimmer-move 6s linear infinite;
-        }
-        .mardi-gras-button:active {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.45), 0 0 16px var(--btn-shadow-green) !important;
-        }
-        .btn-3d {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 20px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.35) !important;
-        }
-        .btn-3d:active {
-            box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 12px var(--btn-shadow-green) !important;
-        }
-        button[class*="bg-amber"],
-        button[class*="bg-yellow"],
-        button[class*="bg-orange"],
-        a[class*="bg-amber"],
-        a[class*="bg-yellow"],
-        a[class*="bg-orange"] {
-            background-color: var(--btn-purple) !important;
-            color: var(--btn-text-gold) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 18px var(--btn-shadow-green) !important;
-        }
-        button[class*="from-amber"],
-        button[class*="from-yellow"],
-        button[class*="from-orange"],
-        button[class*="to-amber"],
-        button[class*="to-yellow"],
-        button[class*="to-orange"],
-        button[class*="to-red"],
-        a[class*="from-amber"],
-        a[class*="from-yellow"],
-        a[class*="from-orange"],
-        a[class*="to-amber"],
-        a[class*="to-yellow"],
-        a[class*="to-orange"],
-        a[class*="to-red"] {
-            --tw-gradient-from: var(--btn-purple) !important;
-            --tw-gradient-to: var(--btn-purple-dark) !important;
-            --tw-gradient-stops: var(--btn-purple), var(--btn-purple-dark) !important;
-        }
-            /* mono-data-hidden */
-        .mardi-gras-button .label {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button .mono-data {
-            display: none !important;
-            animation: none !important;
-        }
-            /* button-hover-tilt */
-        .mardi-gras-button,
-        .btn-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
-        }
-        .mardi-gras-button:hover,
-        .btn-3d:hover {
-            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
-            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
-            filter: brightness(1.15);
-        }
-        .mardi-gras-button:active,
-        .btn-3d:active {
-            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
-        }
-    
-            /* Mobile layout overrides */
-        @media (max-width: 768px) {
-            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
-            nav .h-24 { height: 4.5rem !important; }
-            nav .h-\[5rem\] { height: 4.5rem !important; }
-            #mobile-menu {
-                max-height: calc(100vh - 4.5rem);
-                overflow-y: auto;
-            }
-            #mobile-menu a { font-size: 0.95rem; }
-            .hero-main-title {
-                font-size: clamp(2.2rem, 12vw, 4rem);
-                line-height: 0.95;
-            }
-            .hero-subtitle,
-            .hero-lead,
-            .hero-copy {
-                font-size: 0.95rem;
-            }
-            #menu-grid { grid-template-columns: 1fr !important; }
-            .gilded-card {
-                width: 100%;
-                max-width: 360px;
-                height: auto;
-            }
-            .gilded-card .image-box { height: 200px; }
-            .gilded-card .content { padding: 20px; }
-            .gilded-card .title { font-size: 1.6rem; }
-            .gilded-card .description { font-size: 0.85rem; }
-            #menu-categories { gap: 10px; padding-bottom: 1rem; }
-            #menu-categories button { white-space: nowrap; }
-            .flash-footer { min-height: 420px; }
-            .footer-top { flex-direction: column; gap: 16px; }
-            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
-            .footer-underlay { width: 100%; }
-            .brand-rig { transform: scale(0.7); transform-origin: center top; }
-            .map-embed iframe { height: 220px; }
-            .footer-card { padding: 16px; }
-            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
-        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
@@ -550,22 +75,22 @@
     <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
-                </a>
-                </div>
-                <div class="hidden md:flex items-center vapor-nav">
-                    <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
-                    <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
-                    <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
-                    <a href="catering.html" class="vapor-item" style="--c: var(--blue)"><div class="bloom"></div><span>Catering</span></a>
-                    <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
-                    <a href="project-planner.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Planner</span></a>
-                    <a href="book-a-table.html" class="mardi-gras-button">
-                        <div class="nola-symbol">⚜</div>
-                        <div class="label-container">
-                            <span class="label">Book a Table</span>
-                            <span class="mono-data">504.NOLA.2024</span>
+                <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                    <a href="index.html" class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                            <span class="text-xl">⚜️</span>
                         </div>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-white group-hover:text-amber-500 transition-colors">THE CAJUN <span class="font-light text-slate-400">MENU</span></span>
                     </a>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="index.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Home</a>
+                    <a href="index.html#about" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Story</a>
+                    <a href="index.html#menu" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Menu</a>
+                    <a href="catering.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Catering</a>
+                    <a href="delivery.html" class="text-sm uppercase tracking-widest text-amber-400 transition-colors duration-300">Delivery</a>
+                    <a href="project-planner.html" class="text-sm uppercase tracking-widest text-slate-300 hover:text-amber-400 transition-colors duration-300">Project Planner</a>
+                    <a href="index.html#visit" class="px-8 py-3 bg-gradient-to-r from-amber-600 to-red-600 text-white font-semibold btn-3d">Book a Table</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -580,18 +105,13 @@
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 absolute w-full">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="index.html#home" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
+                <a href="index.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
                 <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
                 <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
                 <a href="catering.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Catering</a>
-                <a href="delivery.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Delivery</a>
-                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Planner</a>
-                <a href="book-a-table.html" class="mardi-gras-button w-full justify-center">
-                    <div class="label-container">
-                        <span class="label">Book a Table</span>
-                        <span class="mono-data">504.NOLA.2024</span>
-                    </div>
-                </a>
+                <a href="delivery.html" class="block px-3 py-3 text-amber-400 font-semibold">Delivery</a>
+                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Project Planner</a>
+                <a href="index.html#visit" class="block px-3 py-3 text-amber-400 font-semibold">Book a Table</a>
             </div>
         </div>
     </nav>
@@ -613,7 +133,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- UberEats -->
-                <a href="https://www.ubereats.com/feed?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMlRoZSUyMENhanVuJTIwTWVudSUyMiUyQyUyMnJlZmVyZW5jZSUyMiUzQSUyMmhlcmUlM0FwZHMlM0FwbGFjZSUzQTg0MGRuNWZ2LThjMmNlMTJjZTdmMmJjNTlmMDJhNmIwOThlY2Y0ZmYwJTIyJTJDJTIycmVmZXJlbmNlVHlwZSUyMiUzQSUyMmhlcmVfcGxhY2VzJTIyJTJDJTIybGF0aXR1ZGUlMjIlM0EzNC4yNTUxOCUyQyUyMmxvbmdpdHVkZSUyMiUzQS04NC40NjM0MyU3RA%3D%3D" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#06C167]/10 transition-colors">
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#06C167]/10 transition-colors">
                     <div class="w-20 h-20 bg-[#06C167] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         UE
                     </div>
@@ -623,7 +143,7 @@
                 </a>
 
                 <!-- DoorDash -->
-                <a href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#FF3008]/10 transition-colors">
                     <div class="w-20 h-20 bg-[#FF3008] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         DD
                     </div>
@@ -633,7 +153,7 @@
                 </a>
 
                 <!-- GrubHub -->
-                <a href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#F63440]/10 transition-colors">
+                <a href="#" class="glass-card p-8 rounded-2xl text-center group hover:bg-[#F63440]/10 transition-colors">
                     <div class="w-20 h-20 bg-[#F63440] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform">
                         GH
                     </div>
@@ -658,7 +178,7 @@
                 <!-- Gator Image Container -->
                 <div class="relative w-64 h-64 md:w-80 md:h-80 transition-transform duration-500 hover:scale-105">
                     <div class="absolute inset-0 bg-green-500/20 rounded-full blur-3xl animate-pulse"></div>
-                    <img src="images/gator-mascot.png" alt="Funny Cajun Gator" loading="lazy" class="relative z-10 w-full h-full object-contain drop-shadow-2xl animate-bounce-slow" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1998/1998610.png'">
+                    <img src="images/gator-mascot.png" alt="Funny Cajun Gator" class="relative z-10 w-full h-full object-contain drop-shadow-2xl animate-bounce-slow" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1998/1998610.png'">
                 </div>
             </div>
         </div>
@@ -670,200 +190,14 @@
             .animate-bounce-slow {
                 animation: bounce-slow 3s infinite ease-in-out;
             }
-                /* Global button palette override */
-        :root {
-            --btn-purple: #5b1bb8;
-            --btn-purple-dark: #3a0f7a;
-            --btn-text-gold: #d4af37;
-            --btn-shadow-green: rgba(0, 171, 102, 0.6);
-        }
-        .mardi-gras-button,
-        .btn-3d,
-        button {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            animation: none !important;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 22px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.45) !important;
-        }
-        .mardi-gras-button::before { opacity: 0.25; }
-        .mardi-gras-button:hover {
-            box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 28px var(--btn-shadow-green) !important;
-            filter: brightness(1.12);
-            animation: shimmer-move 6s linear infinite;
-        }
-        .mardi-gras-button:active {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.45), 0 0 16px var(--btn-shadow-green) !important;
-        }
-        .btn-3d {
-            background: linear-gradient(135deg, var(--btn-purple), var(--btn-purple-dark)) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 20px var(--btn-shadow-green) !important;
-            border-color: rgba(0, 171, 102, 0.35) !important;
-        }
-        .btn-3d:active {
-            box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 12px var(--btn-shadow-green) !important;
-        }
-        button[class*="bg-amber"],
-        button[class*="bg-yellow"],
-        button[class*="bg-orange"],
-        a[class*="bg-amber"],
-        a[class*="bg-yellow"],
-        a[class*="bg-orange"] {
-            background-color: var(--btn-purple) !important;
-            color: var(--btn-text-gold) !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 0 18px var(--btn-shadow-green) !important;
-        }
-        button[class*="from-amber"],
-        button[class*="from-yellow"],
-        button[class*="from-orange"],
-        button[class*="to-amber"],
-        button[class*="to-yellow"],
-        button[class*="to-orange"],
-        button[class*="to-red"],
-        a[class*="from-amber"],
-        a[class*="from-yellow"],
-        a[class*="from-orange"],
-        a[class*="to-amber"],
-        a[class*="to-yellow"],
-        a[class*="to-orange"],
-        a[class*="to-red"] {
-            --tw-gradient-from: var(--btn-purple) !important;
-            --tw-gradient-to: var(--btn-purple-dark) !important;
-            --tw-gradient-stops: var(--btn-purple), var(--btn-purple-dark) !important;
-        }
-            /* mono-data-hidden */
-        .mardi-gras-button .label {
-            color: var(--btn-text-gold) !important;
-        }
-        .mardi-gras-button .mono-data {
-            display: none !important;
-            animation: none !important;
-        }
-            /* button-hover-tilt */
-        .mardi-gras-button,
-        .btn-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, filter 0.35s ease;
-        }
-        .mardi-gras-button:hover,
-        .btn-3d:hover {
-            transform: translateY(-5px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) !important;
-            box-shadow: 0 0 20px 2px rgba(253, 245, 180, 0.55), 0 12px 0 0 rgba(139, 110, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 22px var(--btn-shadow-green) !important;
-            filter: brightness(1.15);
-        }
-        .mardi-gras-button:active,
-        .btn-3d:active {
-            transform: translateY(2px) rotateX(0deg) rotateY(0deg) !important;
-        }
-    
-        .flash-footer::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='220' viewBox='0 0 1400 220'%3E%3Crect width='1400' height='220' fill='%2308080b'/%3E%3Cg opacity='0.95'%3E%3Cline x1='80' y1='0' x2='80' y2='120' stroke='%23f2d050' stroke-width='2'/%3E%3Ccircle cx='80' cy='30' r='6' fill='%239d50bb'/%3E%3Ccircle cx='80' cy='52' r='6' fill='%23f2d050'/%3E%3Ccircle cx='80' cy='74' r='6' fill='%2300ab66'/%3E%3Ccircle cx='80' cy='96' r='6' fill='%239d50bb'/%3E%3Cline x1='140' y1='0' x2='140' y2='120' stroke='%2300ab66' stroke-width='2'/%3E%3Ccircle cx='140' cy='30' r='6' fill='%23f2d050'/%3E%3Ccircle cx='140' cy='52' r='6' fill='%2300ab66'/%3E%3Ccircle cx='140' cy='74' r='6' fill='%239d50bb'/%3E%3Ccircle cx='140' cy='96' r='6' fill='%23f2d050'/%3E%3Cline x1='200' y1='0' x2='200' y2='120' stroke='%239d50bb' stroke-width='2'/%3E%3Ccircle cx='200' cy='30' r='6' fill='%2300ab66'/%3E%3Ccircle cx='200' cy='52' r='6' fill='%239d50bb'/%3E%3Ccircle cx='200' cy='74' r='6' fill='%23f2d050'/%3E%3Ccircle cx='200' cy='96' r='6' fill='%2300ab66'/%3E%3C/g%3E%3Ctext x='700' y='190' text-anchor='middle' font-family='Cinzel, serif' font-size='44' fill='%23d4af37' letter-spacing='10'%3ETHE%20CAJUN%20MENU%3C/text%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
-            opacity: 0.35;
-            filter: saturate(1.1);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .flash-footer .footer-content,
-        .flash-footer .footer-bottom { position: relative; z-index: 2; }
-        
-    
-            /* Mobile layout overrides */
-        @media (max-width: 768px) {
-            nav .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
-            nav .h-24 { height: 4.5rem !important; }
-            nav .h-\[5rem\] { height: 4.5rem !important; }
-            #mobile-menu {
-                max-height: calc(100vh - 4.5rem);
-                overflow-y: auto;
-            }
-            #mobile-menu a { font-size: 0.95rem; }
-            .hero-main-title {
-                font-size: clamp(2.2rem, 12vw, 4rem);
-                line-height: 0.95;
-            }
-            .hero-subtitle,
-            .hero-lead,
-            .hero-copy {
-                font-size: 0.95rem;
-            }
-            #menu-grid { grid-template-columns: 1fr !important; }
-            .gilded-card {
-                width: 100%;
-                max-width: 360px;
-                height: auto;
-            }
-            .gilded-card .image-box { height: 200px; }
-            .gilded-card .content { padding: 20px; }
-            .gilded-card .title { font-size: 1.6rem; }
-            .gilded-card .description { font-size: 0.85rem; }
-            #menu-categories { gap: 10px; padding-bottom: 1rem; }
-            #menu-categories button { white-space: nowrap; }
-            .flash-footer { min-height: 420px; }
-            .footer-top { flex-direction: column; gap: 16px; }
-            .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
-            .footer-underlay { width: 100%; }
-            .brand-rig { transform: scale(0.7); transform-origin: center top; }
-            .map-embed iframe { height: 220px; }
-            .footer-card { padding: 16px; }
-            .mardi-gras-button { padding: 14px 24px; font-size: 0.95rem; }
-        }
-    </style>
+        </style>
     </section>
 
     <!-- Footer -->
-    <footer class="flash-footer"><div class="footer-content">
-            <div class="footer-top">
-                <div class="footer-underlay">
-                    <div class="brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
-                </div>
-                <div class="social-cluster social-center">
-                <a class="social-btn" href="https://www.facebook.com/p/The-Cajun-Menu-61558125637329/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a class="social-btn" href="https://www.yelp.com/biz/the-cajun-menu-canton" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
-                    <svg viewBox="0 0 24 24"><path d="M12.188 15.344l-1.012 3.863c-.113.431.113.881.544.994l.206.038c.412.056.806-.206.881-.619l1.013-3.863a3.564 3.564 0 0 0-1.632-.413zm-1.875-1.144c-.262-.356-.637-.6-1.069-.694L5.344 12.5a.774.774 0 0 0-.919.506l-.038.113c-.113.431.131.881.563.994l3.881 1.013c.244.056.506.038.75-.056.3-.113.563-.338.732-.87zm3.113-.769c.45-.075.881.113 1.144.45l2.55 3.038c.281.338.244.844-.094 1.125l-.094.075c-.338.281-.844.244-1.125-.094l-2.55-3.038a.747.747 0 0 0-.469-.262 1.05 1.05 0 0 1 .638-1.294zm-1.894-3.131L9.175 6.438a.754.754 0 0 0-.825-.563l-.113.019c-.431.056-.731.469-.675.9l.356 3.844a1.045 1.045 0 0 0 .544.863c.431.225.956.169 1.256-.206l1.813-2.988zm4.444 1.294l3.788-.938a.755.755 0 0 0 .563-.825l-.019-.113c-.056-.431-.469-.731-.9-.675l-3.844.356a1.051 1.051 0 0 0-.863.544c-.225.431-.169.956.206 1.256l3.069 1.013-.001-.618z"/></svg>
-                </a>
-                <a class="social-btn" href="https://www.instagram.com/thecajunmenu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                </div>
-            </div>
-
-            <div class="footer-grid">
-                <div class="footer-left">
-                    <div class="footer-card">
-                        <div class="footer-card-icon">📍</div>
-                        <h4 class="footer-card-title">Location</h4>
-                        <p class="footer-card-text">140 Keith Dr<br>Canton, GA 30114, US</p>
-                    </div>
-                    <div class="map-embed">
-                        <iframe
-                            title="The Cajun Menu Map"
-                            src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed"
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                    <div class="footer-card">
-                        <div class="footer-card-icon">📞</div>
-                        <h4 class="footer-card-title">Contact</h4>
-                        <p class="footer-card-text">678-899-7404<br>thecajunmenu@gmail.com</p>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div><div class="footer-bottom">
-            <span>The Cajun Menu</span>
-            <span>Canton, GA</span>
-            <span>&copy; 2026</span>
+    <footer class="bg-[#020617] border-t border-white/5 py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-heading font-bold text-white mb-6 tracking-tight">THE CAJUN MENU</h2>
+            <p class="text-slate-600 text-sm">© 2024 The Cajun Menu. Designed for Excellence.</p>
         </div>
     </footer>
 
@@ -873,103 +207,6 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
-
-        // Build beaded logo rig
-        const rigContainer = document.getElementById('menu-rig');
-        if (rigContainer) {
-            const text = 'THE CAJUN MENU';
-            const colors = ['purple', 'gold', 'green'];
-            text.split('').forEach((char, index) => {
-                if (char === ' ') {
-                    const spacer = document.createElement('div');
-                    spacer.className = 'brand-spacer';
-                    rigContainer.appendChild(spacer);
-                    return;
-                }
-                const suspension = document.createElement('div');
-                suspension.className = 'bead-suspension';
-                const string = document.createElement('div');
-                string.className = 'bead-string';
-                for (let i = 0; i < 5; i++) {
-                    const bead = document.createElement('div');
-                    const color = colors[(index + i) % 3];
-                    bead.className = `brand-bead bead-${color}`;
-                    bead.style.top = `${10 + i * 15}px`;
-                    string.appendChild(bead);
-                }
-                const pendant = document.createElement('div');
-                pendant.className = 'brand-char';
-                pendant.innerText = char;
-                const charColor = colors[index % 3];
-                pendant.style.color = `var(--mg-${charColor}, ${charColor === 'gold' ? '#FFD700' : charColor === 'green' ? '#00A86B' : '#6A0DAD'})`;
-
-                suspension.appendChild(string);
-                suspension.appendChild(pendant);
-                rigContainer.appendChild(suspension);
-
-                let rotation = 0;
-                let targetRotation = 0;
-                const updateMovement = () => {
-                    rotation += (targetRotation - rotation) * 0.1;
-                    suspension.style.transform = `rotateX(${rotation * 0.5}deg) rotateY(${rotation}deg) translateZ(${Math.abs(rotation)}px)`;
-                    requestAnimationFrame(updateMovement);
-                };
-                updateMovement();
-
-                window.addEventListener('mousemove', (e) => {
-                    const rect = suspension.getBoundingClientRect();
-                    const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
-                    if (dist < 150) {
-                        const diff = e.clientX - (rect.left + rect.width / 2);
-                        targetRotation = Math.max(Math.min(diff * 0.4, 45), -45);
-                        pendant.style.filter = `brightness(1.5) drop-shadow(0 0 10px ${pendant.style.color})`;
-                    } else {
-                        targetRotation = 0;
-                        pendant.style.filter = 'none';
-                    }
-                });
-            });
-        }
-    </script>
-    <script>
-        // button-tilt-hover
-        (() => {
-            const buttons = Array.from(document.querySelectorAll('.mardi-gras-button, .btn-3d, #menu-categories button'));
-            buttons.forEach((btn) => {
-                btn.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    btn.style.setProperty('--tilt-x', `${(-y * 10).toFixed(2)}deg`);
-                    btn.style.setProperty('--tilt-y', `${(x * 10).toFixed(2)}deg`);
-                });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.setProperty('--tilt-x', '0deg');
-                    btn.style.setProperty('--tilt-y', '0deg');
-                });
-            });
-        })();
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
