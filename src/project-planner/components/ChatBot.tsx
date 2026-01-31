@@ -4,6 +4,7 @@ import { chatWithAssistant } from '../services/geminiService';
 import { ProjectTask, ShoppingItem } from '../types';
 
 interface Message {
+  id: string;
   role: 'user' | 'model';
   text: string;
   sources?: { title?: string; uri: string }[];
@@ -16,7 +17,11 @@ interface ChatBotProps {
 
 const ChatBot: React.FC<ChatBotProps> = ({ currentTasks, catalog }) => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: "Terminal Secure. I am the Cajun Menu Intelligence Terminal. I have visibility over your operational backlog and strategic roadmap. I am prepared to provide data-driven market insights, competitive analysis, and technical ROI evaluations. How shall we proceed?" }
+    {
+      id: 'init-1',
+      role: 'model',
+      text: "Terminal Secure. I am the Cajun Menu Intelligence Terminal. I have visibility over your operational backlog and strategic roadmap. I am prepared to provide data-driven market insights, competitive analysis, and technical ROI evaluations. How shall we proceed?"
+    }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -28,13 +33,15 @@ const ChatBot: React.FC<ChatBotProps> = ({ currentTasks, catalog }) => {
     }
   }, [messages]);
 
+  const generateId = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
+
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
     const userMsg = input;
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+    setMessages(prev => [...prev, { id: generateId(), role: 'user', text: userMsg }]);
     setIsLoading(true);
 
     const history = messages.map(m => ({ role: m.role === 'model' ? 'model' : 'user', parts: [{ text: m.text }] }));
@@ -54,7 +61,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ currentTasks, catalog }) => {
 
     const result = await chatWithAssistant(contextPrompt, history);
     
-    setMessages(prev => [...prev, { role: 'model', text: result.text, sources: result.sources }]);
+    setMessages(prev => [...prev, { id: generateId(), role: 'model', text: result.text, sources: result.sources }]);
     setIsLoading(false);
   };
 
@@ -71,8 +78,8 @@ const ChatBot: React.FC<ChatBotProps> = ({ currentTasks, catalog }) => {
       </div>
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-950/20">
-        {messages.map((m, i) => (
-          <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+        {messages.map((m) => (
+          <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[85%] p-4 rounded-lg text-[11px] shadow-md leading-relaxed ${
               m.role === 'user' 
                 ? 'bg-indigo-600 text-white rounded-tr-none' 
