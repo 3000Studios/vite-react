@@ -1503,32 +1503,80 @@
             height: 170px;
             opacity: 0.85;
             filter: blur(50px);
+        }
+        /* Mobile filigree nav */
+        .site-nav { transition: opacity 0.3s ease, background-color 0.3s ease; }
+        .site-nav.is-faded { opacity: 0.6; }
+        .molten-svg { position: absolute; width: 0; height: 0; }
+        .menu-trigger {
+            position: fixed;
+            top: 10px;
+            right: 12px;
+            width: 64px;
+            height: 64px;
+            background: #1a0033;
+            border: 3px solid var(--gold-metallic);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 0;
+            overflow: visible;
+        }
+        .menu-trigger:hover { box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); transform: scale(1.05); }
+        .emblem-container { position: relative; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .icon-fleur, .icon-jester { position: absolute; width: 100%; height: 100%; fill: var(--gold-metallic); filter: url(#molten-glow); transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .icon-jester { opacity: 0; transform: rotate(180deg) scale(0); }
+        .menu-active .icon-fleur { opacity: 0; transform: rotate(-180deg) scale(0); }
+        .menu-active .icon-jester { opacity: 1; transform: rotate(0deg) scale(1); }
+
+        .nav-container {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(26, 0, 51, 0.98), rgba(5, 0, 10, 0.96));
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 120px 28px 0 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 55;
+        }
+        .menu-active .nav-container { opacity: 1; pointer-events: auto; }
+        .nav-list { display: flex; flex-direction: column; gap: 18px; list-style: none; margin: 0; padding: 0; perspective: 1000px; align-items: flex-end; }
+        .nav-item { opacity: 0; transform: translate(120px, -40px) scale(0.6); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .menu-active .nav-item { opacity: 1; transform: translate(0, 0) scale(1); }
+        .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; width: 240px; height: 85px; padding-right: 25px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px; position: relative; color: var(--gold-metallic); transition: all 0.3s ease; }
+        .nav-link:hover { background: rgba(212, 175, 55, 0.08); border-color: var(--gold-metallic); transform: translateX(-15px); }
+        .filigree-box { position: absolute; inset: -6px; border: 1px solid var(--gold-metallic); opacity: 0.3; pointer-events: none; clip-path: polygon(0 0, 20% 0, 20% 2px, 2px 2px, 2px 20%, 0 20%, 0 0, 100% 0, 100% 20%, 98% 20%, 98% 2px, 80% 2px, 80% 0, 100% 0, 100% 100%, 80% 100%, 80% 98%, 98% 98%, 98% 80%, 100% 80%, 100% 100%, 0 100%, 0 80%, 2px 80%, 2px 98%, 20% 98%, 20% 100%, 0 100%); }
+        .nav-label { font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; }
+        .nav-sub { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--green); letter-spacing: 1px; opacity: 0.8; }
+        .nav-item:nth-child(1) { transition-delay: 0.1s; }
+        .nav-item:nth-child(2) { transition-delay: 0.15s; }
+        .nav-item:nth-child(3) { transition-delay: 0.2s; }
+        .nav-item:nth-child(4) { transition-delay: 0.25s; }
+        .nav-item:nth-child(5) { transition-delay: 0.3s; }
+        .nav-item:nth-child(6) { transition-delay: 0.35s; }
+        @media (max-width: 600px) {
+            .nav-link { width: 80vw; }
+            .menu-trigger { width: 56px; height: 56px; }
+            .emblem-container { width: 34px; height: 34px; }
         }</style>
 </head>
 <body>
-    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
-                <div class="flex items-center gap-4">
-                    <div class="brand-rig nav-brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
-                </div>
-                <div class="hidden md:flex items-center vapor-nav">
-                    <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
-                    <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
-                    <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
-                    <a href="catering.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Catering</span></a>
-                    <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
-                    <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" aria-label="Open menu" class="text-white">
-                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                    </button>
-                </div>
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 site-nav">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
+            <div class="flex items-center gap-4">
+                <div class="brand-rig nav-brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
             </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/5">
-            <div class="px-6 py-4 flex flex-col gap-3">
+            <div class="hidden md:flex items-center vapor-nav">
                 <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
                 <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
                 <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
@@ -1536,8 +1584,44 @@
                 <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
                 <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
             </div>
+            <button class="menu-trigger md:hidden" id="menuBtn" aria-label="Open menu" type="button">
+                <div class="emblem-container">
+                    <svg class="icon-fleur" viewBox="0 0 100 100">
+                        <path d="M50 15c-4 15-20 22-28 22 15 0 20 15 20 15s-15 0-25-12c5 30 15 30 33 40-15 10-25 10-30 35 30-10 40-10 30-35 18-10 28-10 33-40-10 12-25 12-25 12s5-15 20-15c-8 0-24-7-28-22z" />
+                    </svg>
+                    <svg class="icon-jester" viewBox="0 0 100 100">
+                        <path d="M50 45 Q50 10 85 35 Q60 35 65 50" fill="var(--purple)" />
+                        <path d="M50 45 Q50 10 15 35 Q40 35 35 50" fill="var(--green)" />
+                        <path d="M50 45 Q50 5 50 40" stroke="var(--gold-metallic)" stroke-width="4" fill="none" />
+                        <circle cx="50" cy="15" r="5" fill="var(--gold-metallic)" />
+                        <circle cx="15" cy="35" r="4" fill="var(--gold-metallic)" />
+                        <circle cx="85" cy="35" r="4" fill="var(--gold-metallic)" />
+                        <path d="M35 50 L65 50 L50 85 Z" fill="var(--gold-metallic)" />
+                        <path d="M42 58 L45 62 M55 62 L58 58" stroke="black" stroke-width="2" />
+                    </svg>
+                </div>
+            </button>
         </div>
-    </nav>
+    </div>
+    <svg class="molten-svg" aria-hidden="true">
+        <defs>
+            <filter id="molten-glow">
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+        </defs>
+    </svg>
+</nav>
+<nav class="nav-container md:hidden" aria-label="Mobile">
+    <ul class="nav-list" id="navList">
+        <li class="nav-item"><a href="index.html#home" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Home</span><span class="nav-sub">01 // HOME</span></a></li>
+        <li class="nav-item"><a href="index.html#about" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Story</span><span class="nav-sub">02 // STORY</span></a></li>
+        <li class="nav-item"><a href="index.html#menu" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Menu</span><span class="nav-sub">03 // MENU</span></a></li>
+        <li class="nav-item"><a href="catering.html" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Catering</span><span class="nav-sub">04 // CATERING</span></a></li>
+        <li class="nav-item"><a href="delivery.html" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Delivery</span><span class="nav-sub">05 // DELIVERY</span></a></li>
+        <li class="nav-item"><a href="project-planner.html" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Planner</span><span class="nav-sub">06 // PLANNER</span></a></li>
+    </ul>
+</nav>
 
     <script>
         const trigger = document.getElementById('mardi-gras-trigger');
@@ -1815,8 +1899,33 @@
             });
         })();
     </script>
+    <script>
+        // Nav fade on scroll + mobile menu toggle
+        const siteNav = document.querySelector('.site-nav');
+        if (siteNav) {
+            const onScroll = () => {
+                siteNav.classList.toggle('is-faded', window.scrollY > 10);
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
+
+        const menuBtn = document.getElementById('menuBtn');
+        const bodyEl = document.body;
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                bodyEl.classList.toggle('menu-active');
+            });
+        }
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => bodyEl.classList.remove('menu-active'));
+        });
+    </script>
 </body>
 </html>
+
+
+
 
 
 
