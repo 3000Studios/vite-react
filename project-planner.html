@@ -9,6 +9,73 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
         :root { --gold-metallic: #D4AF37; }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .vapor-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .vapor-item {
+            position: relative;
+            padding: 12px 18px;
+            color: rgba(255, 255, 255, 0.55);
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-decoration: none;
+            overflow: visible;
+            transition: color 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.7rem;
+        }
+        .vapor-item .bloom {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--c);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(20px);
+            opacity: 0;
+            transition: all 0.6s ease-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .vapor-item:hover { color: #fff; }
+        .vapor-item:hover .bloom {
+            width: 150px;
+            height: 150px;
+            opacity: 0.7;
+            filter: blur(40px);
+        }
+        .vapor-item span { position: relative; z-index: 2; }
+
+        .brand-rig { display: flex; align-items: center; gap: 0.5rem; padding: 0 1rem; }
+        .brand-spacer { width: 1rem; }
+        .bead-suspension { position: relative; display: flex; flex-direction: column; align-items: center; transform-origin: top center; cursor: pointer; }
+        .bead-string { width: 2px; height: 70px; background: rgba(255, 255, 255, 0.15); position: relative; }
+        .brand-bead { width: 8px; height: 8px; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); box-shadow: inset -2px -2px 4px rgba(0,0,0,0.4), inset 2px 2px 4px rgba(255,255,255,0.4); }
+        .bead-purple { background: #6A0DAD; }
+        .bead-gold { background: #FFD700; }
+        .bead-green { background: #00A86B; }
+        .brand-char {
+            margin-top: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
         .text-amber-400,
         .text-amber-500,
         .text-amber-600,
@@ -360,6 +427,57 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
+                <div id="mardi-gras-trigger" class="flex-shrink-0 flex items-center group cursor-pointer">
+                    <a href="index.html" class="flex items-center">
+                        <div class="brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center vapor-nav">
+                    <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
+                    <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
+                    <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
+                    <a href="catering.html" class="vapor-item" style="--c: var(--blue)"><div class="bloom"></div><span>Catering</span></a>
+                    <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
+                    <a href="project-planner.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Planner</span></a>
+                    <a href="index.html#visit" class="mardi-gras-button">
+                        <div class="nola-symbol">⚜</div>
+                        <div class="label-container">
+                            <span class="label">Book a Table</span>
+                            <span class="mono-data">504.NOLA.2024</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none p-2">
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html#home" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Home</a>
+                <a href="index.html#about" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Story</a>
+                <a href="index.html#menu" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Menu</a>
+                <a href="catering.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Catering</a>
+                <a href="delivery.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Delivery</a>
+                <a href="project-planner.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Planner</a>
+                <a href="index.html#visit" class="mardi-gras-button w-full justify-center">
+                    <div class="label-container">
+                        <span class="label">Book a Table</span>
+                        <span class="mono-data">504.NOLA.2024</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
     <div id="root"></div>
     <script type="module" src="/src/project-planner/index.tsx"></script>
 
@@ -442,6 +560,71 @@
             <span>&copy; 2026</span>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Build beaded logo rig
+        const rigContainer = document.getElementById('menu-rig');
+        if (rigContainer) {
+            const text = 'THE CAJUN MENU';
+            const colors = ['purple', 'gold', 'green'];
+            text.split('').forEach((char, index) => {
+                if (char === ' ') {
+                    const spacer = document.createElement('div');
+                    spacer.className = 'brand-spacer';
+                    rigContainer.appendChild(spacer);
+                    return;
+                }
+                const suspension = document.createElement('div');
+                suspension.className = 'bead-suspension';
+                const string = document.createElement('div');
+                string.className = 'bead-string';
+                for (let i = 0; i < 5; i++) {
+                    const bead = document.createElement('div');
+                    const color = colors[(index + i) % 3];
+                    bead.className = `brand-bead bead-${color}`;
+                    bead.style.top = `${10 + i * 15}px`;
+                    string.appendChild(bead);
+                }
+                const pendant = document.createElement('div');
+                pendant.className = 'brand-char';
+                pendant.innerText = char;
+                const charColor = colors[index % 3];
+                pendant.style.color = `var(--mg-${charColor}, ${charColor === 'gold' ? '#FFD700' : charColor === 'green' ? '#00A86B' : '#6A0DAD'})`;
+
+                suspension.appendChild(string);
+                suspension.appendChild(pendant);
+                rigContainer.appendChild(suspension);
+
+                let rotation = 0;
+                let targetRotation = 0;
+                const updateMovement = () => {
+                    rotation += (targetRotation - rotation) * 0.1;
+                    suspension.style.transform = `rotateX(${rotation * 0.5}deg) rotateY(${rotation}deg) translateZ(${Math.abs(rotation)}px)`;
+                    requestAnimationFrame(updateMovement);
+                };
+                updateMovement();
+
+                window.addEventListener('mousemove', (e) => {
+                    const rect = suspension.getBoundingClientRect();
+                    const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+                    if (dist < 150) {
+                        const diff = e.clientX - (rect.left + rect.width / 2);
+                        targetRotation = Math.max(Math.min(diff * 0.4, 45), -45);
+                        pendant.style.filter = `brightness(1.5) drop-shadow(0 0 10px ${pendant.style.color})`;
+                    } else {
+                        targetRotation = 0;
+                        pendant.style.filter = 'none';
+                    }
+                });
+            });
+        }
+    </script>
 
     <script>
         const liquidCanvas = document.getElementById('liquidCanvas');
