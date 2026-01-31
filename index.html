@@ -322,11 +322,11 @@
             line-height: 0.9;
             font-weight: 900;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #4B0082 0%, #8e44ad 25%, #FFD700 50%, #00AB66 75%, #4B0082 100%);
-            background-size: 400% 400%;
+            background: linear-gradient(135deg, #6A0DAD 0%, #FFD700 25%, #00A86B 50%, #4A90E2 75%, #6A0DAD 100%);
+            background-size: 500% 500%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 8s ease infinite, scaleIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: gradientShift 14s ease-in-out infinite, scaleIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             position: relative;
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
             cursor: pointer;
@@ -1375,6 +1375,14 @@
                         <div class="text-yellow-500 text-3xl mb-4">📍</div>
                         <h4 class="text-xl font-bold text-white mb-2">Location</h4>
                         <p class="text-slate-400">140 Keith Dr<br>Canton, GA 30114, US</p>
+                        <div class="map-embed mt-4">
+                            <iframe
+                                title="The Cajun Menu Map"
+                                src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
                     </div>
                     <div class="glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-colors hover-glow">
                         <div class="text-yellow-500 text-3xl mb-4">📞</div>
@@ -1496,9 +1504,6 @@
                             <span class="mono-data">DASH</span>
                         </div>
                     </a>
-                </div>
-                <div class="map-embed">
-                    <iframe title="The Cajun Menu Map" src="https://www.google.com/maps?q=140%20Keith%20Dr%20Canton%2C%20GA%2030114&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
