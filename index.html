@@ -322,11 +322,12 @@
             line-height: 0.9;
             font-weight: 900;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #6A0DAD 0%, #FFD700 25%, #00A86B 50%, #4A90E2 75%, #6A0DAD 100%);
-            background-size: 500% 500%;
+            background: linear-gradient(180deg, #6A0DAD 0%, #00A86B 35%, #FFD700 65%, #4A90E2 100%);
+            background-size: 200% 300%;
+            background-position: 0% 0%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 14s ease-in-out infinite, scaleIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: textScroll 16s linear infinite, scaleIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             position: relative;
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
             cursor: pointer;
@@ -340,6 +341,11 @@
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
             -webkit-text-fill-color: transparent;
             transform: translate(8px, 8px);
+        }
+        @keyframes textScroll {
+            0% { background-position: 50% 0%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 50% 0%; }
         }
         .hero-metrics {
             margin-top: 2.5rem;
