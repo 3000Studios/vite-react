@@ -1930,6 +1930,7 @@
 
         function renderMenu() {
             menuGrid.innerHTML = '';
+            const fragment = document.createDocumentFragment();
             const items = menuData[currentCategory];
             items.forEach((item, index) => {
                 const card = document.createElement('div');
@@ -1966,8 +1967,9 @@
                         </div>
                     </div>
                 `;
-                menuGrid.appendChild(card);
+                fragment.appendChild(card);
             });
+            menuGrid.appendChild(fragment);
         }
 
         // Food Modal Logic
@@ -1985,6 +1987,7 @@
             
             if (item.image) {
                 img.src = item.image;
+                img.alt = item.name;
                 img.classList.remove('hidden');
                 document.getElementById('food-modal-placeholder').classList.add('hidden');
             } else {
