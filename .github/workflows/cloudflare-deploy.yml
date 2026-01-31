@@ -15,4 +15,4 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - run: npx wrangler pages deploy dist --project-name=vite-react
+      - run: npx wrangler pages deploy dist --project-name=cajun-kitchen
