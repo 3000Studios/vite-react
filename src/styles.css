@@ -97,6 +97,41 @@
   .nav-hover:hover::after {
     transform: scaleX(1);
   }
+
+  .bead-title-wrap {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .bead-title {
+    background: linear-gradient(120deg, #ffd700, #6a0dad, #00a86b, #4a90e2, #ffd700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Playfair Display', 'Manrope', serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: beadHue 8s ease-in-out infinite;
+    text-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  }
+  .bead-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .bead {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    box-shadow:
+      inset -2px -2px 4px rgba(0, 0, 0, 0.35),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.4),
+      0 4px 8px rgba(0, 0, 0, 0.35);
+    animation: beadBob 2.6s ease-in-out infinite alternate;
+  }
 }
 
 @keyframes shimmer-move {
@@ -105,5 +140,26 @@
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+@keyframes beadHue {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes beadBob {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-6px) scale(1.05);
   }
 }

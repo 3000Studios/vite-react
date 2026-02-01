@@ -373,6 +373,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState(MENU_CATEGORIES[0]);
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const beadColors = ['#FFD700', '#6A0DAD', '#00A86B', '#4A90E2'];
 
   const filteredItems = MENU_ITEMS.filter((item) => item.category === selectedCategory);
   const signatureDishes = MENU_ITEMS.filter((item) => item.isSignature);
@@ -445,24 +446,26 @@ export default function Home() {
             <span className="mb-6 inline-block rounded-full border border-mardiGold bg-mardiPurple/80 px-6 py-2 text-xs font-black uppercase tracking-[0.3em] text-mardiGold backdrop-blur">
               Flavor of Louisiana
             </span>
-            <h1 className="font-serif text-6xl font-black italic uppercase leading-none md:text-8xl lg:text-9xl">
-              <motion.span
-                initial={{ x: -200, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 1 }}
-                className="mb-2 block text-white"
-              >
-                The Cajun
-              </motion.span>
-              <motion.span
-                initial={{ x: 200, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.45, duration: 1 }}
-                className="block text-mardiGold"
-              >
-                Menu
-              </motion.span>
-            </h1>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.25, duration: 0.9 }}
+              className="bead-title-wrap"
+            >
+              <span className="bead-title text-6xl md:text-8xl lg:text-9xl">The Cajun Menu</span>
+              <div className="bead-row" aria-hidden="true">
+                {Array.from({ length: 18 }).map((_, idx) => (
+                  <span
+                    key={idx}
+                    className="bead"
+                    style={{
+                      backgroundColor: beadColors[idx % beadColors.length],
+                      animationDelay: `${(idx % 6) * 0.1}s`,
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
