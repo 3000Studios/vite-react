@@ -599,8 +599,8 @@ export default function Home() {
           >
             <motion.div style={{ scale }} className="relative z-10 overflow-hidden rounded-[2.5rem] shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=1000"
-                alt="Chef plating Cajun food"
+                src="/images/gator-bites.png"
+                alt="Signature Cajun dish"
                 loading="lazy"
                 className="aspect-[4/5] w-full object-cover"
               />
