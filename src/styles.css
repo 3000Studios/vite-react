@@ -571,6 +571,29 @@ wistia-player.story-wistia::part(controls) {
   color: #fdf5b4;
   filter: drop-shadow(0 0 8px #d4af37);
 }
+
+/* Footer social icons: 3D + higher contrast */
+.social-3d {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 14px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), rgba(0,0,0,0.15));
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.45),
+    inset 0 2px 6px rgba(255, 255, 255, 0.25),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: color 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.social-3d:hover {
+  color: #ffd700;
+  box-shadow:
+    0 18px 28px rgba(0, 0, 0, 0.55),
+    0 0 24px rgba(255, 215, 0, 0.35),
+    inset 0 2px 6px rgba(255, 255, 255, 0.3),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.55);
+  transform: translateY(-4px);
+}
 .brass-press:hover .nola-symbol {
   opacity: 1;
   transform: translateX(-50%) scale(1.1) translateY(0);

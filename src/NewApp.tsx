@@ -278,9 +278,9 @@ const Footer: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => {
       <div className="container mx-auto px-6 lg:px-12 relative z-10 h-full flex flex-col">
         {/* Centered Socials */}
         <div className="flex justify-center items-center gap-12 mb-28">
-          <motion.a whileHover={{ scale: 1.2, color: '#FFD700' }} href="#" className="text-white/30 transition-colors"><Instagram size={48} /></motion.a>
-          <motion.a whileHover={{ scale: 1.2, color: '#FFD700' }} href="#" className="text-white/30 transition-colors"><Facebook size={48} /></motion.a>
-          <motion.a whileHover={{ scale: 1.2, color: '#FFD700' }} href="#" className="text-white/30 transition-colors"><Mail size={48} /></motion.a>
+          <motion.a whileHover={{ scale: 1.2 }} href="#" className="social-3d"><Instagram size={48} /></motion.a>
+          <motion.a whileHover={{ scale: 1.2 }} href="#" className="social-3d"><Facebook size={48} /></motion.a>
+          <motion.a whileHover={{ scale: 1.2 }} href="#" className="social-3d"><Mail size={48} /></motion.a>
         </div>
 
         {/* 3-Column Award-Winning Layout */}
