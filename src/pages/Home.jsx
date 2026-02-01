@@ -160,91 +160,67 @@ const ChatBot = () => {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-        scrolled ? 'glass-dark py-3 shadow-lg shadow-black/30' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container mx-auto flex items-center justify-between px-6">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3"
-        >
-          <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-mardiGreen bg-white/10 shadow-lg">
-            <img
-              src="/images/logo-gator.png"
-              alt="The Cajun Menu logo"
-              className="h-full w-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = '/images/old-house.jpg';
-              }}
-            />
-          </div>
-          <span className="font-serif text-2xl font-black italic uppercase tracking-tight text-white">
-            The Cajun <span className="text-mardiGold">Menu</span>
-          </span>
-        </motion.div>
-        <div className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-[0.2em] md:flex">
+    <nav className="crescent-royale-nav-container fixed top-0 w-full">
+      <div className="crescent-pattern" />
+      <div className="crescent-nav-content">
+        <div className="crescent-logo">
+          <video
+            src="https://embed-ssl.wistia.com/deliveries/43461b09856d8a26c7e99ef4e9541ac2accfcccf.bin"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <span>The Cajun Menu</span>
+        </div>
+        <ul className="crescent-nav-links">
           {NAV_LINKS.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="nav-hover relative text-white"
-            >
-              {item.label}
-            </a>
+            <li key={item.label}>
+              <a href={item.href}>{item.label}</a>
+            </li>
           ))}
-        </div>
-
-        <div className="flex items-center gap-4">
-          <a
-            className="mardi-press hidden rounded-full border-2 border-mardiGold bg-mardiPurple px-6 py-2 font-bold text-white transition-all duration-300 lg:block"
-            href="#menu"
-          >
-            Order Online
-          </a>
-          <button
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white md:hidden"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={32} /> : <MenuIcon size={32} />}
-          </button>
-        </div>
+          <li>
+            <a
+              href="#menu"
+              className="mardi-press px-4 py-2 rounded-full border border-white/30 bg-white/10 text-white font-bold text-xs tracking-[0.2em]"
+            >
+              Order Online
+            </a>
+          </li>
+        </ul>
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-white md:hidden"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={32} /> : <MenuIcon size={32} />}
+        </button>
       </div>
-
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="glass-dark absolute left-0 top-full flex w-full flex-col items-center gap-6 py-8 md:hidden"
+            exit={{ opacity: 0, y: -10 }}
+            className="glass-dark absolute left-0 top-full flex w-full flex-col items-center gap-4 py-6 md:hidden z-40"
           >
             {NAV_LINKS.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="nav-hover text-xl font-bold text-white"
+                className="text-lg font-bold text-white"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </a>
             ))}
             <a
-              className="mardi-press rounded-full border-2 border-mardiGreen bg-mardiGold px-8 py-3 font-bold text-mardiPurple shadow-xl"
+              className="mardi-press rounded-full border border-white/30 bg-mardiGold px-8 py-3 font-bold text-mardiPurple shadow-xl"
               href="#menu"
+              onClick={() => setIsOpen(false)}
             >
               Order Online
             </a>
