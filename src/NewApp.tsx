@@ -341,8 +341,10 @@ const MenuView: React.FC = () => {
   const filtered = MENU_ITEMS.filter(item => item.category === activeCategory);
 
   return (
-    <section className="pt-40 pb-32 bg-mgDeep">
-      <div className="container mx-auto px-6">
+    <section className="relative pt-40 pb-32 bg-mgDeep overflow-hidden">
+      <BackgroundVideo id="vstx0wwv4f" opacity={0.28} />
+      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep via-mgDeep/75 to-mgDeep" />
+      <div className="container relative mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
           <div className="max-w-3xl">
             <span className="text-mgGreen font-black tracking-[0.6em] uppercase text-xs mb-6 block">Our Full Selection</span>
