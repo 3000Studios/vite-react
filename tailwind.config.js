@@ -8,6 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        mardiGold: '#FFD700',
+        mardiPurple: '#6A0DAD',
+        mardiGreen: '#00A86B',
+        mardiBlue: '#4A90E2',
         gold: {
           50: '#fffbeb',
           100: '#fef3c7',
