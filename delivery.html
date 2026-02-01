@@ -785,8 +785,7 @@
         .footer-card,
         .combo-card,
         .hours-card,
-        .footer-location-card,
-            100% { transform: translateZ(60px) translateY(-10px) scale(1.1); filter: url(#liquid-alt); }
+        .footer-location-card {
         }
         .filigree-nav .mobile-link {
             font-family: 'Cinzel Decorative', cursive;
@@ -811,22 +810,6 @@
             opacity: 0.85;
             filter: blur(50px);
         }
-        
-@"
-/* Mobile filigree nav */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 50;
-            transition: opacity 0.3s ease;
-            background: #3a0f6f;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-        }
-        .site-nav.is-faded { opacity: 0.6; }
-"@
-
         .site-nav.is-faded { opacity: 0.6; }
         .molten-svg { position: absolute; width: 0; height: 0; }
         .menu-trigger {
