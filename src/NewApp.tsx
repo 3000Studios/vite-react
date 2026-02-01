@@ -191,8 +191,8 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {MENU_ITEMS.slice(0, 6).map(item => (
-            <MenuCard key={item.id} item={item} />
+          {MENU_ITEMS.slice(0, 6).map((item, idx) => (
+            <MenuCard key={item.id} item={item} index={idx} />
           ))}
         </div>
       <div className="text-center mt-20">
@@ -206,30 +206,57 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
   </>
 );
 
-const MenuCard: React.FC<{ item: MenuItem }> = ({ item }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="group relative h-[550px] overflow-hidden rounded-[3rem] glass-card shadow-2xl"
-  >
-    <div className="absolute inset-0 overflow-hidden">
-      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0" />
-      <div className="absolute inset-0 bg-gradient-to-t from-mgDeep via-mgDeep/20 to-transparent" />
-    </div>
-    <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
-      <div className="flex justify-between items-end mb-4">
-        <h3 className="text-4xl font-display italic font-black text-white group-hover:text-mgGold transition-colors">{item.name}</h3>
-        <span className="text-mgGold font-oswald text-2xl">{item.price}</span>
+const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 0 }) => {
+  const mobileShift =
+    typeof window !== 'undefined' && window.innerWidth < 768 ? (index % 2 === 0 ? -40 : 40) : 0;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30, x: mobileShift }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, amount: 0.35 }}
+      className="group relative h-[550px] overflow-hidden rounded-[3rem] glass-card shadow-2xl"
+    >
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-mgDeep/60 via-mgDeep/25 to-transparent" />
       </div>
-      <p className="text-white/60 text-sm leading-relaxed mb-8 group-hover:text-white/80 transition-colors line-clamp-3">{item.description}</p>
-      <button className="brass-press px-4 py-3 rounded-full text-[11px] font-black uppercase tracking-widest text-mgGreen bg-transparent">
-        <span className="nola-symbol">⚜</span>
-        ADD TO SELECTION <ArrowRight size={14} />
-      </button>
-    </div>
-  </motion.div>
-);
+      <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
+        <div className="flex justify-between items-end mb-4">
+          <motion.h3
+            initial={{ scale: 0.96 }}
+            whileInView={{ scale: 1.07, textShadow: '0px 12px 28px rgba(0,0,0,0.55)' }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl font-display italic font-black text-white group-hover:text-mgGold transition-colors"
+          >
+            {item.name}
+          </motion.h3>
+          <motion.span
+            initial={{ color: '#c6b05f' }}
+            whileInView={{ color: '#ffd700', textShadow: '0 0 18px rgba(255,215,0,0.7)' }}
+            transition={{ duration: 0.45 }}
+            className="font-oswald text-2xl"
+          >
+            {item.price}
+          </motion.span>
+        </div>
+        <p className="text-white/70 text-sm leading-relaxed mb-8 group-hover:text-white/90 transition-colors line-clamp-3">
+          {item.description}
+        </p>
+        <button className="brass-press px-4 py-3 rounded-full text-[11px] font-black uppercase tracking-widest text-mgGreen bg-transparent">
+          <span className="nola-symbol">⚜</span>
+          ADD TO SELECTION <ArrowRight size={14} />
+        </button>
+      </div>
+    </motion.div>
+  );
+};
 
 const Footer: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => {
   const brandPendant = "CAJUN MENU";
@@ -366,7 +393,7 @@ const MenuView: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <AnimatePresence mode="popLayout">
-            {filtered.map(item => <MenuCard key={item.id} item={item} />)}
+            {filtered.map((item, idx) => <MenuCard key={item.id} item={item} index={idx} />)}
           </AnimatePresence>
         </div>
       </div>
