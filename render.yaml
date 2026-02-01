@@ -15,6 +15,6 @@ services:
     region: oregon
     buildCommand: npm install && npm run build
     startCommand: npm run preview -- --host --port $PORT
-    autoDeployTrigger: commit
+    autoDeployTrigger: manual
     previews:
       generation: automatic
