@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "wrangler pages deploy dist --project-name cajun-kitchen",
+    "deploy": "wrangler pages deploy dist --project-name vite-react",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
