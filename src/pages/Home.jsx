@@ -180,8 +180,15 @@ const Navbar = () => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-mardiGreen bg-mardiGold text-2xl font-black text-mardiPurple shadow-lg">
-            C
+          <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-mardiGreen bg-white/10 shadow-lg">
+            <img
+              src="/images/logo-gator.png"
+              alt="The Cajun Menu logo"
+              className="h-full w-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = '/images/old-house.jpg';
+              }}
+            />
           </div>
           <span className="font-serif text-2xl font-black italic uppercase tracking-tight text-white">
             The Cajun <span className="text-mardiGold">Menu</span>
@@ -192,17 +199,16 @@ const Navbar = () => {
             <a
               key={item.label}
               href={item.href}
-              className="relative text-white transition-colors hover:text-mardiGold"
+              className="nav-hover relative text-white"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-mardiGold transition-all group-hover:w-full" />
             </a>
           ))}
         </div>
 
         <div className="flex items-center gap-4">
           <a
-            className="hidden rounded-full border-2 border-mardiGold bg-mardiPurple px-6 py-2 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-mardiGold hover:text-mardiPurple lg:block"
+            className="mardi-press hidden rounded-full border-2 border-mardiGold bg-mardiPurple px-6 py-2 font-bold text-white transition-all duration-300 lg:block"
             href="#menu"
           >
             Order Online
@@ -230,14 +236,14 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-xl font-bold text-white hover:text-mardiGold"
+                className="nav-hover text-xl font-bold text-white"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </a>
             ))}
             <a
-              className="rounded-full border-2 border-mardiGreen bg-mardiGold px-8 py-3 font-bold text-mardiPurple shadow-xl"
+              className="mardi-press rounded-full border-2 border-mardiGreen bg-mardiGold px-8 py-3 font-bold text-mardiPurple shadow-xl"
               href="#menu"
             >
               Order Online
@@ -476,13 +482,13 @@ export default function Home() {
           >
             <a
               href="#reservations"
-              className="w-full rounded-full border-2 border-white/50 bg-mardiGold px-10 py-5 text-center text-base font-black uppercase tracking-[0.25em] text-mardiPurple shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-transform duration-200 hover:scale-105 sm:w-auto"
+              className="mardi-press w-full rounded-full border-2 border-white/50 bg-mardiGold px-10 py-5 text-center text-base font-black uppercase tracking-[0.25em] text-mardiPurple shadow-[0_0_30px_rgba(255,215,0,0.5)] sm:w-auto"
             >
               Book a Table
             </a>
             <a
               href="#menu"
-              className="w-full rounded-full border-2 border-white/20 bg-white/10 px-10 py-5 text-center text-base font-black uppercase tracking-[0.25em] text-white transition-all hover:bg-white/20 sm:w-auto"
+              className="mardi-press w-full rounded-full border-2 border-white/20 bg-white/10 px-10 py-5 text-center text-base font-black uppercase tracking-[0.25em] text-white sm:w-auto"
             >
               View Menu
             </a>
@@ -590,7 +596,7 @@ export default function Home() {
                 </p>
                 <button
                   type="button"
-                  className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.25em] text-mardiGreen transition-colors group-hover:text-mardiGold"
+                  className="mardi-press flex items-center gap-2 text-xs font-black uppercase tracking-[0.25em] text-mardiGreen"
                 >
                   Add to Order <ArrowRight size={14} />
                 </button>
@@ -726,20 +732,20 @@ export default function Home() {
                 Call, reserve online, or chat with us.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-6">
-                <a
-                  href="tel:16788997404"
-                  className="rounded-full bg-white px-12 py-5 text-sm font-black uppercase tracking-[0.25em] text-mardiPurple shadow-2xl transition-all hover:-translate-y-1 hover:bg-mardiGold hover:text-white"
-                >
-                  Call Us
-                </a>
-                <a
-                  href="mailto:thecajunmenu@gmail.com?subject=Reservation%20Request"
-                  className="rounded-full border-2 border-white/30 px-12 py-5 text-sm font-black uppercase tracking-[0.25em] text-white transition-all hover:border-white"
-                >
-                  Email Team
-                </a>
-              </div>
+            <div className="flex flex-wrap justify-center gap-6">
+              <a
+                href="tel:16788997404"
+                className="mardi-press rounded-full bg-white px-12 py-5 text-sm font-black uppercase tracking-[0.25em] text-mardiPurple shadow-2xl"
+              >
+                Call Us
+              </a>
+              <a
+                href="mailto:thecajunmenu@gmail.com?subject=Reservation%20Request"
+                className="mardi-press rounded-full border-2 border-white/30 px-12 py-5 text-sm font-black uppercase tracking-[0.25em] text-white"
+              >
+                Email Team
+              </a>
+            </div>
             </motion.div>
           </div>
         </div>

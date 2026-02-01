@@ -28,4 +28,82 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  /* Mardi Gras press hover effect shared by CTAs */
+  .mardi-press {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+  .mardi-press::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #4b0082 0%,
+      #00ab66 25%,
+      #9d50bb 50%,
+      #00ab66 75%,
+      #4b0082 100%
+    );
+    background-size: 200% auto;
+    opacity: 0;
+    transition: opacity 0.25s ease, background-position 6s linear;
+    z-index: -1;
+  }
+  .mardi-press:hover::before {
+    opacity: 1;
+    background-position: 200% 0;
+    animation: shimmer-move 6s linear infinite;
+  }
+  .mardi-press:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 0 20px 2px #fdf5b4,
+      0 12px 0 0 #8b6e00,
+      0 20px 40px rgba(0, 0, 0, 0.7);
+    filter: brightness(1.05);
+  }
+  .mardi-press:active {
+    transform: translateY(3px);
+    box-shadow:
+      0 0 10px 1px #fdf5b4,
+      0 4px 0 0 #8b6e00,
+      0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .nav-hover {
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .nav-hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #6a0dad);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+  .nav-hover:hover {
+    color: #ffd700;
+    transform: translateY(-2px);
+  }
+  .nav-hover:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shimmer-move {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
