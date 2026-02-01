@@ -404,48 +404,59 @@ const GalleryView: React.FC = () => {
 };
 
 const AboutView: React.FC = () => (
-  <section className="pt-40 pb-32 bg-mgDeep min-h-screen">
-    <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-      <div className="relative">
-        <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl">
-          <WistiaPlayer
-            media-id="vlzs2j8r43"
-            class="story-wistia"
-            aspect="0.5625"
-            muted
-            autoplay
-            loop
-            playsinline
-          />
-        </div>
-        <div className="absolute -bottom-10 -right-10 p-16 glass-card rounded-[4rem] hidden lg:block shadow-2xl">
-          <span className="text-9xl font-display italic text-mgGold leading-none">100</span>
-          <p className="text-white text-xs tracking-[0.8em] uppercase font-black mt-4">YEARS OF SOUL</p>
-        </div>
-      </div>
+  <section className="relative pt-40 pb-32 bg-mgDeep min-h-screen overflow-hidden">
+    <BackgroundVideo id="vlzs2j8r43" opacity={0.45} />
+    <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/70 via-mgDeep/65 to-mgDeep" />
+    <div className="container relative mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center z-10">
       <div className="space-y-12">
         <span className="text-mgGreen font-black tracking-[0.7em] uppercase text-xs">Our Heritage</span>
-        <h2 className="text-7xl md:text-9xl font-display italic font-black text-white leading-tight">
+        <h2 className="text-7xl md:text-9xl font-display italic font-black text-white leading-tight drop-shadow-[0_12px_28px_rgba(0,0,0,0.55)]">
           Legacy of <br /> <span className="text-mgGold">Spice</span>
         </h2>
-        <div className="space-y-8 text-white/50 text-xl font-medium leading-relaxed max-w-2xl">
-          <p>Founded in 1924 on the bustling streets of New Orleans, The Cajun Kitchen has been a lighthouse for authentic Louisiana flavor for over four generations.</p>
-          <p>Our kitchen is a place where tradition is honored and every dish tells a story. From the hand-stirred roux of our Seafood Gumbo to the perfectly powdered peak of our Beignets, we bring the true spirit of the French Quarter to your table.</p>
+        <div className="space-y-8 text-white/80 text-xl font-medium leading-relaxed max-w-2xl">
+          <p>Founded in 1924 on the bustling streets of New Orleans, The Cajun Menu has been a lighthouse for authentic Louisiana flavor for over four generations.</p>
+          <p>Our kitchen is where tradition meets spectacle—hand-stirred roux, king crab boils, praline cheesecake, and beignets dusted like Mardi Gras confetti. Every plate tells a story from Bourbon Street.</p>
         </div>
         <div className="grid grid-cols-3 gap-12 pt-8">
           <div>
             <h5 className="text-4xl font-display italic text-white mb-2">1924</h5>
-            <p className="text-[10px] tracking-[0.4em] text-white/30 uppercase font-black">ESTABLISHED</p>
+            <p className="text-[10px] tracking-[0.4em] text-white/60 uppercase font-black">ESTABLISHED</p>
           </div>
           <div>
             <h5 className="text-4xl font-display italic text-white mb-2">4 Gen</h5>
-            <p className="text-[10px] tracking-[0.4em] text-white/30 uppercase font-black">FAMILY RUN</p>
+            <p className="text-[10px] tracking-[0.4em] text-white/60 uppercase font-black">FAMILY RUN</p>
           </div>
           <div>
             <h5 className="text-4xl font-display italic text-white mb-2">100%</h5>
-            <p className="text-[10px] tracking-[0.4em] text-white/30 uppercase font-black">AUTHENTIC</p>
+            <p className="text-[10px] tracking-[0.4em] text-white/60 uppercase font-black">AUTHENTIC</p>
           </div>
         </div>
+      </div>
+      <div className="glass-card p-10 rounded-[3rem] shadow-2xl space-y-6 backdrop-blur-3xl">
+        <h3 className="text-3xl font-display italic text-mgGold">Jazzed Service</h3>
+        <p className="text-white/80 leading-relaxed">Live brass on weekends, chef tastings, and private second-line catering that brings the Quarter to your celebration.</p>
+        <div className="grid grid-cols-2 gap-6 text-sm uppercase tracking-[0.25em] text-white/70">
+          <div className="flex flex-col gap-2">
+            <span className="text-white font-black text-lg">Chef’s Table</span>
+            <span className="text-mgGold font-bold">Seats 8</span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-white font-black text-lg">Beignet Bar</span>
+            <span className="text-mgGold font-bold">All Day</span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-white font-black text-lg">Boil Nights</span>
+            <span className="text-mgGold font-bold">Thu-Sat</span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-white font-black text-lg">Jazz Brunch</span>
+            <span className="text-mgGold font-bold">Sundays</span>
+          </div>
+        </div>
+        <button className="brass-press px-10 py-4 rounded-full text-xs font-black tracking-[0.35em] uppercase self-start">
+          <span className="nola-symbol">⚜</span>
+          Book Experience
+        </button>
       </div>
     </div>
   </section>
