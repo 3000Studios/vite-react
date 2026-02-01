@@ -1,8 +1,10 @@
 services:
-  - type: static
+  - type: web
     name: thecajunmenu-site
+    env: node
+    plan: free
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    startCommand: npm run preview -- --host --port $PORT
     pullRequestPreviewsEnabled: true
     envVars:
       - key: NODE_VERSION
