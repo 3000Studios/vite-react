@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Star, 
   MapPin, 
   Phone, 
   Mail, 
@@ -45,7 +44,7 @@ const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, in
 const HERO_MEDIA_ID = 'lxcpkyefcu';
 
 // --- Immersive Background Video Section ---
-const BackgroundVideo: React.FC<{ id?: string; opacity?: number; isModern?: boolean }> = ({ id = HERO_MEDIA_ID, opacity = 0.55 }) => (
+const BackgroundVideo: React.FC<{ id?: string; isModern?: boolean }> = ({ id = HERO_MEDIA_ID }) => (
   <div className="absolute inset-0 z-0 overflow-hidden video-wrapper">
     <WistiaPlayer
       media-id={id}
@@ -155,7 +154,7 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
 const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
   <>
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <BackgroundVideo id="lxcpkyefcu" opacity={0.6} isModern={true} />
+      <BackgroundVideo id="lxcpkyefcu" isModern={true} />
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
           <span className="inline-block mt-8 px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10 bg-mgDeep/40 backdrop-blur">
@@ -371,7 +370,7 @@ const MenuView: React.FC = () => {
 
   return (
     <section className="relative pt-40 pb-32 bg-mgDeep overflow-hidden">
-      <BackgroundVideo id="vstx0wwv4f" opacity={0.22} />
+      <BackgroundVideo id="vstx0wwv4f" />
       <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/30 via-mgDeep/25 to-mgDeep/35" />
       <div className="container relative mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
@@ -457,7 +456,7 @@ const GalleryView: React.FC = () => {
 
 const AboutView: React.FC = () => (
   <section className="relative pt-40 pb-32 bg-mgDeep min-h-screen overflow-hidden">
-    <BackgroundVideo id="vlzs2j8r43" opacity={0.25} />
+    <BackgroundVideo id="vlzs2j8r43" />
     <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/25 via-mgDeep/18 to-mgDeep/28" />
     <div className="container relative mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center z-10">
       <div className="space-y-12">
@@ -582,7 +581,7 @@ const App = () => {
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
     ];
     scripts.forEach((src) => {
-      if (!document.querySelector(`script[src=\"${src}\"]`)) {
+      if (!document.querySelector(`script[src="${src}"]`)) {
         const s = document.createElement('script');
         s.src = src;
         s.async = true;
