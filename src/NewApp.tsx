@@ -86,7 +86,7 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
         <div className="flex items-center gap-6 cursor-pointer" onClick={() => setPage('Home')}>
           <div className="logo-coin-container">
             <WistiaPlayer
-              media-id="vlzs2j8r43"
+              media-id="ip3tp5t9me"
               class="logo-wistia"
               aspect="1.0"
               muted
