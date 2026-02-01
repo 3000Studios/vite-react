@@ -17,7 +17,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$12.99',
     description: 'Crispy boudin croquettes with smoky andouille and creamy rice, served with spicy Creole mustard.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=800',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Boudin_Sausage_Balls.jpg',
     isSignature: false,
   },
   {
@@ -111,7 +111,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$16.99',
     description: 'A deep, dark roux perfected over generations. Filled with Gulf shrimp, blue crab, and andouille sausage. Served with fluffy white rice.',
     category: MenuCategory.MAIN_COURSES,
-    image: 'https://images.unsplash.com/photo-1583019117226-d4e1af74e20b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Cajun_seafood_gumbo.jpg',
     isSignature: true
   },
   {
@@ -138,7 +138,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$21.99',
     description: 'Chicken, andouille, and Gulf shrimp simmered with pepper trinity, tomatoes, and long-grain rice.',
     category: MenuCategory.MAIN_COURSES,
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Jambalaya.JPG',
     isSignature: false,
   },
 
@@ -149,7 +149,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$19.99',
     description: 'Slow-cooked roast beef simmered until it falls apart into gravy "debris." Dressed with lettuce, tomatoes, and extra cajun mayo.',
     category: MenuCategory.POBOYS,
-    image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&q=80&w=800',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Poboy.jpg',
     isSignature: true
   },
   {
@@ -158,7 +158,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$19.99',
     description: 'Seared blackened shrimp, shredded lettuce, tomato, and rémoulade on Leidenheimer bread.',
     category: MenuCategory.POBOYS,
-    image: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&q=80&w=800',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Poboy.jpg',
     isSignature: false,
   },
   {
@@ -167,7 +167,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$21.99',
     description: 'Plump, cornmeal-crusted oysters fried until golden and piled high on a toasted French roll with spicy mayo.',
     category: MenuCategory.POBOYS,
-    image: 'https://images.unsplash.com/photo-1544681280-d25a782adc9b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Poboy.jpg',
     isSignature: false
   },
   {
@@ -176,7 +176,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$19.99',
     description: 'Half shrimp, half catfish, hushpuppies, and Cajun fries with cocktail and tartar.',
     category: MenuCategory.BASKETS,
-    image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.pexels.com/photos/17628580/pexels-photo-17628580.jpeg?cs=srgb&dl=pexels-valeriya-17628580.jpg&fm=jpg',
     isSignature: false,
   },
 
@@ -187,7 +187,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$18.99',
     description: 'Half-pound of golden fried shrimp served with seasoned fries, coleslaw, and our house-made cocktail sauce.',
     category: MenuCategory.BASKETS,
-    image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.pexels.com/photos/17628580/pexels-photo-17628580.jpeg?cs=srgb&dl=pexels-valeriya-17628580.jpg&fm=jpg',
     isSignature: false
   },
   {
@@ -196,7 +196,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$6.99',
     description: 'Kid-sized beignet sticks dusted with powdered sugar and served with chocolate dip.',
     category: MenuCategory.KIDS,
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.pexels.com/photos/13988842/pexels-photo-13988842.jpeg?cs=srgb&dl=pexels-keesha-s-kitchen-22731136-13988842.jpg&fm=jpg',
     isSignature: false,
   },
   {
