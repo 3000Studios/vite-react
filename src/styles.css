@@ -271,15 +271,16 @@
 }
 .logo-wistia {
   display: block;
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 0 14px rgba(0, 255, 65, 0.35);
   pointer-events: none;
 }
 wistia-player.logo-wistia::part(video) {
-  object-fit: cover;
+  object-fit: contain;
+  background-color: transparent;
 }
 wistia-player.logo-wistia::part(controls) {
   display: none !important;
