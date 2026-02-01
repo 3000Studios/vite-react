@@ -378,7 +378,28 @@ const MenuView: React.FC = () => {
           <div className="max-w-3xl">
             <span className="text-mgGreen font-black tracking-[0.6em] uppercase text-xs mb-6 block">Our Full Selection</span>
             <h2 className="text-6xl md:text-9xl font-display italic font-black text-white leading-tight">
-              Award <span className="text-mgGold">Winning</span> <br /> Heritage
+              <motion.span
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Real
+              </motion.span>{' '}
+              <motion.span
+                initial={{ y: -40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="text-mgGold"
+              >
+                Cajun
+              </motion.span>{' '}
+              <motion.span
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Cookin
+              </motion.span>
             </h2>
           </div>
           <div className="flex flex-wrap gap-4 justify-end max-w-2xl">
