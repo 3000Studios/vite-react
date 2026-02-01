@@ -165,7 +165,7 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
             Taste the <br />
             <span className="text-mgGold not-italic font-cajun">Vibe of the Bayou</span>
           </h1>
-          <p className="max-w-3xl mx-auto text-white text-lg md:text-xl leading-relaxed drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)]">
+        <p className="max-w-3xl mx-auto text-white/95 text-lg md:text-xl leading-relaxed drop-shadow-[0_6px_18px_rgba(0,0,0,0.65)]">
             From century-old roux to show-stopping boils and beignets, we honor New Orleans tradition with modern flair. Dine, celebrate, and feel the Mardi Gras energy every day.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
@@ -465,7 +465,7 @@ const AboutView: React.FC = () => (
         <h2 className="text-7xl md:text-9xl font-display italic font-black text-white leading-tight drop-shadow-[0_12px_28px_rgba(0,0,0,0.55)]">
           Legacy of <br /> <span className="text-mgGold">Spice</span>
         </h2>
-        <div className="space-y-8 text-white/80 text-xl font-medium leading-relaxed max-w-2xl">
+        <div className="space-y-8 text-white/90 text-xl font-medium leading-relaxed max-w-2xl">
           <p>Founded in 1924 on the bustling streets of New Orleans, The Cajun Menu has been a lighthouse for authentic Louisiana flavor for over four generations.</p>
           <p>Our kitchen is where tradition meets spectacle—hand-stirred roux, king crab boils, praline cheesecake, and beignets dusted like Mardi Gras confetti. Every plate tells a story from Bourbon Street.</p>
         </div>
