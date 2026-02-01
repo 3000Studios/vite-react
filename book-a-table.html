@@ -608,8 +608,22 @@
             opacity: 0.85;
             filter: blur(50px);
         }
-        /* Mobile filigree nav */
-        .site-nav { transition: opacity 0.3s ease, background-color 0.3s ease; }
+        
+@"
+/* Mobile filigree nav */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            transition: opacity 0.3s ease;
+            background: repeating-linear-gradient(45deg, #1e1b4b 0 20px, #3b1f76 20px 40px, #1e1b4b 40px 60px, #4b32a7 60px 80px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+        }
+        .site-nav.is-faded { opacity: 0.6; }
+"@
+
         .site-nav.is-faded { opacity: 0.6; }
         .molten-svg { position: absolute; width: 0; height: 0; }
         .menu-trigger {
@@ -922,6 +936,7 @@
     </script>
 </body>
 </html>
+
 
 
 
