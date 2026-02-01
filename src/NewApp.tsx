@@ -211,50 +211,29 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
 const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 0 }) => {
   const mobileShift =
     typeof window !== 'undefined' && window.innerWidth < 768 ? (index % 2 === 0 ? -40 : 40) : 0;
+  const [gone, setGone] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, x: mobileShift }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ rotateX: 8 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true, amount: 0.35 }}
-      className="group relative h-[550px] overflow-hidden rounded-[3rem] glass-card shadow-2xl"
+      className={`food-card ${gone ? 'dissipate' : ''}`}
+      onClick={() => setGone(true)}
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-mgDeep/60 via-mgDeep/25 to-transparent" />
+      <div className="image-float-wrap">
+        <div className="food-image" style={{ backgroundImage: `url('${item.image}')` }} />
       </div>
-      <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
-        <div className="flex justify-between items-end mb-4">
-          <motion.h3
-            initial={{ scale: 0.96 }}
-            whileInView={{ scale: 1.07, textShadow: '0px 12px 28px rgba(0,0,0,0.55)' }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl font-display italic font-black text-white group-hover:text-mgGold transition-colors"
-          >
-            {item.name}
-          </motion.h3>
-          <motion.span
-            initial={{ color: '#c6b05f' }}
-            whileInView={{ color: '#ffd700', textShadow: '0 0 18px rgba(255,215,0,0.7)' }}
-            transition={{ duration: 0.45 }}
-            className="font-oswald text-2xl"
-          >
-            {item.price}
-          </motion.span>
+      <div className="card-body">
+        <div className="bead-string" />
+        <div className="info-panel">
+          <h3 className="food-title">{item.name}</h3>
+          <p className="food-tagline">{item.isSignature ? 'Signature Dish' : item.category}</p>
+          <div className="price-tag">{item.price}</div>
+          <p className="reveal-desc">{item.description}</p>
         </div>
-        <p className="text-white/70 text-sm leading-relaxed mb-8 group-hover:text-white/90 transition-colors line-clamp-3">
-          {item.description}
-        </p>
-        <button className="brass-press px-4 py-3 rounded-full text-[11px] font-black uppercase tracking-widest text-mgGreen bg-transparent">
-          <span className="nola-symbol">⚜</span>
-          ADD TO SELECTION <ArrowRight size={14} />
-        </button>
       </div>
     </motion.div>
   );
