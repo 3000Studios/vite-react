@@ -23,9 +23,7 @@ import { MENU_ITEMS, MENU_CATEGORIES } from '../data/menu';
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Menu', href: '#menu' },
-  { label: 'Gift Cards', href: '#gift-cards' },
   { label: 'Reservations', href: '#reservations' },
-  { label: 'Gallery', href: '#gallery' },
   { label: 'About', href: '#about' },
 ];
 
