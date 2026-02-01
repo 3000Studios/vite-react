@@ -167,11 +167,12 @@ const Navbar = () => {
       <div className="crescent-nav-content">
         <div className="crescent-logo">
           <video
-            src="https://embed-ssl.wistia.com/deliveries/43461b09856d8a26c7e99ef4e9541ac2accfcccf.bin"
+            src="https://embed-ssl.wistia.com/deliveries/666141e922d70ab4e467d67dec352a0a886e9303.bin"
             autoPlay
             loop
             muted
             playsInline
+            controls={false}
           />
           <span>The Cajun Menu</span>
         </div>
