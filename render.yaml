@@ -8,5 +8,9 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20
+      - key: VITE_GEMINI_API_KEY
+        value: your_gemini_api_key
+      - key: GEMINI_API_KEY
+        value: your_gemini_api_key
     autoDeploy: true
     branch: main
