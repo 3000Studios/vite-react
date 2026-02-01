@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
-  Menu as MenuIcon,
   X,
   Phone,
   Mail,
@@ -19,13 +18,7 @@ import {
   Send,
 } from 'lucide-react';
 import { MENU_ITEMS, MENU_CATEGORIES } from '../data/menu';
-
-const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Menu', href: '/menu' },
-  { label: 'Reservations', href: '#reservations' },
-  { label: 'About', href: '#about' },
-];
+import Navbar from '../components/Navbar';
 
 const ChatBot = () => {
   const [open, setOpen] = useState(false);
@@ -158,119 +151,6 @@ const ChatBot = () => {
   );
 };
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const createMardiGrasEffect = () => {
-    const colors = ['#00ff41', '#ff00ff', '#ffd700'];
-    const btn = document.getElementById('mobileToggle');
-    if (!btn) return;
-    const rect = btn.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const container = document.body;
-
-    for (let i = 0; i < 30; i += 1) {
-      const bead = document.createElement('div');
-      bead.className = 'bead';
-      bead.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      const tx = (Math.random() - 0.5) * 400;
-      const ty = Math.random() * 600;
-      bead.style.left = `${centerX}px`;
-      bead.style.top = `${centerY}px`;
-      bead.style.setProperty('--tx', `${tx}px`);
-      bead.style.setProperty('--ty', `${ty}px`);
-      bead.style.animation = `dropExplosion ${1 + Math.random()}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
-      container.appendChild(bead);
-      setTimeout(() => bead.remove(), 2000);
-    }
-
-    for (let i = 0; i < 20; i += 1) {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      const tx = (Math.random() - 0.5) * 300;
-      const ty = Math.random() * 400;
-      confetti.style.left = `${centerX}px`;
-      confetti.style.top = `${centerY}px`;
-      confetti.style.setProperty('--tx', `${tx}px`);
-      confetti.style.setProperty('--ty', `${ty}px`);
-      confetti.style.animation = `dropExplosion ${0.5 + Math.random()}s linear forwards`;
-      container.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 1500);
-    }
-  };
-
-  return (
-    <nav className="crescent-royale-nav-container fixed top-0 w-full">
-      <div className="crescent-pattern" />
-      <div className="crescent-nav-content">
-        <div className="crescent-logo">
-          <wistia-player
-            media-id="ip3tp5t9me"
-            class="logo-wistia"
-            aspect="1.0"
-            muted
-            autoplay
-            loop
-            playsinline
-          />
-          <span>The Cajun Menu</span>
-        </div>
-
-        <ul className="crescent-nav-links">
-          {NAV_LINKS.map((item) => (
-            <li key={item.label}>
-              <a href={item.href}>{item.label}</a>
-            </li>
-          ))}
-          <li>
-            <a
-              href="#menu"
-              className="mardi-press px-4 py-2 rounded-full border border-white/30 bg-white/10 text-white font-bold text-xs tracking-[0.2em]"
-            >
-              Order Online
-            </a>
-          </li>
-        </ul>
-
-        <button
-          type="button"
-          id="mobileToggle"
-          aria-label="Toggle menu"
-          className={`fleur-toggle md:hidden ${isOpen ? 'active' : ''}`}
-          onClick={() => {
-            const next = !isOpen;
-            setIsOpen(next);
-            if (next) createMardiGrasEffect();
-          }}
-        />
-      </div>
-
-      <div className={`mobile-menu ${isOpen ? 'active' : ''}`}>
-        <div className="menu-pattern" />
-        {NAV_LINKS.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            className="mobile-link"
-            onClick={() => setIsOpen(false)}
-          >
-            {item.label}
-          </a>
-        ))}
-        <a
-          href="#menu"
-          className="mobile-link text-mardiGold"
-          onClick={() => setIsOpen(false)}
-        >
-          Order Online
-        </a>
-      </div>
-    </nav>
-  );
-};
-
 const DishCard = ({ item }) => (
   <motion.div
     whileHover={{ y: -10 }}
@@ -389,7 +269,6 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState(MENU_CATEGORIES[0]);
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
-  const beadColors = ['#FFD700', '#6A0DAD', '#00A86B', '#4A90E2'];
 
   const filteredItems = MENU_ITEMS.filter((item) => item.category === selectedCategory);
   const signatureDishes = MENU_ITEMS.filter((item) => item.isSignature);
@@ -504,7 +383,7 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-mardiGold backdrop-blur"
           >
-            Flavor of Louisiana
+            Authentic Louisiana Flavor
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -520,7 +399,7 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/80"
           >
-            Bold Cajun dishes, soulful seafood boils, and the spirit of Mardi Gras—right here in Canton.
+            Experience the authentic soul of New Orleans with bold Cajun flavors, fresh seafood boils, and Mardi Gras hospitality in the heart of Canton.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -554,15 +433,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="mb-6 font-serif text-4xl font-black uppercase leading-tight md:text-6xl"
               >
-                Our{' '}
+                Signature{' '}
                 <span className="text-mardiGold italic underline decoration-mardiPurple underline-offset-8">
-                  Signature
-                </span>{' '}
-                Creations
+                  Selections
+                </span>
               </motion.h2>
               <p className="text-lg text-white/70">
-                Traditional Louisiana recipes with a modern Mardi Gras energy. Zesty,
-                soulful, unforgettable.
+                Traditional Louisiana recipes infused with modern Mardi Gras energy. Zesty, soulful, and absolutely unforgettable.
               </p>
             </div>
             <motion.div
@@ -571,7 +448,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <a
-                href="#menu"
+                href="/menu"
                 className="group flex items-center gap-3 border-b-2 border-mardiGold/40 pb-2 text-sm font-bold uppercase tracking-[0.25em] text-mardiGold transition-all hover:border-mardiGold"
               >
                 See Full Menu{' '}
