@@ -582,8 +582,7 @@
         .footer-card,
         .combo-card,
         .hours-card,
-        .footer-location-card,
-            100% { transform: translateZ(60px) translateY(-10px) scale(1.1); filter: url(#liquid-alt); }
+        .footer-location-card {
         }
         .filigree-nav .mobile-link {
             font-family: 'Cinzel Decorative', cursive;
@@ -608,22 +607,6 @@
             opacity: 0.85;
             filter: blur(50px);
         }
-        
-@"
-/* Mobile filigree nav */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 50;
-            transition: opacity 0.3s ease;
-            background: #3a0f6f;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-        }
-        .site-nav.is-faded { opacity: 0.6; }
-"@
-
         .site-nav.is-faded { opacity: 0.6; }
         .molten-svg { position: absolute; width: 0; height: 0; }
         .menu-trigger {
@@ -689,40 +672,18 @@
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
 <!-- Navigation -->
-        <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 site-nav">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between items-center h-24 md:h-24 h-[5rem]">
-            <div class="flex items-center gap-4">
-                <div class="brand-rig nav-brand-rig" id="menu-rig" aria-label="The Cajun Menu"></div>
-            </div>
-            <div class="hidden md:flex items-center vapor-nav">
-                <a href="index.html#home" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Home</span></a>
-                <a href="index.html#about" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Story</span></a>
-                <a href="index.html#menu" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Menu</span></a>
-                <a href="catering.html" class="vapor-item" style="--c: var(--gold-metallic)"><div class="bloom"></div><span>Catering</span></a>
-                <a href="delivery.html" class="vapor-item" style="--c: var(--purple)"><div class="bloom"></div><span>Delivery</span></a>
-                <a href="project-planner.html" class="vapor-item" style="--c: var(--green)"><div class="bloom"></div><span>Planner</span></a>
-            </div>
-            <button class="menu-trigger md:hidden" id="menuBtn" aria-label="Open menu" type="button">
-                <div class="emblem-container">
-                    <svg class="icon-fleur" viewBox="0 0 100 100">
-                        <path d="M50 15c-4 15-20 22-28 22 15 0 20 15 20 15s-15 0-25-12c5 30 15 30 33 40-15 10-25 10-30 35 30-10 40-10 30-35 18-10 28-10 33-40-10 12-25 12-25 12s5-15 20-15c-8 0-24-7-28-22z" />
-                    </svg>
-                    <svg class="icon-jester" viewBox="0 0 100 100">
-                        <path d="M50 45 Q50 10 85 35 Q60 35 65 50" fill="var(--purple)" />
-                        <path d="M50 45 Q50 10 15 35 Q40 35 35 50" fill="var(--green)" />
-                        <path d="M50 45 Q50 5 50 40" stroke="var(--gold-metallic)" stroke-width="4" fill="none" />
-                        <circle cx="50" cy="15" r="5" fill="var(--gold-metallic)" />
-                        <circle cx="15" cy="35" r="4" fill="var(--gold-metallic)" />
-                        <circle cx="85" cy="35" r="4" fill="var(--gold-metallic)" />
-                        <path d="M35 50 L65 50 L50 85 Z" fill="var(--gold-metallic)" />
-                        <path d="M42 58 L45 62 M55 62 L58 58" stroke="black" stroke-width="2" />
-                    </svg>
-                </div>
-            </button>
+            <nav class="site-nav filigree-shell">
+        <div class="filigree-container">
+            <ul class="filigree-list">
+                <li class="filigree-item"><a href="index.html#home" class="filigree-link filigree-home"><span class="filigree-label">Home</span><span class="filigree-sub">01 // Home</span><span class="filigree-box"></span></a></li>
+                <li class="filigree-item"><a href="index.html#about" class="filigree-link filigree-story"><span class="filigree-label">Story</span><span class="filigree-sub">02 // Story</span><span class="filigree-box"></span></a></li>
+                <li class="filigree-item"><a href="index.html#menu" class="filigree-link filigree-menu"><span class="filigree-label">Menu</span><span class="filigree-sub">03 // Menu</span><span class="filigree-box"></span></a></li>
+                <li class="filigree-item"><a href="catering.html" class="filigree-link filigree-catering"><span class="filigree-label">Catering</span><span class="filigree-sub">04 // Catering</span><span class="filigree-box"></span></a></li>
+                <li class="filigree-item"><a href="delivery.html" class="filigree-link filigree-delivery"><span class="filigree-label">Delivery</span><span class="filigree-sub">05 // Delivery</span><span class="filigree-box"></span></a></li>
+                <li class="filigree-item"><a href="project-planner.html" class="filigree-link filigree-planner"><span class="filigree-label">Planner</span><span class="filigree-sub">06 // Planner</span><span class="filigree-box"></span></a></li>
+            </ul>
         </div>
-    </div>
-</nav>
+    </nav>
 <nav class="nav-container md:hidden" aria-label="Mobile">
     <ul class="nav-list" id="navList">
         <li class="nav-item"><a href="index.html#home" class="nav-link"><div class="filigree-box"></div><span class="nav-label">Home</span><span class="nav-sub">01 // HOME</span></a></li>
@@ -936,6 +897,7 @@
     </script>
 </body>
 </html>
+
 
 
 
