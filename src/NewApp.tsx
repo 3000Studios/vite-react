@@ -156,9 +156,11 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
   <>
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <BackgroundVideo id="lxcpkyefcu" opacity={0.6} isModern={true} />
-      <div className="container mx-auto px-6 relative z-20 text-center">
+      <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
-          <span className="inline-block px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10">Legendary Flavor • Bourbon St. NOLA</span>
+          <span className="inline-block mt-8 px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10 bg-mgDeep/40 backdrop-blur">
+            Canton • 1100 Bank St, MS
+          </span>
           <h1 className="text-6xl md:text-[9rem] font-display italic font-black leading-none text-white drop-shadow-2xl mb-8">
             Taste the <br />
             <span className="text-mgGold not-italic font-cajun">Vibe of the Bayou</span>
