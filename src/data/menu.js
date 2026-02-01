@@ -16,8 +16,7 @@ export const MENU_ITEMS = [
     description:
       'House made creamy crab dip made with real crab meat. Served with toasted bread.',
     category: 'Appetizers',
-    image:
-      'https://images.unsplash.com/photo-1559742811-82410b451b9b?auto=format&fit=crop&q=80&w=800',
+    image: '/images/Screenshot 2025-12-22 065650.png',
     isSignature: true,
   },
   {
@@ -27,8 +26,7 @@ export const MENU_ITEMS = [
     description:
       'Shrimp, potatoes, sausage, corn, and mushrooms with drawn Cajun butter.',
     category: 'Appetizers',
-    image:
-      'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800',
+    image: '/images/low-boil.png',
     isSignature: true,
   },
   {
@@ -38,8 +36,7 @@ export const MENU_ITEMS = [
     description:
       'Juicy alligator tail fried to golden perfection. Served with house Cajun sauce.',
     category: 'Appetizers',
-    image:
-      'https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?auto=format&fit=crop&q=80&w=800',
+    image: '/images/gator-bites.png',
     isSignature: true,
   },
   {
@@ -49,6 +46,7 @@ export const MENU_ITEMS = [
     description:
       'House queso dip with domestic crawfish tails. Served with crisp chips.',
     category: 'Appetizers',
+    image: '/images/Screenshot 2025-12-22 065703.png',
   },
   {
     id: 'app5',
@@ -57,8 +55,7 @@ export const MENU_ITEMS = [
     description:
       'Cajun trio with red beans & rice, crawfish étouffée, and gumbo.',
     category: 'Appetizers',
-    image:
-      'https://images.unsplash.com/photo-1626700051175-6818013e184f?auto=format&fit=crop&q=80&w=800',
+    image: '/images/etouffee.png',
     isSignature: true,
   },
 
@@ -81,8 +78,7 @@ export const MENU_ITEMS = [
     description:
       'XL crab leg cluster, shrimp, potatoes, sausage, corn, and mushrooms.',
     category: 'Main Courses',
-    image:
-      'https://images.unsplash.com/photo-1590759016226-c9002d4452c7?auto=format&fit=crop&q=80&w=800',
+    image: '/images/crab-boil.png',
     isSignature: true,
   },
   {
@@ -92,8 +88,7 @@ export const MENU_ITEMS = [
     description:
       'Dark roux with chicken, sausage, shrimp, and crab meat. Served with rice.',
     category: 'Main Courses',
-    image:
-      'https://images.unsplash.com/photo-1583019107937-2342f0267f53?auto=format&fit=crop&q=80&w=800',
+    image: '/images/gumbo.png',
     isSignature: true,
   },
   {
@@ -103,8 +98,7 @@ export const MENU_ITEMS = [
     description:
       'Cheese grits topped with brown sauce and seasoned shrimp — a fan favorite.',
     category: 'Main Courses',
-    image:
-      'https://images.unsplash.com/photo-1599321955419-7853b2a9710c?auto=format&fit=crop&q=80&w=800',
+    image: '/images/shrimp-grits.png',
     isSignature: true,
   },
   {
@@ -126,8 +120,7 @@ export const MENU_ITEMS = [
     price: '$8.99',
     description: 'New Orleans style fried dough with powdered sugar.',
     category: 'Desserts',
-    image:
-      'https://images.unsplash.com/photo-1621849400072-f554417f7051?auto=format&fit=crop&q=80&w=800',
+    image: '/images/beignets.png',
     isSignature: true,
   },
   {
@@ -166,8 +159,7 @@ export const MENU_ITEMS = [
     price: '$19.99',
     description: 'Dressed with lettuce, tomatoes, and house Cajun sauce.',
     category: 'Po-Boys',
-    image:
-      'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&q=80&w=800',
+    image: '/images/roast-beef-poboy.png',
     isSignature: true,
   },
   {
@@ -176,6 +168,6 @@ export const MENU_ITEMS = [
     price: '$18.99',
     description: 'Fried shrimp on toasted French bread with all the fixings.',
     category: 'Po-Boys',
+    image: '/images/shrimp-poboy.png',
   },
 ];
-
