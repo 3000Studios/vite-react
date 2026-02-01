@@ -45,7 +45,7 @@ const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, in
 const HERO_MEDIA_ID = 'lxcpkyefcu';
 
 // --- Immersive Background Video Section ---
-const BackgroundVideo: React.FC<{ id?: string; opacity?: number; isModern?: boolean }> = ({ id = HERO_MEDIA_ID, opacity = 0.85 }) => (
+const BackgroundVideo: React.FC<{ id?: string; opacity?: number; isModern?: boolean }> = ({ id = HERO_MEDIA_ID, opacity = 0.55 }) => (
   <div className="absolute inset-0 z-0 overflow-hidden video-wrapper">
     <WistiaPlayer
       media-id={id}
@@ -342,8 +342,8 @@ const MenuView: React.FC = () => {
 
   return (
     <section className="relative pt-40 pb-32 bg-mgDeep overflow-hidden">
-      <BackgroundVideo id="vstx0wwv4f" opacity={0.28} />
-      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep via-mgDeep/75 to-mgDeep" />
+      <BackgroundVideo id="vstx0wwv4f" opacity={0.22} />
+      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/30 via-mgDeep/25 to-mgDeep/35" />
       <div className="container relative mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
           <div className="max-w-3xl">
@@ -407,8 +407,8 @@ const GalleryView: React.FC = () => {
 
 const AboutView: React.FC = () => (
   <section className="relative pt-40 pb-32 bg-mgDeep min-h-screen overflow-hidden">
-    <BackgroundVideo id="vlzs2j8r43" opacity={0.45} />
-    <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/70 via-mgDeep/65 to-mgDeep" />
+    <BackgroundVideo id="vlzs2j8r43" opacity={0.25} />
+    <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/25 via-mgDeep/18 to-mgDeep/28" />
     <div className="container relative mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center z-10">
       <div className="space-y-12">
         <span className="text-mgGreen font-black tracking-[0.7em] uppercase text-xs">Our Heritage</span>
