@@ -1,17 +1,20 @@
+version: "1"
 services:
   - type: web
     name: thecajunmenu-site
-    env: node
+    runtime: node
+    repo: https://github.com/3000Studios/vite-react
     plan: free
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: VITE_GEMINI_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        sync: false
+    region: oregon
     buildCommand: npm install && npm run build
     startCommand: npm run preview -- --host --port $PORT
-    pullRequestPreviewsEnabled: true
-    envVars:
-      - key: NODE_VERSION
-        value: "20"
-      - key: VITE_GEMINI_API_KEY
-        value: your_gemini_api_key
-      - key: GEMINI_API_KEY
-        value: your_gemini_api_key
-    autoDeploy: true
-    branch: main
+    autoDeployTrigger: commit
+    previews:
+      generation: automatic
