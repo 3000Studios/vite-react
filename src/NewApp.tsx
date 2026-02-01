@@ -5,19 +5,16 @@ import {
   MapPin, 
   Phone, 
   Mail, 
-  ShoppingBag, 
-  Plus,
-  Send,
-  Clock,
-  History,
-  Users,
-  Instagram,
-  Facebook,
-  ChevronRight,
-  ArrowRight
+  Instagram, 
+  Facebook, 
+  ChevronRight, 
+  ArrowRight 
 } from 'lucide-react';
 import { MENU_ITEMS, CATEGORIES } from './newConstants';
 import { MenuCategory, MenuItem } from './newTypes';
+
+// Use a component constant to bypass JSX intrinsic element type errors for custom elements
+const WistiaPlayer = 'wistia-player' as any;
 
 type Page = 'Home' | 'Menu' | 'Gallery' | 'About' | 'Contact';
 
@@ -45,14 +42,30 @@ const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, in
   );
 };
 
+const HERO_MEDIA_ID = 'lxcpkyefcu';
+
 // --- Immersive Background Video Section ---
-const BackgroundVideo: React.FC<{ id: string; opacity?: number }> = ({ id, opacity = 0.4 }) => (
+const BackgroundVideo: React.FC<{ id?: string; opacity?: number; isModern?: boolean }> = ({ id = HERO_MEDIA_ID, opacity = 0.85 }) => (
   <div className="absolute inset-0 z-0 overflow-hidden video-wrapper">
-    <div className="absolute inset-0 bg-mgDeep/70 z-10" />
-    <div 
-      className={`wistia_embed wistia_async_${id} videoFoam=true`}
-      style={{ width: '100%', height: '100%', position: 'absolute', opacity }}
+    <WistiaPlayer
+      media-id={id}
+      class="hero-wistia"
+      aspect="1.4883720930232558"
+      muted
+      autoplay
+      loop
+      playsinline
     />
+    <style>
+      {`wistia-player[media-id='${id}']:not(:defined) {
+          background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/${id}/swatch');
+          display: block;
+          width: 100%;
+          height: 100%;
+          filter: blur(5px);
+        }`}
+    </style>
+    {/* Removed dark filter to let the video pop */}
   </div>
 );
 
@@ -72,7 +85,15 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
         <div className="flex items-center gap-6 cursor-pointer" onClick={() => setPage('Home')}>
           <div className="logo-coin-container">
-             <div className="wistia_embed wistia_async_ip3tp5t9me videoFoam=true" style={{ width: '100%', height: '100%' }} />
+            <WistiaPlayer
+              media-id="vlzs2j8r43"
+              class="logo-wistia"
+              aspect="1.0"
+              muted
+              autoplay
+              loop
+              playsinline
+            />
           </div>
           <div className="flex flex-col leading-none">
             <span className="font-cajun text-2xl lg:text-3xl tracking-wider text-white">THE CAJUN</span>
@@ -85,14 +106,15 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
             <li key={link.label}>
               <button 
                 onClick={() => setPage(link.label)}
-                className={`text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${currentPage === link.label ? 'text-mgGold' : 'text-white/80'}`}
+                className={`nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${currentPage === link.label ? 'text-mgGold active' : 'text-white/80'}`}
               >
                 {link.label}
               </button>
             </li>
           ))}
           <li>
-            <button className="px-8 py-3 bg-mgGold text-mgDeep font-black rounded-full text-[10px] tracking-[0.2em] uppercase hover:bg-white transition-all shadow-xl">
+            <button className="px-8 py-3 brass-press rounded-full text-[10px] font-black tracking-[0.2em] uppercase shadow-xl">
+              <span className="nola-symbol">⚜</span>
               Order Online
             </button>
           </li>
@@ -133,7 +155,7 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
 const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
   <>
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <BackgroundVideo id="lxcpkyefcu" opacity={0.6} />
+      <BackgroundVideo id="lxcpkyefcu" opacity={0.6} isModern={true} />
       <div className="container mx-auto px-6 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
           <span className="inline-block px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10">Legendary Flavor • Bourbon St. NOLA</span>
@@ -141,11 +163,15 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
             Taste the <br />
             <span className="text-mgGold not-italic font-cajun">Vibe of the Bayou</span>
           </h1>
+          <p className="max-w-3xl mx-auto text-white text-lg md:text-xl leading-relaxed drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)]">
+            From century-old roux to show-stopping boils and beignets, we honor New Orleans tradition with modern flair. Dine, celebrate, and feel the Mardi Gras energy every day.
+          </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
             <button 
               onClick={() => setPage('Menu')}
-              className="group px-14 py-6 bg-mgGold text-mgDeep font-black rounded-full text-sm tracking-[0.4em] uppercase flex items-center gap-4 hover:bg-white transition-all shadow-2xl"
+              className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl"
             >
+              <span className="nola-symbol">⚜</span>
               EXPLORE MENU <ChevronRight size={18} />
             </button>
             <button className="px-14 py-6 border border-white/20 text-white font-black rounded-full text-sm tracking-[0.4em] uppercase hover:bg-white/10 transition-all">
@@ -160,15 +186,18 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
           <span className="text-mgGreen font-black tracking-[0.5em] uppercase text-xs mb-4 block">Our Culinary Heart</span>
-          <h2 className="text-5xl md:text-7xl font-display italic font-black text-white">The <span className="text-mgGold">Bayou Classics</span></h2>
+          <h2 className="text-5xl md:text-7xl font-display italic font-black text-white">
+            The <span className="text-mgGold">Bayou Classics</span>
+          </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {MENU_ITEMS.slice(0, 6).map(item => (
             <MenuCard key={item.id} item={item} />
           ))}
         </div>
-        <div className="text-center mt-20">
-          <button onClick={() => setPage('Menu')} className="text-mgGold font-black tracking-[0.5em] uppercase text-sm border-b-2 border-mgGold/20 pb-2 hover:border-mgGold transition-all">
+      <div className="text-center mt-20">
+          <button onClick={() => setPage('Menu')} className="brass-press px-8 py-4 rounded-full text-xs font-black tracking-[0.45em] uppercase relative">
+            <span className="nola-symbol">⚜</span>
             VIEW FULL MENU
           </button>
         </div>
@@ -194,7 +223,8 @@ const MenuCard: React.FC<{ item: MenuItem }> = ({ item }) => (
         <span className="text-mgGold font-oswald text-2xl">{item.price}</span>
       </div>
       <p className="text-white/60 text-sm leading-relaxed mb-8 group-hover:text-white/80 transition-colors line-clamp-3">{item.description}</p>
-      <button className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest text-mgGreen group-hover:translate-x-3 transition-transform">
+      <button className="brass-press px-4 py-3 rounded-full text-[11px] font-black uppercase tracking-widest text-mgGreen bg-transparent">
+        <span className="nola-symbol">⚜</span>
         ADD TO SELECTION <ArrowRight size={14} />
       </button>
     </div>
@@ -378,7 +408,15 @@ const AboutView: React.FC = () => (
     <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
       <div className="relative">
         <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl">
-          <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" />
+          <WistiaPlayer
+            media-id="vlzs2j8r43"
+            class="story-wistia"
+            aspect="0.5625"
+            muted
+            autoplay
+            loop
+            playsinline
+          />
         </div>
         <div className="absolute -bottom-10 -right-10 p-16 glass-card rounded-[4rem] hidden lg:block shadow-2xl">
           <span className="text-9xl font-display italic text-mgGold leading-none">100</span>
@@ -460,7 +498,7 @@ const ContactView: React.FC = () => (
             <label className="text-[11px] font-black uppercase tracking-[0.4em] text-white/30 ml-4">MESSAGE</label>
             <textarea rows={6} className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
           </div>
-          <button className="w-full py-7 bg-mgGold text-mgDeep font-black rounded-3xl text-sm tracking-[0.5em] uppercase hover:bg-white transition-all shadow-2xl">
+          <button className="w-full py-7 bg-mgGold text-mgDeep font-black rounded-3xl text-sm tracking-[0.5em] uppercase hover:bg-white transition-all shadow-xl shadow-mgGold/20">
             SEND INQUIRY
           </button>
         </form>
@@ -475,13 +513,13 @@ const App = () => {
   useEffect(() => {
     const scripts = [
       'https://fast.wistia.com/player.js',
-      'https://fast.wistia.com/embed/ip3tp5t9me.js',
       'https://fast.wistia.com/embed/lxcpkyefcu.js',
+      'https://fast.wistia.com/embed/ip3tp5t9me.js',
       'https://fast.wistia.com/embed/vstx0wwv4f.js',
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
     ];
     scripts.forEach((src) => {
-      if (!document.querySelector(`script[src="${src}"]`)) {
+      if (!document.querySelector(`script[src=\"${src}\"]`)) {
         const s = document.createElement('script');
         s.src = src;
         s.async = true;
@@ -507,21 +545,21 @@ const App = () => {
   };
 
   return (
-    <main className="selection:bg-mgGold selection:text-mgDeep overflow-x-hidden">
+    <div className="selection:bg-mgGold selection:text-mgDeep overflow-x-hidden">
       <Navbar currentPage={currentPage} setPage={setCurrentPage} />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -15 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
           {renderContent()}
         </motion.div>
       </AnimatePresence>
       <Footer setPage={setCurrentPage} />
-    </main>
+    </div>
   );
 };
 

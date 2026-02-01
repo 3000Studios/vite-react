@@ -12,6 +12,15 @@ export const MENU_ITEMS: MenuItem[] = [
     isSignature: true
   },
   {
+    id: 'app6',
+    name: 'Smoked Sausage Boudin Balls',
+    price: '$12.99',
+    description: 'Crispy boudin croquettes with smoky andouille and creamy rice, served with spicy Creole mustard.',
+    category: MenuCategory.APPETIZERS,
+    image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=800',
+    isSignature: false,
+  },
+  {
     id: 'app2',
     name: 'Bayou Low Boil',
     price: '$11.99',
@@ -19,6 +28,15 @@ export const MENU_ITEMS: MenuItem[] = [
     category: MenuCategory.APPETIZERS,
     image: 'https://images.unsplash.com/photo-1559131397-f94da358f7ca?auto=format&fit=crop&q=80&w=800',
     isSignature: true
+  },
+  {
+    id: 'sal3',
+    name: 'Charred Okra & Tomato Salad',
+    price: '$13.99',
+    description: 'Blistered okra, heirloom tomatoes, pickled red onions, and feta with lemon-cajun vinaigrette.',
+    category: MenuCategory.SALADS,
+    image: 'https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?auto=format&fit=crop&q=80&w=800',
+    isSignature: false,
   },
   {
     id: 'app3',
@@ -105,6 +123,24 @@ export const MENU_ITEMS: MenuItem[] = [
     image: 'https://images.unsplash.com/photo-1516685018646-5482cba1305a?auto=format&fit=crop&q=80&w=800',
     isSignature: true
   },
+  {
+    id: 'main5',
+    name: 'Blackened Redfish Pontchartrain',
+    price: '$27.99',
+    description: 'Cast-iron blackened redfish topped with crawfish cream sauce, served over herbed rice.',
+    category: MenuCategory.MAIN_COURSES,
+    image: 'https://images.unsplash.com/photo-1455612693675-112974d4880b?auto=format&fit=crop&q=80&w=800',
+    isSignature: true,
+  },
+  {
+    id: 'main6',
+    name: 'Jambalaya Royal',
+    price: '$21.99',
+    description: 'Chicken, andouille, and Gulf shrimp simmered with pepper trinity, tomatoes, and long-grain rice.',
+    category: MenuCategory.MAIN_COURSES,
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800',
+    isSignature: false,
+  },
 
   // Po-Boys
   {
@@ -117,6 +153,15 @@ export const MENU_ITEMS: MenuItem[] = [
     isSignature: true
   },
   {
+    id: 'pb3',
+    name: 'Blackened Shrimp Po-Boy',
+    price: '$19.99',
+    description: 'Seared blackened shrimp, shredded lettuce, tomato, and rémoulade on Leidenheimer bread.',
+    category: MenuCategory.POBOYS,
+    image: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&q=80&w=800',
+    isSignature: false,
+  },
+  {
     id: 'pb2',
     name: 'Fried Oyster Po-Boy',
     price: '$21.99',
@@ -124,6 +169,15 @@ export const MENU_ITEMS: MenuItem[] = [
     category: MenuCategory.POBOYS,
     image: 'https://images.unsplash.com/photo-1544681280-d25a782adc9b?auto=format&fit=crop&q=80&w=800',
     isSignature: false
+  },
+  {
+    id: 'bk3',
+    name: 'Bayou Combo Basket',
+    price: '$19.99',
+    description: 'Half shrimp, half catfish, hushpuppies, and Cajun fries with cocktail and tartar.',
+    category: MenuCategory.BASKETS,
+    image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=800',
+    isSignature: false,
   },
 
   // Baskets
@@ -137,6 +191,15 @@ export const MENU_ITEMS: MenuItem[] = [
     isSignature: false
   },
   {
+    id: 'kid3',
+    name: 'Beignet Sticks',
+    price: '$6.99',
+    description: 'Kid-sized beignet sticks dusted with powdered sugar and served with chocolate dip.',
+    category: MenuCategory.KIDS,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
+    isSignature: false,
+  },
+  {
     id: 'bk2',
     name: 'Catfish & Hushpuppy Basket',
     price: '$17.99',
@@ -144,6 +207,15 @@ export const MENU_ITEMS: MenuItem[] = [
     category: MenuCategory.BASKETS,
     image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800',
     isSignature: false
+  },
+  {
+    id: 'des3',
+    name: 'Bananas Foster Bread Pudding',
+    price: '$10.99',
+    description: 'Caramelized bananas, dark rum sauce, and vanilla bean ice cream over brioche pudding.',
+    category: MenuCategory.DESSERTS,
+    image: 'https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&q=80&w=800',
+    isSignature: true,
   },
 
   // Kids Menu
