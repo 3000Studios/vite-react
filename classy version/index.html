@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE CAJUN MENU | Authentic Louisiana Soul</title>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.454.0?external=react",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    <script src="https://fast.wistia.com/embed/vlzs2j8r43.js" async></script>
+    <script src="https://fast.wistia.com/embed/vstx0wwv4f.js" async></script>
+    <script src="https://fast.wistia.com/embed/ip3tp5t9me.js" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mgPurple: '#2b0033',
+              mgPurpleLight: '#4b0055',
+              mgGold: '#FFD700',
+              mgGreen: '#00A86B',
+              mgDeep: '#0d0208',
+            },
+            fontFamily: {
+              cajun: ['Spicy Rice', 'serif'],
+              display: ['Playfair Display', 'serif'],
+              sans: ['Montserrat', 'sans-serif'],
+              oswald: ['Oswald', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --mg-gold: #FFD700;
+        --mg-purple: #2b0033;
+        --mg-green: #00A86B;
+        --fleur-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 C55 25 90 25 90 55 C90 75 75 80 55 75 C55 85 60 100 50 100 C40 100 45 85 45 75 C25 80 10 75 10 55 C10 25 45 25 50 0' fill='%23ffd700' fill-opacity='0.1'/%3E%3C/svg%3E");
+      }
+
+      body {
+        background-color: #0d0208;
+        color: white;
+        margin: 0;
+        overflow-x: hidden;
+        cursor: default;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .nav-metallic-purple {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-color: var(--mg-purple);
+        background-image: 
+          var(--fleur-pattern),
+          linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 40%, rgba(0,0,0,0.4) 100%),
+          linear-gradient(90deg, #1a0020 0%, #3e0046 50%, #1a0020 100%);
+        background-size: 80px 80px, 100% 100%, 100% 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.9), inset 0 2px 15px rgba(255,255,255,0.05);
+        z-index: 1000;
+        transition: all 0.4s ease;
+      }
+
+      .logo-coin-container {
+        width: 80px;
+        height: 80px;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: hidden;
+      }
+
+      .logo-coin-container .wistia_embed {
+        background: transparent !important;
+      }
+
+      .bead-rig-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .bead-strand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0.6;
+      }
+
+      .bead-line {
+        width: 1px;
+        height: 180px;
+        background: rgba(255,255,255,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      .bead-drop {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        box-shadow: inset -1px -1px 3px rgba(0,0,0,0.5), inset 1px 1px 2px rgba(255,255,255,0.3);
+      }
+
+      .bead-purple { background: #7B1FA2; }
+      .bead-gold { background: #FFD700; }
+      .bead-green { background: #2E7D32; }
+
+      .char-pendant {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+      }
+
+      .glass-card {
+        background: rgba(26, 0, 32, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .video-wrapper {
+        isolation: isolate;
+        pointer-events: none;
+      }
+
+      .video-wrapper iframe {
+        pointer-events: none !important;
+      }
+
+      @media (max-width: 1024px) {
+        .nav-metallic-purple { height: 90px; }
+        .logo-coin-container { width: 60px; height: 60px; }
+      }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -21,8 +21,8 @@ import {
 import { MENU_ITEMS, MENU_CATEGORIES } from '../data/menu';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'Menu', href: '#menu' },
+  { label: 'Home', href: '/' },
+  { label: 'Menu', href: '/menu' },
   { label: 'Reservations', href: '#reservations' },
   { label: 'About', href: '#about' },
 ];
@@ -161,21 +161,63 @@ const ChatBot = () => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const createMardiGrasEffect = () => {
+    const colors = ['#00ff41', '#ff00ff', '#ffd700'];
+    const btn = document.getElementById('mobileToggle');
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const container = document.body;
+
+    for (let i = 0; i < 30; i += 1) {
+      const bead = document.createElement('div');
+      bead.className = 'bead';
+      bead.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      const tx = (Math.random() - 0.5) * 400;
+      const ty = Math.random() * 600;
+      bead.style.left = `${centerX}px`;
+      bead.style.top = `${centerY}px`;
+      bead.style.setProperty('--tx', `${tx}px`);
+      bead.style.setProperty('--ty', `${ty}px`);
+      bead.style.animation = `dropExplosion ${1 + Math.random()}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+      container.appendChild(bead);
+      setTimeout(() => bead.remove(), 2000);
+    }
+
+    for (let i = 0; i < 20; i += 1) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      const tx = (Math.random() - 0.5) * 300;
+      const ty = Math.random() * 400;
+      confetti.style.left = `${centerX}px`;
+      confetti.style.top = `${centerY}px`;
+      confetti.style.setProperty('--tx', `${tx}px`);
+      confetti.style.setProperty('--ty', `${ty}px`);
+      confetti.style.animation = `dropExplosion ${0.5 + Math.random()}s linear forwards`;
+      container.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 1500);
+    }
+  };
+
   return (
     <nav className="crescent-royale-nav-container fixed top-0 w-full">
       <div className="crescent-pattern" />
       <div className="crescent-nav-content">
         <div className="crescent-logo">
-          <video
-            src="https://embed-ssl.wistia.com/deliveries/666141e922d70ab4e467d67dec352a0a886e9303.bin"
-            autoPlay
-            loop
+          <wistia-player
+            media-id="ip3tp5t9me"
+            class="logo-wistia"
+            aspect="1.0"
             muted
-            playsInline
-            controls={false}
+            autoplay
+            loop
+            playsinline
           />
           <span>The Cajun Menu</span>
         </div>
+
         <ul className="crescent-nav-links">
           {NAV_LINKS.map((item) => (
             <li key={item.label}>
@@ -191,43 +233,40 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+
         <button
           type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-white md:hidden"
+          id="mobileToggle"
           aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={32} /> : <MenuIcon size={32} />}
-        </button>
+          className={`fleur-toggle md:hidden ${isOpen ? 'active' : ''}`}
+          onClick={() => {
+            const next = !isOpen;
+            setIsOpen(next);
+            if (next) createMardiGrasEffect();
+          }}
+        />
       </div>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="glass-dark absolute left-0 top-full flex w-full flex-col items-center gap-4 py-6 md:hidden z-40"
+
+      <div className={`mobile-menu ${isOpen ? 'active' : ''}`}>
+        <div className="menu-pattern" />
+        {NAV_LINKS.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            className="mobile-link"
+            onClick={() => setIsOpen(false)}
           >
-            {NAV_LINKS.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-lg font-bold text-white"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              className="mardi-press rounded-full border border-white/30 bg-mardiGold px-8 py-3 font-bold text-mardiPurple shadow-xl"
-              href="#menu"
-              onClick={() => setIsOpen(false)}
-            >
-              Order Online
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {item.label}
+          </a>
+        ))}
+        <a
+          href="#menu"
+          className="mobile-link text-mardiGold"
+          onClick={() => setIsOpen(false)}
+        >
+          Order Online
+        </a>
+      </div>
     </nav>
   );
 };
@@ -365,6 +404,43 @@ export default function Home() {
         'Taste the Cajun in Canton, GA. Bold Louisiana flavors, fresh seafood, and Mardi Gras energy — dine in, pick up, or reserve your celebration.',
       );
     }
+
+    // Load Wistia scripts once for hero background player
+    const playerScriptSrc = 'https://fast.wistia.com/player.js';
+    const heroEmbedSrc = 'https://fast.wistia.com/embed/vstx0wwv4f.js';
+    const logoEmbedSrc = 'https://fast.wistia.com/embed/ip3tp5t9me.js';
+    const storyEmbedSrc = 'https://fast.wistia.com/embed/vlzs2j8r43.js';
+
+    if (!document.querySelector(`script[src="${playerScriptSrc}"]`)) {
+      const s = document.createElement('script');
+      s.src = playerScriptSrc;
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    if (!document.querySelector(`script[src="${heroEmbedSrc}"]`)) {
+      const s2 = document.createElement('script');
+      s2.src = heroEmbedSrc;
+      s2.type = 'module';
+      s2.async = true;
+      document.body.appendChild(s2);
+    }
+
+    if (!document.querySelector(`script[src="${logoEmbedSrc}"]`)) {
+      const s3 = document.createElement('script');
+      s3.src = logoEmbedSrc;
+      s2.type = 'module';
+      s3.async = true;
+      document.body.appendChild(s3);
+    }
+
+    if (!document.querySelector(`script[src="${storyEmbedSrc}"]`)) {
+      const s4 = document.createElement('script');
+      s4.src = storyEmbedSrc;
+      s4.type = 'module';
+      s4.async = true;
+      document.body.appendChild(s4);
+    }
   }, []);
 
   return (
@@ -377,19 +453,27 @@ export default function Home() {
         className="relative flex min-h-screen items-center justify-center overflow-hidden"
       >
         <div className="absolute inset-0">
-          <video
-            autoPlay
+          <wistia-player
+            media-id="vstx0wwv4f"
+            class="hero-wistia"
+            aspect="1.0"
             muted
+            autoplay
             loop
-            playsInline
-            className="h-full w-full object-cover brightness-50"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-chef-cooking-vegetables-in-a-pan-3023-large.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#080d1b]" />
+            playsinline
+          />
+
+          <style>
+            {`wistia-player[media-id='vstx0wwv4f']:not(:defined) {
+                background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/vstx0wwv4f/swatch');
+                display: block;
+                width: 100%;
+                height: 100%;
+                filter: blur(5px);
+              }`}
+          </style>
+
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-[#080d1b]" />
 
           <div className="pointer-events-none absolute inset-0 opacity-30">
             {particles.map((particle) => (
@@ -413,78 +497,51 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container relative z-10 mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="mb-8"
-          >
-            <span className="mb-6 inline-block rounded-full border border-mardiGold bg-mardiPurple/80 px-6 py-2 text-xs font-black uppercase tracking-[0.3em] text-mardiGold backdrop-blur">
-              Flavor of Louisiana
-            </span>
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.25, duration: 0.9 }}
-              className="bead-title-wrap"
-            >
-              <span className="bead-title text-6xl md:text-8xl lg:text-9xl">The Cajun Menu</span>
-              <div className="bead-row" aria-hidden="true">
-                {Array.from({ length: 18 }).map((_, idx) => (
-                  <span
-                    key={idx}
-                    className="bead"
-                    style={{
-                      backgroundColor: beadColors[idx % beadColors.length],
-                      animationDelay: `${(idx % 6) * 0.1}s`,
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
+        <div className="relative z-20 text-center px-6 py-12">
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mx-auto mb-10 max-w-2xl text-lg font-light leading-relaxed text-white/80 md:text-2xl"
+            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-mardiGold backdrop-blur"
           >
-            Bold Cajun dishes, soulful seafood boils, and the spirit of Mardi Gras.
-            Canton’s home for gumbo, jambalaya, po-boys, and good times.
+            Flavor of Louisiana
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.8 }}
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            transition={{ delay: 0.2 }}
+            className="mt-6 font-serif text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+          >
+            The Cajun Menu
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/80"
+          >
+            Bold Cajun dishes, soulful seafood boils, and the spirit of Mardi Gras—right here in Canton.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 flex flex-wrap justify-center gap-4"
           >
             <a
-              href="#reservations"
-              className="mardi-press w-full rounded-full border-2 border-white/50 bg-mardiGold px-10 py-5 text-center text-base font-black uppercase tracking-[0.25em] text-mardiPurple shadow-[0_0_30px_rgba(255,215,0,0.5)] sm:w-auto"
-            >
-              Book a Table
-            </a>
-            <a
-              href="#menu"
-              className="mardi-press w-full rounded-full border-2 border-white/20 bg-white/10 px-10 py-5 text-center text-base font-black uppercase tracking-[0.25em] text-white sm:w-auto"
+              href="/menu"
+              className="mardi-press rounded-full bg-mardiGold px-8 py-4 text-sm font-black uppercase tracking-[0.25em] text-mardiPurple shadow-xl hover:text-mardiPurple"
             >
               View Menu
             </a>
+            <a
+              href="#reservations"
+              className="rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-black uppercase tracking-[0.25em] text-white hover:bg-white hover:text-mardiPurple transition-colors"
+            >
+              Book a Table
+            </a>
           </motion.div>
         </div>
-
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 opacity-60"
-        >
-          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-mardiGold">
-            Scroll
-          </span>
-          <div className="h-12 w-0.5 bg-gradient-to-b from-mardiGold to-transparent" />
-        </motion.div>
       </section>
 
       <section className="relative overflow-hidden bg-[#0a0f1d] py-24">
@@ -598,12 +655,24 @@ export default function Home() {
             className="relative"
           >
             <motion.div style={{ scale }} className="relative z-10 overflow-hidden rounded-[2.5rem] shadow-2xl">
-              <img
-                src="/images/crab-boil.png"
-                alt="Signature Cajun crab boil"
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
+              <wistia-player
+                media-id="vlzs2j8r43"
+                class="story-wistia"
+                aspect="0.5625"
+                muted
+                autoplay
+                loop
+                playsinline
               />
+              <style>
+                {`wistia-player[media-id='vlzs2j8r43']:not(:defined) {
+                    background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/vlzs2j8r43/swatch');
+                    display: block;
+                    width: 100%;
+                    padding-top: 56.25%;
+                    filter: blur(5px);
+                  }`}
+              </style>
               <div className="absolute inset-0 mix-blend-overlay bg-mardiPurple/20" />
             </motion.div>
             <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-mardiGold opacity-30 blur-[90px]" />

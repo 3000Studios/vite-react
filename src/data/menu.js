@@ -16,7 +16,7 @@ export const MENU_ITEMS = [
     description:
       'House made creamy crab dip made with real crab meat. Served with toasted bread.',
     category: 'Appetizers',
-    image: '/images/Screenshot 2025-12-22 065650.png',
+    image: '/images/crab-boil.png',
     isSignature: true,
   },
   {
@@ -46,7 +46,7 @@ export const MENU_ITEMS = [
     description:
       'House queso dip with domestic crawfish tails. Served with crisp chips.',
     category: 'Appetizers',
-    image: '/images/Screenshot 2025-12-22 065703.png',
+    image: '/images/etouffee.png',
   },
   {
     id: 'app5',
@@ -67,8 +67,7 @@ export const MENU_ITEMS = [
     description:
       'Tender alligator tail slow cooked in a spicy red tomato sauce over rice.',
     category: 'Main Courses',
-    image:
-      'https://images.unsplash.com/photo-1534422298391-e4f8c170db76?auto=format&fit=crop&q=80&w=800',
+    image: '/images/gator-bites.png',
     isSignature: true,
   },
   {
@@ -108,8 +107,7 @@ export const MENU_ITEMS = [
     description:
       'Slow-cooked beans marinated 48 hours with juicy sausage over fluffy rice.',
     category: 'Main Courses',
-    image:
-      'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&q=80&w=800',
+    image: '/images/gumbo.png',
     isSignature: true,
   },
 
