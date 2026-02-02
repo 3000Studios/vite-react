@@ -11,7 +11,7 @@ const ProjectTracker: React.FC<ProjectTrackerProps> = ({ tasks }) => {
   const financialData = [
     { 
       name: 'Cost ($)', 
-      Estimated: tasks.reduce((acc, t) => acc + t.estimatedCost, 0),
+      Estimated: tasks.reduce((acc, t) => acc + (t.estimatedCost || 0), 0),
       Actual: tasks.reduce((acc, t) => acc + t.actualCost, 0)
     },
     { 
@@ -21,7 +21,7 @@ const ProjectTracker: React.FC<ProjectTrackerProps> = ({ tasks }) => {
     }
   ];
 
-  const totalEstCost = tasks.reduce((acc, t) => acc + t.estimatedCost, 0);
+  const totalEstCost = tasks.reduce((acc, t) => acc + (t.estimatedCost || 0), 0);
   const totalActCost = tasks.reduce((acc, t) => acc + t.actualCost, 0);
   const totalEstHours = tasks.reduce((acc, t) => acc + t.estimatedHours, 0);
   const totalActHours = tasks.reduce((acc, t) => acc + t.actualHours, 0);
