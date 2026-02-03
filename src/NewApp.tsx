@@ -18,12 +18,13 @@ const WistiaPlayer = 'wistia-player' as any;
 
 type Page = 'Home' | 'Menu' | 'Gallery' | 'About' | 'Contact';
 
-const NAV_LINKS: { label: Page; href: string }[] = [
+const NAV_LINKS: { label: Page | 'Planner'; href: string }[] = [
   { label: 'Home', href: '#' },
   { label: 'Menu', href: '#menu' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Planner', href: '/project-planner.html' },
 ];
 
 const BEAD_COLORS = ['purple', 'gold', 'green'];
@@ -104,12 +105,21 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
         <ul className="hidden lg:flex items-center gap-12">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <button 
-                onClick={() => setPage(link.label)}
-                className={`nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${currentPage === link.label ? 'text-mgGold active' : 'text-white/80'}`}
-              >
-                {link.label}
-              </button>
+              {link.label === 'Planner' ? (
+                <a
+                  href={link.href}
+                  className="nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold text-white/80"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  onClick={() => setPage(link.label as Page)}
+                  className={`nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${currentPage === link.label ? 'text-mgGold active' : 'text-white/80'}`}
+                >
+                  {link.label}
+                </button>
+              )}
             </li>
           ))}
           <li>
@@ -137,13 +147,23 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
           >
             <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold">CLOSE</button>
             {NAV_LINKS.map((link) => (
-              <button 
-                key={link.label}
-                onClick={() => { setPage(link.label); setIsOpen(false); }}
-                className="text-4xl font-cajun text-white hover:text-mgGold"
-              >
-                {link.label}
-              </button>
+              link.label === 'Planner' ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-4xl font-cajun text-white hover:text-mgGold"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => { setPage(link.label as Page); setIsOpen(false); }}
+                  className="text-4xl font-cajun text-white hover:text-mgGold"
+                >
+                  {link.label}
+                </button>
+              )
             ))}
           </motion.div>
         )}
@@ -561,7 +581,7 @@ const App = () => {
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
     ];
     scripts.forEach((src) => {
-      if (!document.querySelector(`script[src=\"${src}\"]`)) {
+      if (!document.querySelector(`script[src="${src}"]`)) {
         const s = document.createElement('script');
         s.src = src;
         s.async = true;
