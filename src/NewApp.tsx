@@ -86,9 +86,13 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className={`nav-metallic-purple ${scrolled ? 'py-2 h-[80px]' : ''}`}>
+    <nav className={`nav-metallic-purple ${scrolled ? 'py-2 h-[80px]' : ''} relative overflow-hidden`}>
+      <div className="absolute inset-0 z-0">
+        <BackgroundVideo id="684sb953x5" aspect="1.7777777777777777" fit="contain" opacity={0.35} />
+        <div className="absolute inset-0 bg-mgDeep/70" />
+      </div>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
-        <div className="flex items-center gap-6 cursor-pointer" onClick={() => navigate('/')}>
+        <div className="flex items-center gap-6 cursor-pointer relative z-10" onClick={() => navigate('/')}>
           <div className="logo-coin-container">
             <WistiaPlayer
               media-id="ip3tp5t9me"
@@ -106,7 +110,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        <ul className="hidden lg:flex items-center gap-12">
+        <ul className="hidden lg:flex items-center gap-12 relative z-10">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
               <NavLink
@@ -129,7 +133,7 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 text-mgGold">
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 text-mgGold relative z-10">
           <div className="w-8 h-1 bg-current mb-1.5 rounded-full" />
           <div className="w-6 h-1 bg-current mb-1.5 rounded-full" />
           <div className="w-8 h-1 bg-current rounded-full" />
@@ -666,6 +670,7 @@ const AppShell = () => {
       'https://fast.wistia.com/embed/5i5d09f8af.js',
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
       'https://fast.wistia.com/embed/e7si0f5wiz.js',
+      'https://fast.wistia.com/embed/684sb953x5.js',
     ];
     scripts.forEach((src) => {
       if (!document.querySelector(`script[src=\"${src}\"]`)) {
