@@ -411,9 +411,15 @@
   .nola-subcat-arrow.left { left: 0; }
   .nola-subcat-arrow.right { right: 0; }
 
-  .social-facebook { color: #1877f2; }
-  .social-instagram { color: #6a0dad; }
-  .social-mail { color: #d4af37; }
+  .social-facebook { color: #1877f2 !important; }
+  .social-instagram { color: #6a0dad !important; }
+  .social-mail { color: #d4af37 !important; }
+  .social-facebook svg,
+  .social-instagram svg,
+  .social-mail svg {
+    stroke: currentColor !important;
+    color: currentColor !important;
+  }
 
   .nola-subcat-btn {
     all: unset;
