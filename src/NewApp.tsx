@@ -45,12 +45,17 @@ const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, in
 const HERO_MEDIA_ID = 'lxcpkyefcu';
 
 // --- Immersive Background Video Section ---
-const BackgroundVideo: React.FC<{ id?: string; opacity?: number; isModern?: boolean }> = ({ id = HERO_MEDIA_ID, opacity = 0.55 }) => (
+const BackgroundVideo: React.FC<{ id?: string; opacity?: number; aspect?: string; fit?: 'cover' | 'contain' }> = ({
+  id = HERO_MEDIA_ID,
+  opacity = 0.55,
+  aspect = '1.4883720930232558',
+  fit = 'cover',
+}) => (
   <div className="absolute inset-0 z-0 overflow-hidden video-wrapper">
     <WistiaPlayer
       media-id={id}
       class="hero-wistia"
-      aspect="1.4883720930232558"
+      aspect={aspect}
       muted
       autoplay
       loop
@@ -58,7 +63,7 @@ const BackgroundVideo: React.FC<{ id?: string; opacity?: number; isModern?: bool
     />
     <style>
       {`wistia-player[media-id='${id}']:not(:defined) {
-          background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/${id}/swatch');
+          background: center / ${fit} no-repeat url('https://fast.wistia.com/embed/medias/${id}/swatch');
           display: block;
           width: 100%;
           height: 100%;
@@ -350,7 +355,7 @@ const MenuView: React.FC = () => {
 
   return (
     <section className="relative pt-40 pb-32 bg-mgDeep overflow-hidden">
-      <BackgroundVideo id="vstx0wwv4f" opacity={0.22} />
+      <BackgroundVideo id="5i5d09f8af" aspect="1.7777777777777777" fit="contain" opacity={0.22} />
       <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/30 via-mgDeep/25 to-mgDeep/35" />
       <div className="container relative mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
@@ -558,6 +563,7 @@ const App = () => {
       'https://fast.wistia.com/embed/lxcpkyefcu.js',
       'https://fast.wistia.com/embed/ip3tp5t9me.js',
       'https://fast.wistia.com/embed/vstx0wwv4f.js',
+      'https://fast.wistia.com/embed/5i5d09f8af.js',
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
     ];
     scripts.forEach((src) => {
