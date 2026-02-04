@@ -1,68 +1,22 @@
 
-import { GoogleGenAI } from "@google/genai";
 import { RESTAURANT_DATA } from "../constants";
 
-const apiKey =
-  import.meta.env.VITE_GEMINI_API_KEY ||
-  import.meta.env.VITE_API_KEY ||
-  '';
-let ai: GoogleGenAI | null = null;
-try {
-  if (apiKey) {
-    ai = new GoogleGenAI({ apiKey });
-  }
-} catch (err) {
-  console.error("Gemini init failed:", err);
-  ai = null;
-}
-
 export const getGatorResponse = async (userMessage: string, chatHistory: any[]) => {
-  const model = 'gemini-3-flash-preview';
-  
-  const systemInstruction = `
-    You are "Gator Bob", a friendly, funny, and wise-cracking realistic alligator mascot for "The Cajun Menu" in Canton, GA.
-    You wear vibrant Mardi Gras clothes (purple, gold, green, and blue accents).
-    
-    PERSONALITY:
-    - You have a thick, charming Louisiana Cajun accent (use words like 'cher', 'bayou', 'lagniappe').
-    - You are incredibly knowledgeable about the restaurant's menu, hours, location, and services.
-    - You use swamp-related humor and alligator puns.
-    - You are excited about Mardi Gras and occasionally mention your dance moves.
-    - You are an expert on Cajun culture, New Orleans history, and Louisiana cuisine.
-
-    TASK GUIDELINES:
-    1. Detailed Menu Knowledge: Provide ingredients, flavor profiles (spicy, creamy, savory), and suggested pairings (e.g., 'pair the Gumbo with some hot Beignets for dessert').
-    2. Pricing & Recommendations: Always mention prices when discussing menu items. Recommend dishes based on user preference (spicy vs mild).
-    3. Culture & Facts: Integrate brief Cajun facts or New Orleans history naturally into your conversation.
-    4. Authenticity: Emphasize that The Cajun Menu is the real deal!
-
-    RESTAURANT KNOWLEDGE:
-    ${RESTAURANT_DATA}
-
-    GOAL:
-    Answer questions about the menu, reservations, gift cards, and Cajun culture. Use your personality in every response.
-  `;
-
-  try {
-    if (!ai) {
-      return "Gator Bob's offline right now, cher! Try again in a bit or ask for our hours and menu highlights.";
-    }
-    const response = await ai.models.generateContent({
-      model,
-      contents: [
-        ...chatHistory.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
-        { role: 'user', parts: [{ text: userMessage }] }
-      ],
-      config: {
-        systemInstruction,
-        tools: [{ googleSearch: {} }],
-        temperature: 0.8,
-      },
-    });
-
-    return response.text || "I'm a bit bogged down in the swamp right now, cher! Ask me again in a snap!";
-  } catch (error) {
-    console.error("Gemini Error:", error);
-    return "The swamp wifi is acting up! Give me a second to clear the weeds, Bob's on the job!";
+  const msg = userMessage.toLowerCase();
+  if (msg.includes('hours') || msg.includes('open')) {
+    return "We’re open Sunday 12PM–5PM, Wednesday/Thursday 11AM–8PM, and Friday/Saturday 11AM–8PM. We’re closed Monday and Tuesday.";
   }
+  if (msg.includes('address') || msg.includes('location') || msg.includes('where')) {
+    return "You can find us at 140 Keith Dr, Canton, GA 30114.";
+  }
+  if (msg.includes('phone') || msg.includes('call')) {
+    return "Give us a call at 678-899-7404, cher!";
+  }
+  if (msg.includes('email')) {
+    return "Email us anytime at thecajunmenu@gmail.com.";
+  }
+  if (msg.includes('menu') || msg.includes('food')) {
+    return "We’ve got Creamy Crab Dip, Bayou Low Boil, Alligator Bites, Crawfish Queso, and more. Tell me what flavors you’re craving!";
+  }
+  return `I'm Gator Bob, cher! Ask me about our menu, hours, or location.\n\nHere’s the quick info:\n${RESTAURANT_DATA}`;
 };
