@@ -62,7 +62,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$21.99',
     description: 'The ultimate introduction to the bayou: small portions of red beans and rice, crawfish etouffee, and our famous seafood gumbo.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800',
+    image: '/videos/cajun-sampler-platter.mp4',
     isSignature: true
   },
 
