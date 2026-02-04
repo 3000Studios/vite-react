@@ -17,14 +17,14 @@
   }
 
   :root {
-    --bg: #f9f7f2;
-    --text: #2b2b2b;
+    --bg: #2a0b45;
+    --text: #f9f7f2;
     --primary: #2a0b45;
     --secondary: #0b5f3c;
     --accent: #b2945e;
     --muted: #6b6762;
-    --card: #fbf9f4;
-    --border: rgba(43, 43, 43, 0.12);
+    --card: #352052;
+    --border: rgba(249, 247, 242, 0.14);
     --focus: #b2945e;
 
     --mg-purple: #2a0b45;
