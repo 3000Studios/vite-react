@@ -87,7 +87,7 @@ const Header: React.FC = () => {
           </button>
           <button
             onClick={() => navigate('/reservations')}
-            className="h-11 md:h-12 px-5 rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] text-sm font-semibold shadow-sm hover:shadow-md transition"
+            className="h-11 md:h-12 px-5 rounded-full bg-[color:var(--secondary)] text-white text-sm font-semibold shadow-sm hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition"
           >
             Reserve
           </button>
@@ -144,7 +144,7 @@ const Header: React.FC = () => {
                 <div className="mt-6 flex flex-col gap-3">
                   <button
                     onClick={() => { setOpen(false); navigate('/reservations'); }}
-                    className="h-12 rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold"
+                    className="h-12 rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition"
                   >
                     Reserve
                   </button>
@@ -217,7 +217,7 @@ const HeroCopy: React.FC = () => {
           <div className="mt-6 flex flex-wrap gap-3">
             <button
               onClick={() => navigate('/reservations')}
-              className="h-11 md:h-12 px-6 rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold shadow-sm hover:shadow-md transition"
+              className="h-11 md:h-12 px-6 rounded-full bg-[color:var(--secondary)] text-white font-semibold shadow-sm hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition"
             >
               Reserve a Table
             </button>
@@ -291,7 +291,7 @@ const SignatureFavorites: React.FC = () => {
                 <span className="text-sm font-semibold text-[color:var(--accent)]">{item.price}</span>
               </div>
               <div className="mt-3">
-                <span className="inline-flex items-center rounded-full bg-[color:var(--secondary)] px-3 py-1 text-xs text-[color:var(--accent)]">
+                <span className="inline-flex items-center rounded-full bg-[color:var(--secondary)] px-3 py-1 text-xs text-white">
                   Popular
                 </span>
               </div>
@@ -346,7 +346,7 @@ const ReservationsPreview: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/reservations')}
-                className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold"
+                className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition"
               >
                 Reserve a Table
               </button>
@@ -652,7 +652,7 @@ const ReservationsView: React.FC = () => {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold disabled:opacity-60"
+                className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-white font-semibold disabled:opacity-60 hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition"
               >
                 {status === 'loading' ? 'Submitting...' : 'Confirm Reservation'}
               </button>
@@ -673,7 +673,7 @@ const OrderView: React.FC = () => (
         {['Order Pickup', 'Order Delivery'].map((label) => (
           <div key={label} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
             <h3 className="text-xl font-serif text-[color:var(--primary)]">{label}</h3>
-            <button className="mt-4 h-11 px-6 rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold">
+            <button className="mt-4 h-11 px-6 rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition">
               Start Order
             </button>
           </div>
@@ -702,7 +702,7 @@ const CateringView: React.FC = () => (
             <input key={label} placeholder={label} className="rounded-full border border-[color:var(--border)] px-4 py-3" />
           ))}
           <textarea placeholder="Notes" className="md:col-span-2 rounded-2xl border border-[color:var(--border)] px-4 py-3" />
-          <button className="md:col-span-2 h-11 md:h-12 rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold">
+          <button className="md:col-span-2 h-11 md:h-12 rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition">
             Request a Quote
           </button>
         </form>
@@ -747,7 +747,7 @@ const ContactView: React.FC = () => (
           <input placeholder="Name" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" />
           <input placeholder="Email" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" />
           <textarea placeholder="Message" className="w-full rounded-2xl border border-[color:var(--border)] px-4 py-3" />
-          <button className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold">
+          <button className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition">
             Send Message
           </button>
         </form>
@@ -774,7 +774,7 @@ const AdminView: React.FC = () => {
           />
           <button
             onClick={() => setAuthed(code === adminCode)}
-            className="mt-4 h-11 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--accent)] font-semibold"
+            className="mt-4 h-11 w-full rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition"
           >
             Enter Dashboard
           </button>
