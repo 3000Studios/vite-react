@@ -173,11 +173,18 @@ const Hero: React.FC = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(42,11,69,0.35), rgba(42,11,69,0.05)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2000')",
+            "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2000')",
         }}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--primary)]/20 via-transparent to-[color:var(--bg)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(24,16,40,0.72) 0%, rgba(24,16,40,0.55) 40%, rgba(24,16,40,0.0) 70%)',
+        }}
+        aria-hidden
+      />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           variants={scrollReveal}
@@ -186,13 +193,13 @@ const Hero: React.FC = () => {
           transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeOut' }}
           className="max-w-xl"
         >
-          <p className="text-sm uppercase tracking-widest text-[color:var(--secondary)] font-semibold">
+          <p className="text-sm uppercase tracking-widest text-[color:var(--accent)] font-semibold">
             Authentic Cajun Cuisine • Canton, GA
           </p>
-          <h1 className="mt-4 text-4xl md:text-6xl font-serif font-semibold leading-tight text-[color:var(--primary)]">
+          <h1 className="mt-4 text-4xl md:text-6xl font-serif font-semibold leading-tight text-[color:var(--bg)]">
             Big Cajun Flavor. Warm Southern Welcome.
           </h1>
-          <p className="mt-4 text-base md:text-lg text-[color:var(--text)] leading-relaxed">
+          <p className="mt-4 text-base md:text-lg text-[color:var(--bg)]/90 leading-relaxed">
             Fresh seafood, slow-simmered classics, and bold Louisiana comfort—served with Mardi Gras spirit.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -209,7 +216,7 @@ const Hero: React.FC = () => {
               Order Online
             </button>
           </div>
-          <p className="mt-4 text-sm text-[color:var(--muted)]">Open Today • See Hours ↓</p>
+          <p className="mt-4 text-sm text-[color:var(--bg)]/80">Open Today • See Hours ↓</p>
         </motion.div>
       </div>
     </section>
@@ -354,6 +361,33 @@ const ReviewsSection: React.FC = () => (
   </section>
 );
 
+const YelpReviewsSection: React.FC = () => (
+  <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Official Yelp Reviews</h2>
+          <p className="mt-2 text-[color:var(--text)]">See what guests are saying on Yelp.</p>
+        </div>
+        <a
+          href="https://www.yelp.com/biz/the-cajun-menu-canton"
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm font-semibold text-[color:var(--accent)] flex items-center gap-2"
+        >
+          View on Yelp <ExternalLink size={14} />
+        </a>
+      </div>
+      <div className="mt-6 rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
+        <iframe
+          title="The Cajun Menu Yelp Reviews"
+          src="https://www.yelp.com/biz/the-cajun-menu-canton"
+          className="w-full h-[420px] rounded-xl border border-[color:var(--border)]"
+        />
+      </div>
+    </div>
+  </section>
+);
 const LocationSection: React.FC = () => (
   <section className="py-16 md:py-24 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
@@ -420,6 +454,7 @@ const HomeView: React.FC = () => (
     <WhyLoveUs />
     <ReservationsPreview />
     <ReviewsSection />
+    <YelpReviewsSection />
     <LocationSection />
     <FinalCTA />
   </main>
