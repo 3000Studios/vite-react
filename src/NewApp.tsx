@@ -142,19 +142,25 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[1100] bg-mgDeep/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden"
+            className="fixed inset-0 z-[1100] bg-mgDeep/90 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden overflow-hidden"
           >
-            <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold">CLOSE</button>
-            {NAV_LINKS.map((link) => (
-              <NavLink
-                key={link.label}
-                to={link.to}
-                onClick={() => setIsOpen(false)}
-                className="text-4xl font-cajun text-white hover:text-mgGold"
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            <div className="absolute inset-0 z-0">
+              <BackgroundVideo id="e7si0f5wiz" aspect="1.7777777777777777" fit="contain" opacity={0.35} />
+              <div className="absolute inset-0 bg-mgDeep/70" />
+            </div>
+            <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold z-10">CLOSE</button>
+            <div className="relative z-10 flex flex-col items-center justify-center gap-8">
+              {NAV_LINKS.map((link) => (
+                <NavLink
+                  key={link.label}
+                  to={link.to}
+                  onClick={() => setIsOpen(false)}
+                  className="text-4xl font-cajun text-white hover:text-mgGold"
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -361,6 +367,7 @@ const Footer: React.FC = () => {
 const MenuView: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<MenuCategory>(MenuCategory.APPETIZERS);
   const filtered = MENU_ITEMS.filter(item => item.category === activeCategory);
+  const subcatRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -437,7 +444,16 @@ const MenuView: React.FC = () => {
           <h1 className="nola-menu-title">{activeCategory}</h1>
         </header>
 
-        <nav className="nola-subcat-bar" aria-label="Menu subcategories">
+        <div className="nola-subcat-shell">
+          <button
+            type="button"
+            className="nola-subcat-arrow left"
+            aria-label="Scroll categories left"
+            onClick={() => subcatRef.current?.scrollBy({ left: -220, behavior: 'smooth' })}
+          >
+            ‹
+          </button>
+          <nav className="nola-subcat-bar" aria-label="Menu subcategories" ref={subcatRef}>
           {CATEGORIES.map((cat, idx) => (
             <button
               key={cat}
@@ -449,7 +465,16 @@ const MenuView: React.FC = () => {
               <span className="nola-subcat-count">{`// ${String(idx + 1).padStart(2, '0')}`}</span>
             </button>
           ))}
-        </nav>
+          </nav>
+          <button
+            type="button"
+            className="nola-subcat-arrow right"
+            aria-label="Scroll categories right"
+            onClick={() => subcatRef.current?.scrollBy({ left: 220, behavior: 'smooth' })}
+          >
+            ›
+          </button>
+        </div>
 
         <main className="nola-menu-grid menu-items-scroll">
           {filtered.map((item) => (
@@ -634,6 +659,7 @@ const AppShell = () => {
       'https://fast.wistia.com/embed/vstx0wwv4f.js',
       'https://fast.wistia.com/embed/5i5d09f8af.js',
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
+      'https://fast.wistia.com/embed/e7si0f5wiz.js',
     ];
     scripts.forEach((src) => {
       if (!document.querySelector(`script[src=\"${src}\"]`)) {
