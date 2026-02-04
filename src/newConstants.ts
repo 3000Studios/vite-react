@@ -8,7 +8,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$16.99',
     description: 'House made silky crab dip infused with Old Bay seasoning and real lump crab meat. Served with butter-toasted French bread rounds.',
     category: MenuCategory.APPETIZERS,
-    image: '/images/creamy-crab-dip.png',
+    image: '/videos/creamy-crab-dip.mp4',
     isSignature: true
   },
   {
