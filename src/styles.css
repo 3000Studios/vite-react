@@ -1015,22 +1015,46 @@ wistia-player.story-wistia::part(controls) {
   filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.65));
 }
 .bayou-script.is-writing {
-  animation: bayou-write 1.6s ease forwards;
+  animation: bayou-write 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   -webkit-text-fill-color: transparent;
 }
 .bayou-script.is-writing::after {
-  animation: bayou-sparkle 0.9s ease forwards;
-  animation-delay: 1.2s;
+  animation: bayou-sparkle 1s ease-out forwards;
+  animation-delay: 1.3s;
 }
 @keyframes bayou-write {
-  0% { filter: blur(2px); letter-spacing: 0.2em; opacity: 0; }
-  30% { opacity: 1; }
-  100% { filter: blur(0); letter-spacing: 0.05em; opacity: 1; }
+  0% { filter: blur(1.5px); letter-spacing: 0.12em; opacity: 0; transform: translateY(6px); }
+  40% { opacity: 1; }
+  100% { filter: blur(0); letter-spacing: 0.05em; opacity: 1; transform: translateY(0); }
 }
 @keyframes bayou-sparkle {
   0% { opacity: 0; transform: scale(0.2) translateY(-6px); }
-  60% { opacity: 1; transform: scale(1) translateY(-10px); }
-  100% { opacity: 0.9; transform: scale(0.8) translateY(-4px); }
+  70% { opacity: 1; transform: scale(1.05) translateY(-10px); }
+  100% { opacity: 0.95; transform: scale(0.9) translateY(-4px); }
+}
+.feast-beads {
+  position: relative;
+  font-family: 'Spicy Rice', 'Cinzel', serif;
+  letter-spacing: 0.08em;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.feast-beads::before {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 100%;
+  height: 10px;
+  background:
+    radial-gradient(circle, rgba(255,215,0,0.9) 0 3px, transparent 4px) 0 0/16px 10px,
+    radial-gradient(circle, rgba(46,125,50,0.9) 0 3px, transparent 4px) 8px 0/16px 10px,
+    radial-gradient(circle, rgba(106,13,173,0.9) 0 3px, transparent 4px) 16px 0/16px 10px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  animation: bead-sway 3.5s ease-in-out infinite;
+}
+@keyframes bead-sway {
+  0%, 100% { transform: translateY(2px); }
+  50% { transform: translateY(-1px); }
 }
 .text-mgGreen { color: var(--mg-green); }
 .border-mgGold { border-color: var(--mg-gold); }
@@ -1162,7 +1186,25 @@ wistia-player.story-wistia::part(controls) {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  outline: none !important;
+  border-radius: 999px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-coin-container .logo-wistia {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.logo-coin-container wistia-player::part(video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent !important;
 }
 
 .bead-rig-background { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; z-index: 0; padding: 0 4vw; }

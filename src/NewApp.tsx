@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
         <div className="absolute inset-0 bg-mgDeep/70 z-[3]" />
       </div>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
-        <div className="flex items-center gap-4 cursor-pointer relative z-20" onClick={() => navigate('/')}>
+        <div className="flex items-center gap-2 cursor-pointer relative z-20" onClick={() => navigate('/')}>
           <div className="nav-logo-video">
             <WistiaPlayer
               media-id="5xxyuh8iwe"
@@ -543,7 +543,9 @@ const GalleryView: React.FC = () => {
       <BackgroundVideo id="ocyt3x1wsa" aspect="0.75" fit="contain" opacity={0.22} />
       <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/30 via-mgDeep/25 to-mgDeep/35" />
       <div className="container mx-auto px-6">
-        <h2 className="text-7xl md:text-[10rem] font-display italic font-black text-white text-center mb-32">The <span className="text-mgGold">Feast</span></h2>
+        <h2 className="text-7xl md:text-[10rem] font-display italic font-black text-white text-center mb-32">
+          The <span className="text-mgGold feast-beads">Feast</span>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {photos.map((src, i) => (
             <motion.div 
