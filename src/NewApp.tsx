@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        <ul className="hidden lg:flex items-center gap-12 relative z-10">
+        <ul className="hidden lg:flex items-center gap-6 relative z-10 nav-orbit">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
               <NavLink
