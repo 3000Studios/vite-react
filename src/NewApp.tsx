@@ -12,7 +12,8 @@ import {
   X,
 } from 'lucide-react';
 import { MENU_ITEMS } from './newConstants';
-import GatorBobWidget from './components/GatorBobWidget';
+import ErrorBoundary from './components/ErrorBoundary';
+const GatorBobWidget = React.lazy(() => import('./components/GatorBobWidget'));
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -975,7 +976,9 @@ const AppShell = () => {
           <Route path="/admin" element={<AdminView />} />
         </Routes>
       </AnimatePresence>
-      <GatorBobWidget />
+      <React.Suspense fallback={null}>
+        <GatorBobWidget />
+      </React.Suspense>
       <Footer />
     </div>
   );
@@ -983,7 +986,9 @@ const AppShell = () => {
 
 const App = () => (
   <BrowserRouter>
-    <AppShell />
+    <ErrorBoundary>
+      <AppShell />
+    </ErrorBoundary>
   </BrowserRouter>
 );
 
