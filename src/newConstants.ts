@@ -26,7 +26,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$11.99',
     description: 'A classic starter with Gulf shrimp, red potatoes, andouille sausage, and sweet corn. Served with a side of drawn cajun garlic butter.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://images.unsplash.com/photo-1559131397-f94da358f7ca?auto=format&fit=crop&q=80&w=800',
+    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/ed5ff385-c83d-47d7-83af-e1c732b6c905/image.jpg',
     isSignature: true
   },
   {
