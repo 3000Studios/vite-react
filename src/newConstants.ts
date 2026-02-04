@@ -93,7 +93,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$26.99',
     description: 'Traditional slow-simmered alligator tail in a rich, spicy tomato-based roux with the "holy trinity" of vegetables. Served over white rice.',
     category: MenuCategory.MAIN_COURSES,
-    image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=800',
+    image: '/videos/alligator-sauce-piquant.mp4',
     isSignature: true
   },
   {
