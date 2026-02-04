@@ -21,6 +21,7 @@ const NAV_LINKS = [
   { label: 'Menu', to: '/menu' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'About', to: '/about' },
+  { label: 'Reservations', to: '/reservations' },
   { label: 'Contact', to: '/contact' },
 ];
 
@@ -187,15 +188,6 @@ const HomeView: React.FC = () => {
       <BackgroundVideo id="shf90z629z" aspect="1.7777777777777777" fit="contain" opacity={0.6} />
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
-          <span className="inline-block mt-8 px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10 bg-mgDeep/40 backdrop-blur">
-            140 Keith Dr • Canton, GA 30114
-          </span>
-          <h1 className="text-6xl md:text-[9rem] font-display italic font-black leading-none text-white drop-shadow-2xl mb-8">
-            <span className="text-mgGold not-italic font-cajun">The Cajun Menu</span>
-          </h1>
-        <p className="max-w-3xl mx-auto text-white/95 text-lg md:text-xl leading-relaxed drop-shadow-[0_6px_18px_rgba(0,0,0,0.65)]">
-            From century-old roux to show-stopping boils and beignets, we honor New Orleans tradition with modern flair. Dine, celebrate, and feel the Mardi Gras energy every day.
-          </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
             <button 
               onClick={() => navigate('/menu')}
@@ -204,7 +196,10 @@ const HomeView: React.FC = () => {
               <span className="nola-symbol">⚜</span>
               EXPLORE MENU <ChevronRight size={18} />
             </button>
-            <button className="px-14 py-6 border border-yellow-400/40 text-yellow-200 font-black rounded-full text-sm tracking-[0.4em] uppercase bg-yellow-400/10 hover:bg-yellow-400/20 transition-all book-check-cta">
+            <button
+              onClick={() => navigate('/reservations')}
+              className="px-14 py-6 border border-yellow-400/40 text-yellow-200 font-black rounded-full text-sm tracking-[0.4em] uppercase bg-yellow-400/10 hover:bg-yellow-400/20 transition-all book-check-cta"
+            >
               BOOK A TABLE
             </button>
           </div>
@@ -607,6 +602,165 @@ const AboutView: React.FC = () => (
   </section>
 );
 
+const ReservationsView: React.FC = () => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      date: formData.get('date'),
+      time: formData.get('time'),
+      guests: formData.get('guests'),
+      notes: formData.get('notes'),
+    };
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/reserve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+      if (!response.ok || !data?.success) {
+        throw new Error(data?.error || 'Reservation could not be processed.');
+      }
+      setStatus('success');
+      setMessage('Reservation confirmed! Check your email for the calendar invite.');
+      form.reset();
+    } catch (err: any) {
+      setStatus('error');
+      setMessage(err?.message || 'We could not complete the reservation. Please try again.');
+    }
+  };
+
+  return (
+    <section className="relative pt-40 pb-32 bg-mgDeep min-h-screen overflow-hidden">
+      <BackgroundVideo id="vlzs2j8r43" opacity={0.2} />
+      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/20 via-mgDeep/40 to-mgDeep/70" />
+      <div className="container relative mx-auto px-6 z-10">
+        <div className="text-center mb-20">
+          <span className="text-mgGreen font-black tracking-[0.7em] uppercase text-xs mb-6 block">Reserve Your Table</span>
+          <h2 className="text-6xl md:text-8xl font-display italic font-black text-white">
+            The <span className="text-mgGold">Reservation</span> Room
+          </h2>
+          <p className="text-white/70 max-w-3xl mx-auto mt-6 text-lg">
+            Pick your date and time, and we will confirm instantly with a calendar invite and email.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5 space-y-10">
+            <div className="p-12 glass-card rounded-[3rem] shadow-2xl border border-white/10">
+              <h3 className="text-3xl font-display italic text-mgGold mb-6">Visit Us</h3>
+              <div className="space-y-6 text-white/80 text-sm uppercase tracking-[0.25em] font-black">
+                <div className="flex items-center gap-4">
+                  <MapPin size={20} className="text-mgGold" />
+                  <span>140 Keith Dr, Canton, GA 30114</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Phone size={20} className="text-mgGreen" />
+                  <span>(678) 899-7404</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Mail size={20} className="text-mgGold" />
+                  <span>thecajunmenu@gmail.com</span>
+                </div>
+              </div>
+              <div className="mt-10 space-y-2 text-white/60 text-xs uppercase tracking-[0.4em] font-black">
+                <div className="flex justify-between">
+                  <span>Sunday</span>
+                  <span>12 PM - 5 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Mon - Tue</span>
+                  <span>Closed</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Wed - Thu</span>
+                  <span>11 AM - 8 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Fri - Sat</span>
+                  <span>11 AM - 8 PM</span>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
+              <iframe
+                src="https://www.google.com/maps?q=140+Keith+Dr,+Canton,+GA+30114&output=embed&t=k"
+                width="100%"
+                height="320"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                title="The Cajun Menu Map"
+              />
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="lg:col-span-7 p-12 md:p-16 glass-card rounded-[3rem] space-y-10 shadow-2xl border border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Name</label>
+                <input name="name" required type="text" className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Email</label>
+                <input name="email" required type="email" className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Phone</label>
+                <input name="phone" required type="tel" className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Guests</label>
+                <input name="guests" required min={1} max={20} type="number" className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Date</label>
+                <input name="date" required type="date" className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Time</label>
+                <input name="time" required type="time" className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+              </div>
+            </div>
+            <div className="space-y-3">
+              <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 ml-4">Notes (Optional)</label>
+              <textarea name="notes" rows={4} className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
+            </div>
+            {message && (
+              <div
+                className={`rounded-2xl px-6 py-4 text-sm font-bold tracking-wide ${
+                  status === 'success' ? 'bg-mgGreen/20 text-mgGreen' : 'bg-red-500/20 text-red-200'
+                }`}
+              >
+                {message}
+              </div>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full py-7 bg-mgGold text-mgDeep font-black rounded-3xl text-sm tracking-[0.5em] uppercase hover:bg-white transition-all shadow-xl shadow-mgGold/20 light-cta disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {status === 'loading' ? 'Submitting...' : 'Confirm Reservation'}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const ContactView: React.FC = () => (
   <section className="pt-40 pb-32 bg-mgDeep min-h-screen">
     <div className="container mx-auto px-6 max-w-6xl">
@@ -715,6 +869,7 @@ const AppShell = () => {
             <Route path="/menu" element={<MenuView />} />
             <Route path="/gallery" element={<GalleryView />} />
             <Route path="/about" element={<AboutView />} />
+            <Route path="/reservations" element={<ReservationsView />} />
             <Route path="/contact" element={<ContactView />} />
           </Routes>
         </motion.div>
