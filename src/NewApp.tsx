@@ -188,22 +188,24 @@ const HomeView: React.FC = () => {
       <BackgroundVideo id="shf90z629z" aspect="1.7777777777777777" fit="contain" opacity={0.6} />
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
-            <button 
-              onClick={() => navigate('/menu')}
-              className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl steam-cta"
-            >
-              <span className="nola-symbol">⚜</span>
-              EXPLORE MENU <ChevronRight size={18} />
-            </button>
-            <button
-              onClick={() => navigate('/reservations')}
-              className="px-14 py-6 border border-yellow-400/40 text-yellow-200 font-black rounded-full text-sm tracking-[0.4em] uppercase bg-yellow-400/10 hover:bg-yellow-400/20 transition-all book-check-cta"
-            >
-              BOOK A TABLE
-            </button>
-          </div>
         </motion.div>
+      </div>
+    </section>
+    <section className="relative bg-mgDeep">
+      <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-center gap-8">
+        <button 
+          onClick={() => navigate('/menu')}
+          className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl steam-cta"
+        >
+          <span className="nola-symbol">⚜</span>
+          EXPLORE MENU <ChevronRight size={18} />
+        </button>
+        <button
+          onClick={() => navigate('/reservations')}
+          className="px-14 py-6 border border-yellow-400/40 text-yellow-200 font-black rounded-full text-sm tracking-[0.4em] uppercase bg-yellow-400/10 hover:bg-yellow-400/20 transition-all book-check-cta"
+        >
+          BOOK A TABLE
+        </button>
       </div>
     </section>
 
