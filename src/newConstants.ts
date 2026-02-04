@@ -53,7 +53,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$18.99',
     description: 'Warm, melted three-cheese blend loaded with domestic crawfish tails and diced pimientos. Served with hand-cut crispy tortilla chips.',
     category: MenuCategory.APPETIZERS,
-    image: '/images/crawfish-queso-dip.png',
+    image: '/videos/crawfish-queso-dip.mp4',
     isSignature: false
   },
   {
