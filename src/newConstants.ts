@@ -73,7 +73,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$15.99',
     description: 'Mixed greens topped with blackened chicken breast, avocado, egg, bacon, and blue cheese crumbles with a cajun ranch dressing.',
     category: MenuCategory.SALADS,
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800',
+    image: '/videos/blackened-chicken-cobb.mp4',
     isSignature: false
   },
   {
