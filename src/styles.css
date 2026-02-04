@@ -613,6 +613,8 @@
       white-space: nowrap;
       font-size: 0.78rem;
       letter-spacing: 1px;
+      width: max-content;
+      flex: 0 0 auto;
     }
     .nola-subcat-shell {
       padding: 0 48px;

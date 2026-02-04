@@ -142,14 +142,14 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[1100] bg-mgDeep/90 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden overflow-hidden"
+            className="fixed inset-0 z-[1100] bg-mgDeep/90 backdrop-blur-xl lg:hidden overflow-hidden"
           >
             <div className="absolute inset-0 z-0">
-              <BackgroundVideo id="e7si0f5wiz" aspect="1.7777777777777777" fit="contain" opacity={0.35} />
-              <div className="absolute inset-0 bg-mgDeep/70" />
+              <BackgroundVideo id="e7si0f5wiz" aspect="1.7777777777777777" fit="contain" opacity={0.45} />
+              <div className="absolute inset-0 bg-mgDeep/75" />
             </div>
-            <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold z-10">CLOSE</button>
-            <div className="relative z-10 flex flex-col items-center justify-center gap-8">
+            <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold z-20">CLOSE</button>
+            <div className="relative z-20 h-full w-full flex flex-col items-center justify-center gap-8">
               {NAV_LINKS.map((link) => (
                 <NavLink
                   key={link.label}
