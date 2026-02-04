@@ -8,7 +8,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$16.99',
     description: 'House made silky crab dip infused with Old Bay seasoning and real lump crab meat. Served with butter-toasted French bread rounds.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/61371da1-0307-443c-b77d-eb683dbff7c4/image.jpg',
+    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/3745fe9e-4cb4-49c5-877d-dc5628856ec0/image.jpg',
     isSignature: true
   },
   {
@@ -17,7 +17,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$12.99',
     description: 'Crispy boudin croquettes with smoky andouille and creamy rice, served with spicy Creole mustard.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/61371da1-0307-443c-b77d-eb683dbff7c4/image.jpg',
+    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/3745fe9e-4cb4-49c5-877d-dc5628856ec0/image.jpg',
     isSignature: false,
   },
   {
