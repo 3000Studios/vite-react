@@ -1073,6 +1073,12 @@ wistia-player.story-wistia::part(controls) {
   font-size: 11px;
   letter-spacing: 0.22em;
 }
+.nav-orbit li:nth-child(1) .nav-link { background-color: rgba(106, 13, 173, 0.45); }
+.nav-orbit li:nth-child(2) .nav-link { background-color: rgba(26, 42, 108, 0.45); }
+.nav-orbit li:nth-child(3) .nav-link { background-color: rgba(212, 175, 55, 0.45); color: #1a0530 !important; }
+.nav-orbit li:nth-child(4) .nav-link { background-color: rgba(106, 13, 173, 0.45); }
+.nav-orbit li:nth-child(5) .nav-link { background-color: rgba(26, 42, 108, 0.45); }
+.nav-orbit li:nth-child(6) .nav-link { background-color: rgba(212, 175, 55, 0.45); color: #1a0530 !important; }
 .nav-orbit .nav-link:hover {
   transform: translateY(-2px) scale(1.06);
   background-color: rgba(255, 255, 255, 0.28);
