@@ -386,7 +386,7 @@ const MenuView: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat as MenuCategory)}
-                className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all border ${activeCategory === cat ? 'bg-mgGold border-mgGold text-mgDeep shadow-2xl' : 'bg-white/5 border-white/10 text-white/40 hover:text-white'}`}
+                className={`menu-filter-btn px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all border ${activeCategory === cat ? 'is-active' : ''}`}
               >
                 {cat}
               </button>
