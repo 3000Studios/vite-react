@@ -57,8 +57,8 @@ const Header: React.FC = () => {
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-left"
         >
-          <span className="text-[color:var(--primary)] font-serif text-xl md:text-2xl font-semibold tracking-tight">
-            THE CAJUN <span className="text-[color:var(--accent)]">•</span> MENU
+          <span className="text-[color:var(--accent)] font-serif text-xl md:text-2xl font-semibold tracking-tight">
+            THE CAJUN MENU
           </span>
         </button>
 
