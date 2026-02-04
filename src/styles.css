@@ -7,6 +7,7 @@
 @layer base {
   body {
     @apply text-white antialiased;
+    position: relative;
     background-color: #0c0013;
     font-family: 'Montserrat', 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
       sans-serif;
@@ -1012,6 +1013,12 @@ wistia-player.story-wistia::part(controls) {
 
 .animate-sway {
   animation: sway 3.5s ease-in-out infinite;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 @keyframes sway {
   0%, 100% { transform: rotate(-2deg); }

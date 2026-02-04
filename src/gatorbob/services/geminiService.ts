@@ -6,7 +6,15 @@ const apiKey =
   import.meta.env.VITE_GEMINI_API_KEY ||
   import.meta.env.VITE_API_KEY ||
   '';
-const ai = new GoogleGenAI({ apiKey });
+let ai: GoogleGenAI | null = null;
+try {
+  if (apiKey) {
+    ai = new GoogleGenAI({ apiKey });
+  }
+} catch (err) {
+  console.error("Gemini init failed:", err);
+  ai = null;
+}
 
 export const getGatorResponse = async (userMessage: string, chatHistory: any[]) => {
   const model = 'gemini-3-flash-preview';
@@ -36,6 +44,9 @@ export const getGatorResponse = async (userMessage: string, chatHistory: any[]) 
   `;
 
   try {
+    if (!ai) {
+      return "Gator Bob's offline right now, cher! Try again in a bit or ask for our hours and menu highlights.";
+    }
     const response = await ai.models.generateContent({
       model,
       contents: [
