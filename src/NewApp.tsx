@@ -184,15 +184,14 @@ const HomeView: React.FC = () => {
   return (
   <>
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <BackgroundVideo id="lxcpkyefcu" opacity={0.6} />
+      <BackgroundVideo id="shf90z629z" aspect="1.7777777777777777" fit="contain" opacity={0.6} />
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
           <span className="inline-block mt-8 px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10 bg-mgDeep/40 backdrop-blur">
             140 Keith Dr • Canton, GA 30114
           </span>
           <h1 className="text-6xl md:text-[9rem] font-display italic font-black leading-none text-white drop-shadow-2xl mb-8">
-            Taste the <br />
-            <span className="text-mgGold not-italic font-cajun">Vibe of the Bayou</span>
+            <span className="text-mgGold not-italic font-cajun">The Cajun Menu</span>
           </h1>
         <p className="max-w-3xl mx-auto text-white/95 text-lg md:text-xl leading-relaxed drop-shadow-[0_6px_18px_rgba(0,0,0,0.65)]">
             From century-old roux to show-stopping boils and beignets, we honor New Orleans tradition with modern flair. Dine, celebrate, and feel the Mardi Gras energy every day.
@@ -686,6 +685,7 @@ const AppShell = () => {
       'https://fast.wistia.com/embed/e7si0f5wiz.js',
       'https://fast.wistia.com/embed/684sb953x5.js',
       'https://fast.wistia.com/embed/ocyt3x1wsa.js',
+      'https://fast.wistia.com/embed/shf90z629z.js',
     ];
     scripts.forEach((src) => {
       if (!document.querySelector(`script[src="${src}"]`)) {
