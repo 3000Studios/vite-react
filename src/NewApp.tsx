@@ -2,14 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Routes, Route, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { 
-  Star, 
   MapPin, 
   Phone, 
   Mail, 
   Instagram, 
   Facebook, 
   ChevronRight, 
-  ArrowRight 
 } from 'lucide-react';
 import { MENU_ITEMS, CATEGORIES } from './newConstants';
 import { MenuCategory, MenuItem } from './newTypes';
@@ -54,7 +52,7 @@ const BackgroundVideo: React.FC<{ id?: string; opacity?: number; aspect?: string
   aspect = '1.4883720930232558',
   fit = 'cover',
 }) => (
-  <div className="absolute inset-0 z-0 overflow-hidden video-wrapper">
+  <div className="absolute inset-0 z-0 overflow-hidden video-wrapper" style={{ opacity }}>
     <WistiaPlayer
       media-id={id}
       class="hero-wistia"
@@ -475,7 +473,7 @@ const MenuView: React.FC = () => {
             ‹
           </button>
           <nav className="nola-subcat-bar" aria-label="Menu subcategories" ref={subcatRef}>
-          {CATEGORIES.map((cat, idx) => (
+          {CATEGORIES.map((cat) => (
             <button
               key={cat}
               type="button"
@@ -684,7 +682,7 @@ const AppShell = () => {
       'https://fast.wistia.com/embed/684sb953x5.js',
     ];
     scripts.forEach((src) => {
-      if (!document.querySelector(`script[src=\"${src}\"]`)) {
+      if (!document.querySelector(`script[src="${src}"]`)) {
         const s = document.createElement('script');
         s.src = src;
         s.async = true;

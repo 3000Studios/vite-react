@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ChevronDown,
   Info,
@@ -7,7 +7,6 @@ import {
   Sparkles,
   X,
 } from 'lucide-react';
-import { Message } from '../gatorbob/types';
 import GatorAvatar from './GatorAvatar';
 
 const GATOR_ONE_LINERS = [
@@ -23,6 +22,11 @@ const CAJUN_FACTS = [
 ];
 
 const GatorBobWidget: React.FC = () => {
+  interface Message {
+    role: 'user' | 'model';
+    text: string;
+    timestamp: Date;
+  }
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'model',
@@ -36,6 +40,31 @@ const GatorBobWidget: React.FC = () => {
   const [isDancing, setIsDancing] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const minimizedRef = useRef(isMinimized);
+  const notifyTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    minimizedRef.current = isMinimized;
+  }, [isMinimized]);
+
+  const triggerDance = useCallback(() => {
+    setIsDancing(true);
+    setTimeout(() => setIsDancing(false), 5000);
+  }, []);
+
+  const triggerNotification = useCallback(() => {
+    if (!minimizedRef.current) return;
+    setShowNotification(true);
+    if (notifyTimerRef.current) {
+      window.clearTimeout(notifyTimerRef.current);
+    }
+    notifyTimerRef.current = window.setTimeout(() => setShowNotification(false), 12000);
+  }, []);
+
+  const addBotMessage = useCallback((text: string) => {
+    setMessages((prev) => [...prev, { role: 'model', text, timestamp: new Date() }]);
+    triggerNotification();
+  }, [triggerNotification]);
 
   useEffect(() => {
     if (!isMinimized) {
@@ -59,24 +88,15 @@ const GatorBobWidget: React.FC = () => {
       clearInterval(jokeTimer);
       clearInterval(factTimer);
     };
-  }, []);
+  }, [addBotMessage, triggerDance]);
 
   useEffect(() => {
-    if (isMinimized && messages.length > 0 && messages[messages.length - 1].role === 'model') {
-      setShowNotification(true);
-      const timer = setTimeout(() => setShowNotification(false), 12000);
-      return () => clearTimeout(timer);
-    }
-  }, [messages, isMinimized]);
-
-  const triggerDance = () => {
-    setIsDancing(true);
-    setTimeout(() => setIsDancing(false), 5000);
-  };
-
-  const addBotMessage = (text: string) => {
-    setMessages((prev) => [...prev, { role: 'model', text, timestamp: new Date() }]);
-  };
+    return () => {
+      if (notifyTimerRef.current) {
+        window.clearTimeout(notifyTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleSend = async (overrideInput?: string) => {
     const textToSend = overrideInput || input;

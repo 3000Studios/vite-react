@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
-  Menu as MenuIcon,
   X,
   Phone,
   Mail,
@@ -387,7 +386,6 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState(MENU_CATEGORIES[0]);
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
-  const beadColors = ['#FFD700', '#6A0DAD', '#00A86B', '#4A90E2'];
 
   const filteredItems = MENU_ITEMS.filter((item) => item.category === selectedCategory);
   const signatureDishes = MENU_ITEMS.filter((item) => item.isSignature);
