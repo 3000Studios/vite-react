@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
@@ -169,14 +169,18 @@ const Hero: React.FC = () => {
   const reduceMotion = useReducedMotion();
   return (
     <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] flex items-center bg-[color:var(--bg)]">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2000')",
-        }}
-        aria-hidden
-      />
+      <div className="absolute inset-0 overflow-hidden">
+        <wistia-player media-id="we8wptwhas" class="hero-wistia" aspect="1.7777777777777777" muted autoplay loop playsinline />
+        <style>
+          {`wistia-player[media-id='we8wptwhas']:not(:defined) {
+              background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/we8wptwhas/swatch');
+              display: block;
+              filter: blur(5px);
+              width: 100%;
+              height: 100%;
+            }`}
+        </style>
+      </div>
       <div
         className="absolute inset-0"
         style={{
@@ -830,26 +834,44 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
-const AppShell = () => (
-  <div className="bg-[color:var(--bg)] text-[color:var(--text)]">
-    <Header />
-    <ScrollToTop />
-    <AnimatePresence mode="wait">
-      <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/menu" element={<MenuView />} />
-        <Route path="/reservations" element={<ReservationsView />} />
-        <Route path="/order" element={<OrderView />} />
-        <Route path="/catering" element={<CateringView />} />
-        <Route path="/about" element={<AboutView />} />
-        <Route path="/contact" element={<ContactView />} />
-        <Route path="/admin" element={<AdminView />} />
-      </Routes>
-    </AnimatePresence>
-    <GatorBobWidget />
-    <Footer />
-  </div>
-);
+const AppShell = () => {
+  useEffect(() => {
+    const scripts = [
+      'https://fast.wistia.com/player.js',
+      'https://fast.wistia.com/embed/we8wptwhas.js',
+    ];
+    scripts.forEach((src) => {
+      if (!document.querySelector(`script[src="${src}"]`)) {
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        if (src.includes('/embed/')) s.type = 'module';
+        document.body.appendChild(s);
+      }
+    });
+  }, []);
+
+  return (
+    <div className="bg-[color:var(--bg)] text-[color:var(--text)]">
+      <Header />
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="/menu" element={<MenuView />} />
+          <Route path="/reservations" element={<ReservationsView />} />
+          <Route path="/order" element={<OrderView />} />
+          <Route path="/catering" element={<CateringView />} />
+          <Route path="/about" element={<AboutView />} />
+          <Route path="/contact" element={<ContactView />} />
+          <Route path="/admin" element={<AdminView />} />
+        </Routes>
+      </AnimatePresence>
+      <GatorBobWidget />
+      <Footer />
+    </div>
+  );
+};
 
 const App = () => (
   <BrowserRouter>
