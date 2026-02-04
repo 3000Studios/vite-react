@@ -26,7 +26,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$11.99',
     description: 'A classic starter with Gulf shrimp, red potatoes, andouille sausage, and sweet corn. Served with a side of drawn cajun garlic butter.',
     category: MenuCategory.APPETIZERS,
-    image: '/images/bayou-low-boil.png',
+    image: '/videos/bayou-low-boil.mp4',
     isSignature: true
   },
   {
