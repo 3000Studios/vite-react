@@ -57,7 +57,7 @@ const Header: React.FC = () => {
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-left"
         >
-          <span className="text-[color:var(--accent)] font-serif text-xl md:text-2xl font-semibold tracking-tight">
+          <span className="text-[color:var(--accent)] font-serif text-xl md:text-2xl font-semibold tracking-tight logo-shimmer">
             THE CAJUN MENU
           </span>
         </button>
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-[color:var(--accent)] ${
+                `text-sm font-medium transition-colors nav-link-shimmer ${
                   isActive ? 'text-[color:var(--accent)]' : 'text-[color:var(--text)]'
                 }`
               }
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
           >
             <div className="mx-auto max-w-6xl px-6 py-8 h-full flex flex-col">
               <div className="flex items-center justify-between">
-                <span className="text-[color:var(--primary)] font-serif text-xl font-semibold">
+                <span className="text-[color:var(--primary)] font-serif text-xl font-semibold logo-shimmer">
                   THE CAJUN MENU
                 </span>
                 <button onClick={() => setOpen(false)} aria-label="Close menu">
@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-[color:var(--bg)]">
       <div className="absolute inset-0 overflow-hidden">
-        <wistia-player media-id="14ushhwlms" class="hero-wistia" aspect="1.7777777777777777" muted autoplay loop playsinline />
+        <wistia-player media-id="14ushhwlms" className="hero-wistia" aspect="1.7777777777777777" muted autoPlay loop playsInline />
         <style>
           {`wistia-player[media-id='14ushhwlms']:not(:defined) {
               background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/14ushhwlms/swatch');
@@ -248,9 +248,9 @@ const QuickActions: React.FC = () => (
           <a
             key={action.label}
             href={action.href}
-            className="flex items-center gap-3 rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-3 text-sm font-semibold text-[color:var(--text)] hover:shadow-sm transition"
+            className="flex items-center gap-3 rounded-full border border-[color:var(--accent)] bg-[color:var(--secondary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_0_18px_rgba(0,0,0,0.15)] hover:shadow-[0_0_22px_rgba(178,148,94,0.45)] transition"
           >
-            <span className="text-[color:var(--accent)]">{action.icon}</span>
+            <span className="text-white">{action.icon}</span>
             {action.label}
           </a>
         ))}
@@ -261,7 +261,7 @@ const QuickActions: React.FC = () => (
 const SignatureFavorites: React.FC = () => {
   const highlights = MENU_ITEMS.filter((item) => item.isSignature).slice(0, 6);
   return (
-    <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+    <section className="py-12 md:py-16 bg-[color:var(--bg)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
@@ -275,12 +275,15 @@ const SignatureFavorites: React.FC = () => {
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlights.map((item) => (
-            <article key={item.id} className="rounded-2xl border border-[color:var(--accent)] bg-[color:var(--card)] p-5 md:p-7 shadow-[0_0_24px_rgba(178,148,94,0.25)]">
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[color:var(--border)]">
+            <article
+              key={item.id}
+              className="group rounded-2xl border border-[color:var(--accent)] bg-[color:var(--card)] p-5 md:p-7 shadow-[0_0_24px_rgba(178,148,94,0.25)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_0_36px_rgba(178,148,94,0.45)]"
+            >
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[color:var(--border)] transition-transform duration-300 group-hover:scale-[1.03]">
                 {item.image?.endsWith('.mp4') ? (
-                  <video className="w-full h-full object-cover" src={item.image} muted autoPlay loop playsInline />
+                  <video className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.08]" src={item.image} muted autoPlay loop playsInline />
                 ) : (
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.08]" loading="lazy" />
                 )}
               </div>
               <div className="mt-4 flex items-start justify-between gap-4">
@@ -304,7 +307,7 @@ const SignatureFavorites: React.FC = () => {
 };
 
 const WhyLoveUs: React.FC = () => (
-  <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
       <div className="md:col-span-6 space-y-4">
         <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Why People Love Us</h2>
@@ -329,7 +332,7 @@ const WhyLoveUs: React.FC = () => (
 const ReservationsPreview: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+    <section className="py-12 md:py-16 bg-[color:var(--bg)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
         <div className="md:col-span-6">
           <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h2>
@@ -358,7 +361,7 @@ const ReservationsPreview: React.FC = () => {
   );
 };
 const ReviewsSection: React.FC = () => (
-  <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Reviews & Social Proof</h2>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -374,7 +377,7 @@ const ReviewsSection: React.FC = () => (
 );
 
 const YelpReviewsSection: React.FC = () => (
-  <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div className="flex items-end justify-between gap-6 flex-wrap">
         <div>
@@ -401,7 +404,7 @@ const YelpReviewsSection: React.FC = () => (
   </section>
 );
 const LocationSection: React.FC = () => (
-  <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
       <div className="md:col-span-4 space-y-4">
         <h3 className="text-xl md:text-2xl font-serif text-[color:var(--primary)]">Find Us</h3>
@@ -435,7 +438,7 @@ const LocationSection: React.FC = () => (
 const FinalCTA: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-16 md:py-24 bg-[color:var(--primary)] text-[color:var(--bg)]">
+    <section className="py-12 md:py-16 bg-[color:var(--primary)] text-[color:var(--bg)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
         <div className="mx-auto w-16 h-[2px] bg-[color:var(--accent)] mb-6" />
         <h2 className="text-3xl md:text-4xl font-serif">Ready for real Cajun comfort?</h2>
@@ -459,7 +462,7 @@ const FinalCTA: React.FC = () => {
 };
 
 const HomeView: React.FC = () => (
-  <main className="space-y-16 md:space-y-24">
+  <main className="space-y-10 md:space-y-14">
     <Hero />
     <HeroCopy />
     <QuickActions />
@@ -501,7 +504,7 @@ const MenuView: React.FC = () => {
   }, [category, query]);
 
   return (
-    <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+    <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">The Menu</h1>
@@ -539,12 +542,15 @@ const MenuView: React.FC = () => {
           className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {filtered.map((item) => (
-            <article key={item.id} className="rounded-2xl border border-[color:var(--accent)] bg-[color:var(--card)] p-5 md:p-7 flex flex-col shadow-[0_0_24px_rgba(178,148,94,0.25)]">
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[color:var(--border)]">
+            <article
+              key={item.id}
+              className="group rounded-2xl border border-[color:var(--accent)] bg-[color:var(--card)] p-5 md:p-7 flex flex-col shadow-[0_0_24px_rgba(178,148,94,0.25)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_0_36px_rgba(178,148,94,0.45)]"
+            >
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[color:var(--border)] transition-transform duration-300 group-hover:scale-[1.03]">
                 {item.image?.endsWith('.mp4') ? (
-                  <video className="w-full h-full object-cover" src={item.image} muted autoPlay loop playsInline />
+                  <video className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.08]" src={item.image} muted autoPlay loop playsInline />
                 ) : (
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.08]" loading="lazy" />
                 )}
               </div>
               <div className="mt-4 flex items-start justify-between gap-4">
@@ -556,7 +562,7 @@ const MenuView: React.FC = () => {
               </div>
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
                 {item.isSignature && (
-                  <span className="px-2 py-1 rounded-full bg-[color:var(--secondary)] text-[color:var(--bg)]">Popular</span>
+                <span className="px-2 py-1 rounded-full bg-[color:var(--secondary)] text-white">Popular</span>
                 )}
                 <span className="px-2 py-1 rounded-full border border-[color:var(--border)] text-[color:var(--muted)]">Ask about allergies</span>
               </div>
@@ -619,7 +625,7 @@ const ReservationsView: React.FC = () => {
   };
 
   return (
-    <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+    <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
         <div className="md:col-span-6 space-y-4">
           <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h1>
@@ -664,7 +670,7 @@ const ReservationsView: React.FC = () => {
 };
 
 const OrderView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
       <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Order Online</h1>
       <p className="mt-3 text-[color:var(--text)]">Order pickup or delivery from your favorite platform.</p>
@@ -683,7 +689,7 @@ const OrderView: React.FC = () => (
 );
 
 const CateringView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Catering & Events</h1>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -711,7 +717,7 @@ const CateringView: React.FC = () => (
 );
 
 const AboutView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-10">
       <div>
         <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Our Story</h1>
@@ -734,7 +740,7 @@ const AboutView: React.FC = () => (
 );
 
 const ContactView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
       <div className="md:col-span-6 space-y-4">
         <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Contact & Location</h1>
@@ -762,7 +768,7 @@ const AdminView: React.FC = () => {
 
   if (!authed) {
     return (
-      <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+      <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
         <div className="mx-auto max-w-md px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-serif text-[color:var(--primary)]">Admin Access</h1>
           <input
@@ -783,7 +789,7 @@ const AdminView: React.FC = () => {
   }
 
   return (
-    <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+    <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
         <h1 className="text-4xl font-serif text-[color:var(--primary)]">Analytics Dashboard</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -82,7 +82,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$17.99',
     description: 'Crisp iceberg wedge topped with chilled boiled shrimp, tomatoes, and a generous pour of our house-made spicy remoulade.',
     category: MenuCategory.SALADS,
-    image: 'https://images.unsplash.com/photo-1546793665-c74683c3f43d?auto=format&fit=crop&q=80&w=800',
+    image: '/videos/remoulade-shrimp-salad.mp4',
     isSignature: true
   },
 

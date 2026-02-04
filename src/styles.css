@@ -62,6 +62,39 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
+.logo-shimmer {
+  background: linear-gradient(120deg, #7a5b20 0%, #ffd700 35%, #fff2b0 50%, #d4af37 65%, #7a5b20 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  animation: logo-shimmer 4.5s linear infinite;
+}
+
+@keyframes logo-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+.nav-link-shimmer {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link-shimmer:hover {
+  background: linear-gradient(120deg, #7a5b20 0%, #ffd700 35%, #fff2b0 50%, #d4af37 65%, #7a5b20 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: nav-shimmer 2.8s linear infinite;
+}
+
+@keyframes nav-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
 @layer components {
   .glass {
     @apply bg-white/10 backdrop-blur-xl border border-white/10;
@@ -436,6 +469,12 @@
 
   button {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(178, 148, 94, 0.45);
+    filter: brightness(1.05);
   }
 
   .light-cta {
