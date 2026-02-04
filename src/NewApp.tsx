@@ -526,7 +526,9 @@ const GalleryView: React.FC = () => {
     ])
   );
   return (
-    <section className="pt-40 pb-32 bg-mgDeep min-h-screen">
+    <section className="pt-40 pb-32 bg-mgDeep min-h-screen relative overflow-hidden">
+      <BackgroundVideo id="ocyt3x1wsa" aspect="0.75" fit="contain" opacity={0.22} />
+      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/30 via-mgDeep/25 to-mgDeep/35" />
       <div className="container mx-auto px-6">
         <h2 className="text-7xl md:text-[10rem] font-display italic font-black text-white text-center mb-32">The <span className="text-mgGold">Feast</span></h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -683,6 +685,7 @@ const AppShell = () => {
       'https://fast.wistia.com/embed/vlzs2j8r43.js',
       'https://fast.wistia.com/embed/e7si0f5wiz.js',
       'https://fast.wistia.com/embed/684sb953x5.js',
+      'https://fast.wistia.com/embed/ocyt3x1wsa.js',
     ];
     scripts.forEach((src) => {
       if (!document.querySelector(`script[src="${src}"]`)) {
