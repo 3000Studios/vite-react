@@ -182,6 +182,7 @@ const Navbar: React.FC = () => {
 
 const HomeView: React.FC = () => {
   const navigate = useNavigate();
+  const [showBayou, setShowBayou] = useState(false);
   return (
   <>
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -213,9 +214,13 @@ const HomeView: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
           <span className="text-mgGreen font-black tracking-[0.5em] uppercase text-xs mb-4 block">Our Culinary Heart</span>
-          <h2 className="text-5xl md:text-7xl font-display italic font-black text-white">
-            The <span className="text-mgGold">Bayou Classics</span>
-          </h2>
+          <motion.h2
+            className="text-5xl md:text-7xl font-display italic font-black text-white"
+            viewport={{ once: true, amount: 0.6 }}
+            onViewportEnter={() => setShowBayou(true)}
+          >
+            The <span className={`bayou-script ${showBayou ? 'is-writing' : ''}`}>Bayou Classics</span>
+          </motion.h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {MENU_ITEMS.slice(0, 6).map((item, idx) => (

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel:wght@700;900&family=Spicy+Rice&family=Montserrat:wght@300;400;600;700&family=Oswald:wght@700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -991,6 +992,46 @@ wistia-player.story-wistia::part(controls) {
 .font-cajun { font-family: 'Spicy Rice', 'Garamond', serif; }
 .text-mgPurple { color: var(--mg-purple); }
 .text-mgGold { color: var(--mg-gold); }
+.bayou-script {
+  font-family: 'Great Vibes', 'Oleo Script Swash Caps', cursive;
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  color: var(--mg-gold);
+  letter-spacing: 0.05em;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(120deg, #fff7ad 0%, #ffd700 40%, #d4af37 70%, #fff7ad 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  overflow: visible;
+}
+.bayou-script::after {
+  content: '✦';
+  font-size: 0.75em;
+  margin-left: 0.25em;
+  color: #fff7ad;
+  opacity: 0;
+  transform: scale(0.2) translateY(-6px);
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.65));
+}
+.bayou-script.is-writing {
+  animation: bayou-write 1.6s ease forwards;
+  -webkit-text-fill-color: transparent;
+}
+.bayou-script.is-writing::after {
+  animation: bayou-sparkle 0.9s ease forwards;
+  animation-delay: 1.2s;
+}
+@keyframes bayou-write {
+  0% { filter: blur(2px); letter-spacing: 0.2em; opacity: 0; }
+  30% { opacity: 1; }
+  100% { filter: blur(0); letter-spacing: 0.05em; opacity: 1; }
+}
+@keyframes bayou-sparkle {
+  0% { opacity: 0; transform: scale(0.2) translateY(-6px); }
+  60% { opacity: 1; transform: scale(1) translateY(-10px); }
+  100% { opacity: 0.9; transform: scale(0.8) translateY(-4px); }
+}
 .text-mgGreen { color: var(--mg-green); }
 .border-mgGold { border-color: var(--mg-gold); }
 .bg-mgPurple { background-color: var(--mg-purple); }
