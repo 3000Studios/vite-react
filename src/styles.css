@@ -1185,6 +1185,34 @@ wistia-player.story-wistia::part(controls) {
   pointer-events: none;
   border-radius: inherit;
 }
+
+.steam-cta {
+  position: relative;
+  overflow: hidden;
+}
+.steam-cta::after {
+  content: "";
+  position: absolute;
+  left: 20%;
+  bottom: -40%;
+  width: 60%;
+  height: 180%;
+  background: radial-gradient(circle at 50% 60%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 45%, transparent 70%);
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(20%) scale(0.9);
+  transition: opacity 0.35s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+.steam-cta:hover::after {
+  opacity: 0.9;
+  transform: translateY(-10%) scale(1.05);
+}
+.steam-cta:hover {
+  box-shadow:
+    0 0 18px rgba(255, 215, 0, 0.35),
+    0 12px 24px rgba(0, 0, 0, 0.6);
+}
 .brass-press:hover {
   transform: translateY(-2px);
   box-shadow:

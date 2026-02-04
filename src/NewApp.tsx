@@ -200,7 +200,7 @@ const HomeView: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
             <button 
               onClick={() => navigate('/menu')}
-              className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl"
+              className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl steam-cta"
             >
               <span className="nola-symbol">⚜</span>
               EXPLORE MENU <ChevronRight size={18} />
