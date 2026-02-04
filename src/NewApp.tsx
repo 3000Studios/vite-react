@@ -553,8 +553,8 @@ const AboutView: React.FC = () => (
   <section className="relative pt-40 pb-32 bg-mgDeep min-h-screen overflow-hidden">
     <BackgroundVideo id="vlzs2j8r43" opacity={0.25} />
     <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/25 via-mgDeep/18 to-mgDeep/28" />
-    <div className="container relative mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center z-10">
-      <div className="space-y-12">
+    <div className="container relative mx-auto px-6 z-10">
+      <div className="max-w-4xl">
         <span className="text-mgGreen font-black tracking-[0.7em] uppercase text-xs">Our Heritage</span>
         <h2 className="text-7xl md:text-9xl font-display italic font-black text-white leading-tight drop-shadow-[0_12px_28px_rgba(0,0,0,0.55)]">
           Legacy of <br /> <span className="text-mgGold">Spice</span>
@@ -578,7 +578,7 @@ const AboutView: React.FC = () => (
           </div>
         </div>
       </div>
-      <div className="glass-card p-10 rounded-[3rem] shadow-2xl space-y-6 backdrop-blur-3xl">
+      <div className="glass-card p-8 rounded-[2.5rem] shadow-2xl space-y-5 backdrop-blur-3xl mt-16 max-w-3xl">
         <h3 className="text-3xl font-display italic text-mgGold">Jazzed Service</h3>
         <p className="text-white/80 leading-relaxed">Live brass on weekends, chef tastings, and private second-line catering that brings the Quarter to your celebration.</p>
         <div className="grid grid-cols-2 gap-6 text-sm uppercase tracking-[0.25em] text-white/70">
