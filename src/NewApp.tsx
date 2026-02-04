@@ -205,7 +205,7 @@ const HomeView: React.FC = () => {
               <span className="nola-symbol">⚜</span>
               EXPLORE MENU <ChevronRight size={18} />
             </button>
-            <button className="px-14 py-6 border border-yellow-400/40 text-yellow-200 font-black rounded-full text-sm tracking-[0.4em] uppercase bg-yellow-400/10 hover:bg-yellow-400/20 transition-all">
+            <button className="px-14 py-6 border border-yellow-400/40 text-yellow-200 font-black rounded-full text-sm tracking-[0.4em] uppercase bg-yellow-400/10 hover:bg-yellow-400/20 transition-all book-check-cta">
               BOOK A TABLE
             </button>
           </div>
