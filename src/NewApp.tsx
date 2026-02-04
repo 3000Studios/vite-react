@@ -170,10 +170,10 @@ const Hero: React.FC = () => {
   return (
     <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] flex items-center bg-[color:var(--bg)]">
       <div className="absolute inset-0 overflow-hidden">
-        <wistia-player media-id="we8wptwhas" class="hero-wistia" aspect="1.7777777777777777" muted autoplay loop playsinline />
+        <wistia-player media-id="14ushhwlms" class="hero-wistia" aspect="1.7777777777777777" muted autoplay loop playsinline />
         <style>
-          {`wistia-player[media-id='we8wptwhas']:not(:defined) {
-              background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/we8wptwhas/swatch');
+          {`wistia-player[media-id='14ushhwlms']:not(:defined) {
+              background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/14ushhwlms/swatch');
               display: block;
               filter: blur(5px);
               width: 100%;
@@ -838,7 +838,7 @@ const AppShell = () => {
   useEffect(() => {
     const scripts = [
       'https://fast.wistia.com/player.js',
-      'https://fast.wistia.com/embed/we8wptwhas.js',
+      'https://fast.wistia.com/embed/14ushhwlms.js',
     ];
     scripts.forEach((src) => {
       if (!document.querySelector(`script[src="${src}"]`)) {
