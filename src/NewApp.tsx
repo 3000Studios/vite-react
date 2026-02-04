@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BrowserRouter, Routes, Route, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Star, 
   MapPin, 
@@ -16,14 +17,12 @@ import { MenuCategory, MenuItem } from './newTypes';
 // Use a component constant to bypass JSX intrinsic element type errors for custom elements
 const WistiaPlayer = 'wistia-player' as any;
 
-type Page = 'Home' | 'Menu' | 'Gallery' | 'About' | 'Contact';
-
-const NAV_LINKS: { label: Page; href: string }[] = [
-  { label: 'Home', href: '#' },
-  { label: 'Menu', href: '#menu' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+const NAV_LINKS = [
+  { label: 'Home', to: '/' },
+  { label: 'Menu', to: '/menu' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'About', to: '/about' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 const BEAD_COLORS = ['purple', 'gold', 'green'];
@@ -75,9 +74,10 @@ const BackgroundVideo: React.FC<{ id?: string; opacity?: number; aspect?: string
 );
 
 // --- Navbar Component ---
-const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ currentPage, setPage }) => {
+const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -88,7 +88,7 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
   return (
     <nav className={`nav-metallic-purple ${scrolled ? 'py-2 h-[80px]' : ''}`}>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
-        <div className="flex items-center gap-6 cursor-pointer" onClick={() => setPage('Home')}>
+        <div className="flex items-center gap-6 cursor-pointer" onClick={() => navigate('/')}>
           <div className="logo-coin-container">
             <WistiaPlayer
               media-id="ip3tp5t9me"
@@ -109,12 +109,16 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
         <ul className="hidden lg:flex items-center gap-12">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <button 
-                onClick={() => setPage(link.label)}
-                className={`nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${currentPage === link.label ? 'text-mgGold active' : 'text-white/80'}`}
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  `nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${
+                    isActive ? 'text-mgGold active' : 'text-white/80'
+                  }`
+                }
               >
                 {link.label}
-              </button>
+              </NavLink>
             </li>
           ))}
           <li>
@@ -142,13 +146,14 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
           >
             <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold">CLOSE</button>
             {NAV_LINKS.map((link) => (
-              <button 
+              <NavLink
                 key={link.label}
-                onClick={() => { setPage(link.label); setIsOpen(false); }}
+                to={link.to}
+                onClick={() => setIsOpen(false)}
                 className="text-4xl font-cajun text-white hover:text-mgGold"
               >
                 {link.label}
-              </button>
+              </NavLink>
             ))}
           </motion.div>
         )}
@@ -157,10 +162,12 @@ const Navbar: React.FC<{ currentPage: Page; setPage: (p: Page) => void }> = ({ c
   );
 };
 
-const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
+const HomeView: React.FC = () => {
+  const navigate = useNavigate();
+  return (
   <>
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <BackgroundVideo id="lxcpkyefcu" opacity={0.6} isModern={true} />
+      <BackgroundVideo id="lxcpkyefcu" opacity={0.6} />
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
           <span className="inline-block mt-8 px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10 bg-mgDeep/40 backdrop-blur">
@@ -175,7 +182,7 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
             <button 
-              onClick={() => setPage('Menu')}
+              onClick={() => navigate('/menu')}
               className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl"
             >
               <span className="nola-symbol">⚜</span>
@@ -203,7 +210,7 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
           ))}
         </div>
       <div className="text-center mt-20">
-          <button onClick={() => setPage('Menu')} className="brass-press px-8 py-4 rounded-full text-xs font-black tracking-[0.45em] uppercase relative">
+          <button onClick={() => navigate('/menu')} className="brass-press px-8 py-4 rounded-full text-xs font-black tracking-[0.45em] uppercase relative">
             <span className="nola-symbol">⚜</span>
             VIEW FULL MENU
           </button>
@@ -211,7 +218,8 @@ const HomeView: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 0 }) => {
   const mobileShift =
@@ -244,7 +252,8 @@ const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 
   );
 };
 
-const Footer: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => {
+const Footer: React.FC = () => {
+  const navigate = useNavigate();
   const brandPendant = "CAJUN MENU";
   
   return (
@@ -326,7 +335,7 @@ const Footer: React.FC<{ setPage: (p: Page) => void }> = ({ setPage }) => {
                 </a>
               </div>
               <button 
-                onClick={() => setPage('Contact')}
+                onClick={() => navigate('/contact')}
                 className="mt-6 px-12 py-5 bg-white text-mgDeep font-black rounded-full text-[11px] tracking-[0.4em] uppercase hover:bg-mgGold hover:text-white transition-all shadow-xl"
               >
                 SEND A MESSAGE
@@ -554,8 +563,16 @@ const ContactView: React.FC = () => (
   </section>
 );
 
-const App = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('Home');
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+  return null;
+};
+
+const AppShell = () => {
+  const location = useLocation();
 
   useEffect(() => {
     const scripts = [
@@ -577,38 +594,36 @@ const App = () => {
     });
   }, []);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
-
-  const renderContent = () => {
-    switch(currentPage) {
-      case 'Home': return <HomeView setPage={setCurrentPage} />;
-      case 'Menu': return <MenuView />;
-      case 'Gallery': return <GalleryView />;
-      case 'About': return <AboutView />;
-      case 'Contact': return <ContactView />;
-      default: return <HomeView setPage={setCurrentPage} />;
-    }
-  };
-
   return (
     <div className="selection:bg-mgGold selection:text-mgDeep overflow-x-hidden">
-      <Navbar currentPage={currentPage} setPage={setCurrentPage} />
+      <Navbar />
+      <ScrollToTop />
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentPage}
+          key={location.pathname}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
-          {renderContent()}
+          <Routes location={location}>
+            <Route path="/" element={<HomeView />} />
+            <Route path="/menu" element={<MenuView />} />
+            <Route path="/gallery" element={<GalleryView />} />
+            <Route path="/about" element={<AboutView />} />
+            <Route path="/contact" element={<ContactView />} />
+          </Routes>
         </motion.div>
       </AnimatePresence>
-      <Footer setPage={setCurrentPage} />
+      <Footer />
     </div>
   );
 };
+
+const App = () => (
+  <BrowserRouter>
+    <AppShell />
+  </BrowserRouter>
+);
 
 export default App;
