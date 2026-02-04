@@ -238,7 +238,7 @@ const HomeView: React.FC = () => {
 const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 0 }) => {
   const mobileShift =
     typeof window !== 'undefined' && window.innerWidth < 768 ? (index % 2 === 0 ? -40 : 40) : 0;
-  const [gone, setGone] = useState(false);
+  const [glow, setGlow] = useState(false);
 
   return (
     <motion.div
@@ -247,8 +247,11 @@ const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 
       whileHover={{ rotateX: 8 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true, amount: 0.35 }}
-      className={`food-card ${gone ? 'dissipate' : ''}`}
-      onClick={() => setGone(true)}
+      className={`food-card ${glow ? 'glow-pulse' : ''}`}
+      onClick={() => {
+        setGlow(true);
+        window.setTimeout(() => setGlow(false), 600);
+      }}
     >
       <div className="image-float-wrap">
         <div className="food-image" style={{ backgroundImage: `url('${item.image}')` }} />
