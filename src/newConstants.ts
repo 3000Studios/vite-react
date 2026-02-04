@@ -44,7 +44,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$14.99',
     description: 'Tender, farm-raised alligator tail lightly battered and fried to a perfect golden crisp. Served with our signature zesty remoulade sauce.',
     category: MenuCategory.APPETIZERS,
-    image: '/images/crispy-alligator-bites.png',
+    image: '/videos/crispy-alligator-bites.mp4',
     isSignature: true
   },
   {
