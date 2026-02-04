@@ -68,8 +68,8 @@ const Header: React.FC = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-[color:var(--primary)] ${
-                  isActive ? 'text-[color:var(--primary)]' : 'text-[color:var(--text)]'
+                `text-sm font-medium transition-colors hover:text-[color:var(--accent)] ${
+                  isActive ? 'text-[color:var(--accent)]' : 'text-[color:var(--text)]'
                 }`
               }
             >
