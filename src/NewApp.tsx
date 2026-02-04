@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[1100] bg-mgDeep/90 backdrop-blur-xl lg:hidden overflow-hidden"
+            className="fixed inset-0 z-[1100] bg-mgDeep/90 backdrop-blur-xl lg:hidden overflow-hidden flex items-center justify-center w-screen h-[100dvh]"
           >
             <div className="absolute inset-0 z-0 pointer-events-none">
               <BackgroundVideo id="e7si0f5wiz" aspect="1.7777777777777777" fit="contain" opacity={0.45} />
