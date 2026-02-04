@@ -411,6 +411,10 @@
   .nola-subcat-arrow.left { left: 0; }
   .nola-subcat-arrow.right { right: 0; }
 
+  .social-facebook { color: #1877f2; }
+  .social-instagram { color: #6a0dad; }
+  .social-mail { color: #d4af37; }
+
   .nola-subcat-btn {
     all: unset;
     cursor: pointer;
@@ -467,7 +471,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 60px 40px;
-    padding: 60px 10px 40px;
+    padding: 90px 10px 40px;
     position: relative;
     z-index: 1;
   }

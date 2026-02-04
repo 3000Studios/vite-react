@@ -177,7 +177,7 @@ const HomeView: React.FC = () => {
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
           <span className="inline-block mt-8 px-5 py-2 border border-mgGold/40 text-mgGold text-[11px] tracking-[0.6em] uppercase font-black mb-10 bg-mgDeep/40 backdrop-blur">
-            Canton • 1100 Bank St, MS
+            140 Keith Dr • Canton, GA 30114
           </span>
           <h1 className="text-6xl md:text-[9rem] font-display italic font-black leading-none text-white drop-shadow-2xl mb-8">
             Taste the <br />
@@ -277,9 +277,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 lg:px-12 relative z-10 h-full flex flex-col">
         {/* Centered Socials */}
         <div className="flex justify-center items-center gap-12 mb-28">
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="social-3d"><Instagram size={48} /></motion.a>
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="social-3d"><Facebook size={48} /></motion.a>
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="social-3d"><Mail size={48} /></motion.a>
+              <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/thecajunmenu" target="_blank" rel="noreferrer" className="social-3d social-instagram"><Instagram size={48} /></motion.a>
+              <motion.a whileHover={{ scale: 1.2 }} href="https://www.facebook.com/people/The-Cajun-Menu/61558125637329/" target="_blank" rel="noreferrer" className="social-3d social-facebook"><Facebook size={48} /></motion.a>
+              <motion.a whileHover={{ scale: 1.2 }} href="mailto:thecajunmenu@gmail.com" className="social-3d social-mail"><Mail size={48} /></motion.a>
         </div>
 
         {/* 3-Column Award-Winning Layout */}
@@ -290,18 +290,25 @@ const Footer: React.FC = () => {
             <h4 className="font-display italic text-3xl text-mgGold mb-6 text-left">Service Hours</h4>
             <div className="space-y-6 font-oswald tracking-widest text-sm uppercase">
               <div className="flex justify-between border-b border-white/5 pb-2">
-                <span className="text-white/50">Mon — Thu</span>
-                <span className="text-white">11:00 — 22:00</span>
+                <span className="text-white/50">Sunday</span>
+                <span className="text-white">12:00 — 17:00</span>
               </div>
               <div className="flex justify-between border-b border-white/5 pb-2">
-                <span className="text-white/50">Fri — Sat</span>
-                <span className="text-white">11:00 — 00:00</span>
+                <span className="text-white/50">Monday</span>
+                <span className="text-white">Closed</span>
               </div>
               <div className="flex justify-between border-b border-white/5 pb-2">
-                <span className="text-mgGreen">Sunday Jazz</span>
-                <span className="text-mgGreen">10:00 — 21:00</span>
+                <span className="text-white/50">Tuesday</span>
+                <span className="text-white">Closed</span>
               </div>
-              <p className="text-[10px] text-white/30 italic font-sans normal-case tracking-normal">Kitchen closes 30 mins before end of service.</p>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Wednesday — Thursday</span>
+                <span className="text-white">11:00 — 20:00</span>
+              </div>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Friday — Saturday</span>
+                <span className="text-white">11:00 — 20:00</span>
+              </div>
             </div>
           </div>
 
@@ -310,17 +317,17 @@ const Footer: React.FC = () => {
             <h4 className="font-display italic text-3xl text-mgGold mb-10 text-center">Our Location</h4>
             <div className="w-full h-80 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all hover:border-mgGold/40 group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.882415177897!2d-90.0673414!3d29.9584379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8620a6119864d42b%3A0xc3f6e91f165a251!2sBourbon%20St%2C%20New%20Orleans%2C%20LA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                src="https://www.google.com/maps?q=140+Keith+Dr,+Canton,+GA+30114&output=embed&t=k" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen={true} 
                 loading="lazy" 
-                className="grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="transition-all duration-700"
               />
             </div>
             <p className="mt-8 text-center text-white/50 font-medium tracking-widest text-xs uppercase flex items-center justify-center gap-3">
-              <MapPin size={18} className="text-mgGold" /> 421 Bourbon St, New Orleans, LA 70112
+              <MapPin size={18} className="text-mgGold" /> 140 Keith Dr, Canton, GA 30114
             </p>
           </div>
 
@@ -330,14 +337,14 @@ const Footer: React.FC = () => {
             <div className="space-y-8">
               <div>
                 <span className="text-[10px] text-white/30 uppercase tracking-[0.4em] block mb-2 font-black">Catering & Parties</span>
-                <a href="tel:5045550123" className="text-3xl font-oswald text-white hover:text-mgGreen transition-colors flex items-center lg:justify-end gap-4">
-                  (504) 555-0123 <Phone size={22} className="text-mgGreen" />
+                <a href="tel:6788997404" className="text-3xl font-oswald text-white hover:text-mgGreen transition-colors flex items-center lg:justify-end gap-4">
+                  (678) 899-7404 <Phone size={22} className="text-mgGreen" />
                 </a>
               </div>
               <div>
                 <span className="text-[10px] text-white/30 uppercase tracking-[0.4em] block mb-2 font-black">General Inquiry</span>
-                <a href="mailto:hello@cajunmenu.com" className="text-3xl font-oswald text-white hover:text-mgGreen transition-colors flex items-center lg:justify-end gap-4">
-                  hello@cajunmenu.com <Mail size={22} className="text-mgGreen" />
+                <a href="mailto:thecajunmenu@gmail.com" className="text-3xl font-oswald text-white hover:text-mgGreen transition-colors flex items-center lg:justify-end gap-4">
+                  thecajunmenu@gmail.com <Mail size={22} className="text-mgGreen" />
                 </a>
               </div>
               <button 
@@ -600,14 +607,14 @@ const ContactView: React.FC = () => (
                 <div className="p-4 bg-white/5 rounded-full text-mgGold"><Phone size={24} /></div>
                 <div>
                   <p className="text-[10px] font-black tracking-widest uppercase mb-1">CALL US</p>
-                  <p className="text-xl font-oswald text-white">(504) 555-0123</p>
+                  <p className="text-xl font-oswald text-white">(678) 899-7404</p>
                 </div>
               </div>
               <div className="flex items-center gap-6 text-white/60">
                 <div className="p-4 bg-white/5 rounded-full text-mgGold"><Mail size={24} /></div>
                 <div>
                   <p className="text-[10px] font-black tracking-widest uppercase mb-1">EMAIL US</p>
-                  <p className="text-xl font-oswald text-white">hello@cajunmenu.com</p>
+                  <p className="text-xl font-oswald text-white">thecajunmenu@gmail.com</p>
                 </div>
               </div>
             </div>
