@@ -8,9 +8,19 @@ import {
   X,
 } from 'lucide-react';
 import { Message } from '../gatorbob/types';
-import { GATOR_ONE_LINERS, CAJUN_FACTS } from '../gatorbob/constants';
-import { getGatorResponse } from '../gatorbob/services/geminiService';
-import GatorAvatar from '../gatorbob/components/GatorAvatar';
+import GatorAvatar from './GatorAvatar';
+
+const GATOR_ONE_LINERS = [
+  "Why don't gators use computers? They're afraid of the Windows!",
+  "I'm feeling snappy today, cher!",
+  "See you later, alligator! But first, grab some beignets!",
+];
+
+const CAJUN_FACTS = [
+  "The 'Holy Trinity' is onion, celery, and bell pepper.",
+  "Mardi Gras means 'Fat Tuesday' in French.",
+  "Po-boys got their name during a 1929 streetcar strike.",
+];
 
 const GatorBobWidget: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
@@ -88,9 +98,32 @@ const GatorBobWidget: React.FC = () => {
       return;
     }
 
-    const response = await getGatorResponse(textToSend, messages);
+    const response = getLocalResponse(textToSend);
     setMessages((prev) => [...prev, { role: 'model', text: response, timestamp: new Date() }]);
     setIsTyping(false);
+  };
+
+  const getLocalResponse = (text: string) => {
+    const msg = text.toLowerCase();
+    if (msg.includes('hours') || msg.includes('open')) {
+      return "We’re open Sunday 12PM–5PM, Wednesday/Thursday 11AM–8PM, and Friday/Saturday 11AM–8PM. Closed Monday and Tuesday.";
+    }
+    if (msg.includes('address') || msg.includes('location') || msg.includes('where')) {
+      return "You can find us at 140 Keith Dr, Canton, GA 30114.";
+    }
+    if (msg.includes('phone') || msg.includes('call')) {
+      return "Call us at 678-899-7404, cher!";
+    }
+    if (msg.includes('email')) {
+      return "Email us at thecajunmenu@gmail.com.";
+    }
+    if (msg.includes('menu') || msg.includes('food')) {
+      return "Favorites include Creamy Crab Dip, Bayou Low Boil, Alligator Bites, and Crawfish Queso. What are you craving?";
+    }
+    if (msg.includes('fact')) {
+      return `Did ya know? ${CAJUN_FACTS[Math.floor(Math.random() * CAJUN_FACTS.length)]}`;
+    }
+    return "I'm Gator Bob. Ask me about our menu, hours, or location!";
   };
 
   const lastMessage = messages[messages.length - 1];
