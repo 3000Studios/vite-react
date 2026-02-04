@@ -267,7 +267,7 @@ const SignatureFavorites: React.FC = () => {
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlights.map((item) => (
-            <article key={item.id} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-5 md:p-7">
+            <article key={item.id} className="rounded-2xl border border-[color:var(--accent)] bg-[color:var(--card)] p-5 md:p-7 shadow-[0_0_24px_rgba(178,148,94,0.25)]">
               <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[color:var(--border)]">
                 {item.image?.endsWith('.mp4') ? (
                   <video className="w-full h-full object-cover" src={item.image} muted autoPlay loop playsInline />
@@ -531,7 +531,7 @@ const MenuView: React.FC = () => {
           className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {filtered.map((item) => (
-            <article key={item.id} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-5 md:p-7 flex flex-col">
+            <article key={item.id} className="rounded-2xl border border-[color:var(--accent)] bg-[color:var(--card)] p-5 md:p-7 flex flex-col shadow-[0_0_24px_rgba(178,148,94,0.25)]">
               <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[color:var(--border)]">
                 {item.image?.endsWith('.mp4') ? (
                   <video className="w-full h-full object-cover" src={item.image} muted autoPlay loop playsInline />
