@@ -148,22 +148,27 @@ const Navbar: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-[1100] bg-mgDeep/90 backdrop-blur-xl lg:hidden overflow-hidden"
           >
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 pointer-events-none">
               <BackgroundVideo id="e7si0f5wiz" aspect="1.7777777777777777" fit="contain" opacity={0.45} />
               <div className="absolute inset-0 bg-mgDeep/75" />
             </div>
             <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-mgGold text-xl font-bold z-20">CLOSE</button>
-            <div className="relative z-20 h-full w-full flex flex-col items-center justify-center gap-8">
-              {NAV_LINKS.map((link) => (
-                <NavLink
-                  key={link.label}
-                  to={link.to}
-                  onClick={() => setIsOpen(false)}
-                  className="text-4xl font-cajun text-white hover:text-mgGold"
-                >
-                  {link.label}
-                </NavLink>
-              ))}
+            <div className="relative z-20 h-full w-full flex flex-col items-center justify-center gap-6 text-center">
+              <div className="px-8 py-10 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-md shadow-2xl">
+                <div className="text-[11px] uppercase tracking-[0.4em] text-mgGold mb-6">Menu</div>
+                <div className="flex flex-col items-center gap-6">
+                  {NAV_LINKS.map((link) => (
+                    <NavLink
+                      key={link.label}
+                      to={link.to}
+                      onClick={() => setIsOpen(false)}
+                      className="text-4xl md:text-5xl font-cajun text-white hover:text-mgGold drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
