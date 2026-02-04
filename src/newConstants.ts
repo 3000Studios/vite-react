@@ -17,7 +17,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$12.99',
     description: 'Crispy boudin croquettes with smoky andouille and creamy rice, served with spicy Creole mustard.',
     category: MenuCategory.APPETIZERS,
-    image: '/images/smoked-sausage-boudin-balls.png',
+    image: '/videos/smoked-sausage-boudin-balls.mp4',
     isSignature: false,
   },
   {
