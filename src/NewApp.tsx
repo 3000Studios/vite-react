@@ -165,10 +165,8 @@ const Header: React.FC = () => {
 };
 
 const Hero: React.FC = () => {
-  const navigate = useNavigate();
-  const reduceMotion = useReducedMotion();
   return (
-    <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] flex items-center bg-[color:var(--bg)]">
+    <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-[color:var(--bg)]">
       <div className="absolute inset-0 overflow-hidden">
         <wistia-player media-id="14ushhwlms" class="hero-wistia" aspect="1.7777777777777777" muted autoplay loop playsinline />
         <style>
@@ -189,21 +187,31 @@ const Hero: React.FC = () => {
         }}
         aria-hidden
       />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    </section>
+  );
+};
+
+const HeroCopy: React.FC = () => {
+  const navigate = useNavigate();
+  const reduceMotion = useReducedMotion();
+  return (
+    <section className="bg-[color:var(--bg)] py-10 md:py-14">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={scrollReveal}
           initial={reduceMotion ? 'show' : 'hidden'}
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeOut' }}
           className="max-w-xl"
         >
           <p className="text-sm uppercase tracking-widest text-[color:var(--accent)] font-semibold">
             Authentic Cajun Cuisine • Canton, GA
           </p>
-          <h1 className="mt-4 text-4xl md:text-6xl font-serif font-semibold leading-tight text-[color:var(--bg)]">
+          <h1 className="mt-4 text-4xl md:text-6xl font-serif font-semibold leading-tight text-[color:var(--text)]">
             Big Cajun Flavor. Warm Southern Welcome.
           </h1>
-          <p className="mt-4 text-base md:text-lg text-[color:var(--bg)]/90 leading-relaxed">
+          <p className="mt-4 text-base md:text-lg text-[color:var(--text)]/90 leading-relaxed">
             Fresh seafood, slow-simmered classics, and bold Louisiana comfort—served with Mardi Gras spirit.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -220,7 +228,7 @@ const Hero: React.FC = () => {
               Order Online
             </button>
           </div>
-          <p className="mt-4 text-sm text-[color:var(--bg)]/80">Open Today • See Hours ↓</p>
+          <p className="mt-4 text-sm text-[color:var(--muted)]">Open Today • See Hours ↓</p>
         </motion.div>
       </div>
     </section>
@@ -453,6 +461,7 @@ const FinalCTA: React.FC = () => {
 const HomeView: React.FC = () => (
   <main className="space-y-16 md:space-y-24">
     <Hero />
+    <HeroCopy />
     <QuickActions />
     <SignatureFavorites />
     <WhyLoveUs />
