@@ -467,7 +467,6 @@ const HomeView: React.FC = () => (
     <WhyLoveUs />
     <ReservationsPreview />
     <ReviewsSection />
-    <YelpReviewsSection />
     <LocationSection />
     <FinalCTA />
   </main>
@@ -806,34 +805,128 @@ const AdminView: React.FC = () => {
   );
 };
 
-const Footer: React.FC = () => (
-  <footer className="bg-[color:var(--bg)] border-t border-[color:var(--border)]">
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-6 text-sm text-[color:var(--text)]">
-      <div>
-        <h3 className="font-serif text-[color:var(--primary)]">The Cajun Menu</h3>
-        <p className="mt-2 text-[color:var(--muted)]">Bold Cajun comfort with a warm Southern welcome.</p>
+const BEAD_COLORS = ['purple', 'gold', 'green'];
+
+const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, index }) => {
+  if (char === ' ') {
+    return <div className="bead-space" aria-hidden="true" />;
+  }
+  return (
+    <div className="bead-strand flex-shrink-0 transform transition-transform duration-500 hover:translate-y-4 cursor-pointer pointer-events-auto">
+      <div className="bead-line">
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+          <div key={i} className={`bead-drop bead-${BEAD_COLORS[(index + i) % 3]}`} />
+        ))}
       </div>
-      <div>
-        <h4 className="font-semibold">Hours</h4>
-        <p>Sun 12–5</p>
-        <p>Wed–Sat 11–8</p>
-      </div>
-      <div>
-        <h4 className="font-semibold">Address</h4>
-        <p>140 Keith Dr, Canton, GA 30114</p>
-      </div>
-      <div>
-        <h4 className="font-semibold">Links</h4>
-        <p><a href="/menu">Menu</a></p>
-        <p><a href="/reservations">Reservations</a></p>
-        <p><a href="/contact">Contact</a></p>
-      </div>
+      <div className={`char-pendant text-mg-${BEAD_COLORS[index % 3]} mt-[-10px]`}>{char}</div>
     </div>
-    <div className="border-t border-[color:var(--border)] text-center py-4 text-xs text-[color:var(--muted)]">
-      © 2026 The Cajun Menu. All rights reserved.
-    </div>
-  </footer>
-);
+  );
+};
+
+const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const brandPendant = "THE CAJUN MENU";
+  
+  return (
+    <footer className="relative bg-mgDeep pt-40 pb-20 overflow-hidden min-h-[700px]">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="bead-rig-background">
+          {brandPendant.split('').map((char, i) => (
+            <HangingBeadLetter key={i} char={char} index={i} />
+          ))}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-mgDeep via-mgDeep/60 to-transparent" />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 h-full flex flex-col">
+        <div className="flex justify-center items-center gap-12 mb-28 footer-socials">
+              <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/thecajunmenu" target="_blank" rel="noreferrer" className="social-3d social-instagram"><Instagram size={48} /></motion.a>
+              <motion.a whileHover={{ scale: 1.2 }} href="https://www.facebook.com/people/The-Cajun-Menu/61558125637329/" target="_blank" rel="noreferrer" className="social-3d social-facebook"><Facebook size={48} /></motion.a>
+              <motion.a whileHover={{ scale: 1.2 }} href="mailto:thecajunmenu@gmail.com" className="social-3d social-mail"><Mail size={48} /></motion.a>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-24 items-start border-t border-white/10 pt-24 mb-20">
+          <div className="space-y-10">
+            <h4 className="font-display italic text-3xl text-mgGold mb-6 text-left">Service Hours</h4>
+            <div className="space-y-6 font-oswald tracking-widest text-sm uppercase">
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Sunday</span>
+                <span className="text-white">12:00 — 17:00</span>
+              </div>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Monday</span>
+                <span className="text-white">Closed</span>
+              </div>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Tuesday</span>
+                <span className="text-white">Closed</span>
+              </div>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Wednesday — Thursday</span>
+                <span className="text-white">11:00 — 20:00</span>
+              </div>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/50">Friday — Saturday</span>
+                <span className="text-white">11:00 — 20:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <h4 className="font-display italic text-3xl text-mgGold mb-10 text-center">Our Location</h4>
+            <div className="w-full h-80 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all hover:border-mgGold/40 group">
+              <iframe 
+                src="https://www.google.com/maps?q=140+Keith+Dr,+Canton,+GA+30114&output=embed&t=k" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                className="transition-all duration-700"
+              />
+            </div>
+            <p className="mt-8 text-center text-white/50 font-medium tracking-widest text-xs uppercase flex items-center justify-center gap-3">
+              <MapPin size={18} className="text-mgGold" /> 140 Keith Dr, Canton, GA 30114
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:items-end lg:text-right space-y-10">
+            <h4 className="font-display italic text-3xl text-mgGold mb-6">Stay Connected</h4>
+            <div className="space-y-8">
+              <div>
+                <span className="text-[10px] text-white/30 uppercase tracking-[0.4em] block mb-2 font-black">Catering & Parties</span>
+                <a href="tel:6788997404" className="text-3xl font-oswald text-white hover:text-mgGreen transition-colors flex items-center lg:justify-end gap-4">
+                  (678) 899-7404 <Phone size={22} className="text-mgGreen" />
+                </a>
+              </div>
+              <div>
+                <span className="text-[10px] text-white/30 uppercase tracking-[0.4em] block mb-2 font-black">General Inquiry</span>
+                <a href="mailto:thecajunmenu@gmail.com" className="text-3xl font-oswald text-white hover:text-mgGreen transition-colors flex items-center lg:justify-end gap-4">
+                  thecajunmenu@gmail.com <Mail size={22} className="text-mgGreen" />
+                </a>
+              </div>
+              <button 
+                onClick={() => navigate('/contact')}
+                className="mt-6 px-12 py-5 bg-white text-mgDeep font-black rounded-full text-[11px] tracking-[0.4em] uppercase hover:bg-mgGold hover:text-white transition-all shadow-xl light-cta"
+              >
+                SEND A MESSAGE
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.6em] text-white/10 pt-12 border-t border-white/5">
+          <span>© 2026 THE CAJUN MENU • LOUISIANA TRADITION</span>
+          <div className="flex gap-12">
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <a href="#" className="hover:text-white transition-colors">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
