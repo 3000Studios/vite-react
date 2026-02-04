@@ -995,6 +995,28 @@ wistia-player.story-wistia::part(controls) {
 .bg-mgPurple { background-color: var(--mg-purple); }
 .bg-mgGold { background-color: var(--mg-gold); }
 .bg-mgDeep { background-color: var(--mg-deep); }
+/* Gator Bob palette helpers */
+.bg-gold-mg { background-color: #ffd700; }
+.text-gold-mg { color: #ffd700; }
+.border-gold-mg { border-color: #ffd700; }
+.bg-purple-mg { background-color: #6a0dad; }
+.text-purple-mg { color: #6a0dad; }
+.bg-green-mg { background-color: #00a86b; }
+.text-green-mg { color: #00a86b; }
+.bg-blue-mg { background-color: #1a2a6c; }
+.text-blue-mg { color: #1a2a6c; }
+
+.custom-scrollbar::-webkit-scrollbar { width: 8px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 215, 0, 0.35); border-radius: 999px; }
+.custom-scrollbar { scrollbar-color: rgba(255, 215, 0, 0.35) transparent; }
+
+.animate-sway {
+  animation: sway 3.5s ease-in-out infinite;
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
 
 /* Classy version layout helpers */
 .nav-metallic-purple {

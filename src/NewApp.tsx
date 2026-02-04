@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { MENU_ITEMS, CATEGORIES } from './newConstants';
 import { MenuCategory, MenuItem } from './newTypes';
+import GatorBobWidget from './components/GatorBobWidget';
 
 // Use a component constant to bypass JSX intrinsic element type errors for custom elements
 const WistiaPlayer = 'wistia-player' as any;
@@ -235,6 +236,7 @@ const HomeView: React.FC = () => {
         </div>
       </div>
     </section>
+    <GatorBobWidget />
   </>
   );
 };
@@ -507,6 +509,7 @@ const MenuView: React.FC = () => {
             </article>
           ))}
         </main>
+        <GatorBobWidget />
       </div>
     </section>
   );
