@@ -149,7 +149,7 @@ const GatorBobWidget: React.FC = () => {
   const lastMessage = messages[messages.length - 1];
 
   return (
-    <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end pointer-events-none">
       {isMinimized ? (
         <div className="flex flex-col items-end gap-3 group">
           {(showNotification || isTyping) && (
