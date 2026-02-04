@@ -230,7 +230,6 @@ const HomeView: React.FC = () => {
         </div>
       </div>
     </section>
-    <GatorBobWidget />
   </>
   );
 };
@@ -506,7 +505,6 @@ const MenuView: React.FC = () => {
             </article>
           ))}
         </main>
-        <GatorBobWidget />
       </div>
     </section>
   );
@@ -879,6 +877,7 @@ const AppShell = () => {
           </Routes>
         </motion.div>
       </AnimatePresence>
+      <GatorBobWidget />
       <Footer />
     </div>
   );
