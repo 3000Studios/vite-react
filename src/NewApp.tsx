@@ -16,13 +16,20 @@ import GatorBobWidget from './components/GatorBobWidget';
 // Use a component constant to bypass JSX intrinsic element type errors for custom elements
 const WistiaPlayer = 'wistia-player' as any;
 
-const NAV_LINKS = [
+interface NavLinkItem {
+  label: string;
+  to: string;
+  external?: boolean;
+}
+
+const NAV_LINKS: NavLinkItem[] = [
   { label: 'Home', to: '/' },
   { label: 'Menu', to: '/menu' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'About', to: '/about' },
   { label: 'Reservations', to: '/reservations' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Planner', to: '/project-planner.html', external: true },
 ];
 
 const BEAD_COLORS = ['purple', 'gold', 'green'];
@@ -127,16 +134,25 @@ const Navbar: React.FC = () => {
         <ul className="hidden lg:flex items-center gap-6 relative z-20 nav-orbit">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <NavLink
-                to={link.to}
-                className={({ isActive }) =>
-                  `nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${
-                    isActive ? 'text-mgGold active' : 'text-white/80'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
+              {link.external ? (
+                <a
+                  href={link.to}
+                  className="nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold text-white/80"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${
+                      isActive ? 'text-mgGold active' : 'text-white/80'
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              )}
             </li>
           ))}
           <li>
@@ -172,14 +188,24 @@ const Navbar: React.FC = () => {
                 <div className="text-[11px] uppercase tracking-[0.4em] text-mgGold mb-6">Menu</div>
                 <div className="flex flex-col items-center gap-6">
                   {NAV_LINKS.map((link) => (
-                    <NavLink
-                      key={link.label}
-                      to={link.to}
-                      onClick={() => setIsOpen(false)}
-                      className="text-4xl md:text-5xl font-cajun text-white hover:text-mgGold drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
-                    >
-                      {link.label}
-                    </NavLink>
+                    link.external ? (
+                      <a
+                        key={link.label}
+                        href={link.to}
+                        className="text-4xl md:text-5xl font-cajun text-white hover:text-mgGold drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <NavLink
+                        key={link.label}
+                        to={link.to}
+                        onClick={() => setIsOpen(false)}
+                        className="text-4xl md:text-5xl font-cajun text-white hover:text-mgGold drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
+                      >
+                        {link.label}
+                      </NavLink>
+                    )
                   ))}
                 </div>
               </div>
