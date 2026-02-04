@@ -29,6 +29,9 @@ const BEAD_COLORS = ['purple', 'gold', 'green'];
 
 // --- Beaded Hanging Letter Component ---
 const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, index }) => {
+  if (char === ' ') {
+    return <div className="bead-space" aria-hidden="true" />;
+  }
   return (
     <div className="bead-strand flex-shrink-0 transform transition-transform duration-500 hover:translate-y-4 cursor-pointer pointer-events-auto">
       <div className="bead-line">
@@ -269,7 +272,7 @@ const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
-  const brandPendant = "CAJUN MENU";
+  const brandPendant = "THE CAJUN MENU";
   
   return (
     <footer className="relative bg-mgDeep pt-40 pb-20 overflow-hidden min-h-[700px]">
@@ -285,7 +288,7 @@ const Footer: React.FC = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 h-full flex flex-col">
         {/* Centered Socials */}
-        <div className="flex justify-center items-center gap-12 mb-28">
+        <div className="flex justify-center items-center gap-12 mb-28 footer-socials">
               <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/thecajunmenu" target="_blank" rel="noreferrer" className="social-3d social-instagram"><Instagram size={48} /></motion.a>
               <motion.a whileHover={{ scale: 1.2 }} href="https://www.facebook.com/people/The-Cajun-Menu/61558125637329/" target="_blank" rel="noreferrer" className="social-3d social-facebook"><Facebook size={48} /></motion.a>
               <motion.a whileHover={{ scale: 1.2 }} href="mailto:thecajunmenu@gmail.com" className="social-3d social-mail"><Mail size={48} /></motion.a>

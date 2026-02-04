@@ -1039,14 +1039,27 @@ wistia-player.story-wistia::part(controls) {
   overflow: hidden;
 }
 
-.bead-rig-background { position: absolute; inset: 0; width: 100vw; height: 100%; display: flex; justify-content: space-around; pointer-events: none; z-index: 0; }
-.bead-strand { display: flex; flex-direction: column; align-items: center; opacity: 0.6; }
-.bead-line { width: 1px; height: 180px; background: rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; }
+.bead-rig-background { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; z-index: 0; padding: 0 4vw; }
+.bead-strand { display: flex; flex-direction: column; align-items: center; opacity: 0.6; flex: 1 1 auto; min-width: 22px; }
+.bead-space { width: 24px; height: 1px; flex: 0 0 24px; }
+.bead-line { width: 1px; height: 140px; background: rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; }
 .bead-drop { width: 10px; height: 10px; border-radius: 50%; box-shadow: inset -1px -1px 3px rgba(0,0,0,0.5), inset 1px 1px 2px rgba(255,255,255,0.3); }
 .bead-purple { background: #7b1fa2; }
 .bead-gold { background: #ffd700; }
 .bead-green { background: #2e7d32; }
-.char-pendant { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.9); }
+.char-pendant { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.2vw, 3.2rem); font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.9); }
+.footer-socials { margin-top: 140px; }
+
+@media (max-width: 900px) {
+  .bead-line { height: 110px; }
+  .bead-rig-background { padding: 0 2vw; }
+  .footer-socials { margin-top: 110px; }
+}
+@media (max-width: 600px) {
+  .bead-line { height: 90px; }
+  .char-pendant { font-size: clamp(1.4rem, 5vw, 2.4rem); }
+  .footer-socials { margin-top: 90px; }
+}
 .glass-card { background: rgba(26, 0, 32, 0.75); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); color: rgba(255,255,255,0.92); }
 .glass-card:hover { border-color: rgba(255, 215, 0, 0.3); transform: translateY(-8px); box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.7); }
 .menu-card-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 900; color: #fefcf7; text-shadow: 0 6px 18px rgba(0,0,0,0.55); }
