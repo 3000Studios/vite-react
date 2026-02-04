@@ -1075,6 +1075,8 @@ wistia-player.story-wistia::part(controls) {
 .video-wrapper { isolation: isolate; pointer-events: none; }
 .video-wrapper iframe { pointer-events: none !important; }
 .nav-metallic-purple .video-wrapper {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
@@ -1083,6 +1085,11 @@ wistia-player.story-wistia::part(controls) {
   inset: 0;
   width: 100%;
   height: 100%;
+}
+.nav-metallic-purple wistia-player.hero-wistia::part(video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Brass press CTA */
