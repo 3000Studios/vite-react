@@ -1052,6 +1052,16 @@ wistia-player.story-wistia::part(controls) {
 .menu-card-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 900; color: #fefcf7; text-shadow: 0 6px 18px rgba(0,0,0,0.55); }
 .video-wrapper { isolation: isolate; pointer-events: none; }
 .video-wrapper iframe { pointer-events: none !important; }
+.nav-metallic-purple .video-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.nav-metallic-purple .video-wrapper > wistia-player.hero-wistia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 
 /* Brass press CTA */
 .brass-press {
