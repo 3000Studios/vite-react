@@ -1047,10 +1047,10 @@ wistia-player.story-wistia::part(controls) {
 }
 .nav-metallic-purple .nav-link {
   color: #ffd700;
-  background-image: linear-gradient(135deg, #fff6c7 0%, #f7d774 18%, #d4af37 45%, #f7d774 70%, #fff0b0 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 1px 0 rgba(90, 65, 15, 0.9),
+    0 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 10px rgba(255, 215, 0, 0.35);
   font-family: 'Cinzel', serif;
   font-weight: 900;
   letter-spacing: 0.25em;
