@@ -254,6 +254,7 @@ const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 
   const mobileShift =
     typeof window !== 'undefined' && window.innerWidth < 768 ? (index % 2 === 0 ? -40 : 40) : 0;
   const [glow, setGlow] = useState(false);
+  const isVideo = item.image?.endsWith('.mp4') || item.image?.endsWith('.webm');
 
   return (
     <motion.div
@@ -269,7 +270,18 @@ const MenuCard: React.FC<{ item: MenuItem; index?: number }> = ({ item, index = 
       }}
     >
       <div className="image-float-wrap">
-        <div className="food-image" style={{ backgroundImage: `url('${item.image}')` }} />
+        {isVideo ? (
+          <video
+            className="food-video"
+            src={item.image}
+            muted
+            autoPlay
+            loop
+            playsInline
+          />
+        ) : (
+          <div className="food-image" style={{ backgroundImage: `url('${item.image}')` }} />
+        )}
       </div>
       <div className="card-body">
         <div className="bead-string" />
@@ -512,7 +524,18 @@ const MenuView: React.FC = () => {
           {filtered.map((item) => (
             <article key={item.id} className="nola-card nola-reveal">
               <div className="nola-image-wrapper">
-                <img src={item.image} alt={item.name} className="nola-food-img" />
+                {item.image?.endsWith('.mp4') || item.image?.endsWith('.webm') ? (
+                  <video
+                    className="nola-food-video"
+                    src={item.image}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img src={item.image} alt={item.name} className="nola-food-img" />
+                )}
               </div>
               <h2 className="nola-food-title">{item.name}</h2>
               <p className="nola-description">{item.description}</p>

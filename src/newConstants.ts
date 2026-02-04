@@ -35,7 +35,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$13.99',
     description: 'Blistered okra, heirloom tomatoes, pickled red onions, and feta with lemon-cajun vinaigrette.',
     category: MenuCategory.SALADS,
-    image: '/images/charred-okra-tomato-salad.png',
+    image: '/videos/charred-tomato-okra-salad.mp4',
     isSignature: false,
   },
   {
