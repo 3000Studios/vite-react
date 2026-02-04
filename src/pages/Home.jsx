@@ -502,14 +502,6 @@ export default function Home() {
           >
             Flavor of Louisiana
           </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-6 font-serif text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
-          >
-            The Cajun Menu
-          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
