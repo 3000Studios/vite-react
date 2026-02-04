@@ -395,15 +395,29 @@ const MenuView: React.FC = () => {
               </motion.span>
             </h2>
           </div>
-          <div className="flex flex-wrap gap-4 justify-end max-w-2xl">
-            {CATEGORIES.map(cat => (
-              <button
+        </div>
+        <div className="nola-filter-wrapper">
+          <div className="nola-suspension-rod" />
+          <div className="nola-filter-grid" id="menu-filter">
+            {CATEGORIES.map((cat, idx) => (
+              <div
                 key={cat}
-                onClick={() => setActiveCategory(cat as MenuCategory)}
-                className={`menu-filter-btn px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all border ${activeCategory === cat ? 'is-active' : ''}`}
+                className={`category-node ${activeCategory === cat ? 'active' : ''}`}
+                style={{ animationDelay: `${(idx + 1) * 0.1}s` }}
               >
-                {cat}
-              </button>
+                <div
+                  className="category-thread"
+                  style={{ animationDelay: `${(idx + 1) * 0.1}s` }}
+                />
+                <button
+                  onClick={() => setActiveCategory(cat as MenuCategory)}
+                  className="category-button"
+                  type="button"
+                >
+                  <span>{cat}</span>
+                  <span className="category-count">{`// ${String(idx + 1).padStart(2, '0')}`}</span>
+                </button>
+              </div>
             ))}
           </div>
         </div>
