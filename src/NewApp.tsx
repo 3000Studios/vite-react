@@ -95,7 +95,18 @@ const Navbar: React.FC = () => {
         <div className="absolute inset-0 bg-mgDeep/70 z-[3]" />
       </div>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
-        <div className="flex items-center gap-6 cursor-pointer relative z-20" onClick={() => navigate('/')}>
+        <div className="flex items-center gap-4 cursor-pointer relative z-20" onClick={() => navigate('/')}>
+          <div className="nav-logo-video">
+            <WistiaPlayer
+              media-id="5xxyuh8iwe"
+              class="nav-wistia"
+              aspect="1.0"
+              muted
+              autoplay
+              loop
+              playsinline
+            />
+          </div>
           <div className="logo-coin-container">
             <WistiaPlayer
               media-id="ip3tp5t9me"
@@ -840,6 +851,7 @@ const AppShell = () => {
     const scripts = [
       'https://fast.wistia.com/player.js',
       'https://fast.wistia.com/embed/lxcpkyefcu.js',
+      'https://fast.wistia.com/embed/5xxyuh8iwe.js',
       'https://fast.wistia.com/embed/ip3tp5t9me.js',
       'https://fast.wistia.com/embed/vstx0wwv4f.js',
       'https://fast.wistia.com/embed/5i5d09f8af.js',
