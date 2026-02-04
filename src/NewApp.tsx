@@ -469,7 +469,6 @@ const MenuView: React.FC = () => {
               className={`nola-subcat-btn ${activeCategory === cat ? 'is-active' : ''}`}
             >
               <span>{cat}</span>
-              <span className="nola-subcat-count">{`// ${String(idx + 1).padStart(2, '0')}`}</span>
             </button>
           ))}
           </nav>
