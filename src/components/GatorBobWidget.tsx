@@ -45,6 +45,7 @@ const GatorBobWidget: React.FC = () => {
   const notifyTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
