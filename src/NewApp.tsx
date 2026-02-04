@@ -307,31 +307,37 @@ const WhyLoveUs: React.FC = () => (
   </section>
 );
 
-const ReservationsPreview: React.FC = () => (
-  <section className="py-16 md:py-24 bg-[color:var(--bg)]">
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
-      <div className="md:col-span-6">
-        <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h2>
-        <p className="mt-3 text-[color:var(--text)]">
-          Choose your time. Get instant confirmation. We’ll see you soon.
-        </p>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">For parties of 8+, call us.</p>
-      </div>
-      <div className="md:col-span-6">
-        <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3 text-[color:var(--text)]">
-              <Calendar size={18} className="text-[color:var(--accent)]" /> Quick reservation form
+const ReservationsPreview: React.FC = () => {
+  const navigate = useNavigate();
+  return (
+    <section className="py-16 md:py-24 bg-[color:var(--bg)]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
+        <div className="md:col-span-6">
+          <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h2>
+          <p className="mt-3 text-[color:var(--text)]">
+            Choose your time. Get instant confirmation. We’ll see you soon.
+          </p>
+          <p className="mt-2 text-sm text-[color:var(--muted)]">For parties of 8+, call us.</p>
+        </div>
+        <div className="md:col-span-6">
+          <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-[color:var(--text)]">
+                <Calendar size={18} className="text-[color:var(--accent)]" /> Quick reservation form
+              </div>
+              <button
+                onClick={() => navigate('/reservations')}
+                className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--bg)] font-semibold"
+              >
+                Reserve a Table
+              </button>
             </div>
-            <button className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--bg)] font-semibold">
-              Reserve a Table
-            </button>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 const ReviewsSection: React.FC = () => (
   <section className="py-16 md:py-24 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -516,39 +522,99 @@ const MenuView: React.FC = () => {
     </section>
   );
 };
-const ReservationsView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
-      <div className="md:col-span-6 space-y-4">
-        <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h1>
-        <p className="text-[color:var(--text)]">Choose your time. Get instant confirmation. We’ll see you soon.</p>
-        <p className="text-sm text-[color:var(--muted)]">For parties of 8+, call us.</p>
-      </div>
-      <div className="md:col-span-6">
-        <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
-          <form className="space-y-4">
-            {['Name', 'Email', 'Phone'].map((label) => (
-              <input
-                key={label}
-                placeholder={label}
-                className="w-full rounded-full border border-[color:var(--border)] px-4 py-3"
-              />
-            ))}
-            <div className="grid grid-cols-2 gap-3">
-              <input type="date" className="rounded-full border border-[color:var(--border)] px-4 py-3" />
-              <input type="time" className="rounded-full border border-[color:var(--border)] px-4 py-3" />
-            </div>
-            <input placeholder="Party size" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" />
-            <textarea placeholder="Notes" className="w-full rounded-2xl border border-[color:var(--border)] px-4 py-3" />
-            <button className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--bg)] font-semibold">
-              Confirm Reservation
-            </button>
-          </form>
+const ReservationsView: React.FC = () => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+  const [calendarLink, setCalendarLink] = useState('');
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      date: formData.get('date'),
+      time: formData.get('time'),
+      guests: formData.get('guests'),
+      notes: formData.get('notes'),
+    };
+
+    setStatus('loading');
+    setMessage('');
+    setCalendarLink('');
+
+    try {
+      const response = await fetch('/api/reserve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+      if (!response.ok || !data?.success) {
+        throw new Error(data?.error || 'Reservation could not be processed.');
+      }
+
+      const startDate = `${payload.date}T${payload.time}`;
+      const dtStart = new Date(startDate).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const dtEnd = new Date(new Date(startDate).getTime() + 60 * 60 * 1000).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const ics = `BEGIN:VCALENDAR\\nVERSION:2.0\\nPRODID:-//The Cajun Menu//Reservations//EN\\nBEGIN:VEVENT\\nDTSTART:${dtStart}\\nDTEND:${dtEnd}\\nSUMMARY:Reservation for ${payload.name}\\nLOCATION:The Cajun Menu, 140 Keith Dr, Canton, GA 30114\\nEND:VEVENT\\nEND:VCALENDAR`;
+      setCalendarLink(`data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`);
+
+      setStatus('success');
+      setMessage('Reservation confirmed! Check your email for confirmation.');
+      form.reset();
+    } catch (err: any) {
+      setStatus('error');
+      setMessage(err?.message || 'We could not complete the reservation. Please try again.');
+    }
+  };
+
+  return (
+    <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
+        <div className="md:col-span-6 space-y-4">
+          <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h1>
+          <p className="text-[color:var(--text)]">Choose your time. Get instant confirmation. We’ll see you soon.</p>
+          <p className="text-sm text-[color:var(--muted)]">For parties of 8+, call us.</p>
+        </div>
+        <div className="md:col-span-6">
+          <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <input name="name" placeholder="Name" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" required />
+              <input name="email" placeholder="Email" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" required />
+              <input name="phone" placeholder="Phone" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" required />
+              <div className="grid grid-cols-2 gap-3">
+                <input name="date" type="date" className="rounded-full border border-[color:var(--border)] px-4 py-3" required />
+                <input name="time" type="time" className="rounded-full border border-[color:var(--border)] px-4 py-3" required />
+              </div>
+              <input name="guests" placeholder="Party size" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" required />
+              <textarea name="notes" placeholder="Notes" className="w-full rounded-2xl border border-[color:var(--border)] px-4 py-3" />
+              {message && (
+                <div className={`rounded-xl px-4 py-3 text-sm ${status === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-700'}`}>
+                  {message}
+                </div>
+              )}
+              {calendarLink && (
+                <a href={calendarLink} download="reservation.ics" className="text-sm font-semibold text-[color:var(--accent)]">
+                  Add to Calendar
+                </a>
+              )}
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-[color:var(--bg)] font-semibold disabled:opacity-60"
+              >
+                {status === 'loading' ? 'Submitting...' : 'Confirm Reservation'}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const OrderView: React.FC = () => (
   <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-[color:var(--bg)]">
