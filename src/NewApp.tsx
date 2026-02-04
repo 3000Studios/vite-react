@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`nav-metallic-purple ${scrolled ? 'py-2 h-[80px]' : ''} relative overflow-hidden`}>
       <div className="absolute inset-0 z-0">
-        <BackgroundVideo id="684sb953x5" aspect="1.7777777777777777" fit="contain" opacity={0.35} />
+        <BackgroundVideo id="684sb953x5" aspect="1.7777777777777777" fit="cover" opacity={0.35} />
         <div className="absolute inset-0 bg-mgDeep/70" />
       </div>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
