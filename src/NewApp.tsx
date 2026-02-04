@@ -361,7 +361,7 @@ const Footer: React.FC = () => {
               </div>
               <button 
                 onClick={() => navigate('/contact')}
-                className="mt-6 px-12 py-5 bg-white text-mgDeep font-black rounded-full text-[11px] tracking-[0.4em] uppercase hover:bg-mgGold hover:text-white transition-all shadow-xl"
+                className="mt-6 px-12 py-5 bg-white text-mgDeep font-black rounded-full text-[11px] tracking-[0.4em] uppercase hover:bg-mgGold hover:text-white transition-all shadow-xl light-cta"
               >
                 SEND A MESSAGE
               </button>
@@ -649,7 +649,7 @@ const ContactView: React.FC = () => (
             <label className="text-[11px] font-black uppercase tracking-[0.4em] text-white/30 ml-4">MESSAGE</label>
             <textarea rows={6} className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:border-mgGold outline-none transition-all text-white font-bold" />
           </div>
-          <button className="w-full py-7 bg-mgGold text-mgDeep font-black rounded-3xl text-sm tracking-[0.5em] uppercase hover:bg-white transition-all shadow-xl shadow-mgGold/20">
+          <button className="w-full py-7 bg-mgGold text-mgDeep font-black rounded-3xl text-sm tracking-[0.5em] uppercase hover:bg-white transition-all shadow-xl shadow-mgGold/20 light-cta">
             SEND INQUIRY
           </button>
         </form>
