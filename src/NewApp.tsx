@@ -363,6 +363,59 @@ const MenuView: React.FC = () => {
   const filtered = MENU_ITEMS.filter(item => item.category === activeCategory);
 
   useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 120);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const cards = document.querySelectorAll('.nola-reveal');
+    cards.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const cards = document.querySelectorAll<HTMLElement>('.nola-card');
+    const handleMove = (card: HTMLElement, e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    };
+
+    const handleLeave = (card: HTMLElement) => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    };
+
+    cards.forEach((card) => {
+      const onMove = (e: MouseEvent) => handleMove(card, e);
+      const onLeave = () => handleLeave(card);
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+      (card as any).__nolaMove = onMove;
+      (card as any).__nolaLeave = onLeave;
+    });
+
+    return () => {
+      cards.forEach((card) => {
+        const onMove = (card as any).__nolaMove;
+        const onLeave = (card as any).__nolaLeave;
+        if (onMove) card.removeEventListener('mousemove', onMove);
+        if (onLeave) card.removeEventListener('mouseleave', onLeave);
+      });
+    };
+  }, [activeCategory]);
+
+  useEffect(() => {
     const handleMove = (e: MouseEvent) => {
       const amount = 2;
       const x = (e.clientX / window.innerWidth - 0.5) * amount;
@@ -375,69 +428,42 @@ const MenuView: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-40 pb-32 bg-mgDeep overflow-hidden">
-      <BackgroundVideo id="5i5d09f8af" aspect="1.7777777777777777" fit="contain" opacity={0.22} />
-      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/30 via-mgDeep/25 to-mgDeep/35" />
-      <div className="container relative mx-auto px-6">
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
-          <div className="max-w-3xl">
-            <span className="text-mgGreen font-black tracking-[0.6em] uppercase text-xs mb-6 block">Our Full Selection</span>
-            <h2 className="text-6xl md:text-9xl font-display italic font-black text-white leading-tight">
-              <motion.span
-                initial={{ y: -30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              >
-                Real
-              </motion.span>{' '}
-              <motion.span
-                initial={{ y: -40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="text-mgGold"
-              >
-                Cajun
-              </motion.span>{' '}
-              <motion.span
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-              >
-                Cookin
-              </motion.span>
-            </h2>
-          </div>
-        </div>
-        <div className="nola-filter-wrapper">
-          <div className="nola-suspension-rod" />
-          <div className="nola-filter-grid" id="menu-filter">
-            {CATEGORIES.map((cat, idx) => (
-              <div
-                key={cat}
-                className={`category-node ${activeCategory === cat ? 'active' : ''}`}
-                style={{ animationDelay: `${(idx + 1) * 0.1}s` }}
-              >
-                <div
-                  className="category-thread"
-                  style={{ animationDelay: `${(idx + 1) * 0.1}s` }}
-                />
-                <button
-                  onClick={() => setActiveCategory(cat as MenuCategory)}
-                  className="category-button"
-                  type="button"
-                >
-                  <span>{cat}</span>
-                  <span className="category-count">{`// ${String(idx + 1).padStart(2, '0')}`}</span>
-                </button>
+    <section className="relative pt-32 pb-28 nola-menu-page">
+      <BackgroundVideo id="5i5d09f8af" aspect="1.7777777777777777" fit="contain" opacity={0.18} />
+      <div className="absolute inset-0 bg-gradient-to-b from-mgDeep/40 via-mgDeep/30 to-mgDeep/60" />
+      <div className="relative z-10">
+        <header className="nola-menu-header">
+          <div className="nola-menu-subtitle">The Cajun Menu</div>
+          <h1 className="nola-menu-title">{activeCategory}</h1>
+        </header>
+
+        <nav className="nola-subcat-bar" aria-label="Menu subcategories">
+          {CATEGORIES.map((cat, idx) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat as MenuCategory)}
+              className={`nola-subcat-btn ${activeCategory === cat ? 'is-active' : ''}`}
+            >
+              <span>{cat}</span>
+              <span className="nola-subcat-count">{`// ${String(idx + 1).padStart(2, '0')}`}</span>
+            </button>
+          ))}
+        </nav>
+
+        <main className="nola-menu-grid menu-items-scroll">
+          {filtered.map((item) => (
+            <article key={item.id} className="nola-card nola-reveal">
+              <div className="nola-image-wrapper">
+                <img src={item.image} alt={item.name} className="nola-food-img" />
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((item, idx) => <MenuCard key={item.id} item={item} index={idx} />)}
-          </AnimatePresence>
-        </div>
+              <h2 className="nola-food-title">{item.name}</h2>
+              <p className="nola-description">{item.description}</p>
+              <div className="nola-price-tag">{item.price}</div>
+              <div className="nola-accent-leaf">⚜</div>
+            </article>
+          ))}
+        </main>
       </div>
     </section>
   );
