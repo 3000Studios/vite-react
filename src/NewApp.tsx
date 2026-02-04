@@ -362,6 +362,18 @@ const MenuView: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<MenuCategory>(MenuCategory.APPETIZERS);
   const filtered = MENU_ITEMS.filter(item => item.category === activeCategory);
 
+  useEffect(() => {
+    const handleMove = (e: MouseEvent) => {
+      const amount = 2;
+      const x = (e.clientX / window.innerWidth - 0.5) * amount;
+      document.querySelectorAll<HTMLElement>('.category-thread').forEach((t) => {
+        t.style.transform = `rotate(${x}deg)`;
+      });
+    };
+    window.addEventListener('mousemove', handleMove);
+    return () => window.removeEventListener('mousemove', handleMove);
+  }, []);
+
   return (
     <section className="relative pt-40 pb-32 bg-mgDeep overflow-hidden">
       <BackgroundVideo id="5i5d09f8af" aspect="1.7777777777777777" fit="contain" opacity={0.22} />
