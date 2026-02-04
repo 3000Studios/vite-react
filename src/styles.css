@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel:wght@700;900&family=Spicy+Rice&family=Montserrat:wght@300;400;600;700&family=Oswald:wght@700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel:wght@700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Spicy+Rice&family=Montserrat:wght@300;400;600;700&family=Oswald:wght@700&family=Space+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 @tailwind base;
@@ -1137,38 +1137,107 @@ wistia-player.story-wistia::part(controls) {
 .nav-metallic-purple .nav-link {
   color: #ffffff;
   text-shadow: none;
-  font-family: 'Cinzel', serif;
-  font-weight: 900;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  font-size: 13.2px;
-  transition: color 0.2s ease, transform 0.2s ease;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  font-size: 18px;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
   position: relative;
 }
+.nav-link.nola-link {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 26px;
+  text-decoration: none;
+  color: #f9f7f2;
+}
+.nav-link.nola-link .nav-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: #f9f7f2;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 2;
+  line-height: 1;
+}
+.nav-link.nola-link .nav-data {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #b2945e;
+  margin-top: 6px;
+  opacity: 0.6;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 2;
+}
+.nav-link.nola-link .filigree {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 180%;
+  transform: translate(-50%, -50%) scale(0.8);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 1;
+}
+.nav-link.nola-link .filigree svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #f9f7f2;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.2));
+}
+.nav-link.nola-link:hover .nav-text {
+  color: #b2945e;
+  transform: translateY(-2px);
+  text-shadow: 0 10px 20px rgba(178, 148, 94, 0.2);
+}
+.nav-link.nola-link:hover .nav-data {
+  opacity: 1;
+  letter-spacing: 0.5em;
+  color: #f9f7f2;
+}
+.nav-link.nola-link:hover .filigree {
+  opacity: 0.15;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+.nav-link.nola-link .filigree path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 1.5s ease-in-out;
+}
+.nav-link.nola-link:hover .filigree path {
+  stroke-dashoffset: 0;
+}
 .nav-orbit .nav-link {
-  height: 44px;
+  height: 52px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(18, 18, 18, 0.4);
   backdrop-filter: blur(6px);
   box-shadow: inset 0 0 6px rgba(0,0,0,0.35), 0 10px 20px rgba(0,0,0,0.35);
-  color: #ffd700 !important;
-  text-shadow:
-    1px 1px #4b4b4b, 2px 2px #4b4b4b, 3px 3px #4b4b4b, 4px 4px #4b4b4b,
-    5px 5px #4b4b4b, 6px 6px #4b4b4b, 7px 7px #4b4b4b, 8px 8px #4b4b4b;
   transition: all 0.3s cubic-bezier(0.64, 0.01, 0.07, 1.65);
   padding: 0 16px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
 }
-.nav-orbit li:nth-child(1) .nav-link { background-color: rgba(106, 13, 173, 0.45); }
-.nav-orbit li:nth-child(2) .nav-link { background-color: rgba(26, 42, 108, 0.45); }
-.nav-orbit li:nth-child(3) .nav-link { background-color: rgba(212, 175, 55, 0.45); color: #1a0530 !important; }
-.nav-orbit li:nth-child(4) .nav-link { background-color: rgba(106, 13, 173, 0.45); }
-.nav-orbit li:nth-child(5) .nav-link { background-color: rgba(26, 42, 108, 0.45); }
-.nav-orbit li:nth-child(6) .nav-link { background-color: rgba(212, 175, 55, 0.45); color: #1a0530 !important; }
+.nav-orbit li:nth-child(1) .nav-link { background-color: rgba(18, 18, 18, 0.4); }
+.nav-orbit li:nth-child(2) .nav-link { background-color: rgba(18, 18, 18, 0.4); }
+.nav-orbit li:nth-child(3) .nav-link { background-color: rgba(18, 18, 18, 0.4); }
+.nav-orbit li:nth-child(4) .nav-link { background-color: rgba(18, 18, 18, 0.4); }
+.nav-orbit li:nth-child(5) .nav-link { background-color: rgba(18, 18, 18, 0.4); }
+.nav-orbit li:nth-child(6) .nav-link { background-color: rgba(18, 18, 18, 0.4); }
 .nav-orbit .nav-link:hover {
   transform: translateY(-2px) scale(1.06);
   background-color: rgba(255, 255, 255, 0.28);

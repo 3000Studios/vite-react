@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
         <div className="absolute inset-0 bg-mgDeep/70 z-[3]" />
       </div>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
-        <div className="flex items-center gap-2 cursor-pointer relative z-20" onClick={() => navigate('/')}>
+        <div className="flex items-center gap-1 cursor-pointer relative z-20" onClick={() => navigate('/')}>
           <div className="nav-logo-video">
             <WistiaPlayer
               media-id="5xxyuh8iwe"
@@ -118,9 +118,8 @@ const Navbar: React.FC = () => {
               playsinline
             />
           </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-cajun text-2xl lg:text-3xl tracking-wider text-white">THE CAJUN</span>
-            <span className="font-display italic text-mgGold text-sm lg:text-base tracking-[0.3em] ml-1">MENU</span>
+          <div className="flex items-center leading-none">
+            <span className="font-cajun text-2xl lg:text-3xl tracking-wider text-white">THE CAJUN MENU</span>
           </div>
         </div>
 
@@ -130,12 +129,20 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={link.to}
                 className={({ isActive }) =>
-                  `nav-link text-[11px] font-black uppercase tracking-[0.4em] transition-all hover:text-mgGold ${
+                  `nav-link nola-link text-[11px] font-black uppercase tracking-[0.4em] transition-all ${
                     isActive ? 'text-mgGold active' : 'text-white/80'
                   }`
                 }
               >
-                {link.label}
+                <span className="nav-text">{link.label}</span>
+                <span className="nav-data">Cajun Menu</span>
+                <span className="filigree" aria-hidden="true">
+                  <svg viewBox="0 0 200 100">
+                    <path d="M10,50 C10,10 40,10 50,30 C60,10 90,10 90,50 C90,90 60,90 50,70 C40,90 10,90 10,50 Z M190,50 C190,10 160,10 150,30 C140,10 110,10 110,50 C110,90 140,90 150,70 C160,90 190,90 190,50 Z" />
+                    <path d="M50,30 Q100,0 150,30 M50,70 Q100,100 150,70" />
+                    <circle cx="100" cy="50" r="2" fill="currentColor" />
+                  </svg>
+                </span>
               </NavLink>
             </li>
           ))}
