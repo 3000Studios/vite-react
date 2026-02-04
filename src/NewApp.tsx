@@ -514,14 +514,17 @@ const MenuView: React.FC = () => {
 };
 
 const GalleryView: React.FC = () => {
-  const photos = [
-    "https://images.unsplash.com/photo-1590759016226-c9002d4452c7?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1559131397-f94da358f7ca?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1546793665-c74683c3f43d?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1583019117226-d4e1af74e20b?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1582294101758-6927f6b95b19?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200"
-  ];
+  const photos = Array.from(
+    new Set([
+      ...MENU_ITEMS.map((item) => item.image),
+      "https://images.unsplash.com/photo-1590759016226-c9002d4452c7?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1559131397-f94da358f7ca?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1546793665-c74683c3f43d?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1583019117226-d4e1af74e20b?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1582294101758-6927f6b95b19?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200"
+    ])
+  );
   return (
     <section className="pt-40 pb-32 bg-mgDeep min-h-screen">
       <div className="container mx-auto px-6">
