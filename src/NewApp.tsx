@@ -278,7 +278,7 @@ const SignatureFavorites: React.FC = () => {
               <div className="mt-4 flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-serif text-[color:var(--primary)]">{item.name}</h3>
-                  <p className="text-sm text-[color:var(--muted)]">{item.description}</p>
+                  <p className="text-sm text-[color:var(--accent)]">{item.description}</p>
                 </div>
                 <span className="text-sm font-semibold text-[color:var(--accent)]">{item.price}</span>
               </div>
@@ -542,7 +542,7 @@ const MenuView: React.FC = () => {
               <div className="mt-4 flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl md:text-2xl font-serif text-[color:var(--primary)]">{item.name}</h3>
-                  <p className="text-sm text-[color:var(--text)] line-clamp-2">{item.description}</p>
+                  <p className="text-sm text-[color:var(--accent)] line-clamp-2">{item.description}</p>
                 </div>
                 <span className="text-sm font-semibold text-[color:var(--accent)]">{item.price}</span>
               </div>
