@@ -90,9 +90,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`nav-metallic-purple ${scrolled ? 'py-2 h-[80px]' : ''} relative overflow-hidden`}>
-      <div className="absolute inset-0 z-[1]">
+      <div className="absolute inset-0 z-[2]">
         <BackgroundVideo id="684sb953x5" aspect="1.7777777777777777" fit="cover" opacity={0.35} />
-        <div className="absolute inset-0 bg-mgDeep/70" />
+        <div className="absolute inset-0 bg-mgDeep/70 z-[3]" />
       </div>
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full">
         <div className="flex items-center gap-6 cursor-pointer relative z-20" onClick={() => navigate('/')}>
@@ -185,7 +185,7 @@ const HomeView: React.FC = () => {
   const [showBayou, setShowBayou] = useState(false);
   return (
   <>
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <BackgroundVideo id="shf90z629z" aspect="1.7777777777777777" fit="contain" opacity={0.6} />
       <div className="container mx-auto px-6 pt-10 relative z-20 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
@@ -193,7 +193,7 @@ const HomeView: React.FC = () => {
       </div>
     </section>
     <section className="relative bg-mgDeep">
-      <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-center gap-8">
+      <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-center gap-8">
         <button 
           onClick={() => navigate('/menu')}
           className="group px-14 py-6 brass-press rounded-full text-sm font-black tracking-[0.4em] uppercase flex items-center gap-4 shadow-2xl steam-cta"

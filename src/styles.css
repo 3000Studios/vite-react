@@ -1097,6 +1097,9 @@ wistia-player.story-wistia::part(controls) {
   background-size: 80px 80px, 100% 100%, 100% 100%;
   z-index: 0;
 }
+.nav-metallic-purple .video-wrapper {
+  z-index: 1;
+}
 .nav-metallic-purple .nav-link {
   color: #ffffff;
   text-shadow: none;
