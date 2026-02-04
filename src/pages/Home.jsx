@@ -349,10 +349,8 @@ const MenuCarousel = ({ activeCategory, onSelect }) => {
             key={cat}
             type="button"
             onClick={() => onSelect(cat)}
-            className={`flex-shrink-0 snap-center rounded-full border-2 px-8 py-3 text-sm font-black uppercase tracking-[0.25em] transition-all duration-300 ${
-              activeCategory === cat
-                ? 'border-mardiGreen bg-mardiGold text-mardiPurple shadow-[0_0_20px_rgba(255,215,0,0.4)]'
-                : 'border-white/15 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+            className={`menu-filter-btn flex-shrink-0 snap-center rounded-full border-2 px-8 py-3 text-sm font-black uppercase tracking-[0.25em] transition-all duration-300 ${
+              activeCategory === cat ? 'is-active' : ''
             }`}
           >
             {cat}
