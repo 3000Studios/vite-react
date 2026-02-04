@@ -8,7 +8,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$16.99',
     description: 'House made silky crab dip infused with Old Bay seasoning and real lump crab meat. Served with butter-toasted French bread rounds.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/3745fe9e-4cb4-49c5-877d-dc5628856ec0/image.jpg',
+    image: '/images/creamy-crab-dip.png',
     isSignature: true
   },
   {
@@ -17,7 +17,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$12.99',
     description: 'Crispy boudin croquettes with smoky andouille and creamy rice, served with spicy Creole mustard.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/3745fe9e-4cb4-49c5-877d-dc5628856ec0/image.jpg',
+    image: '/images/smoked-sausage-boudin-balls.png',
     isSignature: false,
   },
   {
@@ -26,7 +26,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$11.99',
     description: 'A classic starter with Gulf shrimp, red potatoes, andouille sausage, and sweet corn. Served with a side of drawn cajun garlic butter.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://assets.grok.com/users/f5cf884d-e7d1-4237-bc1b-9d670e5b64b5/generated/ed5ff385-c83d-47d7-83af-e1c732b6c905/image.jpg',
+    image: '/images/bayou-low-boil.png',
     isSignature: true
   },
   {
@@ -35,7 +35,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$13.99',
     description: 'Blistered okra, heirloom tomatoes, pickled red onions, and feta with lemon-cajun vinaigrette.',
     category: MenuCategory.SALADS,
-    image: 'https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?auto=format&fit=crop&q=80&w=800',
+    image: '/images/charred-okra-tomato-salad.png',
     isSignature: false,
   },
   {
@@ -44,7 +44,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$14.99',
     description: 'Tender, farm-raised alligator tail lightly battered and fried to a perfect golden crisp. Served with our signature zesty remoulade sauce.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&q=80&w=800',
+    image: '/images/crispy-alligator-bites.png',
     isSignature: true
   },
   {
@@ -53,7 +53,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: '$18.99',
     description: 'Warm, melted three-cheese blend loaded with domestic crawfish tails and diced pimientos. Served with hand-cut crispy tortilla chips.',
     category: MenuCategory.APPETIZERS,
-    image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&q=80&w=800',
+    image: '/images/crawfish-queso-dip.png',
     isSignature: false
   },
   {
