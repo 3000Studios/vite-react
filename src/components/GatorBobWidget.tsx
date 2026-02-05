@@ -39,14 +39,9 @@ const GatorBobWidget: React.FC = () => {
   const [isMinimized, setIsMinimized] = useState(true);
   const [isDancing, setIsDancing] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const minimizedRef = useRef(isMinimized);
   const notifyTimerRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     minimizedRef.current = isMinimized;
@@ -152,8 +147,6 @@ const GatorBobWidget: React.FC = () => {
   };
 
   const lastMessage = messages[messages.length - 1];
-
-  if (!isMounted) return null;
 
   return (
     <div

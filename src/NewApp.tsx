@@ -26,6 +26,7 @@ const NAV_LINKS = [
   { label: 'Catering', to: '/catering' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Planner', to: '/project-planner.html', external: true },
 ];
 
 const scrollReveal = {
@@ -68,17 +69,27 @@ const Header: React.FC = () => {
 
         <nav className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors nav-link-shimmer ${
-                  isActive ? 'text-[color:var(--accent)]' : 'text-[color:var(--text)]'
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
+            link.external ? (
+              <a
+                key={link.to}
+                href={link.to}
+                className="text-sm font-medium transition-colors nav-link-shimmer text-[color:var(--text)]"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors nav-link-shimmer ${
+                    isActive ? 'text-[color:var(--accent)]' : 'text-[color:var(--text)]'
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            )
           ))}
         </nav>
 
@@ -126,14 +137,25 @@ const Header: React.FC = () => {
 
               <div className="mt-10 flex-1 flex flex-col gap-6">
                 {NAV_LINKS.map((link) => (
-                  <NavLink
-                    key={link.to}
-                    to={link.to}
-                    onClick={() => setOpen(false)}
-                    className="text-2xl font-semibold text-[color:var(--text)]"
-                  >
-                    {link.label}
-                  </NavLink>
+                  link.external ? (
+                    <a
+                      key={link.to}
+                      href={link.to}
+                      onClick={() => setOpen(false)}
+                      className="text-2xl font-semibold text-[color:var(--text)]"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <NavLink
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setOpen(false)}
+                      className="text-2xl font-semibold text-[color:var(--text)]"
+                    >
+                      {link.label}
+                    </NavLink>
+                  )
                 ))}
 
                 <div className="mt-6 space-y-4 text-sm text-[color:var(--muted)]">
@@ -172,6 +194,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-[color:var(--bg)]">
       <div className="absolute inset-0 overflow-hidden">
+        {/* @ts-expect-error: Web component not in JSX types */}
         <wistia-player media-id="14ushhwlms" className="hero-wistia" aspect="1.7777777777777777" muted autoPlay loop playsInline />
         <style>
           {`wistia-player[media-id='14ushhwlms']:not(:defined) {
@@ -380,33 +403,6 @@ const ReviewsSection: React.FC = () => (
   </section>
 );
 
-const YelpReviewsSection: React.FC = () => (
-  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div className="flex items-end justify-between gap-6 flex-wrap">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Official Yelp Reviews</h2>
-          <p className="mt-2 text-[color:var(--text)]">See what guests are saying on Yelp.</p>
-        </div>
-        <a
-          href="https://www.yelp.com/biz/the-cajun-menu-canton"
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm font-semibold text-[color:var(--accent)] flex items-center gap-2"
-        >
-          View on Yelp <ExternalLink size={14} />
-        </a>
-      </div>
-      <div className="mt-6 rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)] p-6">
-        <iframe
-          title="The Cajun Menu Yelp Reviews"
-          src="https://www.yelp.com/biz/the-cajun-menu-canton"
-          className="w-full h-[420px] rounded-xl border border-[color:var(--border)]"
-        />
-      </div>
-    </div>
-  </section>
-);
 const LocationSection: React.FC = () => (
   <section className="py-12 md:py-16 bg-[color:var(--bg)]">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">

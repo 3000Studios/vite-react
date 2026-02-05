@@ -15,7 +15,7 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - run: npx wrangler pages deploy dist --project-name=vite-react
+      - run: npx wrangler pages deploy dist --project-name=cajun-kitchen
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
