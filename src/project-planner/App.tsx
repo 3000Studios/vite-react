@@ -11,6 +11,16 @@ import PreviewPane from './components/PreviewPane';
 import { getAiSuggestions } from './services/geminiService';
 
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    // Check session storage on initial render to avoid effect
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      return sessionStorage.getItem('auth_project_plan') === 'true';
+    }
+    return false;
+  });
+  const [pinInput, setPinInput] = useState('');
+  const [authError, setAuthError] = useState(false);
+
   const [role, setRole] = useState<UserRole>('Owner');
   const [tasks, setTasks] = useState<ProjectTask[]>(() => {
     const saved = localStorage.getItem('cm_tasks_v2');
@@ -27,6 +37,18 @@ const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('cm_tasks_v2', JSON.stringify(tasks));
   }, [tasks]);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pinInput === '5555') {
+      sessionStorage.setItem('auth_project_plan', 'true');
+      setIsAuthenticated(true);
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+      setPinInput('');
+    }
+  };
 
   const addNotice = useCallback((content: string) => {
     const newNotice: Notice = {
@@ -109,6 +131,36 @@ const App: React.FC = () => {
     setAiSuggestions(prev => prev.filter(s => s.title !== suggestion.title));
   };
 
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-200 p-4">
+        <div className="w-full max-w-md p-8 bg-slate-900/50 backdrop-blur-xl rounded-3xl border border-white/10 text-center shadow-2xl">
+            <div className="mb-6 text-6xl animate-bounce">🔒</div>
+            <h2 className="text-3xl font-bold text-white mb-2 uppercase tracking-wider">Restricted Access</h2>
+            <p className="text-slate-400 mb-8 text-sm uppercase tracking-widest">Enter passcode to view Project Console.</p>
+
+            <form onSubmit={handleLogin} className="space-y-6">
+                <input
+                  type="password"
+                  value={pinInput}
+                  onChange={(e) => setPinInput(e.target.value)}
+                  placeholder="ENTER PIN"
+                  className="w-full bg-slate-950/80 border border-slate-700 rounded-xl p-4 text-center text-white text-xl tracking-[0.5em] focus:outline-none focus:border-indigo-500 transition-colors placeholder-slate-700"
+                  autoFocus
+                />
+                {authError && <p className="text-red-500 text-xs font-bold uppercase tracking-widest animate-pulse">Incorrect Passcode</p>}
+                <button type="submit" className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transform hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest text-sm">
+                    Unlock System
+                </button>
+            </form>
+            <div className="mt-8 pt-8 border-t border-slate-800">
+               <a href="/" className="text-xs text-slate-500 hover:text-white uppercase tracking-widest transition-colors">← Return to Main Site</a>
+            </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-200">
       <div className="fixed top-0 left-0 w-full h-1 bg-indigo-600 z-50"></div>
@@ -123,6 +175,9 @@ const App: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-6">
+          <a href="/" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-colors mr-4">
+            ← Return to Site
+          </a>
           <div className="flex bg-slate-950 p-1 rounded-lg border border-slate-800 shadow-inner">
             <button 
               onClick={() => setRole('Owner')}
