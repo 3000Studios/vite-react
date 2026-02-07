@@ -14,7 +14,7 @@
     --wallpaper-image: url('/images/wallpaper.png');
     background-color: var(--bg);
     background-image:
-      linear-gradient(rgba(24, 16, 40, 0.82), rgba(24, 16, 40, 0.82)),
+      linear-gradient(rgba(24, 16, 40, 0.40), rgba(24, 16, 40, 0.40)),
       var(--wallpaper-image);
     background-position: center;
     background-size: cover;
