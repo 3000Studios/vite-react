@@ -26,7 +26,7 @@ const NAV_LINKS = [
   { label: 'Catering', to: '/catering' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
-  { label: 'Planner', to: '/project-planner.html', external: true },
+  { label: 'Planner', to: '/planner', external: true },
 ];
 
 const scrollReveal = {
@@ -924,6 +924,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.6em] text-white/10 pt-12 border-t border-white/5">
           <span>© 2026 THE CAJUN MENU • LOUISIANA TRADITION</span>
           <div className="flex gap-12">
+            <a href="/planner" className="hover:text-white transition-colors">Planner</a>
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>
             <a href="#" className="hover:text-white transition-colors">Accessibility</a>
