@@ -52,8 +52,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[1000] h-16 md:h-[72px] transition-colors ${
-        solid ? 'bg-[color:var(--bg)] shadow-sm border-b border-[color:var(--border)]' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-[1000] h-16 md:h-[72px] transition-all duration-300 ${
+        solid ? 'bg-black/20 backdrop-blur-xl shadow-sm border-b border-white/10' : 'bg-transparent'
       }`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
@@ -192,7 +192,7 @@ const Header: React.FC = () => {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-[color:var(--bg)]">
+    <section className="relative min-h-[72vh] md:min-h-[80vh]">
       <div className="absolute inset-0 overflow-hidden">
         {/* @ts-expect-error: Web component not in JSX types */}
         <wistia-player media-id="14ushhwlms" className="hero-wistia" aspect="1.7777777777777777" muted autoPlay loop playsInline />
@@ -206,14 +206,6 @@ const Hero: React.FC = () => {
             }`}
         </style>
       </div>
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(90deg, rgba(24,16,40,0.72) 0%, rgba(24,16,40,0.55) 40%, rgba(24,16,40,0.0) 70%)',
-        }}
-        aria-hidden
-      />
     </section>
   );
 };
@@ -222,7 +214,7 @@ const HeroCopy: React.FC = () => {
   const navigate = useNavigate();
   const reduceMotion = useReducedMotion();
   return (
-    <section className="bg-[color:var(--bg)] py-10 md:py-14">
+    <section className="py-10 md:py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={scrollReveal}
@@ -263,7 +255,7 @@ const HeroCopy: React.FC = () => {
 };
 
 const QuickActions: React.FC = () => (
-  <section className="py-12 bg-[color:var(--bg)]">
+  <section className="py-12">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
@@ -288,7 +280,7 @@ const QuickActions: React.FC = () => (
 const SignatureFavorites: React.FC = () => {
   const highlights = MENU_ITEMS.filter((item) => item.isSignature).slice(0, 6);
   return (
-    <section className="py-12 md:py-16 bg-[color:var(--bg)]">
+    <section className="py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
@@ -334,7 +326,7 @@ const SignatureFavorites: React.FC = () => {
 };
 
 const WhyLoveUs: React.FC = () => (
-  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
       <div className="md:col-span-6 space-y-4">
         <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Why People Love Us</h2>
@@ -359,7 +351,7 @@ const WhyLoveUs: React.FC = () => (
 const ReservationsPreview: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-12 md:py-16 bg-[color:var(--bg)]">
+    <section className="py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
         <div className="md:col-span-6">
           <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h2>
@@ -388,7 +380,7 @@ const ReservationsPreview: React.FC = () => {
   );
 };
 const ReviewsSection: React.FC = () => (
-  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl md:text-4xl font-serif text-[color:var(--primary)]">Reviews & Social Proof</h2>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -404,7 +396,7 @@ const ReviewsSection: React.FC = () => (
 );
 
 const LocationSection: React.FC = () => (
-  <section className="py-12 md:py-16 bg-[color:var(--bg)]">
+  <section className="py-12 md:py-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
       <div className="md:col-span-4 space-y-4">
         <h3 className="text-xl md:text-2xl font-serif text-[color:var(--primary)]">Find Us</h3>
@@ -504,14 +496,14 @@ const MenuView: React.FC = () => {
   }, [category, query]);
 
   return (
-    <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+    <section className="pt-24 md:pt-28 pb-12 md:pb-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">The Menu</h1>
           <p className="mt-3 text-[color:var(--text)]">Made fresh. Bold seasoning. Real comfort.</p>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3 justify-center sticky top-16 md:top-[72px] bg-[color:var(--bg)] py-4 z-20">
+        <div className="mt-8 flex flex-wrap items-center gap-3 justify-center sticky top-16 md:top-[72px] py-4 z-20 backdrop-blur-md bg-black/10 rounded-xl px-4">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -625,7 +617,7 @@ const ReservationsView: React.FC = () => {
   };
 
   return (
-    <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+    <section className="pt-24 md:pt-28 pb-12 md:pb-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
         <div className="md:col-span-6 space-y-4">
           <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Reserve in Seconds</h1>
@@ -670,7 +662,7 @@ const ReservationsView: React.FC = () => {
 };
 
 const OrderView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
       <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Order Online</h1>
       <p className="mt-3 text-[color:var(--text)]">Order pickup or delivery from your favorite platform.</p>
@@ -689,7 +681,7 @@ const OrderView: React.FC = () => (
 );
 
 const CateringView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Catering & Events</h1>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -717,7 +709,7 @@ const CateringView: React.FC = () => (
 );
 
 const AboutView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-10">
       <div>
         <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Our Story</h1>
@@ -740,7 +732,7 @@ const AboutView: React.FC = () => (
 );
 
 const ContactView: React.FC = () => (
-  <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+  <section className="pt-24 md:pt-28 pb-12 md:pb-16">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
       <div className="md:col-span-6 space-y-4">
         <h1 className="text-4xl md:text-6xl font-serif text-[color:var(--primary)]">Contact & Location</h1>
@@ -768,7 +760,7 @@ const AdminView: React.FC = () => {
 
   if (!authed) {
     return (
-      <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+      <section className="pt-24 md:pt-28 pb-12 md:pb-16">
         <div className="mx-auto max-w-md px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-serif text-[color:var(--primary)]">Admin Access</h1>
           <input
@@ -789,7 +781,7 @@ const AdminView: React.FC = () => {
   }
 
   return (
-    <section className="pt-24 md:pt-28 pb-12 md:pb-16 bg-[color:var(--bg)]">
+    <section className="pt-24 md:pt-28 pb-12 md:pb-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
         <h1 className="text-4xl font-serif text-[color:var(--primary)]">Analytics Dashboard</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -960,7 +952,7 @@ const AppShell = () => {
   }, []);
 
   return (
-    <div className="bg-[color:var(--bg)] text-[color:var(--text)]">
+    <div className="text-[color:var(--text)]">
       <Header />
       <ScrollToTop />
       <AnimatePresence mode="wait">
