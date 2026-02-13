@@ -12,14 +12,19 @@
   body {
     @apply antialiased;
     background-color: var(--bg);
+    background-image: url('/images/wallpaper.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--text);
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   :root {
-    --bg: #2a0b45;
+    --bg: transparent;
     --text: #f9f7f2;
-    --primary: #2a0b45;
+    --primary: rgba(42, 11, 69, 0.85);
     --secondary: #1aa366;
     --accent: #b2945e;
     --muted: #6b6762;
@@ -1025,11 +1030,16 @@ wistia-player.logo-wistia::part(controls) {
 /* Hero Wistia player tweaks */
 wistia-player.hero-wistia {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 wistia-player.hero-wistia::part(video) {
-  object-fit: cover;
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 wistia-player.hero-wistia::part(controls) {
   display: none !important;

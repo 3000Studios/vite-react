@@ -250,6 +250,10 @@
         /* --- Core Typography & Reset --- */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: url('images/wallpaper.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
             background-color: #020617;
             color: #f8fafc;
             overflow-x: hidden;
@@ -313,7 +317,8 @@
             position: relative;
             width: 100%;
             min-height: 460px;
-            background: #0a0a0a;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -604,8 +609,8 @@
     <!-- Catering Hero -->
     <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-[#020617]/40 z-10"></div>
-            <img src="images/low-boil.png" alt="Catering Background" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#020617]/60 via-transparent to-transparent z-10"></div>
+            <img src="images/low-boil.png" alt="Catering Background" class="w-full h-full object-cover opacity-20">
         </div>
         <div class="relative z-20 text-center px-4">
             <h1 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6">Catering Services</h1>

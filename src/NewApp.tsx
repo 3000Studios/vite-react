@@ -192,10 +192,10 @@ const Header: React.FC = () => {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-[color:var(--bg)]">
+    <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh]">
       <div className="absolute inset-0 overflow-hidden">
         {/* @ts-expect-error: Web component not in JSX types */}
-        <wistia-player media-id="14ushhwlms" className="hero-wistia" aspect="1.7777777777777777" muted autoPlay loop playsInline />
+        <wistia-player media-id="14ushhwlms" className="hero-wistia" muted autoPlay loop playsInline />
         <style>
           {`wistia-player[media-id='14ushhwlms']:not(:defined) {
               background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/14ushhwlms/swatch');
@@ -960,7 +960,7 @@ const AppShell = () => {
   }, []);
 
   return (
-    <div className="bg-[color:var(--bg)] text-[color:var(--text)]">
+    <div className="text-[color:var(--text)]">
       <Header />
       <ScrollToTop />
       <AnimatePresence mode="wait">
