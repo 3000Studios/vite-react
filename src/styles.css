@@ -11,7 +11,10 @@
 
   body {
     @apply antialiased;
-    background-color: var(--bg);
+    background-image: url('/images/wallpaper.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     color: var(--text);
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
