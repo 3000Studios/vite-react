@@ -1,2 +1,5 @@
+# Planner specific rewrite
+/planner /project-planner.html 200
+
 # SPA fallback for Vite/React Router
 /* /index.html 200
