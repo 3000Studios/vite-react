@@ -51,9 +51,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[1000] h-16 md:h-[72px] transition-colors ${
-        solid ? 'wallpaper-panel shadow-sm border-b border-[color:var(--border)]' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[1000] h-16 md:h-[72px] transition-colors ${solid ? 'wallpaper-panel shadow-sm border-b border-[color:var(--border)]' : 'bg-transparent'
+        }`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         <button
@@ -72,8 +71,7 @@ const Header: React.FC = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors nav-link-shimmer ${
-                  isActive ? 'text-[color:var(--accent)]' : 'text-[color:var(--text)]'
+                `text-sm font-medium transition-colors nav-link-shimmer ${isActive ? 'text-[color:var(--accent)]' : 'text-[color:var(--text)]'
                 }`
               }
             >
@@ -187,7 +185,7 @@ const Hero: React.FC = () => {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(90deg, rgba(24,16,40,0.72) 0%, rgba(24,16,40,0.55) 40%, rgba(24,16,40,0.0) 70%)',
+            'linear-gradient(115deg, rgba(19,10,31,0.88) 0%, rgba(19,10,31,0.72) 42%, rgba(11,7,19,0.0) 72%)',
         }}
         aria-hidden
       />
@@ -254,7 +252,7 @@ const QuickActions: React.FC = () => (
             href={action.href}
             className="flex items-center gap-3 rounded-full border border-[color:var(--accent)] bg-[color:var(--secondary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_0_18px_rgba(0,0,0,0.15)] hover:shadow-[0_0_22px_rgba(178,148,94,0.45)] transition"
           >
-            <span className="text-white">{action.icon}</span>
+            <span className="text-current">{action.icon}</span>
             {action.label}
           </a>
         ))}
@@ -295,7 +293,7 @@ const SignatureFavorites: React.FC = () => {
                   <h3 className="text-xl dish-title">{item.name}</h3>
                   <p className="text-sm text-[color:var(--accent)]">{item.description}</p>
                 </div>
-                <span className="text-sm font-semibold text-[color:var(--accent)]">{item.price}</span>
+                <span className="text-sm font-semibold price-lime">{item.price}</span>
               </div>
               <div className="mt-3">
                 <span className="inline-flex items-center rounded-full bg-[color:var(--secondary)] px-3 py-1 text-xs text-white">
@@ -474,6 +472,7 @@ const HomeView: React.FC = () => (
     <WhyLoveUs />
     <ReservationsPreview />
     <ReviewsSection />
+    <YelpReviewsSection />
     <LocationSection />
     <FinalCTA />
   </main>
@@ -520,11 +519,10 @@ const MenuView: React.FC = () => {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm border transition ${
-                category === cat
+              className={`px-4 py-2 rounded-full text-sm border transition ${category === cat
                   ? 'bg-[color:var(--primary)] text-[color:var(--bg)] border-[color:var(--primary)]'
                   : 'border-[color:var(--border)] text-[color:var(--text)]'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -562,11 +560,11 @@ const MenuView: React.FC = () => {
                   <h3 className="text-xl md:text-2xl dish-title">{item.name}</h3>
                   <p className="text-sm text-[color:var(--accent)] line-clamp-2">{item.description}</p>
                 </div>
-                <span className="text-sm font-semibold text-[color:var(--accent)]">{item.price}</span>
+                    <span className="text-sm font-semibold price-lime">{item.price}</span>
               </div>
               <div className="mt-3 flex flex-wrap gap-2 text-xs">
                 {item.isSignature && (
-                <span className="px-2 py-1 rounded-full bg-[color:var(--secondary)] text-white">Popular</span>
+                  <span className="px-2 py-1 rounded-full bg-[color:var(--secondary)] text-white">Popular</span>
                 )}
                 <span className="px-2 py-1 rounded-full border border-[color:var(--border)] text-[color:var(--muted)]">Ask about allergies</span>
               </div>
@@ -579,6 +577,7 @@ const MenuView: React.FC = () => {
     </section>
   );
 };
+
 const ReservationsView: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
@@ -756,9 +755,9 @@ const ContactView: React.FC = () => (
           <input placeholder="Name" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" />
           <input placeholder="Email" className="w-full rounded-full border border-[color:var(--border)] px-4 py-3" />
           <textarea placeholder="Message" className="w-full rounded-2xl border border-[color:var(--border)] px-4 py-3" />
-          <button className="h-11 md:h-12 w-full rounded-full bg-[color:var(--secondary)] text-white font-semibold hover:shadow-[0_0_20px_rgba(178,148,94,0.55)] transition">
-            Send Message
-          </button>
+                  <button className="h-11 md:h-12 w-full rounded-full emerald-button font-semibold transition">
+                    Send Message
+                  </button>
         </form>
       </div>
     </div>
@@ -836,7 +835,7 @@ const HangingBeadLetter: React.FC<{ char: string; index: number }> = ({ char, in
 const Footer: React.FC = () => {
   const navigate = useNavigate();
   const brandPendant = "THE CAJUN MENU";
-  
+
   return (
     <footer className="relative bg-mgDeep pt-40 pb-20 overflow-hidden min-h-[700px]">
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -850,9 +849,9 @@ const Footer: React.FC = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 h-full flex flex-col">
         <div className="flex justify-center items-center gap-12 mb-28 footer-socials">
-              <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/thecajunmenu" target="_blank" rel="noreferrer" className="social-3d social-instagram"><Instagram size={48} /></motion.a>
-              <motion.a whileHover={{ scale: 1.2 }} href="https://www.facebook.com/people/The-Cajun-Menu/61558125637329/" target="_blank" rel="noreferrer" className="social-3d social-facebook"><Facebook size={48} /></motion.a>
-              <motion.a whileHover={{ scale: 1.2 }} href="mailto:thecajunmenu@gmail.com" className="social-3d social-mail"><Mail size={48} /></motion.a>
+          <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/thecajunmenu" target="_blank" rel="noreferrer" className="social-3d social-instagram"><Instagram size={48} /></motion.a>
+          <motion.a whileHover={{ scale: 1.2 }} href="https://www.facebook.com/people/The-Cajun-Menu/61558125637329/" target="_blank" rel="noreferrer" className="social-3d social-facebook"><Facebook size={48} /></motion.a>
+          <motion.a whileHover={{ scale: 1.2 }} href="mailto:thecajunmenu@gmail.com" className="social-3d social-mail"><Mail size={48} /></motion.a>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-24 items-start border-t border-white/10 pt-24 mb-20">
@@ -885,13 +884,13 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center">
             <h4 className="font-display italic text-3xl text-mgGold mb-10 text-center">Our Location</h4>
             <div className="w-full h-80 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all hover:border-mgGold/40 group">
-              <iframe 
-                src="https://www.google.com/maps?q=140+Keith+Dr,+Canton,+GA+30114&output=embed&t=k" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps?q=140+Keith+Dr,+Canton,+GA+30114&output=embed&t=k"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
                 className="transition-all duration-700"
               />
             </div>
@@ -915,7 +914,7 @@ const Footer: React.FC = () => {
                   thecajunmenu@gmail.com <Mail size={22} className="text-mgGreen" />
                 </a>
               </div>
-              <button 
+              <button
                 onClick={() => navigate('/contact')}
                 className="mt-6 px-12 py-5 bg-white text-mgDeep font-black rounded-full text-[11px] tracking-[0.4em] uppercase hover:bg-mgGold hover:text-white transition-all shadow-xl light-cta"
               >

@@ -39,14 +39,14 @@ const GatorBobWidget: React.FC = () => {
   const [isMinimized, setIsMinimized] = useState(true);
   const [isDancing, setIsDancing] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = React.useSyncExternalStore(
+    () => () => { },
+    () => true,
+    () => false
+  );
   const chatEndRef = useRef<HTMLDivElement>(null);
   const minimizedRef = useRef(isMinimized);
   const notifyTimerRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     minimizedRef.current = isMinimized;
@@ -242,11 +242,10 @@ const GatorBobWidget: React.FC = () => {
               >
                 <div className={`flex flex-col gap-1 max-w-[85%] ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                   <div
-                    className={`p-4 rounded-[1.5rem] shadow-xl relative ${
-                      msg.role === 'user'
-                        ? 'bg-blue-mg text-white rounded-tr-none'
-                        : 'bg-gradient-to-br from-green-mg to-emerald-950 text-white rounded-tl-none border border-white/10'
-                    }`}
+                    className={`p-4 rounded-[1.5rem] shadow-xl relative ${msg.role === 'user'
+                      ? 'bg-blue-mg text-white rounded-tr-none'
+                      : 'bg-gradient-to-br from-green-mg to-emerald-950 text-white rounded-tl-none border border-white/10'
+                      }`}
                   >
                     <p className="whitespace-pre-wrap leading-relaxed text-sm">{msg.text}</p>
                   </div>
@@ -286,9 +285,8 @@ const GatorBobWidget: React.FC = () => {
               <button
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isTyping}
-                className={`p-4 rounded-2xl transition-all flex items-center justify-center ${
-                  !input.trim() || isTyping ? 'bg-white/5 text-gray-700' : 'bg-gold-mg text-black shadow-lg shadow-gold-mg/20 active:scale-90'
-                }`}
+                className={`p-4 rounded-2xl transition-all flex items-center justify-center ${!input.trim() || isTyping ? 'bg-white/5 text-gray-700' : 'bg-gold-mg text-black shadow-lg shadow-gold-mg/20 active:scale-90'
+                  }`}
               >
                 <Send size={20} />
               </button>
