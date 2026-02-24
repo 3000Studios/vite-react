@@ -1,3 +1,7 @@
-name = "vite-react"
+name = "cajun-kitchen"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "dist"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "e61605d144ac4348a72b7e85afc6c185"

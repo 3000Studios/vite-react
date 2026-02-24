@@ -153,8 +153,6 @@ const GatorBobWidget: React.FC = () => {
 
   const lastMessage = messages[messages.length - 1];
 
-  if (!isMounted) return null;
-
   return (
     <div
       className="fixed z-[9999] flex flex-col items-end pointer-events-none"
