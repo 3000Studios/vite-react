@@ -61,7 +61,7 @@ const Header: React.FC = () => {
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-left"
         >
-          <span className="text-[color:var(--accent)] font-serif text-xl md:text-2xl font-semibold tracking-tight logo-shimmer">
+          <span className="logo">
             THE CAJUN MENU
           </span>
         </button>
@@ -190,7 +190,7 @@ const Header: React.FC = () => {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-transparent">
+    <section className="hero relative pt-20 md:pt-24 min-h-[72vh] md:min-h-[80vh] bg-transparent">
       <div className="absolute inset-0 overflow-hidden">
         {/* @ts-expect-error: Web component not in JSX types */}
         <wistia-player media-id="14ushhwlms" className="hero-wistia" aspect="1.7777777777777777" muted autoPlay loop playsInline />
