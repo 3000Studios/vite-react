@@ -3,7 +3,20 @@ import { resolve } from 'path';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'mpa-fallback',
+      configurePreviewServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url === '/planner') {
+            req.url = '/planner/index.html';
+          }
+          next();
+        });
+      }
+    }
+  ],
   build: {
     minify: 'esbuild',
     sourcemap: false,
@@ -15,7 +28,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         catering: resolve(__dirname, 'catering.html'),
         delivery: resolve(__dirname, 'delivery.html'),
-        projectPlan: resolve(__dirname, 'project-plan.html')
+        projectPlan: resolve(__dirname, 'planner/index.html')
       }
     }
   }
